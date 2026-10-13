@@ -82,6 +82,9 @@ a nahraj ho na revizní stránku (skill `revize`, pole `storyboard`). Render až
 2. Titulky: každé slovo mimo `BEZ` je v titulku a žádný titulek není kratší než 13 sn. (konzole hlásí kratší).
 3. Render: `hf render . --output renders/<nazev>-v<N>.mp4 --workers 3`, jen plná kvalita. Při renderu úseku nastav délku kompozice
    a `HF_VIDEO_COVERAGE_THRESHOLD=0`.
+4. Zvuk do videa: render ztratí asi 0,7 dB, proto nakonec vlož přesný mix
+   `ffmpeg -i renders/<nazev>-v<N>.mp4 -i assets/media/mix.wav -map 0:v -map 1:a -c:v copy -c:a aac -b:a 256k -shortest -movflags +faststart renders/<nazev>-v<N>-final.mp4`
+   a ověř `-14 LUFS` (`ffmpeg -i ... -af ebur128=peak=true -f null -`). Na revizi i ven jde jen `-final`.
 
 ## 8. Revize a učení
 
