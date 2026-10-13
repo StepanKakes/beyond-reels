@@ -102,14 +102,15 @@
       <div>
         <h2>Instalace, jednou na Macu</h2>
         <div class="kroky">
-          <div class="krok"><div class="cislo">1</div><div><h3>Přidej plugin</h3>
-            <div class="prikaz"><pre id="k1">/plugin marketplace add stepankakes/beyond-reels
+          <div class="krok"><div class="cislo">1</div><div><h3>Rozbal a přidej plugin</h3>
+            <p class="pozn" style="margin-top:2px">Zip <code>beyond-reels-plugin.zip</code> od Štěpána rozbal do <code>~/Documents/beyond-reels-plugin</code>, pak v Claude Code:</p>
+            <div class="prikaz"><pre id="k1">/plugin marketplace add ~/Documents/beyond-reels-plugin
 /plugin install beyond-reels@beyond</pre><button class="kopiruj" data-cil="k1" type="button">Kopírovat</button></div>
-            <p class="pozn">V Claude Code, v libovolné složce.</p></div></div>
+            <p class="pozn">V libovolné složce. Až bude plugin na GitHubu, místo cesty stačí jméno repozitáře.</p></div></div>
           <div class="krok"><div class="cislo">2</div><div><h3>Rozbal média</h3>
             <p class="pozn" style="margin-top:2px">Zip <code>beyond-reels-media.zip</code> (hudba a B-rolly, 1 GB) od Štěpána rozbal do <code>~/Documents/beyond-reels-media</code>.</p></div></div>
           <div class="krok"><div class="cislo">3</div><div><h3>Spusť setup</h3>
-            <div class="prikaz"><pre id="k3">zsh ~/.claude/plugins/marketplaces/beyond/plugins/beyond-reels/scripts/setup.sh</pre><button class="kopiruj" data-cil="k3" type="button">Kopírovat</button></div>
+            <div class="prikaz"><pre id="k3">zsh ~/Documents/beyond-reels-plugin/plugins/beyond-reels/scripts/setup.sh</pre><button class="kopiruj" data-cil="k3" type="button">Kopírovat</button></div>
             <p class="pozn">Nainstaluje nástroje, Python, vytáhne Helveticu ze tvého Macu a stáhne model pro přepisy. Trvá asi 10 minut. Pro text za lidmi přidej <code>--matanyone</code>.</p></div></div>
           <div class="krok"><div class="cislo">4</div><div><h3>Revizní stránka</h3>
             <p class="pozn" style="margin-top:2px">Požádej Štěpána o přístup s úpravami ke stránce Revize reelů.</p></div></div>
@@ -161,10 +162,10 @@
         <thead><tr><th>Problém</th><th>Co udělat</th></tr></thead>
         <tbody>
           <tr><td>Claude neví o pluginu</td><td>Zkontroluj <code>/plugin</code> > Installed, případně restartuj Claude Code.</td></tr>
-          <tr><td>Chybí nástroj nebo cesta</td><td><code>zsh …/scripts/setup.sh --kontrola</code> řekne přesně co. Pak setup bez parametru.</td></tr>
+          <tr><td>Chybí nástroj nebo cesta</td><td><code>zsh ~/Documents/beyond-reels-plugin/plugins/beyond-reels/scripts/setup.sh --kontrola</code> řekne přesně co. Pak setup bez parametru.</td></tr>
           <tr><td>Chybí hudba nebo B-rolly</td><td>Rozbal <code>beyond-reels-media.zip</code> do <code>~/Documents/beyond-reels-media</code> a spusť setup.</td></tr>
           <tr><td>Písmo vypadá jinak</td><td>Setup znovu vytáhne Helveticu. V kompozici vždy <code>var(--mk-sans)</code>.</td></tr>
-          <tr><td>Novější verze pluginu</td><td><code>/plugin</code> > Marketplaces > beyond > Update. Setup znovu není potřeba.</td></tr>
+          <tr><td>Novější verze pluginu</td><td>Nový zip rozbal přes starý, pak <code>/plugin</code> > Marketplaces > beyond > Update. Setup znovu není potřeba.</td></tr>
         </tbody>
       </table>
     </div>

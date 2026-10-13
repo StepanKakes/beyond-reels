@@ -16,15 +16,15 @@ do kolekce `verdikty` v databázi revizní stránky.
 
 ## Instalace (každý Mac s Apple čipem)
 
-1. V Claude Code:
+1. Zip `beyond-reels-plugin.zip` rozbal do `~/Documents/beyond-reels-plugin` (nebo naklonuj repo, až bude na GitHubu) a v Claude Code:
    ```
-   /plugin marketplace add <github-uzivatel>/beyond-reels
+   /plugin marketplace add ~/Documents/beyond-reels-plugin
    /plugin install beyond-reels@beyond
    ```
 2. Balík médií `beyond-reels-media.zip` (hudba a B-rolly, asi 1 GB, posílá Štěpán) rozbal do `~/Documents/beyond-reels-media`.
 3. Jednou spusť setup (Homebrew musí být nainstalovaný):
    ```bash
-   zsh ~/.claude/plugins/marketplaces/beyond/plugins/beyond-reels/scripts/setup.sh
+   zsh ~/Documents/beyond-reels-plugin/plugins/beyond-reels/scripts/setup.sh
    ```
    Nainstaluje ffmpeg, node, uv, yt-dlp a whisper, Python prostředí (zvuk, zarovnání slov, DeepFilterNet3), vytáhne Helvetica Neue
    ze systému tvého Macu (písmo se nesmí šířit, plugin ho nenese), stáhne model pro přepisy a zapíše cesty do `~/.config/beyond-reels/env.sh`.
@@ -42,7 +42,7 @@ Reely se zakládají v `~/Documents/beyond-reely/<nazev>`. Tahák pro tým: `doc
 
 ## Aktualizace
 
-`/plugin` > Marketplaces > beyond > Update. Cesty se po aktualizaci najdou samy, setup znovu jen když to plugin řekne.
+Nový zip rozbal přes starý (nebo `git pull`), pak `/plugin` > Marketplaces > beyond > Update. Cesty se po aktualizaci najdou samy, setup znovu jen když to plugin řekne.
 
 ## Pravidla repozitáře
 
