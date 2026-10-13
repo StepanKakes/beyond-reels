@@ -1,7 +1,7 @@
-// node build.mjs a  ->  src/ukazka-a.html se slovy vloženými ze assets/media/slova_A.json zapíše jako index.html
+// node build.mjs [reel]  ->  src/reel.html se slovy vloženými ze assets/media/slova_X.json zapíše jako index.html
 // projekt má mít jen jeden kořenový index.html, proto se ukázky přepínají buildem
 import fs from "node:fs";
-const k = (process.argv[2] || "a").toLowerCase();
+const k = (process.argv[2] || "reel").toLowerCase();
 const zdroj = fs.existsSync(`src/${k}.html`) ? `src/${k}.html` : `src/ukazka-${k}.html`;
 let h = fs.readFileSync(zdroj, "utf8");
 h = h.replace(/\/\*SLOVA:(\w+)\*\//g, (_, x) => fs.readFileSync(`assets/media/slova_${x}.json`, "utf8").replace(/\s+/g, " "));
