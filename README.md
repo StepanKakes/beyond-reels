@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="docs/media/showcase.mp4"><img src="docs/obr/hero2.jpg" alt="Krok výběru: ke každé větě tři směry z naší knihovny" width="100%"></a>
+  <a href="docs/media/film.mp4"><img src="docs/obr/film_poster.jpg" alt="Film o pluginu: reel, který postavil Claude, v naší revizní stránce" width="100%"></a>
 </p>
 
 <h1 align="center">beyond / reels</h1>
@@ -14,7 +14,7 @@
   <a href="#jak-vznik%C3%A1-reel">Jak vzniká reel</a> &nbsp;·&nbsp;
   <a href="#styly">Styly</a> &nbsp;·&nbsp;
   <a href="#%C5%99e%C5%A1en%C3%AD-probl%C3%A9m%C5%AF">Řešení problémů</a> &nbsp;·&nbsp;
-  <a href="docs/media/showcase.mp4">Showcase video, 32 s</a>
+  <a href="docs/media/film.mp4">Film o pluginu, 42 s</a>
 </p>
 
 <br>
@@ -147,7 +147,7 @@ plugins/beyond-reels/
                  zarovnání slov, kontrola střihu, masky lidí), kity stylů, SFX, vzory
   scripts/       setup, založení reelu, šablona projektu, stahování videí
   vkus/          společná pravidla vkusu a prace.md: jak Claude dělí práci mezi agenty a modely
-docs/            tahák a showcase
+docs/            tahák a film o pluginu
 ```
 
 Mimo repo: média v `~/Documents/beyond-reels-media`, reely v `~/Documents/beyond-reely`, komentáře a verdikty v databázi revizní stránky.
