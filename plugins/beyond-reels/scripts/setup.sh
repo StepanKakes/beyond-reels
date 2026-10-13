@@ -76,6 +76,13 @@ if [[ -f $BR/fonts/HN-Bold.ttf ]]; then ok "Helvetica Neue"
 elif (( KONTROLA )); then chybi "Helvetica Neue (vytáhne se ze systému)"
 else $BR/venv/bin/python "$PL/prostor/tools/hn_ze_systemu.py" $BR/fonts >/dev/null && ok "Helvetica Neue (vytaženo ze systému)"; fi
 
+# 5b) Apple Vision nástroj (text a obličeje ze snímků) zkompilovaný, ať je kontrola renderu rychlá
+VB=$BR/bin/vision_snimky
+if [[ -x $VB ]]; then ok "Apple Vision nástroj"
+elif (( KONTROLA )); then chybi "Apple Vision nástroj (zkompiluje se)"
+elif command -v swiftc >/dev/null; then mkdir -p $BR/bin && swiftc -O "$PL/prostor/tools/vision_snimky.swift" -o $VB 2>/dev/null && ok "Apple Vision nástroj (zkompilováno)"
+else print -P "%F{yellow}volitelné%f Apple Vision nástroj: chybí swiftc, nainstaluj xcode-select --install"; fi
+
 # 6) model pro přepisy (whisper.cpp large-v3-turbo); když ho má Vowen, použije se ten
 W=$(ls ~/Library/Application\ Support/vowen/models/*large*turbo*.bin 2>/dev/null | head -1)
 [[ -z "$W" && -f $BR/whisper/ggml-large-v3-turbo.bin ]] && W=$BR/whisper/ggml-large-v3-turbo.bin

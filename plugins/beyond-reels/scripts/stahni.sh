@@ -8,7 +8,8 @@
 #   COOKIES_PROHLIZEC=safari bash stahni.sh URL   # kdyz IG chce prihlaseni
 #
 # Vystup: slozka ~/Documents/ig-videa/<id>/ s video.mp4, info.json,
-# popisek.txt, prepis.txt, prepis.srt, snimky/ a mrizka.jpg.
+# popisek.txt, prepis.txt, prepis.srt, snimky/, mrizka.jpg, a se setupem pluginu i souhrn.txt a strihy.jpg
+# (střihy, hlasitost, tempo řeči, text v obraze přes Apple Vision).
 # Na stdout vypise cestu ke slozce a kratke shrnuti.
 
 set -euo pipefail
@@ -90,7 +91,12 @@ done
 RADKU=$(( (SNIMKU + 2) / 3 ))
 ffmpeg -y -loglevel error -pattern_type glob -i "$DIR/snimky/*.jpg" -vf "tile=3x${RADKU}:padding=6:color=white" -frames:v 1 "$DIR/mrizka.jpg" || true
 
+# Shrnutí bez obrázků (Apple Vision a ffmpeg): střihy, hlasitost, tempo řeči, text v obraze, přehled podle střihů
+SOUHRN="${BR_PROSTOR:-}/tools/souhrn_videa.py"
+if [ -f "$SOUHRN" ] && [ -x "${PY:-}" ]; then "$PY" "$SOUHRN" "$VIDEO" --prepis "$DIR/prepis.srt" --vystup "$DIR" >/dev/null 2>&1 || true; fi
+
 echo "SLOZKA: $DIR"
 echo "DELKA: ${DELKA}s"
 echo "--- POPISEK ---"; cat "$DIR/popisek.txt"
 echo "--- PREPIS ---"; cat "$DIR/prepis.txt"
+[ -f "$DIR/souhrn.txt" ] && { echo "--- SOUHRN (Mac změřil) ---"; cat "$DIR/souhrn.txt"; }

@@ -96,6 +96,19 @@ Každý styl má vlastní skill a kit. Komponenty z hotových reelů jsou inspir
 
 <br>
 
+## Jak Claude pracuje
+
+Hlavní Claude píše scénář, texty, design a kód. Oči a měření deleguje, ať se nepálí kontext:
+
+- **Mac měří první.** `souhrn_videa.py` a `kontrola_renderu.py` přečtou přes Apple Vision text a obličeje v obraze, ffmpeg změří střihy a hlasitost, whisper řeč. Claude čte text, ne snímky.
+- **Agent `overovac`** (Sonnet) kontroluje rendery a vrací jen verdikt.
+- **Agent `rozbor`** (Sonnet) rozebírá reference snímek po snímku.
+- **Explore** (Haiku) hledá v kódu a knihovně.
+
+Celý postup je v [`vkus/prace.md`](plugins/beyond-reels/vkus/prace.md).
+
+<br>
+
 ## Pravidla
 
 Hlídá je Claude sám, nové přibývají z revizí do [`vkus/pravidla.md`](plugins/beyond-reels/vkus/pravidla.md) a do databáze revizní stránky.
@@ -129,10 +142,11 @@ Hlídá je Claude sám, nové přibývají z revizí do [`vkus/pravidla.md`](plu
 ```
 plugins/beyond-reels/
   skills/        průvodce reelem, revize, nový styl a jazyk každého stylu
+  agents/        overovac (kontrola renderu) a rozbor (rozbor reference), oba na Sonnetu
   prostor/       sdílený kód: jádro kitů s měřenými křivkami, nástroje (studio hlas, mix,
                  zarovnání slov, kontrola střihu, masky lidí), kity stylů, SFX, vzory
   scripts/       setup, založení reelu, šablona projektu, stahování videí
-  vkus/          společná pravidla vkusu
+  vkus/          společná pravidla vkusu a prace.md: jak Claude dělí práci mezi agenty a modely
 docs/            tahák a showcase
 ```
 
@@ -146,4 +160,4 @@ Mimo repo: média v `~/Documents/beyond-reels-media`, reely v `~/Documents/beyon
 
 <br>
 
-<p align="center"><sub>Beyond · reely v HyperFrames · verze 0.2</sub></p>
+<p align="center"><sub>Beyond · reely v HyperFrames · verze 0.3</sub></p>

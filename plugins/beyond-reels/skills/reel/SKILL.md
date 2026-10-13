@@ -13,8 +13,10 @@ Proměnné: `$BR_PROSTOR` (sdílený prostor beo-motion/hyperframes), `$PY` (Pyt
 Než cokoli navrhneš, přečti `$BR_PLUGIN/vkus/pravidla.md` a verdikty týmu (ArtifactData `list` kolekce `verdikty` na revizní stránce, odkaz ve skillu `revize`). Platí bez připomínání.
 Ve zvoleném stylu pak jeho skill (`styl-mason`, `styl-noske`, `styl-matt-gray`, `styl-lumitris`, `styl-nathan`).
 
-Šetři kontext: kontrolu renderů, snímků a logů dávej agentovi `overovac` (nebo general-purpose s levnějším modelem), do hlavního
-kontextu jen jeho textový verdikt. Kód kompozice, texty a návrhy piš sám. Zvuk nikdy nepřehrávej nahlas.
+Jak pracovat a dělit práci mezi agenty a modely: `$BR_PLUGIN/vkus/prace.md` (přečti na začátku). Krátce: Mac měří první
+(`souhrn_videa.py`, `kontrola_renderu.py`, whisper, ebur128), oči deleguj agentovi `beyond-reels:overovac` (Sonnet) a rozbory
+referencí agentovi `beyond-reels:rozbor` (Sonnet), hledání vestavěnému Explore (Haiku). Kód kompozice, texty a návrhy piš sám.
+Zvuk nikdy nepřehrávej nahlas.
 
 ## 1. Brief (vždy, i když něco zaznělo v zadání)
 
@@ -76,7 +78,9 @@ a nahraj ho na revizní stránku (skill `revize`, pole `storyboard`). Render až
 
 ## 7. Kontrola před revizí
 
-1. Rychlé náhledy jen změněných úseků: snímky `hf snapshot`, kontaktní arch. Prohlédnout je dej agentovi s tímto seznamem:
+1. Nejdřív měří Mac: `$PY $BR_PROSTOR/tools/kontrola_renderu.py renders/<nazev>-v<N>-final.mp4 --texty zdroj/titulky.txt`
+   (text přes obličej, u okraje, přes text, nečitelný, chybějící titulky). Co hlásí, oprav. Teprve potom oči:
+   rychlé náhledy jen změněných úseků (`hf snapshot`, kontaktní arch) prohlédne agent `beyond-reels:overovac` s tímto seznamem:
    titulky čitelné, ne přes obličej, ne tmavé přes tmavou plochu; nic přes obličej; text nepřekrývá text; značky logem;
    Tim jen při pohledu do kamery; žádný zakázaný prvek z `pravidla.md`; každá scéna má nosič.
 2. Titulky: každé slovo mimo `BEZ` je v titulku a žádný titulek není kratší než 13 sn. (konzole hlásí kratší).

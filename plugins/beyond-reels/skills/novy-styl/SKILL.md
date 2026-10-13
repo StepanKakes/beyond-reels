@@ -21,6 +21,9 @@ co přesně se na nich líbí (střih, typografie, B-rolly, zvuk), na jaký typ 
 
 ## 3. Rozbor po snímcích (agenti, levnější model, souběžně po videích)
 
+Na každé video jeden agent `beyond-reels:rozbor` (Sonnet), všechny najednou na pozadí. Začínají od `souhrn.txt` a `strihy.jpg`,
+které vyrobil `stahni.sh` (střihy, tempo, text v obraze přes Apple Vision), a teprve pak jdou na snímky.
+
 Každý agent pro jedno video zapíše do `$BR_INSPIRACE/<jmeno>/_rozbor/<id>/`:
 - `SHOTLOG.md`: každý záběr s časem od do (snímky), co je v obraze, kompozice, typografie (písmo, velikost jako % výšky, barva),
   nástup a odchod (kolik snímků, křivka, směr), přechod do dalšího záběru, zvuk (SFX, hudba, ticho).
