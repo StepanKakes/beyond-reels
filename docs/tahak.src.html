@@ -1,0 +1,217 @@
+<title>Tahák beyond-reels</title>
+<style>
+  /* Švýcarská mřížka a řemeslo našich reelů: jen Helvetica Neue, obří roztažené slovo za lidmi, skutečné snímky, vlasové linky místo karet,
+     červená jen na jedné věci v každém úseku. Záměrně jeden vzhled: černý úvod jako záběr, pak papír. */
+  :root {
+    --papir: #EEEBE5; --inkoust: #0E0D0C; --sedy: #6F6A63; --linka: #CFC9BF; --cervena: #FF0E00; --cerna: #0E0D0C; --bila: #FAF8F4;
+    --sans: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--papir); color: var(--inkoust); font-family: var(--sans); font-size: 16px; line-height: 1.45; -webkit-font-smoothing: antialiased; font-variant-numeric: tabular-nums; }
+  a { color: inherit; }
+  .obri { font-weight: 700; text-transform: uppercase; letter-spacing: -0.055em; line-height: .78; transform: scaleY(1.2); transform-origin: 50% 100%; white-space: nowrap; }
+  .mriz { max-width: 1280px; margin: 0 auto; padding-inline: 20px; }
+  .linka { border-top: 1px solid var(--inkoust); }
+
+  /* ÚVOD: záběr, za lidmi slovo */
+  .uvod { background: var(--cerna); color: var(--bila); }
+  .zaber { position: relative; container-type: inline-size; aspect-ratio: 16 / 9; max-width: 100%; overflow: hidden; }
+  .zaber img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .zaber .slovo { position: absolute; left: 0; right: 0; bottom: 30%; text-align: center; color: var(--cervena); font-size: 30cqw; }
+  .zaber .popredi { z-index: 2; }
+  .zaber .stopa { position: absolute; z-index: 3; left: 2.2cqw; right: 2.2cqw; top: 1.8cqw; display: flex; justify-content: space-between; gap: 12px; font-size: max(12px, 1.25cqw); font-weight: 500; color: rgba(250, 248, 244, .86); text-shadow: 0 1px 10px rgba(0, 0, 0, .5); }
+  .pod { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 32px 48px; padding-block: 36px 48px; align-items: end; }
+  .pod h1 { margin: 0; font-size: clamp(30px, 4.4vw, 58px); line-height: 1.02; letter-spacing: -0.04em; font-weight: 700; text-wrap: balance; }
+  .pod h1 span { color: var(--cervena); }
+  .pod p { margin: 0; color: #B9B2A8; font-size: 17px; max-width: 46ch; }
+  .prvni { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: baseline; }
+  .prvni code { font-family: var(--sans); font-weight: 700; font-size: 22px; color: var(--bila); letter-spacing: -0.02em; }
+  .prvni small { color: #8C857B; font-size: 14px; }
+  @media (max-width: 760px) { .pod { grid-template-columns: minmax(0, 1fr); } }
+
+  /* úseky */
+  section { padding-block: 64px 0; }
+  .hlava { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 16px 48px; padding-top: 14px; margin-bottom: 30px; }
+  .hlava h2 { margin: 0; font-size: clamp(34px, 4.6vw, 64px); line-height: .95; letter-spacing: -0.05em; font-weight: 700; }
+  .hlava p { margin: 0; color: var(--sedy); font-size: 17px; max-width: 54ch; align-self: end; }
+  .hlava p b { color: var(--inkoust); }
+  @media (max-width: 760px) { .hlava { grid-template-columns: minmax(0, 1fr); } }
+
+  /* postup jako filmový pás 4:3 */
+  .pas { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px 16px; }
+  @media (max-width: 900px) { .pas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .okenko { position: relative; aspect-ratio: 4 / 3; max-width: 100%; overflow: hidden; background: var(--cerna); container-type: inline-size; }
+  .okenko img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .okenko .typo { position: absolute; inset: 0; padding: 7cqw; display: flex; flex-direction: column; justify-content: flex-end; color: var(--bila); font-weight: 700; letter-spacing: -0.045em; line-height: .95; }
+  .okenko .typo.r { gap: 2cqw; font-size: 12cqw; }
+  .okenko .typo.r i { font-style: normal; color: #7A746B; }
+  .okenko .typo.v { font-size: 26cqw; }
+  .okenko .typo.v small { display: block; font-size: 7cqw; color: #8C857B; letter-spacing: -0.02em; margin-top: 3cqw; font-weight: 500; }
+  .okenko .abc { position: absolute; right: 4cqw; bottom: 3cqw; font-weight: 700; font-size: 13cqw; letter-spacing: -0.04em; color: var(--bila); text-shadow: 0 2px 14px rgba(0,0,0,.5); }
+  .okenko .abc b { color: var(--cervena); }
+  .meta { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; color: var(--sedy); margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--linka); }
+  .meta .ty { color: var(--cervena); font-weight: 700; }
+  .krok h3 { margin: 8px 0 4px; font-size: 21px; letter-spacing: -0.03em; line-height: 1.1; }
+  .krok p { margin: 0; color: var(--sedy); font-size: 15px; }
+
+  /* instalace jako technický list */
+  .list { display: grid; }
+  .radek { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); gap: 8px 48px; padding-block: 22px; border-top: 1px solid var(--linka); }
+  .radek:first-child { border-top: 1px solid var(--inkoust); }
+  .radek h3 { margin: 0; font-size: 21px; letter-spacing: -0.03em; }
+  .radek .i { font-size: 14px; color: var(--sedy); }
+  .radek p { margin: 0; color: var(--sedy); max-width: 62ch; }
+  .radek p b { color: var(--inkoust); }
+  @media (max-width: 760px) { .radek { grid-template-columns: minmax(0, 1fr); } }
+  .prikaz { display: flex; gap: 12px; align-items: flex-start; margin: 10px 0 8px; background: var(--cerna); color: var(--bila); padding: 14px 16px; }
+  .prikaz pre { margin: 0; flex: 1; min-width: 0; overflow-x: auto; font-family: ui-monospace, Menlo, monospace; font-size: 14px; line-height: 1.6; }
+  .kopiruj { flex: none; background: none; border: 0; color: #B9B2A8; font: 500 13px var(--sans); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; padding: 2px 0; }
+  .kopiruj:hover { color: var(--bila); }
+  .kopiruj:focus-visible, .prikazy a:focus-visible { outline: 2px solid var(--cervena); outline-offset: 3px; }
+  code.v { font-family: ui-monospace, Menlo, monospace; font-size: 14px; background: #E2DED6; padding: 1px 5px; }
+
+  /* příkazy */
+  .prikazy { display: grid; }
+  .pr { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 6px 48px; padding-block: 26px; border-top: 1px solid var(--linka); align-items: baseline; }
+  .pr:first-child { border-top: 1px solid var(--inkoust); }
+  .pr .jm { font-size: clamp(26px, 3.2vw, 42px); font-weight: 700; letter-spacing: -0.045em; line-height: 1; }
+  .pr .jm span { color: var(--sedy); font-weight: 500; }
+  .pr .jm.c { color: var(--cervena); }
+  .pr .rekni { font-size: 22px; letter-spacing: -0.02em; line-height: 1.25; }
+  .pr .co { color: var(--sedy); font-size: 15px; margin-top: 6px; }
+  @media (max-width: 760px) { .pr { grid-template-columns: minmax(0, 1fr); } }
+
+  /* styly */
+  .styly { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+  @media (max-width: 980px) { .styly { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .st h3 { margin: 12px 0 2px; font-size: 26px; letter-spacing: -0.045em; }
+  .st p { margin: 0; color: var(--sedy); font-size: 14px; }
+
+  /* pravidla */
+  .pravidla { margin: 0; padding: 0; list-style: none; columns: 2 320px; column-gap: 48px; }
+  .pravidla li { break-inside: avoid; padding-block: 12px; border-top: 1px solid var(--linka); font-size: 17px; letter-spacing: -0.01em; }
+  .pravidla li b { color: var(--cervena); font-weight: 700; }
+
+  .tab { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th, td { text-align: left; vertical-align: top; padding: 14px 24px 14px 0; border-top: 1px solid var(--linka); }
+  th { font-weight: 500; color: var(--sedy); border-top: 1px solid var(--inkoust); }
+  td:first-child { font-weight: 700; white-space: nowrap; }
+
+  footer { margin-top: 72px; background: var(--cerna); color: #8C857B; }
+  footer .mriz { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 32px; padding-block: 26px; font-size: 13px; }
+  footer b { color: var(--bila); font-weight: 500; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="uvod">
+  <div class="zaber" aria-label="Ranní běh Daniela Dalena, za běžci nápis REEL">
+    <img src="{{img:hero.jpg}}" alt="">
+    <div class="slovo obri" aria-hidden="true">/reel</div>
+    <img class="popredi" src="{{img:hero_fg.webp}}" alt="">
+    <div class="stopa"><span>beyond-reels 0.2</span><span>1920 × 1440 · 30 fps · −14 LUFS</span></div>
+  </div>
+  <div class="mriz pod">
+    <h1>Pošleš video a řekneš styl. Zbytek je <span>reel</span></h1>
+    <div>
+      <p>Plugin pro Claude Code, se kterým tým Beyond dělá reely v HyperFrames. Ke každé větě navrhne směry z naší knihovny, postaví kompozici, smíchá zvuk podle standardu a dá ji na revizi s komentáři k času</p>
+      <div class="prvni"><code>/beyond-reels:reel</code><small>stačí napsat v Claude Code</small></div>
+    </div>
+  </div>
+</div>
+
+<main class="mriz">
+  <section>
+    <div class="hlava linka"><h2>Od videa k revizi</h2><p>Osm kroků, ve třech rozhoduješ ty. Render přijde <b>až po schváleném storyboardu</b>, takže se nečeká na nic, co by se stejně zahodilo</p></div>
+    <div class="pas">
+      <div class="krok"><div class="okenko"><img src="{{img:k1.jpg}}" alt="Tim do kamery"></div><div class="meta"><span>01</span><span class="ty">ty</span></div><h3>Video a styl</h3><p>Cesta k videu, o kom to je, jaký styl</p></div>
+      <div class="krok"><div class="okenko"><div class="typo r"><span><i>styl</i> Mason</span><span><i>typ</i> rozbor</span><span><i>délka</i> 45 s</span><span><i>konec</i> “START”</span></div></div><div class="meta"><span>02</span><span>claude</span></div><h3>Brief</h3><p>Doptá se na typ, délku a CTA, založí projekt</p></div>
+      <div class="krok"><div class="okenko"><div class="typo v">−14<small>LUFS, hlas −5,5 dB, střih do ticha</small></div></div><div class="meta"><span>03</span><span>claude</span></div><h3>Text, střih, hlas</h3><p>Nejlepší pokusy, žádné useknuté slovo, studio hlas</p></div>
+      <div class="krok"><div class="okenko"><img src="{{img:k4.jpg}}" alt="Počítadlo z reelu Heaton"><div class="abc"><b>A</b> B C</div></div><div class="meta"><span>04</span><span class="ty">ty</span></div><h3>Výběr směrů</h3><p>Ke každé důležité větě 2 až 3 varianty z knihovny</p></div>
+      <div class="krok"><div class="okenko"><img src="{{img:k5.jpg}}" alt="Storyboard, slovo za osobou"></div><div class="meta"><span>05</span><span class="ty">ty</span></div><h3>Storyboard</h3><p>Statické snímky ke schválení na revizní stránce</p></div>
+      <div class="krok"><div class="okenko"><img src="{{img:k6.jpg}}" alt="Render hooku Heaton"></div><div class="meta"><span>06</span><span>claude</span></div><h3>Stavba a zvuk</h3><p>Jádro kitů, plynulé křivky, titulky samy ze slov</p></div>
+      <div class="krok"><div class="okenko"><img src="{{img:k7.jpg}}" alt="Revize reelu"></div><div class="meta"><span>07</span><span>vy oba</span></div><h3>Revize</h3><p>Komentáře k času, kresba přes snímek, oprava titulku</p></div>
+      <div class="krok"><div class="okenko"><img src="{{img:k8.jpg}}" alt="Hotový reel Steven"></div><div class="meta"><span>08</span><span>claude</span></div><h3>Opravy a učení</h3><p>Nová verze a verdikt, ze kterého se učí celý tým</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="hlava linka"><h2>Instalace</h2><p>Jednou na každém Macu s Apple čipem, asi deset minut. Helvetica se nikam neposílá, setup si ji vezme <b>ze systému tvého Macu</b></p></div>
+    <div class="list">
+      <div class="radek"><div><h3>Plugin</h3><span class="i">zip od Štěpána</span></div><div>
+        <p>Rozbal <code class="v">beyond-reels-plugin.zip</code> do <code class="v">~/Documents/beyond-reels-plugin</code> a v Claude Code napiš</p>
+        <div class="prikaz"><pre id="k1">/plugin marketplace add ~/Documents/beyond-reels-plugin
+/plugin install beyond-reels@beyond</pre><button class="kopiruj" data-cil="k1" type="button">kopírovat</button></div></div></div>
+      <div class="radek"><div><h3>Média</h3><span class="i">hudba a B-rolly, 1 GB</span></div><div>
+        <p>Rozbal <code class="v">beyond-reels-media.zip</code> do <code class="v">~/Documents/beyond-reels-media</code></p></div></div>
+      <div class="radek"><div><h3>Setup</h3><span class="i">nástroje, Python, písmo, přepisy</span></div><div>
+        <div class="prikaz"><pre id="k3">zsh ~/Documents/beyond-reels-plugin/plugins/beyond-reels/scripts/setup.sh</pre><button class="kopiruj" data-cil="k3" type="button">kopírovat</button></div>
+        <p>Pro text za lidmi přidej <code class="v">--matanyone</code>, co chybí ukáže <code class="v">--kontrola</code></p></div></div>
+      <div class="radek"><div><h3>Revize</h3><span class="i">komentáře a knihovna</span></div><div>
+        <p>O přístup s úpravami ke stránce <b>Revize reelů</b> požádej Štěpána</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="hlava linka"><h2>Co napsat</h2><p>Mluv normálně. Příkaz jen řekne, který postup se má spustit</p></div>
+    <div class="prikazy">
+      <div class="pr"><div class="jm c">/reel</div><div><div class="rekni">„udělej reel jako mason z ~/Downloads/rozhovor.mp4, je to rozbor George Heatona“</div><div class="co">celý postup od videa po revizi</div></div></div>
+      <div class="pr"><div class="jm">/revize</div><div><div class="rekni">„přečti feedback k heaton v3“</div><div class="co">komentáře, opravy, nová verze, knihovna komponent</div></div></div>
+      <div class="pr"><div class="jm">/novy-styl</div><div><div class="rekni">„nauč se styl tohohle tvůrce, tady jsou 4 reely“</div><div class="co">rozbor po snímcích, kit, ukázka a nový styl pro celý tým</div></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="hlava linka"><h2>Styly</h2><p>Každý styl má vlastní skill a kit. Komponenty z hotových reelů jsou <b>inspirace, ne stavebnice</b></p></div>
+    <div class="styly">
+      <div class="st"><div class="okenko"><img src="{{img:st_mason.jpg}}" alt="Mason, Dalen"></div><h3>Mason</h3><p>Grafika na každou frázi, případovky, slovo za osobou</p></div>
+      <div class="st"><div class="okenko"><img src="{{img:st_noske.jpg}}" alt="Noske"></div><h3>Noske</h3><p>Filmový talking head, titulky po slově</p></div>
+      <div class="st"><div class="okenko"><img src="{{img:st_matt.jpg}}" alt="Matt Gray"></div><h3>Matt Gray</h3><p>Diagram nahoře, webka dole, roste s řečí</p></div>
+      <div class="st"><div class="okenko"><img src="{{img:st_lumitris.jpg}}" alt="Lumitris"></div><h3>Lumitris</h3><p>Rychlý dokumentární edit, trhaný takt</p></div>
+      <div class="st"><div class="okenko"><img src="{{img:st_nathan.jpg}}" alt="Nathan"></div><h3>Nathan</h3><p>Klidný, velké slovo, B-rolly v oknech</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="hlava linka"><h2>Co hlídá sám</h2><p>Pravidla, která jste s Timem nastavili na Dalenovi, Heatonovi a dalších. Nové přibývají z revizí</p></div>
+    <ul class="pravidla">
+      <li>Každé video je <b>originál</b>, knihovna jen inspiruje</li>
+      <li>Žádný koncept, který přebalí celou pasáž do metafory</li>
+      <li>Firmy záběrem s logem, nikdy napsaným názvem</li>
+      <li>Tim jen při pohledu do kamery</li>
+      <li>Titulky celé, aspoň 13 snímků, nikdy přes obličej</li>
+      <li>Helvetica Neue Bold, nikdy kurzíva</li>
+      <li>Žádné glow, glitch, strobo ani nafukování z nuly</li>
+      <li>Střih do ticha, kontrola useknutých slov</li>
+      <li>Hlas −5,5 dB, hudba −24 dB se sidechainem</li>
+      <li>Storyboard před renderem, vždy</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="hlava linka"><h2>Když něco nejde</h2><p>Skoro vždycky to vyřeší setup s parametrem <code class="v">--kontrola</code></p></div>
+    <div class="tab"><table>
+      <thead><tr><th>Problém</th><th>Co udělat</th></tr></thead>
+      <tbody>
+        <tr><td>Claude o pluginu neví</td><td><code class="v">/plugin</code> a záložka Installed, případně restart Claude Code</td></tr>
+        <tr><td>Chybí nástroj nebo cesta</td><td>setup s <code class="v">--kontrola</code> řekne co, pak setup bez parametru</td></tr>
+        <tr><td>Chybí hudba nebo B-rolly</td><td>rozbal média do <code class="v">~/Documents/beyond-reels-media</code> a spusť setup</td></tr>
+        <tr><td>Písmo vypadá jinak</td><td>setup znovu vytáhne Helveticu, v kompozici vždy <code class="v">var(--mk-sans)</code></td></tr>
+        <tr><td>Nová verze pluginu</td><td>nový zip rozbal přes starý, pak <code class="v">/plugin</code>, Marketplaces, beyond, Update</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+</main>
+
+<footer><div class="mriz"><span>Reely v <b>~/Documents/beyond-reely</b></span><span>Komentáře a verdikty sdílí celý tým na revizní stránce</span><span>HyperFrames 0.8.105 · 4:3 · Helvetica Neue</span></div></footer>
+
+<script>
+  document.querySelectorAll(".kopiruj").forEach((b) => b.addEventListener("click", () => {
+    const el = document.getElementById(b.dataset.cil);
+    const hotovo = () => { b.textContent = "zkopírováno"; setTimeout(() => (b.textContent = "kopírovat"), 1600); };
+    (navigator.clipboard ? navigator.clipboard.writeText(el.textContent) : Promise.reject()).then(hotovo).catch(() => {
+      const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "označeno, Cmd+C";
+    });
+  }));
+</script>
