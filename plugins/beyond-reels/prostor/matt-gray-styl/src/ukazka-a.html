@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, height=1920">
+    <title>Matt Gray styl: ukázka A</title>
+    <script src="vendor/gsap.min.js"></script>
+    <script src="js/matt-kit.js"></script>
+    <link rel="stylesheet" href="matt-kit.css">
+    <style>
+      body { margin: 0; background: var(--mg-pozadi); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; }
+      .scena { position: absolute; inset: 0; display: none; }
+
+      /* split: webka v boxu dole, statická, bez zoomu (změřeno) */
+      #boxVideo { object-position: 50% 30%; transform: scale(1.75); transform-origin: 50% 40%; }
+      /* celoobrazový talking head */
+      #fullVideo { transform-origin: 50% 35%; }
+      .broll { position: absolute; inset: 0; width: 1080px; height: 1920px; object-fit: cover; z-index: 5; }
+
+      /* 1 hook */
+      #hook1 { top: 300px; font-size: 84px; }
+      #hook2 { top: 418px; font-size: 140px; }
+      #hook3 { top: 590px; font-size: 120px; }
+
+      /* 2 diagram: uzel, tři větve, tři štítky, pak výzva pod KOUPÍ */
+      #uzel { left: 330px; top: 290px; width: 420px; height: 136px; font-size: 54px; }
+      .faze { top: 760px; width: 300px; height: 112px; font-size: 48px; }
+      #f1 { left: 50px; } #f2 { left: 390px; } #f3 { left: 730px; }
+      #fCta { left: 760px; top: 1040px; width: 240px; height: 100px; font-size: 44px; }
+
+      /* 4 závěrečný text */
+      #zav1 { top: 330px; font-size: 80px; }
+      #zav2 { top: 440px; font-size: 110px; }
+      #zav3 { top: 584px; font-size: 120px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" class="mg-plocha" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-fps="30" data-duration="24.86">
+      <audio id="hlas" src="assets/media/hlas_A.wav" data-start="0" data-duration="24.86" data-track-index="1" data-volume="1"></audio>
+      <audio id="hudba" src="assets/media/hudba_A.wav" data-start="0" data-duration="24.86" data-track-index="2" data-volume="1"></audio>
+      <audio id="sfx" src="assets/media/sfx_A.wav" data-start="0" data-duration="24.86" data-track-index="6" data-volume="1"></audio>
+
+      <!-- SVĚT GRAFIKY (split, horních 1291 px) -->
+      <div id="svet" class="mg-svet">
+        <div class="mg-mrizka" data-layout-allow-occlusion></div>
+
+        <div id="s1" class="scena" data-layout-allow-occlusion>
+          <div id="hook1" class="mg-text"><span class="mg-radek mg-lehky">Ne každý follower je</span></div>
+          <div id="hook2" class="mg-text"><span class="mg-radek mg-tucny">připravený</span></div>
+          <div id="hook3" class="mg-text"><span class="mg-radek mg-tucny"><span id="hookPod" class="mg-podklad-obal"><span class="mg-podklad"></span>koupit dnes</span></span></div>
+        </div>
+
+        <div id="s2" class="scena" data-layout-allow-occlusion>
+          <svg class="mg-svg" viewBox="0 0 1080 1920">
+            <path id="v1" d="M540 426 V520 Q540 580 480 580 H260 Q200 580 200 640 V760"></path>
+            <path id="v2" d="M540 426 V760"></path>
+            <path id="v3" d="M540 426 V520 Q540 580 600 580 H820 Q880 580 880 640 V760"></path>
+            <path id="vCta" d="M880 872 V1040"></path>
+          </svg>
+          <div id="uzel" class="mg-uzel" data-layout-allow-occlusion>Tvůj obsah</div>
+          <div id="f1" class="mg-stitek faze" data-layout-allow-occlusion><span class="mg-stitek-text">Vidí tě</span></div>
+          <div id="f2" class="mg-stitek faze" data-layout-allow-occlusion><span class="mg-stitek-text">Věří ti</span></div>
+          <div id="f3" class="mg-stitek faze" data-layout-allow-occlusion><span class="mg-stitek-text">Koupí</span></div>
+          <div id="fCta" class="mg-stitek"><span class="mg-stitek-text">Výzva</span></div>
+        </div>
+
+        <div id="s4" class="scena" data-layout-allow-occlusion>
+          <div id="zav1" class="mg-text"><span class="mg-radek mg-lehky">Protože ten člověk přijde</span></div>
+          <div id="zav2" class="mg-text"><span class="mg-radek mg-tucny">a už dávno ví,</span></div>
+          <div id="zav3" class="mg-text"><span class="mg-radek mg-tucny"><span id="zavPod" class="mg-podklad-obal"><span class="mg-podklad"></span>co děláš</span></span></div>
+        </div>
+      </div>
+
+      <!-- webka v boxu dole -->
+      <div class="mg-box">
+        <video id="boxVideo" class="clip" src="assets/media/kamera_C.mp4" muted playsinline data-start="0" data-duration="24.86" data-track-index="0"></video>
+      </div>
+
+      <!-- celoobrazový talking head -->
+      <div id="full" class="mg-full" data-layout-allow-overflow>
+        <video id="fullVideo" class="clip" src="assets/media/kamera_C_9x16.mp4" muted playsinline data-start="0" data-duration="24.86" data-track-index="3"></video>
+      </div>
+
+      <!-- B-roll, doslovně k větě -->
+      <video id="brTelefony" class="clip broll" src="assets/broll/telefony.mp4" muted playsinline data-start="9.36" data-duration="1.52" data-track-index="4"></video>
+      <video id="brPlaz" class="clip broll" src="assets/broll/plaz.mp4" muted playsinline data-start="17.48" data-duration="1.52" data-track-index="5"></video>
+
+      <div id="titulky" class="mg-titulky"></div>
+    </div>
+
+    <script>
+      const { M } = MG;
+      const $ = (id) => document.getElementById(id);
+      const S = /*SLOVA:C*/.slova;
+      const T = (i) => S[i].t;
+      const KONEC = 24.86;
+      const PRED = M(5); // grafický text předbíhá řeč o 3 až 6 snímků
+      const tl = gsap.timeline({ paused: true });
+
+      // úseky: A = split s grafikou, B = celá obrazovka (talking head nebo B-roll)
+      const scena = (el, t0, t1) => { tl.set(el, { display: "block" }, t0); tl.set(el, { display: "none" }, t1); };
+      gsap.set("#s1, #s2, #s4", { display: "none" });
+
+      /* A1 HOOK 0 až T7: věta vyjíždí po slovech před řečí, podklad až po dojetí řádku */
+      scena($("s1"), 0, T(7));
+      MG.nadpis(tl, $("hook1"), [0, 1, 2, 3].map((i) => Math.max(0.02, T(i) - PRED)));
+      MG.nadpis(tl, $("hook2"), [T(4) - PRED]);
+      MG.nadpis(tl, $("hook3"), [T(5) - PRED, T(6) - PRED]);
+      MG.podklad(tl, $("hookPod"), T(6) + M(4));
+      MG.svet(tl, $("svet"), 0, T(7), { kam: -24 });
+
+      /* B1 talking head T7 až T15: push in, titulky tvrdě po 1 až 2 slovech */
+      MG.rezim(tl, $("full"), T(7), T(15));
+      MG.zoom(tl, $("fullVideo"), T(7), T(15), 1.0, 1.16);
+      MG.titulky(tl, $("titulky"), S, [[7, 8], [9, 10], [11, 12], [13, 13], [14, 14]], { konce: { 4: T(15) } });
+
+      /* A2 diagram T15 až T23: uzel, větve na "různých", fáze na slova, důraz na "současně" */
+      scena($("s2"), T(15), KONEC);
+      MG.karta(tl, $("uzel"), T(15) - M(2), { snimku: 12, y: 160 });
+      ["v1", "v2", "v3"].forEach((id, i) => MG.kresli(tl, $(id), T(16) + M(i), { snimku: 10 }));
+      MG.stitek(tl, $("f1"), T(18) - M(2));
+      MG.stitek(tl, $("f2"), T(19) - M(2));
+      MG.stitek(tl, $("f3"), T(20) - M(2));
+      ["f1", "f2", "f3"].forEach((id, i) => MG.pulz(tl, $(id), T(22) + M(i * 2)));
+      MG.svet(tl, $("svet"), T(15), T(23), { od: 0, kam: -30 });
+
+      /* B-roll telefony T23 až T28 (CTAčko, výzva k akci), jemný push in */
+      MG.zoom(tl, $("brTelefony"), T(23), T(28), 1.0, 1.06, { origin: "50% 50%" });
+      MG.titulky(tl, $("titulky"), S, [[23, 23], [24, 27]], { text: ["CTAčko", "výzva k akci"], konce: { 1: T(28) } });
+
+      /* B2 talking head T28 až T32: pull out */
+      MG.rezim(tl, $("full"), T(28), T(32));
+      MG.zoom(tl, $("fullVideo"), T(28), T(32), 1.2, 1.03);
+      MG.titulky(tl, $("titulky"), S, [[28, 29], [30, 31]], { konce: { 1: T(32) } });
+
+      /* A3 diagram se vrací a rozvíjí: fáze zhasnuté, člověk jimi projde, na konci výzva */
+      ["f1", "f2", "f3"].forEach((id) => tl.set($(id), { backgroundColor: MG.token("--mg-bila"), color: MG.token("--mg-cerna") }, T(32)));
+      [[37, "f1"], [38, "f2"], [40, "f3"]].forEach(([i, id]) => {
+        tl.set($(id), { backgroundColor: MG.token("--mg-akcent"), color: MG.token("--mg-akcent-text") }, T(i) - M(1));
+        MG.pulz(tl, $(id), T(i) - M(1));
+      });
+      MG.kresli(tl, $("vCta"), T(41) - M(4), { snimku: 8 });
+      MG.stitek(tl, $("fCta"), T(41) + M(3));
+      MG.svet(tl, $("svet"), T(32), T(42), { od: -30, kam: -70 });
+
+      /* B-roll pláž T42 až T50 (obsah odvede práci za tebe) */
+      MG.zoom(tl, $("brPlaz"), T(42), T(50), 1.0, 1.05, { origin: "50% 50%" });
+      MG.titulky(tl, $("titulky"), S, [[42, 42], [43, 44], [45, 46], [47, 49]], { konce: { 3: T(50) } });
+
+      /* B3 talking head T50 až T55 */
+      MG.rezim(tl, $("full"), T(50), T(55));
+      MG.zoom(tl, $("fullVideo"), T(50), T(55), 1.0, 1.15);
+      MG.titulky(tl, $("titulky"), S, [[50, 50], [51, 52], [53, 53], [54, 54]], { konce: { 3: T(55) } });
+
+      /* A4 závěrečná věta T55 až T65 */
+      tl.set($("s2"), { display: "none" }, T(55));
+      scena($("s4"), T(55), T(65));
+      MG.nadpis(tl, $("zav1"), [55, 56, 57, 58].map((i) => T(i) - PRED));
+      MG.nadpis(tl, $("zav2"), [59, 60, 61, 62].map((i) => T(i) - PRED));
+      MG.nadpis(tl, $("zav3"), [T(63) - PRED, T(64) - PRED]);
+      MG.podklad(tl, $("zavPod"), T(64) + M(3));
+      MG.svet(tl, $("svet"), T(55), T(65), { od: 0, kam: -24 });
+
+      /* B4 konec na talking headu, bez end cardu */
+      MG.rezim(tl, $("full"), T(65), KONEC + 1);
+      MG.zoom(tl, $("fullVideo"), T(65), KONEC, 1.22, 1.08);
+      MG.titulky(tl, $("titulky"), S, [[65, 66], [67, 68], [69, 71]], { text: ["Já vím", "co děláš", "Pojďme do toho"], konce: { 2: KONEC } });
+
+      tl.set({}, {}, KONEC);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

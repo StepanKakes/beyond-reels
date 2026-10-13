@@ -1,0 +1,943 @@
+{
+ "delka": 400,
+ "takt": [
+  [
+   0,
+   72,
+   2
+  ],
+  [
+   72,
+   113,
+   1
+  ],
+  [
+   113,
+   203,
+   2
+  ],
+  [
+   203,
+   221,
+   3
+  ],
+  [
+   221,
+   301,
+   2
+  ],
+  [
+   301,
+   350,
+   1
+  ],
+  [
+   350,
+   400,
+   2
+  ]
+ ],
+ "sceny": [
+  {
+   "typ": "zaber",
+   "f0": 0,
+   "f1": 44,
+   "src": "assets/media/george_rozhovor.mp4",
+   "grade": "tlum",
+   "tah": [
+    1,
+    1.06,
+    0,
+    28,
+    "s"
+   ]
+  },
+  {
+   "typ": "platno",
+   "f0": 44,
+   "f1": 72,
+   "tah": [
+    1,
+    1.09,
+    1,
+    27,
+    "dojezd"
+   ],
+   "posun": [
+    0,
+    0,
+    -18,
+    8,
+    1,
+    27,
+    "dojezd"
+   ],
+   "karty": [
+    {
+     "src": "assets/img/produkt_2.jpg",
+     "x": 150,
+     "y": 150,
+     "w": 420,
+     "h": 236,
+     "f": 46,
+     "neg": 2,
+     "blur": 6
+    },
+    {
+     "src": "assets/img/produkt_5.jpg",
+     "x": 880,
+     "y": 130,
+     "w": 430,
+     "h": 242,
+     "f": 49,
+     "blur": 6
+    },
+    {
+     "src": "assets/img/produkt_3.jpg",
+     "x": 900,
+     "y": 560,
+     "w": 420,
+     "h": 236,
+     "f": 52,
+     "neg": 1,
+     "blur": 2
+    },
+    {
+     "src": "assets/img/logo_represent_2.jpg",
+     "x": 130,
+     "y": 570,
+     "w": 440,
+     "h": 248,
+     "f": 55,
+     "blur": 2
+    },
+    {
+     "src": "assets/img/logo_represent_1.jpg",
+     "x": 380,
+     "y": 290,
+     "w": 680,
+     "h": 382,
+     "f": 62,
+     "neg": 2,
+     "z": 5
+    }
+   ]
+  },
+  {
+   "typ": "platno",
+   "f0": 72,
+   "f1": 113
+  },
+  {
+   "typ": "zaber",
+   "f0": 113,
+   "f1": 148,
+   "src": "assets/media/la.mp4",
+   "grade": "tlum",
+   "tah": [
+    1,
+    1.24,
+    0,
+    35,
+    "najezd"
+   ],
+   "karty": [
+    {
+     "src": "assets/img/penthouse.jpg",
+     "x": 460,
+     "y": 620,
+     "w": 520,
+     "h": 293,
+     "f": 139,
+     "neg": 2,
+     "grade": "barva"
+    }
+   ]
+  },
+  {
+   "typ": "vyrez",
+   "f0": 148,
+   "f1": 188,
+   "pozadi": "svetla",
+   "vyrez": {
+    "src": "assets/img/rolls_tisk.png",
+    "stinSrc": "assets/img/rolls_stin.png",
+    "x": 170,
+    "y": 230,
+    "w": 1180,
+    "pan": [
+     -240,
+     0,
+     2,
+     16
+    ],
+    "stin": [
+     28,
+     16
+    ],
+    "pruh": false
+   }
+  },
+  {
+   "typ": "platno",
+   "f0": 188,
+   "f1": 230,
+   "serie": {
+    "obrazy": [
+     "assets/img/portret_george_4.jpg",
+     "assets/img/portret_george_1.jpg",
+     "assets/img/nataci_3.jpg",
+     "assets/img/nataci_4.jpg",
+     "assets/img/nataci_2.jpg",
+     "assets/img/portret_george_3.jpg",
+     "assets/img/portret_george_4.jpg"
+    ],
+    "f": 203,
+    "krok": 3,
+    "h0": 470,
+    "h1": 900,
+    "cx": 720,
+    "cy": 540,
+    "pomer": 0.8
+   }
+  },
+  {
+   "typ": "zaber",
+   "f0": 230,
+   "f1": 286,
+   "src": "assets/media/studio.mp4",
+   "grade": "cb",
+   "tah": [
+    1,
+    1.2,
+    18,
+    32,
+    "s"
+   ]
+  },
+  {
+   "typ": "zaber",
+   "f0": 286,
+   "f1": 301,
+   "src": "assets/media/tim_proc.mp4",
+   "grade": "puvodni",
+   "bezGrade": true
+  },
+  {
+   "typ": "platno",
+   "f0": 301,
+   "f1": 350,
+   "bezGrade": true,
+   "okna": [
+    {
+     "src": "assets/media/tim_okno.mp4",
+     "grade": "puvodni",
+     "cx": 720,
+     "cy": 470,
+     "w": 662,
+     "h": 497,
+     "skoky": [
+      [
+       301,
+       662
+      ],
+      [
+       324,
+       893
+      ],
+      [
+       343,
+       1109
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "typ": "platno",
+   "f0": 350,
+   "f1": 400,
+   "zavorky": {
+    "f": 351,
+    "cx": 720,
+    "cy": 470,
+    "h": 430,
+    "w0": 380,
+    "rust": [
+     [
+      359,
+      22,
+      380,
+      1130
+     ]
+    ]
+   },
+   "karty": [
+    {
+     "src": "assets/img/nataci_1.jpg",
+     "x": 570,
+     "y": 275,
+     "w": 300,
+     "h": 390,
+     "f": 354,
+     "neg": 1
+    },
+    {
+     "src": "assets/img/nataci_2.jpg",
+     "x": 240,
+     "y": 275,
+     "w": 300,
+     "h": 390,
+     "f": 365,
+     "neg": 1
+    },
+    {
+     "src": "assets/img/nataci_4.jpg",
+     "x": 900,
+     "y": 275,
+     "w": 300,
+     "h": 390,
+     "f": 369,
+     "neg": 1
+    }
+   ]
+  }
+ ],
+ "texty": [
+  {
+   "typ": "stitek",
+   "x": 760,
+   "y": 700,
+   "s": 72,
+   "f1": 44,
+   "casti": [
+    [
+     "George",
+     "sans",
+     8
+    ],
+    [
+     "Heaton",
+     "serif",
+     16
+    ]
+   ]
+  },
+  {
+   "typ": "blok",
+   "x": 760,
+   "y": 250,
+   "f1": 44,
+   "radky": [
+    [
+     "jede",
+     29,
+     58,
+     "sans",
+     "seda"
+    ],
+    [
+     "bomby",
+     39,
+     170,
+     "sans tucne"
+    ]
+   ]
+  },
+  {
+   "typ": "obri",
+   "text": "BOMBY",
+   "f": 37,
+   "n": 2,
+   "s": 330,
+   "sy": 3.1
+  },
+  {
+   "typ": "radek",
+   "y": 935,
+   "s": 77,
+   "styl": "sans tucne",
+   "f1": 72,
+   "slova": [
+    [
+     "Jeho",
+     47,
+     0
+    ],
+    [
+     "značka",
+     53,
+     1
+    ],
+    [
+     "Represent",
+     62,
+     2
+    ]
+   ]
+  },
+  {
+   "typ": "citac",
+   "x": 720,
+   "y": 420,
+   "s": 360,
+   "f1": 113,
+   "kroky": [
+    [
+     74,
+     "0"
+    ],
+    [
+     75,
+     "0,5"
+    ],
+    [
+     77,
+     "1,1"
+    ],
+    [
+     78,
+     "1,6"
+    ],
+    [
+     79,
+     "2,2"
+    ],
+    [
+     80,
+     "2,7"
+    ],
+    [
+     81,
+     "3"
+    ]
+   ]
+  },
+  {
+   "typ": "obri",
+   "text": "3",
+   "f": 81,
+   "n": 2,
+   "s": 640,
+   "sy": 1.7,
+   "styl": "serif"
+  },
+  {
+   "typ": "radek",
+   "y": 745,
+   "s": 92,
+   "styl": "sans tucne",
+   "f1": 113,
+   "stredy": [
+    0.5
+   ],
+   "slova": [
+    [
+     "miliardy",
+     89,
+     0
+    ]
+   ]
+  },
+  {
+   "typ": "box",
+   "text": "korun ročně",
+   "x": 455,
+   "y": 830,
+   "s": 88,
+   "f": 100,
+   "f1": 113
+  },
+  {
+   "typ": "radek",
+   "y": 470,
+   "s": 83,
+   "styl": "sans tucne",
+   "f1": 148,
+   "slova": [
+    [
+     "v LA",
+     116,
+     0
+    ],
+    [
+     "vlastní",
+     129,
+     1
+    ],
+    [
+     "penthouse",
+     139,
+     2
+    ]
+   ]
+  },
+  {
+   "typ": "stitek",
+   "x": 110,
+   "y": 905,
+   "s": 72,
+   "f1": 188,
+   "casti": [
+    [
+     "Rolls",
+     "sans",
+     153
+    ],
+    [
+     "Royce",
+     "serif",
+     160
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 135,
+   "s": 77,
+   "styl": "sans tucne",
+   "barva": "tmava",
+   "f1": 188,
+   "slova": [
+    [
+     "si kupuje",
+     168,
+     0
+    ],
+    [
+     "v cashi",
+     179,
+     2
+    ]
+   ]
+  },
+  {
+   "typ": "obri",
+   "text": "CASH",
+   "f": 179,
+   "n": 2,
+   "s": 400,
+   "sy": 2.8,
+   "vypln": "inverze"
+  },
+  {
+   "typ": "radek",
+   "y": 540,
+   "s": 108,
+   "f1": 230,
+   "odchod": "rozostreni",
+   "slova": [
+    [
+     "A přesto",
+     191,
+     0
+    ],
+    [
+     "po 14",
+     209,
+     1
+    ],
+    [
+     "letech",
+     223,
+     2
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 300,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 259,
+   "odchod": "rozostreni",
+   "slova": [
+    [
+     "George",
+     233,
+     0
+    ],
+    [
+     "tajně",
+     242,
+     1
+    ],
+    [
+     "udělal",
+     252,
+     2
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 300,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 286,
+   "slova": [
+    [
+     "z obsahu",
+     259,
+     0
+    ],
+    [
+     "svou",
+     269,
+     1
+    ]
+   ]
+  },
+  {
+   "typ": "box",
+   "text": "prioritu",
+   "x": 935,
+   "y": 248,
+   "s": 100,
+   "f": 275,
+   "f1": 286
+  },
+  {
+   "typ": "radek",
+   "y": 470,
+   "s": 104,
+   "styl": "sans tucne",
+   "f1": 301,
+   "slova": [
+    [
+     "Ale",
+     289,
+     0
+    ],
+    [
+     "proč?",
+     294,
+     1
+    ]
+   ]
+  },
+  {
+   "typ": "obri",
+   "text": "PROČ",
+   "f": 293,
+   "n": 1,
+   "s": 360,
+   "sy": 3.4,
+   "vypln": "inverze"
+  },
+  {
+   "typ": "radek",
+   "y": 975,
+   "s": 74,
+   "styl": "sans tucne",
+   "f1": 324,
+   "slova": [
+    [
+     "Protože",
+     304,
+     0
+    ],
+    [
+     "ví,",
+     315,
+     1
+    ],
+    [
+     "že",
+     320,
+     2
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 975,
+   "s": 74,
+   "styl": "sans tucne",
+   "f1": 350,
+   "slova": [
+    [
+     "osobní",
+     324,
+     0
+    ],
+    [
+     "značka",
+     332,
+     1
+    ],
+    [
+     "odemyká",
+     343,
+     2
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 150,
+   "s": 83,
+   "styl": "sans tucne",
+   "f1": 400,
+   "stredy": [
+    0.5
+   ],
+   "slova": [
+    [
+     "3 věci",
+     354,
+     0
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 840,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 400,
+   "slova": [
+    [
+     "které",
+     375,
+     0
+    ],
+    [
+     "jinak",
+     380,
+     1
+    ],
+    [
+     "nezíská",
+     386,
+     2
+    ]
+   ]
+  }
+ ],
+ "glitche": [
+  {
+   "f": 41,
+   "n": 3,
+   "druh": "neg",
+   "img": "assets/img/logo_represent_1.jpg",
+   "bloky": [
+    [
+     160,
+     110,
+     560,
+     330
+    ],
+    [
+     820,
+     640,
+     440,
+     250,
+     "seda1",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 69,
+   "n": 3,
+   "bloky": [
+    [
+     0,
+     690,
+     1440,
+     150,
+     "seda2"
+    ],
+    [
+     300,
+     180,
+     400,
+     280,
+     "seda1",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 110,
+   "n": 3,
+   "druh": "neg",
+   "img": "assets/img/la_0.jpg",
+   "bloky": [
+    [
+     0,
+     0,
+     1440,
+     380
+    ],
+    [
+     620,
+     640,
+     700,
+     300,
+     "neg",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 145,
+   "n": 3,
+   "bloky": [
+    [
+     0,
+     330,
+     1440,
+     270,
+     "seda1"
+    ],
+    [
+     120,
+     700,
+     520,
+     210,
+     "seda2",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 185,
+   "n": 3,
+   "druh": "neg",
+   "img": "assets/img/portret_george_1.jpg",
+   "bloky": [
+    [
+     0,
+     200,
+     900,
+     500
+    ],
+    [
+     1000,
+     620,
+     440,
+     300,
+     "neg",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 227,
+   "n": 3,
+   "druh": "neg",
+   "img": "assets/img/studio_0.jpg",
+   "bloky": [
+    [
+     0,
+     0,
+     700,
+     1080
+    ],
+    [
+     900,
+     300,
+     540,
+     400,
+     "neg",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 283,
+   "n": 3,
+   "druh": "neg",
+   "img": "assets/img/tim_proc_0.jpg",
+   "bloky": [
+    [
+     300,
+     0,
+     840,
+     500
+    ],
+    [
+     0,
+     700,
+     600,
+     380,
+     "neg",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 298,
+   "n": 3,
+   "bloky": [
+    [
+     0,
+     0,
+     1440,
+     230,
+     "seda1"
+    ],
+    [
+     0,
+     850,
+     1440,
+     230,
+     "seda2",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 347,
+   "n": 3,
+   "druh": "neg",
+   "img": "assets/img/nataci_1.jpg",
+   "bloky": [
+    [
+     0,
+     300,
+     1440,
+     420
+    ],
+    [
+     200,
+     20,
+     520,
+     250,
+     "neg",
+     1,
+     2
+    ]
+   ]
+  }
+ ],
+ "zablesky": [
+  [
+   72,
+   1,
+   0.8
+  ]
+ ],
+ "zvuk": {
+  "hlas": "hlas",
+  "od": 0,
+  "do": 16.6,
+  "suby": [
+   72,
+   350
+  ],
+  "boom": [],
+  "hudba": "everything-in-its-right-place-instrumental.wav",
+  "hudbaOd": 30
+ }
+}

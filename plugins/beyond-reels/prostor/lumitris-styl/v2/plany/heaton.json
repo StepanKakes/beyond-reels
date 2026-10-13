@@ -1,0 +1,6543 @@
+{
+ "delka": 2447,
+ "sceny": [
+  {
+   "typ": "zaber",
+   "f0": 0,
+   "f1": 44,
+   "src": "assets/media/george_rozhovor.mp4",
+   "grade": "tlum",
+   "tah": [
+    1,
+    1.06,
+    0,
+    28,
+    "s"
+   ],
+   "takt": 2
+  },
+  {
+   "typ": "platno",
+   "f0": 44,
+   "f1": 72,
+   "tah": [
+    1,
+    1.09,
+    1,
+    27,
+    "dojezd"
+   ],
+   "posun": [
+    0,
+    0,
+    -18,
+    8,
+    1,
+    27,
+    "dojezd"
+   ],
+   "karty": [
+    {
+     "src": "assets/img/produkt_2.jpg",
+     "x": 150,
+     "y": 150,
+     "w": 420,
+     "h": 236,
+     "f": 46,
+     "neg": 2,
+     "blur": 6
+    },
+    {
+     "src": "assets/img/produkt_5.jpg",
+     "x": 880,
+     "y": 130,
+     "w": 430,
+     "h": 242,
+     "f": 49,
+     "blur": 6
+    },
+    {
+     "src": "assets/img/produkt_3.jpg",
+     "x": 900,
+     "y": 560,
+     "w": 420,
+     "h": 236,
+     "f": 52,
+     "neg": 1,
+     "blur": 2
+    },
+    {
+     "src": "assets/img/logo_represent_2.jpg",
+     "x": 130,
+     "y": 570,
+     "w": 440,
+     "h": 248,
+     "f": 55,
+     "blur": 2
+    },
+    {
+     "src": "assets/img/logo_represent_1.jpg",
+     "x": 380,
+     "y": 290,
+     "w": 680,
+     "h": 382,
+     "f": 62,
+     "neg": 2,
+     "z": 5
+    }
+   ],
+   "takt": 2
+  },
+  {
+   "typ": "platno",
+   "f0": 72,
+   "f1": 113,
+   "takt": 1
+  },
+  {
+   "typ": "zaber",
+   "f0": 113,
+   "f1": 148,
+   "src": "assets/media/la.mp4",
+   "grade": "tlum",
+   "tah": [
+    1,
+    1.24,
+    0,
+    35,
+    "najezd"
+   ],
+   "karty": [
+    {
+     "src": "assets/img/penthouse.jpg",
+     "x": 460,
+     "y": 620,
+     "w": 520,
+     "h": 293,
+     "f": 139,
+     "neg": 2,
+     "grade": "barva"
+    }
+   ],
+   "takt": 2
+  },
+  {
+   "typ": "vyrez",
+   "f0": 148,
+   "f1": 188,
+   "pozadi": "svetla",
+   "vyrez": {
+    "src": "assets/img/rolls_tisk.png",
+    "stinSrc": "assets/img/rolls_stin.png",
+    "x": 170,
+    "y": 230,
+    "w": 1180,
+    "pan": [
+     -240,
+     0,
+     2,
+     16
+    ],
+    "stin": [
+     28,
+     16
+    ],
+    "pruh": false
+   },
+   "takt": 2
+  },
+  {
+   "typ": "platno",
+   "f0": 188,
+   "f1": 230,
+   "serie": {
+    "obrazy": [
+     "assets/img/portret_george_4.jpg",
+     "assets/img/portret_george_1.jpg",
+     "assets/img/nataci_3.jpg",
+     "assets/img/nataci_4.jpg",
+     "assets/img/nataci_2.jpg",
+     "assets/img/portret_george_3.jpg",
+     "assets/img/portret_george_4.jpg"
+    ],
+    "f": 203,
+    "krok": 3,
+    "h0": 470,
+    "h1": 900,
+    "cx": 720,
+    "cy": 540,
+    "pomer": 0.8
+   },
+   "takt": 3
+  },
+  {
+   "typ": "zaber",
+   "f0": 230,
+   "f1": 286,
+   "src": "assets/media/studio.mp4",
+   "grade": "cb",
+   "tah": [
+    1,
+    1.2,
+    18,
+    32,
+    "s"
+   ],
+   "takt": 2
+  },
+  {
+   "typ": "zaber",
+   "f0": 286,
+   "f1": 301,
+   "src": "assets/media/tim_proc.mp4",
+   "grade": "puvodni",
+   "bezGrade": true,
+   "takt": 2
+  },
+  {
+   "typ": "platno",
+   "f0": 301,
+   "f1": 350,
+   "bezGrade": true,
+   "okna": [
+    {
+     "src": "assets/media/tim_okno.mp4",
+     "grade": "puvodni",
+     "cx": 720,
+     "cy": 470,
+     "w": 662,
+     "h": 497,
+     "skoky": [
+      [
+       301,
+       662
+      ],
+      [
+       324,
+       893
+      ],
+      [
+       343,
+       1109
+      ]
+     ]
+    }
+   ],
+   "takt": 1
+  },
+  {
+   "typ": "platno",
+   "f0": 350,
+   "f1": 399,
+   "zavorky": {
+    "f": 351,
+    "cx": 720,
+    "cy": 470,
+    "h": 430,
+    "w0": 380,
+    "rust": [
+     [
+      359,
+      22,
+      380,
+      1130
+     ]
+    ]
+   },
+   "karty": [
+    {
+     "src": "assets/img/nataci_1.jpg",
+     "x": 570,
+     "y": 275,
+     "w": 300,
+     "h": 390,
+     "f": 354,
+     "neg": 1
+    },
+    {
+     "src": "assets/img/nataci_2.jpg",
+     "x": 240,
+     "y": 275,
+     "w": 300,
+     "h": 390,
+     "f": 365,
+     "neg": 1
+    },
+    {
+     "src": "assets/img/nataci_4.jpg",
+     "x": 900,
+     "y": 275,
+     "w": 300,
+     "h": 390,
+     "f": 369,
+     "neg": 1
+    }
+   ],
+   "takt": 2
+  },
+  {
+   "t": 16.62,
+   "typ": "platno",
+   "texty": [
+    {
+     "typ": "blok",
+     "x": 300,
+     "y": 360,
+     "radky": [
+      [
+       "zaprvé",
+       404,
+       60,
+       "sans",
+       "seda"
+      ]
+     ],
+     "f1": 428
+    },
+    {
+     "typ": "obri",
+     "text": "KONTAKTY",
+     "f": 412,
+     "n": 2,
+     "s": 300,
+     "sy": 3,
+     "f1": 428
+    },
+    {
+     "typ": "box",
+     "text": "kontakty",
+     "f": 415,
+     "x": 300,
+     "y": 440,
+     "s": 150,
+     "barva": "krem",
+     "f1": 428
+    }
+   ],
+   "f0": 399,
+   "f1": 428
+  },
+  {
+   "t": 17.84,
+   "klip": [
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/jYUcsLdrm3M.mp4",
+    424,
+    "scale=-2:1350,crop=1440:1080:(iw-1440)/2:0"
+   ],
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 880,
+     "s": 80,
+     "styl": "sans tucne",
+     "f1": 474,
+     "slova": [
+      [
+       "George",
+       430,
+       0,
+       null
+      ],
+      [
+       "tvorbu",
+       457,
+       1,
+       null
+      ],
+      [
+       "spojuje",
+       467,
+       2,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 428,
+   "f1": 474,
+   "typ": "zaber",
+   "src": "assets/media/k1.mp4",
+   "grade": "tlum"
+  },
+  {
+   "t": 19.74,
+   "typ": "platno",
+   "tah": [
+    1,
+    1.1,
+    1,
+    30,
+    "dojezd"
+   ],
+   "karty": [
+    {
+     "src": "assets/img/portret_cbum_1.jpg",
+     "x": 120,
+     "y": 120,
+     "w": 380,
+     "h": 214,
+     "f": 478,
+     "blur": 6,
+     "neg": 1,
+     "z": 1
+    },
+    {
+     "src": "assets/img/portret_will_2.jpg",
+     "x": 960,
+     "y": 110,
+     "w": 360,
+     "h": 203,
+     "f": 481,
+     "blur": 6,
+     "neg": 0,
+     "z": 1
+    },
+    {
+     "src": "assets/img/portret_ross_1.jpg",
+     "x": 860,
+     "y": 560,
+     "w": 420,
+     "h": 236,
+     "f": 484,
+     "blur": 2,
+     "neg": 1,
+     "z": 1
+    },
+    {
+     "src": "assets/img/portret_michael_1.jpg",
+     "x": 150,
+     "y": 590,
+     "w": 400,
+     "h": 225,
+     "f": 487,
+     "blur": 2,
+     "neg": 0,
+     "z": 1
+    },
+    {
+     "src": "assets/img/portret_cbum_2.jpg",
+     "x": 470,
+     "y": 300,
+     "w": 500,
+     "h": 281,
+     "f": 488,
+     "blur": 0,
+     "neg": 1,
+     "z": 4
+    }
+   ],
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 900,
+     "s": 80,
+     "styl": "sans tucne",
+     "f1": 526,
+     "slova": [
+      [
+       "běžný",
+       499,
+       0,
+       null
+      ],
+      [
+       "podnikatel",
+       507,
+       1,
+       null
+      ],
+      [
+       "nikdy",
+       519,
+       2,
+       null
+      ]
+     ]
+    },
+    {
+     "typ": "box",
+     "text": "nedostane",
+     "f": 526,
+     "x": 470,
+     "y": 860,
+     "s": 96,
+     "barva": "cervena",
+     "f1": 540
+    }
+   ],
+   "f0": 474,
+   "f1": 540
+  },
+  {
+   "t": 22.5,
+   "typ": "platno",
+   "karty": [
+    {
+     "src": "assets/media/k3c0.mp4",
+     "klip": [
+      "$BR_REELY/podnikatele/heaton/assets/media/kv/bumstead.mp4",
+      0.4,
+      "vyska"
+     ],
+     "x": 250,
+     "y": 140,
+     "w": 560,
+     "h": 760,
+     "f": 540,
+     "mekka": true
+    }
+   ],
+   "texty": [
+    {
+     "typ": "blok",
+     "x": 860,
+     "y": 560,
+     "radky": [
+      [
+       "natáčel s",
+       542,
+       56,
+       "sans",
+       "seda"
+      ]
+     ],
+     "f1": 575
+    },
+    {
+     "typ": "stitek",
+     "x": 860,
+     "y": 640,
+     "s": 70,
+     "casti": [
+      [
+       "Chris",
+       "sans",
+       554
+      ],
+      [
+       "Bumstead",
+       "serif",
+       563
+      ]
+     ],
+     "f1": 575
+    }
+   ],
+   "f0": 540,
+   "f1": 575
+  },
+  {
+   "t": 23.96,
+   "typ": "platno",
+   "tah": [
+    1,
+    1.14,
+    0,
+    40,
+    "s"
+   ],
+   "karty": [
+    {
+     "src": "assets/img/ig_Db3qmxyPKZ6.jpg",
+     "x": 105,
+     "y": 110,
+     "w": 222,
+     "h": 395,
+     "f": 576,
+     "neg": 1
+    },
+    {
+     "src": "assets/img/ig_DbGhoqgRVOZ.jpg",
+     "x": 357,
+     "y": 110,
+     "w": 222,
+     "h": 395,
+     "f": 578,
+     "neg": 0
+    },
+    {
+     "src": "assets/img/ig_DbKkFfbOS-j.jpg",
+     "x": 609,
+     "y": 110,
+     "w": 222,
+     "h": 395,
+     "f": 580,
+     "neg": 0
+    },
+    {
+     "src": "assets/img/ig_DblcaHaMiUs.jpg",
+     "x": 861,
+     "y": 110,
+     "w": 222,
+     "h": 395,
+     "f": 582,
+     "neg": 1
+    },
+    {
+     "src": "assets/img/ig_DcWnccKva2E.jpg",
+     "x": 1113,
+     "y": 110,
+     "w": 222,
+     "h": 395,
+     "f": 584,
+     "neg": 0
+    },
+    {
+     "src": "assets/img/ig_DcYn6NYxlDm.jpg",
+     "x": 105,
+     "y": 550,
+     "w": 222,
+     "h": 395,
+     "f": 586,
+     "neg": 0
+    },
+    {
+     "src": "assets/img/ig_DcwA01lRTHy.jpg",
+     "x": 357,
+     "y": 550,
+     "w": 222,
+     "h": 395,
+     "f": 588,
+     "neg": 1
+    },
+    {
+     "src": "assets/img/ig_DdO4t7DRK1u.jpg",
+     "x": 609,
+     "y": 550,
+     "w": 222,
+     "h": 395,
+     "f": 590,
+     "neg": 0
+    },
+    {
+     "src": "assets/img/ig_DdY7OVjROdY.jpg",
+     "x": 861,
+     "y": 550,
+     "w": 222,
+     "h": 395,
+     "f": 592,
+     "neg": 0
+    },
+    {
+     "src": "assets/img/ig_Ddyr7vrR6lF.jpg",
+     "x": 1113,
+     "y": 550,
+     "w": 222,
+     "h": 395,
+     "f": 594,
+     "neg": 1
+    }
+   ],
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 540,
+     "s": 84,
+     "styl": "sans tucne",
+     "f1": 624,
+     "slova": [
+      [
+       "dalšími",
+       594,
+       0,
+       null
+      ],
+      [
+       "zajímavými",
+       603,
+       1,
+       null
+      ],
+      [
+       "lidmi",
+       616,
+       2,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 575,
+   "f1": 624
+  },
+  {
+   "t": 26,
+   "typ": "vyrez",
+   "pozadi": "svetla",
+   "vyrez": {
+    "jm": "goodge",
+    "src": "assets/img/goodge_rastr.png",
+    "sirka": 560,
+    "typ": "rastr",
+    "x": 440,
+    "y": 190,
+    "w": 560,
+    "pan": [
+     220,
+     0,
+     2,
+     16
+    ],
+    "stin": [
+     26,
+     14
+    ],
+    "pruh": false,
+    "stinSrc": "assets/img/goodge_stin.png"
+   },
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 135,
+     "s": 80,
+     "styl": "sans tucne",
+     "barva": "tmava",
+     "f1": 667,
+     "slova": [
+      [
+       "ultra",
+       628,
+       0,
+       null
+      ],
+      [
+       "endurance",
+       635,
+       1,
+       null
+      ],
+      [
+       "běžcem",
+       644,
+       2,
+       null
+      ]
+     ]
+    },
+    {
+     "typ": "stitek",
+     "x": 110,
+     "y": 905,
+     "s": 70,
+     "casti": [
+      [
+       "Will",
+       "sans",
+       653
+      ],
+      [
+       "Goodge",
+       "serif",
+       660
+      ]
+     ],
+     "f1": 667
+    }
+   ],
+   "f0": 624,
+   "f1": 667
+  },
+  {
+   "t": 27.78,
+   "foto": [
+    "portret_ross_2",
+    "$BR_REELY/podnikatele/heaton/zdroj/nalez/portret_ross_2.jpg"
+   ],
+   "tah": [
+    1,
+    1.2,
+    0,
+    24,
+    "najezd"
+   ],
+   "texty": [
+    {
+     "typ": "stitek",
+     "x": 760,
+     "y": 720,
+     "s": 70,
+     "casti": [
+      [
+       "Ross",
+       "sans",
+       674
+      ],
+      [
+       "MacKay",
+       "serif",
+       681
+      ]
+     ],
+     "f1": 691
+    }
+   ],
+   "f0": 667,
+   "f1": 691,
+   "typ": "zaber",
+   "src": "assets/img/portret_ross_2.jpg",
+   "grade": "tlum"
+  },
+  {
+   "t": 28.8,
+   "klip": [
+    "$BR_REELY/podnikatele/heaton/assets/media/c_cadence.mp4",
+    3
+   ],
+   "karty": [
+    {
+     "src": "assets/img/logo_cadence_1.jpg",
+     "x": 900,
+     "y": 110,
+     "w": 440,
+     "h": 248,
+     "f": 715,
+     "neg": 2
+    }
+   ],
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 900,
+     "s": 80,
+     "styl": "sans tucne",
+     "f1": 727,
+     "slova": [
+      [
+       "Společně",
+       693,
+       0,
+       null
+      ],
+      [
+       "založili",
+       704,
+       1,
+       null
+      ]
+     ]
+    },
+    {
+     "typ": "box",
+     "text": "Cadence",
+     "f": 715,
+     "x": 960,
+     "y": 860,
+     "s": 84,
+     "barva": "cervena",
+     "f1": 727
+    }
+   ],
+   "f0": 691,
+   "f1": 727,
+   "typ": "zaber",
+   "src": "assets/media/k7.mp4",
+   "grade": "tlum"
+  },
+  {
+   "t": 30.28,
+   "typ": "platno",
+   "tah": [
+    1,
+    1.22,
+    2,
+    40,
+    "s"
+   ],
+   "karty": [
+    {
+     "src": "assets/img/logo_247_1.jpg",
+     "x": 60,
+     "y": 150,
+     "w": 315,
+     "h": 245,
+     "f": 728,
+     "neg": 0
+    },
+    {
+     "src": "assets/img/logo_cadence_2.jpg",
+     "x": 395,
+     "y": 150,
+     "w": 315,
+     "h": 245,
+     "f": 730,
+     "neg": 1
+    },
+    {
+     "src": "assets/img/logo_owners_1.jpg",
+     "x": 730,
+     "y": 150,
+     "w": 315,
+     "h": 245,
+     "f": 732,
+     "neg": 0
+    },
+    {
+     "src": "assets/img/logo_represent_2.jpg",
+     "x": 1065,
+     "y": 150,
+     "w": 315,
+     "h": 245,
+     "f": 734,
+     "neg": 0
+    },
+    {
+     "src": "assets/img/logo_247_2.jpg",
+     "x": 60,
+     "y": 415,
+     "w": 315,
+     "h": 245,
+     "f": 736,
+     "neg": 0
+    },
+    {
+     "src": "assets/img/logo_owners_3.jpg",
+     "x": 395,
+     "y": 415,
+     "w": 315,
+     "h": 245,
+     "f": 738,
+     "neg": 1
+    },
+    {
+     "src": "assets/img/logo_cadence_3.jpg",
+     "x": 730,
+     "y": 415,
+     "w": 315,
+     "h": 245,
+     "f": 740,
+     "neg": 0
+    },
+    {
+     "src": "assets/img/logo_represent_1.jpg",
+     "x": 1065,
+     "y": 415,
+     "w": 315,
+     "h": 245,
+     "f": 742,
+     "neg": 0
+    },
+    {
+     "src": "assets/img/logo_247_3.jpg",
+     "x": 60,
+     "y": 680,
+     "w": 315,
+     "h": 245,
+     "f": 744,
+     "neg": 0
+    },
+    {
+     "src": "assets/img/logo_owners_2.jpg",
+     "x": 395,
+     "y": 680,
+     "w": 315,
+     "h": 245,
+     "f": 746,
+     "neg": 1
+    },
+    {
+     "src": "assets/img/produkt_3.jpg",
+     "x": 730,
+     "y": 680,
+     "w": 315,
+     "h": 245,
+     "f": 748,
+     "neg": 0
+    },
+    {
+     "src": "assets/img/logo_cadence_1.jpg",
+     "x": 1065,
+     "y": 680,
+     "w": 315,
+     "h": 245,
+     "f": 750,
+     "neg": 0
+    }
+   ],
+   "texty": [
+    {
+     "typ": "box",
+     "text": "partnerství",
+     "f": 763,
+     "x": 420,
+     "y": 470,
+     "s": 104,
+     "barva": "cervena",
+     "f1": 804
+    },
+    {
+     "typ": "radek",
+     "y": 990,
+     "s": 80,
+     "styl": "sans tucne",
+     "f1": 804,
+     "slova": [
+      [
+       "ostatními",
+       783,
+       0,
+       null
+      ],
+      [
+       "značkami",
+       794,
+       2,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 727,
+   "f1": 804
+  },
+  {
+   "t": 33.52,
+   "klip": [
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/VofeFR5LnZ4.mp4",
+    21.8
+   ],
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 880,
+     "s": 80,
+     "styl": "sans tucne",
+     "f1": 847,
+     "slova": [
+      [
+       "jinak",
+       820,
+       0,
+       null
+      ],
+      [
+       "těžko",
+       826,
+       1,
+       null
+      ],
+      [
+       "dostával",
+       832,
+       2,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 804,
+   "f1": 847,
+   "typ": "zaber",
+   "src": "assets/media/k9.mp4",
+   "grade": "tlum"
+  },
+  {
+   "t": 35.3,
+   "klip": [
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/h5brRENzsOU.mp4",
+    21.8
+   ],
+   "grade": "cb",
+   "tah": [
+    1,
+    1.3,
+    0,
+    34,
+    "najezd"
+   ],
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 470,
+     "s": 80,
+     "styl": "sans tucne",
+     "f1": 882,
+     "slova": [
+      [
+       "roste",
+       856,
+       0,
+       null
+      ],
+      [
+       "byznys",
+       866,
+       1,
+       null
+      ],
+      [
+       "dál",
+       873,
+       2,
+       null
+      ]
+     ]
+    },
+    {
+     "typ": "obri",
+     "text": "DÁL",
+     "f": 873,
+     "n": 2,
+     "s": 420,
+     "sy": 3,
+     "vypln": "inverze",
+     "f1": 882
+    }
+   ],
+   "f0": 847,
+   "f1": 882,
+   "typ": "zaber",
+   "src": "assets/media/k10.mp4"
+  },
+  {
+   "t": 36.74,
+   "typ": "platno",
+   "svetle": true,
+   "texty": [
+    {
+     "typ": "blok",
+     "x": 300,
+     "y": 300,
+     "radky": [
+      [
+       "zadruhé",
+       884,
+       60,
+       "sans",
+       "tmava"
+      ]
+     ],
+     "f1": 937
+    },
+    {
+     "typ": "box",
+     "text": "prodej",
+     "f": 893,
+     "x": 300,
+     "y": 380,
+     "s": 160,
+     "barva": "cervena",
+     "f1": 937
+    },
+    {
+     "typ": "radek",
+     "y": 800,
+     "s": 84,
+     "styl": "sans tucne",
+     "barva": "tmava",
+     "f1": 937,
+     "slova": [
+      [
+       "nevypadá",
+       911,
+       0,
+       null
+      ],
+      [
+       "jako",
+       923,
+       1,
+       null
+      ],
+      [
+       "prodej",
+       927,
+       2,
+       "serif"
+      ]
+     ]
+    }
+   ],
+   "f0": 882,
+   "f1": 937
+  },
+  {
+   "t": 39.06,
+   "klip": [
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/9fGr_fZTKHY.mp4",
+    1278
+   ],
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 900,
+     "s": 80,
+     "styl": "sans tucne",
+     "f1": 974,
+     "slova": [
+      [
+       "obsahu",
+       942,
+       0,
+       null
+      ],
+      [
+       "ukazuje",
+       952,
+       1,
+       null
+      ],
+      [
+       "trénink",
+       962,
+       2,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 937,
+   "f1": 974,
+   "typ": "zaber",
+   "src": "assets/media/k12.mp4",
+   "grade": "tlum"
+  },
+  {
+   "t": 40.6,
+   "klip": [
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/9fGr_fZTKHY.mp4",
+    618
+   ],
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 900,
+     "s": 92,
+     "styl": "sans tucne",
+     "stredy": [
+      0.5
+     ],
+     "f1": 990,
+     "slova": [
+      [
+       "práci",
+       976,
+       0,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 974,
+   "f1": 990,
+   "typ": "zaber",
+   "src": "assets/media/k13.mp4",
+   "grade": "tlum"
+  },
+  {
+   "t": 41.24,
+   "klip": [
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/clFvSb8W9es.mp4",
+    770
+   ],
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 900,
+     "s": 92,
+     "styl": "sans tucne",
+     "stredy": [
+      0.5
+     ],
+     "f1": 1012,
+     "slova": [
+      [
+       "zákulisí",
+       992,
+       0,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 990,
+   "f1": 1012,
+   "typ": "zaber",
+   "src": "assets/media/k14.mp4",
+   "grade": "tlum"
+  },
+  {
+   "t": 42.16,
+   "klip": [
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/9fGr_fZTKHY.mp4",
+    668
+   ],
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 780,
+     "s": 80,
+     "styl": "sans tucne",
+     "f1": 1056,
+     "slova": [
+      [
+       "mezi tím",
+       1016,
+       0,
+       null
+      ],
+      [
+       "na sobě",
+       1030,
+       1,
+       null
+      ]
+     ]
+    },
+    {
+     "typ": "box",
+     "text": "novou kolekci",
+     "f": 1038,
+     "x": 380,
+     "y": 860,
+     "s": 88,
+     "barva": "cervena",
+     "f1": 1056
+    }
+   ],
+   "f0": 1012,
+   "f1": 1056,
+   "typ": "zaber",
+   "src": "assets/media/k15.mp4",
+   "grade": "tlum"
+  },
+  {
+   "f": 1056,
+   "klip": [
+    "$BR_REELY/podnikatele/heaton/assets/media/c_teplaky.mp4",
+    1.27
+   ],
+   "grade": "barva",
+   "takt": 1,
+   "citace": {
+    "soubor": "q_teplaky",
+    "src": "$BR_REELY/podnikatele/heaton/assets/media/c_teplaky.mp4",
+    "od": 1.27,
+    "do": 4.97
+   },
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 930,
+     "s": 90,
+     "styl": "sans",
+     "stredy": [
+      0.5
+     ],
+     "f1": 1070,
+     "slova": [
+      [
+       "nová",
+       1059,
+       0,
+       null
+      ]
+     ]
+    },
+    {
+     "typ": "radek",
+     "y": 930,
+     "s": 90,
+     "styl": "sans",
+     "stredy": [
+      0.5
+     ],
+     "f1": 1090,
+     "slova": [
+      [
+       "teplákovka",
+       1070,
+       0,
+       null
+      ]
+     ]
+    },
+    {
+     "typ": "radek",
+     "y": 930,
+     "s": 90,
+     "styl": "sans",
+     "stredy": [
+      0.5
+     ],
+     "f1": 1110,
+     "slova": [
+      [
+       "na zimu,",
+       1090,
+       0,
+       null
+      ]
+     ]
+    },
+    {
+     "typ": "radek",
+     "y": 930,
+     "s": 90,
+     "styl": "sans",
+     "stredy": [
+      0.5
+     ],
+     "f1": 1120,
+     "slova": [
+      [
+       "ještě",
+       1110,
+       0,
+       null
+      ]
+     ]
+    },
+    {
+     "typ": "radek",
+     "y": 930,
+     "s": 90,
+     "styl": "sans",
+     "stredy": [
+      0.5
+     ],
+     "f1": 1148,
+     "slova": [
+      [
+       "nevyšla",
+       1120,
+       0,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 1056,
+   "f1": 1148,
+   "typ": "zaber",
+   "src": "assets/media/k16.mp4"
+  },
+  {
+   "t": 44.12,
+   "typ": "platno",
+   "texty": [
+    {
+     "typ": "blok",
+     "x": 280,
+     "y": 360,
+     "radky": [
+      [
+       "žádný",
+       1157,
+       60,
+       "sans",
+       "seda"
+      ],
+      [
+       "nucený",
+       1166,
+       130,
+       "sans tucne",
+       null
+      ],
+      [
+       "marketing",
+       1176,
+       130,
+       "sans tucne",
+       null
+      ]
+     ],
+     "radkovani": 1.12,
+     "f1": 1186
+    }
+   ],
+   "f0": 1148,
+   "f1": 1186
+  },
+  {
+   "t": 45.72,
+   "typ": "platno",
+   "svetle": true,
+   "tah": [
+    1,
+    1.1,
+    0,
+    30,
+    "dojezd"
+   ],
+   "karty": [
+    {
+     "src": "assets/img/produkt_3.jpg",
+     "x": 80,
+     "y": 160,
+     "w": 420,
+     "h": 236,
+     "f": 1187,
+     "blur": 7
+    },
+    {
+     "src": "assets/img/produkt_5.jpg",
+     "x": 950,
+     "y": 600,
+     "w": 420,
+     "h": 236,
+     "f": 1190,
+     "blur": 7,
+     "neg": 1
+    },
+    {
+     "src": "assets/img/george_v_nalepka.png",
+     "nalepka": [
+      "george_v",
+      "$BR_REELY/podnikatele/heaton/zdroj/vys/george_cut.png",
+      860
+     ],
+     "x": 420,
+     "y": 100,
+     "w": 600,
+     "h": 880,
+     "f": 1215,
+     "cista": true,
+     "z": 5
+    }
+   ],
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 860,
+     "s": 80,
+     "styl": "sans tucne",
+     "barva": "tmava",
+     "f1": 1215,
+     "slova": [
+      [
+       "prodává",
+       1188,
+       0,
+       null
+      ],
+      [
+       "jenom",
+       1200,
+       1,
+       null
+      ],
+      [
+       "tím",
+       1206,
+       2,
+       null
+      ]
+     ]
+    },
+    {
+     "typ": "radek",
+     "y": 860,
+     "s": 80,
+     "styl": "sans tucne",
+     "barva": "tmava",
+     "f1": 1251,
+     "slova": [
+      [
+       "nosí",
+       1215,
+       0,
+       null
+      ],
+      [
+       "vlastní",
+       1227,
+       1,
+       null
+      ],
+      [
+       "oblečení",
+       1238,
+       2,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 1186,
+   "f1": 1251
+  },
+  {
+   "t": 48.44,
+   "typ": "platno",
+   "posun": [
+    120,
+    0,
+    -160,
+    0,
+    0,
+    62,
+    "s"
+   ],
+   "karty": [
+    {
+     "src": "assets/img/ig_DcwA01lRTHy.jpg",
+     "x": 40,
+     "y": 140,
+     "w": 230,
+     "h": 409,
+     "f": 1252,
+     "blur": 6,
+     "neg": 0,
+     "z": 1
+    },
+    {
+     "src": "assets/img/ig_DdY7OVjROdY.jpg",
+     "x": 340,
+     "y": 260,
+     "w": 300,
+     "h": 533,
+     "f": 1255,
+     "blur": 0,
+     "neg": 2,
+     "z": 5
+    },
+    {
+     "src": "assets/img/ig_DblcaHaMiUs.jpg",
+     "x": 640,
+     "y": 90,
+     "w": 250,
+     "h": 444,
+     "f": 1258,
+     "blur": 3,
+     "neg": 0,
+     "z": 3
+    },
+    {
+     "src": "assets/img/ig_Ddyr7vrR6lF.jpg",
+     "x": 940,
+     "y": 300,
+     "w": 210,
+     "h": 373,
+     "f": 1261,
+     "blur": 8,
+     "neg": 0,
+     "z": 1
+    },
+    {
+     "src": "assets/img/ig_DcYn6NYxlDm.jpg",
+     "x": 1240,
+     "y": 180,
+     "w": 270,
+     "h": 480,
+     "f": 1264,
+     "blur": 0,
+     "neg": 0,
+     "z": 4
+    }
+   ],
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 950,
+     "s": 80,
+     "styl": "sans tucne",
+     "f1": 1315,
+     "slova": [
+      [
+       "přetvořil",
+       1271,
+       0,
+       null
+      ],
+      [
+       "marketing",
+       1281,
+       1,
+       null
+      ],
+      [
+       "kolekcí",
+       1300,
+       2,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 1251,
+   "f1": 1315
+  },
+  {
+   "t": 51.08,
+   "klip": [
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/9fGr_fZTKHY.mp4",
+    831
+   ],
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 880,
+     "s": 80,
+     "styl": "sans tucne",
+     "f1": 1359,
+     "slova": [
+      [
+       "naprosto",
+       1319,
+       0,
+       null
+      ],
+      [
+       "přirozenou",
+       1332,
+       1,
+       null
+      ],
+      [
+       "věc",
+       1348,
+       2,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 1315,
+   "f1": 1359,
+   "typ": "zaber",
+   "src": "assets/media/k20.mp4",
+   "grade": "tlum"
+  },
+  {
+   "t": 52.92,
+   "klip": [
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/9dwCvRL7n3M.mp4",
+    3
+   ],
+   "grade": "cb",
+   "yt": {
+    "x": 720,
+    "y": 170,
+    "w": 640,
+    "rady": [
+     {
+      "av": "assets/img/av_drallday13.jpg",
+      "jmeno": "@drallday13",
+      "kdy": "před 3 měsíci",
+      "text": "What's the Inside out tee you're wearing? Looks sick",
+      "likes": 2,
+      "f": 1363
+     },
+     {
+      "av": "assets/img/av_akamdapapash.jpg",
+      "jmeno": "@akamdapapash",
+      "kdy": "před měsícem",
+      "text": "The camo is fire!!",
+      "likes": 2,
+      "f": 1369
+     },
+     {
+      "av": "assets/img/av_bewareeverything.jpg",
+      "jmeno": "@bewareeverything",
+      "kdy": "před měsícem",
+      "text": "Need that new 247 collab bad",
+      "likes": 3,
+      "f": 1377
+     }
+    ]
+   },
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 980,
+     "s": 80,
+     "styl": "sans tucne",
+     "stredy": [
+      0.16,
+      0.42
+     ],
+     "f1": 1392,
+     "slova": [
+      [
+       "lidé",
+       1371,
+       0,
+       null
+      ],
+      [
+       "zajímají",
+       1379,
+       1,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 1359,
+   "f1": 1392,
+   "typ": "zaber",
+   "src": "assets/media/k21.mp4"
+  },
+  {
+   "t": 54.3,
+   "klip": [
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/jYUcsLdrm3M.mp4",
+    509.6,
+    "scale=-2:1350,crop=1440:1080:(iw-1440)/2:0"
+   ],
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 880,
+     "s": 80,
+     "styl": "sans tucne",
+     "f1": 1417,
+     "slova": [
+      [
+       "nic",
+       1397,
+       0,
+       null
+      ],
+      [
+       "nemusí",
+       1402,
+       1,
+       null
+      ],
+      [
+       "tlačit",
+       1409,
+       2,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 1392,
+   "f1": 1417,
+   "typ": "zaber",
+   "src": "assets/media/k22.mp4",
+   "grade": "tlum"
+  },
+  {
+   "t": 55.34,
+   "klip": [
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/SAmqCxYgrUw.mp4",
+    556
+   ],
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 900,
+     "s": 80,
+     "styl": "sans tucne",
+     "f1": 1473,
+     "slova": [
+      [
+       "osobnost",
+       1426,
+       0,
+       null
+      ],
+      [
+       "prodává",
+       1450,
+       1,
+       null
+      ],
+      [
+       "sama",
+       1462,
+       2,
+       "serif"
+      ]
+     ]
+    }
+   ],
+   "f0": 1417,
+   "f1": 1473,
+   "typ": "zaber",
+   "src": "assets/media/k23.mp4",
+   "grade": "tlum"
+  },
+  {
+   "t": 57.66,
+   "typ": "platno",
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 380,
+     "s": 60,
+     "styl": "sans",
+     "barva": "seda",
+     "stredy": [
+      0.5
+     ],
+     "f1": 1509,
+     "slova": [
+      [
+       "zatřetí",
+       1477,
+       0,
+       null
+      ]
+     ]
+    },
+    {
+     "typ": "radek",
+     "y": 540,
+     "s": 200,
+     "styl": "sans tucne",
+     "stredy": [
+      0.5
+     ],
+     "f1": 1496,
+     "slova": [
+      [
+       "autorita",
+       1493,
+       0,
+       null
+      ]
+     ]
+    },
+    {
+     "typ": "radek",
+     "y": 540,
+     "s": 250,
+     "styl": "serif",
+     "stredy": [
+      0.5
+     ],
+     "f1": 1509,
+     "slova": [
+      [
+       "autorita",
+       1496,
+       0,
+       null
+      ]
+     ]
+    },
+    {
+     "typ": "obri",
+     "text": "AUTORITA",
+     "f": 1491,
+     "n": 2,
+     "s": 280,
+     "sy": 3,
+     "f1": 1509
+    }
+   ],
+   "f0": 1473,
+   "f1": 1509
+  },
+  {
+   "t": 59.18,
+   "tim": 59.18,
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 430,
+     "s": 96,
+     "styl": "sans tucne",
+     "stredy": [
+      0.16,
+      0.6
+     ],
+     "f1": 1534,
+     "slova": [
+      [
+       "Tady",
+       1511,
+       0,
+       null
+      ],
+      [
+       "nejzajímavější",
+       1519,
+       1,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 1509,
+   "f1": 1534,
+   "typ": "zaber",
+   "src": "assets/media/k25.mp4",
+   "grade": "puvodni",
+   "bezGrade": true
+  },
+  {
+   "t": 60.2,
+   "klip": [
+    "$BR_REELY/podnikatele/heaton/assets/media/c_diy.mp4",
+    1,
+    "scale=-2:1350,crop=1440:1080:(iw-1440)/2:0"
+   ],
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 880,
+     "s": 80,
+     "styl": "sans tucne",
+     "f1": 1582,
+     "slova": [
+      [
+       "všechno",
+       1545,
+       0,
+       null
+      ],
+      [
+       "natáčí",
+       1554,
+       1,
+       null
+      ]
+     ]
+    },
+    {
+     "typ": "obri",
+     "text": "DIY",
+     "f": 1567,
+     "n": 2,
+     "s": 520,
+     "sy": 2.4,
+     "vypln": "inverze",
+     "f1": 1582
+    },
+    {
+     "typ": "box",
+     "text": "DIY",
+     "f": 1569,
+     "x": 1010,
+     "y": 830,
+     "s": 100,
+     "barva": "krem",
+     "f1": 1582
+    }
+   ],
+   "f0": 1534,
+   "f1": 1582,
+   "typ": "zaber",
+   "src": "assets/media/k26.mp4",
+   "grade": "tlum"
+  },
+  {
+   "t": 62.2,
+   "klip": [
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/VofeFR5LnZ4.mp4",
+    1983.4
+   ],
+   "grade": "cb",
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 470,
+     "s": 80,
+     "styl": "sans tucne",
+     "f1": 1620,
+     "slova": [
+      [
+       "žádnou",
+       1598,
+       0,
+       null
+      ],
+      [
+       "velkou",
+       1604,
+       1,
+       null
+      ],
+      [
+       "produkci",
+       1611,
+       2,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 1582,
+   "f1": 1620,
+   "typ": "zaber",
+   "src": "assets/media/k27.mp4"
+  },
+  {
+   "t": 63.82,
+   "klip": [
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/jYUcsLdrm3M.mp4",
+    550,
+    "scale=-2:1350,crop=1440:1080:(iw-1440)/2:0"
+   ],
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 880,
+     "s": 80,
+     "styl": "sans tucne",
+     "f1": 1652,
+     "slova": [
+      [
+       "Někdy",
+       1622,
+       0,
+       null
+      ],
+      [
+       "z ruky",
+       1638,
+       2,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 1620,
+   "f1": 1652,
+   "typ": "zaber",
+   "src": "assets/media/k28.mp4",
+   "grade": "tlum"
+  },
+  {
+   "t": 65.12,
+   "klip": [
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/VofeFR5LnZ4.mp4",
+    2050.3
+   ],
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 880,
+     "s": 80,
+     "styl": "sans tucne",
+     "f1": 1680,
+     "slova": [
+      [
+       "někdy",
+       1654,
+       0,
+       null
+      ],
+      [
+       "kameramana",
+       1667,
+       2,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 1652,
+   "f1": 1680,
+   "typ": "zaber",
+   "src": "assets/media/k29.mp4",
+   "grade": "tlum"
+  },
+  {
+   "t": 66.32,
+   "typ": "platno",
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 540,
+     "s": 130,
+     "styl": "serif",
+     "stredy": [
+      0.5
+     ],
+     "f1": 1694,
+     "slova": [
+      [
+       "To je všechno.",
+       1682,
+       0,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 1680,
+   "f1": 1694
+  },
+  {
+   "t": 66.88,
+   "klip": [
+    "$BR_REELY/podnikatele/heaton/assets/media/c_bumstead.mp4",
+    0.2
+   ],
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 880,
+     "s": 80,
+     "styl": "sans tucne",
+     "f1": 1741,
+     "slova": [
+      [
+       "humorem",
+       1706,
+       0,
+       null
+      ],
+      [
+       "zábavu",
+       1724,
+       2,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 1694,
+   "f1": 1741,
+   "typ": "zaber",
+   "src": "assets/media/k31.mp4",
+   "grade": "tlum"
+  },
+  {
+   "t": 68.84,
+   "typ": "platno",
+   "karty": [
+    {
+     "src": "assets/img/tvar_43.jpg",
+     "x": 110,
+     "y": 230,
+     "w": 560,
+     "h": 560,
+     "f": 1742,
+     "neg": 1
+    },
+    {
+     "src": "assets/media/k32c1.mp4",
+     "klip": [
+      "$BR_REELY/podnikatele/heaton/assets/media/c_ross.mp4",
+      2
+     ],
+     "x": 770,
+     "y": 230,
+     "w": 560,
+     "h": 560,
+     "f": 1804,
+     "neg": 1
+    }
+   ],
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 150,
+     "s": 80,
+     "styl": "sans tucne",
+     "f1": 1815,
+     "slova": [
+      [
+       "zároveň",
+       1748,
+       0,
+       null
+      ],
+      [
+       "dává",
+       1765,
+       2,
+       null
+      ]
+     ]
+    },
+    {
+     "typ": "box",
+     "text": "stejnou prioritu",
+     "f": 1774,
+     "x": 400,
+     "y": 860,
+     "s": 96,
+     "barva": "cervena",
+     "f1": 1815
+    }
+   ],
+   "f0": 1741,
+   "f1": 1815
+  },
+  {
+   "t": 71.94,
+   "typ": "platno",
+   "karty": [
+    {
+     "src": "assets/media/k33c0.mp4",
+     "tim": 71.94,
+     "x": 180,
+     "y": 0,
+     "w": 1080,
+     "h": 1080,
+     "f": 1815,
+     "mekka": true,
+     "grade": "puvodni"
+    }
+   ],
+   "bezGrade": true,
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 560,
+     "s": 90,
+     "styl": "sans tucne",
+     "f1": 1861,
+     "slova": [
+      [
+       "moc",
+       1830,
+       0,
+       null
+      ],
+      [
+       "dobře",
+       1836,
+       1,
+       null
+      ],
+      [
+       "uvědomuje",
+       1843,
+       2,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 1815,
+   "f1": 1861
+  },
+  {
+   "t": 73.84,
+   "typ": "platno",
+   "serie": {
+    "obrazy": [
+     "assets/img/ig_DdO4t7DRK1u.jpg",
+     "assets/img/ig_Db3qmxyPKZ6.jpg",
+     "assets/img/ig_DcWnccKva2E.jpg",
+     "assets/img/ig_DbKkFfbOS-j.jpg",
+     "assets/img/ig_DdY7OVjROdY.jpg",
+     "assets/img/ig_Ddyr7vrR6lF.jpg",
+     "assets/img/ig_DblcaHaMiUs.jpg",
+     "assets/img/ig_DbGhoqgRVOZ.jpg",
+     "assets/img/ig_DcYn6NYxlDm.jpg",
+     "assets/img/ig_DcwA01lRTHy.jpg",
+     "assets/img/ig_DdO4t7DRK1u.jpg",
+     "assets/img/ig_Db3qmxyPKZ6.jpg",
+     "assets/img/ig_DcWnccKva2E.jpg",
+     "assets/img/ig_DbKkFfbOS-j.jpg",
+     "assets/img/ig_DdY7OVjROdY.jpg",
+     "assets/img/ig_Ddyr7vrR6lF.jpg",
+     "assets/img/ig_DblcaHaMiUs.jpg",
+     "assets/img/ig_DbGhoqgRVOZ.jpg",
+     "assets/img/ig_DcYn6NYxlDm.jpg",
+     "assets/img/ig_DcwA01lRTHy.jpg",
+     "assets/img/ig_DdO4t7DRK1u.jpg"
+    ],
+    "f": 1862,
+    "krok": 2,
+    "h0": 820,
+    "h1": 820,
+    "cx": 720,
+    "cy": 540,
+    "pomer": 0.5625
+   },
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 540,
+     "s": 90,
+     "styl": "sans tucne",
+     "f1": 1920,
+     "slova": [
+      [
+       "osobní",
+       1884,
+       0,
+       null
+      ],
+      [
+       "profil",
+       1894,
+       1,
+       null
+      ],
+      [
+       "přináší",
+       1902,
+       2,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 1861,
+   "f1": 1920
+  },
+  {
+   "t": 76.3,
+   "foto": [
+    "logo_247_1",
+    "$BR_REELY/podnikatele/heaton/zdroj/nalez/logo_247_1.jpg"
+   ],
+   "tah": [
+    1,
+    1.25,
+    0,
+    58,
+    "najezd"
+   ],
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 880,
+     "s": 80,
+     "styl": "sans tucne",
+     "f1": 1959,
+     "slova": [
+      [
+       "sub brand",
+       1931,
+       0,
+       null
+      ],
+      [
+       "Representu",
+       1946,
+       1,
+       null
+      ]
+     ]
+    },
+    {
+     "typ": "obri",
+     "text": "247",
+     "f": 1959,
+     "n": 2,
+     "s": 560,
+     "sy": 1.8,
+     "styl": "serif",
+     "f1": 1979
+    },
+    {
+     "typ": "radek",
+     "y": 540,
+     "s": 260,
+     "styl": "sans tucne",
+     "stredy": [
+      0.5
+     ],
+     "f1": 1979,
+     "slova": [
+      [
+       "247",
+       1961,
+       0,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 1920,
+   "f1": 1979,
+   "typ": "zaber",
+   "src": "assets/img/logo_247_1.jpg",
+   "grade": "tlum"
+  },
+  {
+   "t": 78.76,
+   "typ": "vyrez",
+   "pozadi": "krem",
+   "vyrez": {
+    "jm": "george_v",
+    "src": "assets/img/george_v_rastr.png",
+    "sirka": 520,
+    "typ": "rastr",
+    "x": 600,
+    "y": 160,
+    "w": 520,
+    "pan": [
+     -200,
+     0,
+     2,
+     16
+    ],
+    "stin": [
+     -26,
+     14
+    ],
+    "stinSrc": "assets/img/george_v_stin.png"
+   },
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 150,
+     "s": 80,
+     "styl": "sans tucne",
+     "barva": "tmava",
+     "stredy": [
+      0.2,
+      0.5
+     ],
+     "f1": 2004,
+     "slova": [
+      [
+       "stojí",
+       1981,
+       0,
+       null
+      ],
+      [
+       "na jeho",
+       1987,
+       1,
+       null
+      ]
+     ]
+    },
+    {
+     "typ": "box",
+     "text": "jménu",
+     "f": 1994,
+     "x": 180,
+     "y": 820,
+     "s": 120,
+     "barva": "cervena",
+     "f1": 2004
+    }
+   ],
+   "f0": 1979,
+   "f1": 2004
+  },
+  {
+   "t": 79.8,
+   "klip": [
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/9dwCvRL7n3M.mp4",
+    796,
+    "scale=-2:1350,crop=1440:1080:(iw-1440)/2:0"
+   ],
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 880,
+     "s": 80,
+     "styl": "sans tucne",
+     "f1": 2044,
+     "slova": [
+      [
+       "ukazoval",
+       2019,
+       0,
+       null
+      ],
+      [
+       "jak",
+       2030,
+       1,
+       null
+      ],
+      [
+       "trénuje",
+       2034,
+       2,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 2004,
+   "f1": 2044,
+   "typ": "zaber",
+   "src": "assets/media/k37.mp4",
+   "grade": "tlum"
+  },
+  {
+   "f": 2044,
+   "klip": [
+    "$BR_REELY/podnikatele/heaton/assets/media/c_leader.mp4",
+    4.3,
+    "crop=1108:832:406:124,scale=1440:1080"
+   ],
+   "grade": "barva",
+   "takt": 1,
+   "citace": {
+    "soubor": "q_leader",
+    "src": "$BR_REELY/podnikatele/heaton/assets/media/c_leader.mp4",
+    "od": 4.3,
+    "do": 7.35
+   },
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 930,
+     "s": 90,
+     "styl": "sans",
+     "stredy": [
+      0.5
+     ],
+     "f1": 2060,
+     "slova": [
+      [
+       "dělám to,",
+       2046,
+       0,
+       null
+      ]
+     ]
+    },
+    {
+     "typ": "radek",
+     "y": 930,
+     "s": 90,
+     "styl": "sans",
+     "stredy": [
+      0.5
+     ],
+     "f1": 2072,
+     "slova": [
+      [
+       "protože",
+       2060,
+       0,
+       null
+      ]
+     ]
+    },
+    {
+     "typ": "radek",
+     "y": 930,
+     "s": 90,
+     "styl": "sans",
+     "stredy": [
+      0.5
+     ],
+     "f1": 2080,
+     "slova": [
+      [
+       "jsem",
+       2072,
+       0,
+       null
+      ]
+     ]
+    },
+    {
+     "typ": "radek",
+     "y": 930,
+     "s": 90,
+     "styl": "sans",
+     "stredy": [
+      0.5
+     ],
+     "f1": 2094,
+     "slova": [
+      [
+       "lídr",
+       2080,
+       0,
+       null
+      ]
+     ]
+    },
+    {
+     "typ": "radek",
+     "y": 930,
+     "s": 90,
+     "styl": "sans",
+     "stredy": [
+      0.5
+     ],
+     "f1": 2120,
+     "slova": [
+      [
+       "té značky",
+       2094,
+       0,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 2044,
+   "f1": 2120,
+   "typ": "zaber",
+   "src": "assets/media/k38.mp4"
+  },
+  {
+   "t": 81.6,
+   "typ": "platno",
+   "tah": [
+    1,
+    1.08,
+    0,
+    28,
+    "dojezd"
+   ],
+   "bezGrade": true,
+   "karty": [
+    {
+     "src": "assets/img/tvar_44.jpg",
+     "x": 70,
+     "y": 200,
+     "w": 300,
+     "h": 400,
+     "f": 2121,
+     "blur": 6
+    },
+    {
+     "src": "assets/img/tvar_46.jpg",
+     "x": 1080,
+     "y": 520,
+     "w": 300,
+     "h": 400,
+     "f": 2123,
+     "blur": 6
+    },
+    {
+     "src": "assets/media/k39c2.mp4",
+     "tim": 81.6,
+     "x": 420,
+     "y": 210,
+     "w": 600,
+     "h": 450,
+     "f": 2120,
+     "grade": "puvodni",
+     "z": 5
+    }
+   ],
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 880,
+     "s": 80,
+     "styl": "sans tucne",
+     "f1": 2149,
+     "slova": [
+      [
+       "sleduju",
+       2127,
+       0,
+       null
+      ],
+      [
+       "už dlouho",
+       2134,
+       1,
+       null
+      ],
+      [
+       "vím",
+       2147,
+       2,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 2120,
+   "f1": 2149
+  },
+  {
+   "t": 82.78,
+   "tim": 82.78,
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 430,
+     "s": 96,
+     "styl": "sans tucne",
+     "f1": 2184,
+     "slova": [
+      [
+       "jedinej",
+       2154,
+       0,
+       null
+      ],
+      [
+       "důvod",
+       2162,
+       1,
+       null
+      ],
+      [
+       "koupil",
+       2179,
+       2,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 2149,
+   "f1": 2184,
+   "typ": "zaber",
+   "src": "assets/media/k40.mp4",
+   "grade": "puvodni",
+   "bezGrade": true
+  },
+  {
+   "t": 84.26,
+   "foto": [
+    "logo_represent_1",
+    "$BR_REELY/podnikatele/heaton/zdroj/nalez/logo_represent_1.jpg"
+   ],
+   "tah": [
+    1,
+    1.18,
+    0,
+    20,
+    "najezd"
+   ],
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 880,
+     "s": 110,
+     "styl": "sans tucne",
+     "stredy": [
+      0.5
+     ],
+     "f1": 2205,
+     "slova": [
+      [
+       "Represent",
+       2186,
+       0,
+       null
+      ]
+     ]
+    }
+   ],
+   "f0": 2184,
+   "f1": 2205,
+   "typ": "zaber",
+   "src": "assets/img/logo_represent_1.jpg",
+   "grade": "tlum"
+  },
+  {
+   "t": 85.12,
+   "typ": "platno",
+   "svetle": true,
+   "karty": [
+    {
+     "src": "assets/img/george_v_nalepka.png",
+     "x": 60,
+     "y": 90,
+     "w": 660,
+     "h": 900,
+     "f": 2212,
+     "cista": true
+    },
+    {
+     "src": "assets/img/michael_v_nalepka.png",
+     "nalepka": [
+      "michael_v",
+      "$BR_REELY/podnikatele/heaton/zdroj/vys/michael_cut.png",
+      860
+     ],
+     "x": 720,
+     "y": 90,
+     "w": 660,
+     "h": 900,
+     "f": 2218,
+     "cista": true
+    }
+   ],
+   "texty": [
+    {
+     "typ": "stitek",
+     "x": 140,
+     "y": 880,
+     "s": 70,
+     "casti": [
+      [
+       "George",
+       "sans",
+       2212
+      ],
+      [
+       "Heaton",
+       "serif",
+       2214
+      ]
+     ],
+     "f1": 2238
+    },
+    {
+     "typ": "stitek",
+     "x": 800,
+     "y": 880,
+     "s": 70,
+     "casti": [
+      [
+       "Michael",
+       "sans",
+       2218
+      ],
+      [
+       "Heaton",
+       "serif",
+       2221
+      ]
+     ],
+     "f1": 2238
+    }
+   ],
+   "f0": 2205,
+   "f1": 2238
+  },
+  {
+   "t": 86.48,
+   "tim": 86.48,
+   "timVf": "scale=2160:1620,crop=1440:1080:144:60",
+   "takt": 1,
+   "tah": [
+    1,
+    1.07,
+    0,
+    144,
+    "lin"
+   ],
+   "pointa": true,
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 400,
+     "s": 92,
+     "styl": "sans",
+     "stredy": [
+      0.27
+     ],
+     "slova": [
+      [
+       "firmu",
+       2254,
+       0
+      ]
+     ],
+     "f1": 2282
+    },
+    {
+     "typ": "radek",
+     "y": 400,
+     "s": 92,
+     "styl": "sans",
+     "stredy": [
+      0.27
+     ],
+     "slova": [
+      [
+       "osobní profil",
+       2282,
+       0
+      ]
+     ],
+     "f1": 2328
+    },
+    {
+     "typ": "radek",
+     "y": 400,
+     "s": 92,
+     "styl": "sans",
+     "stredy": [
+      0.27
+     ],
+     "slova": [
+      [
+       "komunitu",
+       2328,
+       0
+      ]
+     ],
+     "f1": 2348
+    },
+    {
+     "typ": "radek",
+     "y": 400,
+     "s": 92,
+     "styl": "sans",
+     "stredy": [
+      0.27
+     ],
+     "slova": [
+      [
+       "známosti",
+       2348,
+       0
+      ]
+     ],
+     "f1": 2374
+    },
+    {
+     "typ": "radek",
+     "y": 400,
+     "s": 92,
+     "styl": "sans",
+     "stredy": [
+      0.27
+     ],
+     "slova": [
+      [
+       "obchod",
+       2374,
+       0
+      ]
+     ],
+     "f1": 2382
+    }
+   ],
+   "f0": 2238,
+   "f1": 2382,
+   "typ": "zaber",
+   "src": "assets/media/k43.mp4",
+   "grade": "puvodni",
+   "bezGrade": true
+  },
+  {
+   "t": 92.48,
+   "typ": "platno",
+   "takt": 1,
+   "pole": {
+    "x": 170,
+    "y": 430,
+    "w": 1100,
+    "text": "“HEATON”",
+    "f": 2406,
+    "krok": 2,
+    "s": 110
+   },
+   "texty": [
+    {
+     "typ": "radek",
+     "y": 300,
+     "s": 80,
+     "styl": "sans tucne",
+     "stredy": [
+      0.24,
+      0.62
+     ],
+     "f1": 2447,
+     "slova": [
+      [
+       "napiš",
+       2384,
+       0,
+       null
+      ],
+      [
+       "do komentáře",
+       2390,
+       1,
+       null
+      ]
+     ]
+    },
+    {
+     "typ": "radek",
+     "y": 820,
+     "s": 80,
+     "styl": "sans tucne",
+     "f1": 2447,
+     "slova": [
+      [
+       "pošlu",
+       2429,
+       0,
+       null
+      ],
+      [
+       "návod",
+       2441,
+       2,
+       "serif"
+      ]
+     ]
+    }
+   ],
+   "f0": 2382,
+   "f1": 2447
+  }
+ ],
+ "texty": [
+  {
+   "typ": "stitek",
+   "x": 760,
+   "y": 700,
+   "s": 72,
+   "f1": 44,
+   "casti": [
+    [
+     "George",
+     "sans",
+     8
+    ],
+    [
+     "Heaton",
+     "serif",
+     16
+    ]
+   ]
+  },
+  {
+   "typ": "blok",
+   "x": 760,
+   "y": 250,
+   "f1": 44,
+   "radky": [
+    [
+     "jede",
+     29,
+     58,
+     "sans",
+     "seda"
+    ],
+    [
+     "bomby",
+     39,
+     170,
+     "sans tucne"
+    ]
+   ]
+  },
+  {
+   "typ": "obri",
+   "text": "BOMBY",
+   "f": 37,
+   "n": 2,
+   "s": 330,
+   "sy": 3.1
+  },
+  {
+   "typ": "radek",
+   "y": 935,
+   "s": 77,
+   "styl": "sans tucne",
+   "f1": 72,
+   "slova": [
+    [
+     "Jeho",
+     47,
+     0
+    ],
+    [
+     "značka",
+     53,
+     1
+    ],
+    [
+     "Represent",
+     62,
+     2
+    ]
+   ]
+  },
+  {
+   "typ": "citac",
+   "x": 720,
+   "y": 420,
+   "s": 360,
+   "f1": 113,
+   "kroky": [
+    [
+     74,
+     "0"
+    ],
+    [
+     75,
+     "0,5"
+    ],
+    [
+     77,
+     "1,1"
+    ],
+    [
+     78,
+     "1,6"
+    ],
+    [
+     79,
+     "2,2"
+    ],
+    [
+     80,
+     "2,7"
+    ],
+    [
+     81,
+     "3"
+    ]
+   ]
+  },
+  {
+   "typ": "obri",
+   "text": "3",
+   "f": 81,
+   "n": 2,
+   "s": 640,
+   "sy": 1.7,
+   "styl": "serif"
+  },
+  {
+   "typ": "radek",
+   "y": 745,
+   "s": 92,
+   "styl": "sans tucne",
+   "f1": 113,
+   "stredy": [
+    0.5
+   ],
+   "slova": [
+    [
+     "miliardy",
+     89,
+     0
+    ]
+   ]
+  },
+  {
+   "typ": "box",
+   "text": "korun ročně",
+   "x": 455,
+   "y": 830,
+   "s": 88,
+   "f": 100,
+   "f1": 113
+  },
+  {
+   "typ": "radek",
+   "y": 470,
+   "s": 83,
+   "styl": "sans tucne",
+   "f1": 148,
+   "slova": [
+    [
+     "v LA",
+     116,
+     0
+    ],
+    [
+     "vlastní",
+     129,
+     1
+    ],
+    [
+     "penthouse",
+     139,
+     2
+    ]
+   ]
+  },
+  {
+   "typ": "stitek",
+   "x": 110,
+   "y": 905,
+   "s": 72,
+   "f1": 188,
+   "casti": [
+    [
+     "Rolls",
+     "sans",
+     153
+    ],
+    [
+     "Royce",
+     "serif",
+     160
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 135,
+   "s": 77,
+   "styl": "sans tucne",
+   "barva": "tmava",
+   "f1": 188,
+   "slova": [
+    [
+     "si kupuje",
+     168,
+     0
+    ],
+    [
+     "v cashi",
+     179,
+     2
+    ]
+   ]
+  },
+  {
+   "typ": "obri",
+   "text": "CASH",
+   "f": 179,
+   "n": 2,
+   "s": 400,
+   "sy": 2.8,
+   "vypln": "inverze"
+  },
+  {
+   "typ": "radek",
+   "y": 540,
+   "s": 108,
+   "f1": 230,
+   "odchod": "rozostreni",
+   "slova": [
+    [
+     "A přesto",
+     191,
+     0
+    ],
+    [
+     "po 14",
+     209,
+     1
+    ],
+    [
+     "letech",
+     223,
+     2
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 300,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 259,
+   "odchod": "rozostreni",
+   "slova": [
+    [
+     "George",
+     233,
+     0
+    ],
+    [
+     "tajně",
+     242,
+     1
+    ],
+    [
+     "udělal",
+     252,
+     2
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 300,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 286,
+   "slova": [
+    [
+     "z obsahu",
+     259,
+     0
+    ],
+    [
+     "svou",
+     269,
+     1
+    ]
+   ]
+  },
+  {
+   "typ": "box",
+   "text": "prioritu",
+   "x": 935,
+   "y": 248,
+   "s": 100,
+   "f": 275,
+   "f1": 286
+  },
+  {
+   "typ": "radek",
+   "y": 470,
+   "s": 104,
+   "styl": "sans tucne",
+   "f1": 301,
+   "slova": [
+    [
+     "Ale",
+     289,
+     0
+    ],
+    [
+     "proč?",
+     294,
+     1
+    ]
+   ]
+  },
+  {
+   "typ": "obri",
+   "text": "PROČ",
+   "f": 293,
+   "n": 1,
+   "s": 360,
+   "sy": 3.4,
+   "vypln": "inverze"
+  },
+  {
+   "typ": "radek",
+   "y": 975,
+   "s": 74,
+   "styl": "sans tucne",
+   "f1": 324,
+   "slova": [
+    [
+     "Protože",
+     304,
+     0
+    ],
+    [
+     "ví,",
+     315,
+     1
+    ],
+    [
+     "že",
+     320,
+     2
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 975,
+   "s": 74,
+   "styl": "sans tucne",
+   "f1": 350,
+   "slova": [
+    [
+     "osobní",
+     324,
+     0
+    ],
+    [
+     "značka",
+     332,
+     1
+    ],
+    [
+     "odemyká",
+     343,
+     2
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 150,
+   "s": 83,
+   "styl": "sans tucne",
+   "f1": 400,
+   "stredy": [
+    0.5
+   ],
+   "slova": [
+    [
+     "3 věci",
+     354,
+     0
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 840,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 400,
+   "slova": [
+    [
+     "které",
+     375,
+     0
+    ],
+    [
+     "jinak",
+     380,
+     1
+    ],
+    [
+     "nezíská",
+     386,
+     2
+    ]
+   ]
+  },
+  {
+   "typ": "blok",
+   "x": 300,
+   "y": 360,
+   "radky": [
+    [
+     "zaprvé",
+     404,
+     60,
+     "sans",
+     "seda"
+    ]
+   ],
+   "f1": 428
+  },
+  {
+   "typ": "obri",
+   "text": "KONTAKTY",
+   "f": 412,
+   "n": 2,
+   "s": 300,
+   "sy": 3,
+   "f1": 428
+  },
+  {
+   "typ": "box",
+   "text": "kontakty",
+   "f": 415,
+   "x": 300,
+   "y": 440,
+   "s": 150,
+   "barva": "krem",
+   "f1": 428
+  },
+  {
+   "typ": "radek",
+   "y": 880,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 474,
+   "slova": [
+    [
+     "George",
+     430,
+     0,
+     null
+    ],
+    [
+     "tvorbu",
+     457,
+     1,
+     null
+    ],
+    [
+     "spojuje",
+     467,
+     2,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 900,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 526,
+   "slova": [
+    [
+     "běžný",
+     499,
+     0,
+     null
+    ],
+    [
+     "podnikatel",
+     507,
+     1,
+     null
+    ],
+    [
+     "nikdy",
+     519,
+     2,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "box",
+   "text": "nedostane",
+   "f": 526,
+   "x": 470,
+   "y": 860,
+   "s": 96,
+   "barva": "cervena",
+   "f1": 540
+  },
+  {
+   "typ": "blok",
+   "x": 860,
+   "y": 560,
+   "radky": [
+    [
+     "natáčel s",
+     542,
+     56,
+     "sans",
+     "seda"
+    ]
+   ],
+   "f1": 575
+  },
+  {
+   "typ": "stitek",
+   "x": 860,
+   "y": 640,
+   "s": 70,
+   "casti": [
+    [
+     "Chris",
+     "sans",
+     554
+    ],
+    [
+     "Bumstead",
+     "serif",
+     563
+    ]
+   ],
+   "f1": 575
+  },
+  {
+   "typ": "radek",
+   "y": 540,
+   "s": 84,
+   "styl": "sans tucne",
+   "f1": 624,
+   "slova": [
+    [
+     "dalšími",
+     594,
+     0,
+     null
+    ],
+    [
+     "zajímavými",
+     603,
+     1,
+     null
+    ],
+    [
+     "lidmi",
+     616,
+     2,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 135,
+   "s": 80,
+   "styl": "sans tucne",
+   "barva": "tmava",
+   "f1": 667,
+   "slova": [
+    [
+     "ultra",
+     628,
+     0,
+     null
+    ],
+    [
+     "endurance",
+     635,
+     1,
+     null
+    ],
+    [
+     "běžcem",
+     644,
+     2,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "stitek",
+   "x": 110,
+   "y": 905,
+   "s": 70,
+   "casti": [
+    [
+     "Will",
+     "sans",
+     653
+    ],
+    [
+     "Goodge",
+     "serif",
+     660
+    ]
+   ],
+   "f1": 667
+  },
+  {
+   "typ": "stitek",
+   "x": 760,
+   "y": 720,
+   "s": 70,
+   "casti": [
+    [
+     "Ross",
+     "sans",
+     674
+    ],
+    [
+     "MacKay",
+     "serif",
+     681
+    ]
+   ],
+   "f1": 691
+  },
+  {
+   "typ": "radek",
+   "y": 900,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 727,
+   "slova": [
+    [
+     "Společně",
+     693,
+     0,
+     null
+    ],
+    [
+     "založili",
+     704,
+     1,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "box",
+   "text": "Cadence",
+   "f": 715,
+   "x": 960,
+   "y": 860,
+   "s": 84,
+   "barva": "cervena",
+   "f1": 727
+  },
+  {
+   "typ": "box",
+   "text": "partnerství",
+   "f": 763,
+   "x": 420,
+   "y": 470,
+   "s": 104,
+   "barva": "cervena",
+   "f1": 804
+  },
+  {
+   "typ": "radek",
+   "y": 990,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 804,
+   "slova": [
+    [
+     "ostatními",
+     783,
+     0,
+     null
+    ],
+    [
+     "značkami",
+     794,
+     2,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 880,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 847,
+   "slova": [
+    [
+     "jinak",
+     820,
+     0,
+     null
+    ],
+    [
+     "těžko",
+     826,
+     1,
+     null
+    ],
+    [
+     "dostával",
+     832,
+     2,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 470,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 882,
+   "slova": [
+    [
+     "roste",
+     856,
+     0,
+     null
+    ],
+    [
+     "byznys",
+     866,
+     1,
+     null
+    ],
+    [
+     "dál",
+     873,
+     2,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "obri",
+   "text": "DÁL",
+   "f": 873,
+   "n": 2,
+   "s": 420,
+   "sy": 3,
+   "vypln": "inverze",
+   "f1": 882
+  },
+  {
+   "typ": "blok",
+   "x": 300,
+   "y": 300,
+   "radky": [
+    [
+     "zadruhé",
+     884,
+     60,
+     "sans",
+     "tmava"
+    ]
+   ],
+   "f1": 937
+  },
+  {
+   "typ": "box",
+   "text": "prodej",
+   "f": 893,
+   "x": 300,
+   "y": 380,
+   "s": 160,
+   "barva": "cervena",
+   "f1": 937
+  },
+  {
+   "typ": "radek",
+   "y": 800,
+   "s": 84,
+   "styl": "sans tucne",
+   "barva": "tmava",
+   "f1": 937,
+   "slova": [
+    [
+     "nevypadá",
+     911,
+     0,
+     null
+    ],
+    [
+     "jako",
+     923,
+     1,
+     null
+    ],
+    [
+     "prodej",
+     927,
+     2,
+     "serif"
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 900,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 974,
+   "slova": [
+    [
+     "obsahu",
+     942,
+     0,
+     null
+    ],
+    [
+     "ukazuje",
+     952,
+     1,
+     null
+    ],
+    [
+     "trénink",
+     962,
+     2,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 900,
+   "s": 92,
+   "styl": "sans tucne",
+   "stredy": [
+    0.5
+   ],
+   "f1": 990,
+   "slova": [
+    [
+     "práci",
+     976,
+     0,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 900,
+   "s": 92,
+   "styl": "sans tucne",
+   "stredy": [
+    0.5
+   ],
+   "f1": 1012,
+   "slova": [
+    [
+     "zákulisí",
+     992,
+     0,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 780,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 1056,
+   "slova": [
+    [
+     "mezi tím",
+     1016,
+     0,
+     null
+    ],
+    [
+     "na sobě",
+     1030,
+     1,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "box",
+   "text": "novou kolekci",
+   "f": 1038,
+   "x": 380,
+   "y": 860,
+   "s": 88,
+   "barva": "cervena",
+   "f1": 1056
+  },
+  {
+   "typ": "radek",
+   "y": 930,
+   "s": 90,
+   "styl": "sans",
+   "stredy": [
+    0.5
+   ],
+   "f1": 1070,
+   "slova": [
+    [
+     "nová",
+     1059,
+     0,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 930,
+   "s": 90,
+   "styl": "sans",
+   "stredy": [
+    0.5
+   ],
+   "f1": 1090,
+   "slova": [
+    [
+     "teplákovka",
+     1070,
+     0,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 930,
+   "s": 90,
+   "styl": "sans",
+   "stredy": [
+    0.5
+   ],
+   "f1": 1110,
+   "slova": [
+    [
+     "na zimu,",
+     1090,
+     0,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 930,
+   "s": 90,
+   "styl": "sans",
+   "stredy": [
+    0.5
+   ],
+   "f1": 1120,
+   "slova": [
+    [
+     "ještě",
+     1110,
+     0,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 930,
+   "s": 90,
+   "styl": "sans",
+   "stredy": [
+    0.5
+   ],
+   "f1": 1148,
+   "slova": [
+    [
+     "nevyšla",
+     1120,
+     0,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "blok",
+   "x": 280,
+   "y": 360,
+   "radky": [
+    [
+     "žádný",
+     1157,
+     60,
+     "sans",
+     "seda"
+    ],
+    [
+     "nucený",
+     1166,
+     130,
+     "sans tucne",
+     null
+    ],
+    [
+     "marketing",
+     1176,
+     130,
+     "sans tucne",
+     null
+    ]
+   ],
+   "radkovani": 1.12,
+   "f1": 1186
+  },
+  {
+   "typ": "radek",
+   "y": 860,
+   "s": 80,
+   "styl": "sans tucne",
+   "barva": "tmava",
+   "f1": 1215,
+   "slova": [
+    [
+     "prodává",
+     1188,
+     0,
+     null
+    ],
+    [
+     "jenom",
+     1200,
+     1,
+     null
+    ],
+    [
+     "tím",
+     1206,
+     2,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 860,
+   "s": 80,
+   "styl": "sans tucne",
+   "barva": "tmava",
+   "f1": 1251,
+   "slova": [
+    [
+     "nosí",
+     1215,
+     0,
+     null
+    ],
+    [
+     "vlastní",
+     1227,
+     1,
+     null
+    ],
+    [
+     "oblečení",
+     1238,
+     2,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 950,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 1315,
+   "slova": [
+    [
+     "přetvořil",
+     1271,
+     0,
+     null
+    ],
+    [
+     "marketing",
+     1281,
+     1,
+     null
+    ],
+    [
+     "kolekcí",
+     1300,
+     2,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 880,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 1359,
+   "slova": [
+    [
+     "naprosto",
+     1319,
+     0,
+     null
+    ],
+    [
+     "přirozenou",
+     1332,
+     1,
+     null
+    ],
+    [
+     "věc",
+     1348,
+     2,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 980,
+   "s": 80,
+   "styl": "sans tucne",
+   "stredy": [
+    0.16,
+    0.42
+   ],
+   "f1": 1392,
+   "slova": [
+    [
+     "lidé",
+     1371,
+     0,
+     null
+    ],
+    [
+     "zajímají",
+     1379,
+     1,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 880,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 1417,
+   "slova": [
+    [
+     "nic",
+     1397,
+     0,
+     null
+    ],
+    [
+     "nemusí",
+     1402,
+     1,
+     null
+    ],
+    [
+     "tlačit",
+     1409,
+     2,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 900,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 1473,
+   "slova": [
+    [
+     "osobnost",
+     1426,
+     0,
+     null
+    ],
+    [
+     "prodává",
+     1450,
+     1,
+     null
+    ],
+    [
+     "sama",
+     1462,
+     2,
+     "serif"
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 380,
+   "s": 60,
+   "styl": "sans",
+   "barva": "seda",
+   "stredy": [
+    0.5
+   ],
+   "f1": 1509,
+   "slova": [
+    [
+     "zatřetí",
+     1477,
+     0,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 540,
+   "s": 200,
+   "styl": "sans tucne",
+   "stredy": [
+    0.5
+   ],
+   "f1": 1496,
+   "slova": [
+    [
+     "autorita",
+     1493,
+     0,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 540,
+   "s": 250,
+   "styl": "serif",
+   "stredy": [
+    0.5
+   ],
+   "f1": 1509,
+   "slova": [
+    [
+     "autorita",
+     1496,
+     0,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "obri",
+   "text": "AUTORITA",
+   "f": 1491,
+   "n": 2,
+   "s": 280,
+   "sy": 3,
+   "f1": 1509
+  },
+  {
+   "typ": "radek",
+   "y": 430,
+   "s": 96,
+   "styl": "sans tucne",
+   "stredy": [
+    0.16,
+    0.6
+   ],
+   "f1": 1534,
+   "slova": [
+    [
+     "Tady",
+     1511,
+     0,
+     null
+    ],
+    [
+     "nejzajímavější",
+     1519,
+     1,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 880,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 1582,
+   "slova": [
+    [
+     "všechno",
+     1545,
+     0,
+     null
+    ],
+    [
+     "natáčí",
+     1554,
+     1,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "obri",
+   "text": "DIY",
+   "f": 1567,
+   "n": 2,
+   "s": 520,
+   "sy": 2.4,
+   "vypln": "inverze",
+   "f1": 1582
+  },
+  {
+   "typ": "box",
+   "text": "DIY",
+   "f": 1569,
+   "x": 1010,
+   "y": 830,
+   "s": 100,
+   "barva": "krem",
+   "f1": 1582
+  },
+  {
+   "typ": "radek",
+   "y": 470,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 1620,
+   "slova": [
+    [
+     "žádnou",
+     1598,
+     0,
+     null
+    ],
+    [
+     "velkou",
+     1604,
+     1,
+     null
+    ],
+    [
+     "produkci",
+     1611,
+     2,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 880,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 1652,
+   "slova": [
+    [
+     "Někdy",
+     1622,
+     0,
+     null
+    ],
+    [
+     "z ruky",
+     1638,
+     2,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 880,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 1680,
+   "slova": [
+    [
+     "někdy",
+     1654,
+     0,
+     null
+    ],
+    [
+     "kameramana",
+     1667,
+     2,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 540,
+   "s": 130,
+   "styl": "serif",
+   "stredy": [
+    0.5
+   ],
+   "f1": 1694,
+   "slova": [
+    [
+     "To je všechno.",
+     1682,
+     0,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 880,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 1741,
+   "slova": [
+    [
+     "humorem",
+     1706,
+     0,
+     null
+    ],
+    [
+     "zábavu",
+     1724,
+     2,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 150,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 1815,
+   "slova": [
+    [
+     "zároveň",
+     1748,
+     0,
+     null
+    ],
+    [
+     "dává",
+     1765,
+     2,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "box",
+   "text": "stejnou prioritu",
+   "f": 1774,
+   "x": 400,
+   "y": 860,
+   "s": 96,
+   "barva": "cervena",
+   "f1": 1815
+  },
+  {
+   "typ": "radek",
+   "y": 560,
+   "s": 90,
+   "styl": "sans tucne",
+   "f1": 1861,
+   "slova": [
+    [
+     "moc",
+     1830,
+     0,
+     null
+    ],
+    [
+     "dobře",
+     1836,
+     1,
+     null
+    ],
+    [
+     "uvědomuje",
+     1843,
+     2,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 540,
+   "s": 90,
+   "styl": "sans tucne",
+   "f1": 1920,
+   "slova": [
+    [
+     "osobní",
+     1884,
+     0,
+     null
+    ],
+    [
+     "profil",
+     1894,
+     1,
+     null
+    ],
+    [
+     "přináší",
+     1902,
+     2,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 880,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 1959,
+   "slova": [
+    [
+     "sub brand",
+     1931,
+     0,
+     null
+    ],
+    [
+     "Representu",
+     1946,
+     1,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "obri",
+   "text": "247",
+   "f": 1959,
+   "n": 2,
+   "s": 560,
+   "sy": 1.8,
+   "styl": "serif",
+   "f1": 1979
+  },
+  {
+   "typ": "radek",
+   "y": 540,
+   "s": 260,
+   "styl": "sans tucne",
+   "stredy": [
+    0.5
+   ],
+   "f1": 1979,
+   "slova": [
+    [
+     "247",
+     1961,
+     0,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 150,
+   "s": 80,
+   "styl": "sans tucne",
+   "barva": "tmava",
+   "stredy": [
+    0.2,
+    0.5
+   ],
+   "f1": 2004,
+   "slova": [
+    [
+     "stojí",
+     1981,
+     0,
+     null
+    ],
+    [
+     "na jeho",
+     1987,
+     1,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "box",
+   "text": "jménu",
+   "f": 1994,
+   "x": 180,
+   "y": 820,
+   "s": 120,
+   "barva": "cervena",
+   "f1": 2004
+  },
+  {
+   "typ": "radek",
+   "y": 880,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 2044,
+   "slova": [
+    [
+     "ukazoval",
+     2019,
+     0,
+     null
+    ],
+    [
+     "jak",
+     2030,
+     1,
+     null
+    ],
+    [
+     "trénuje",
+     2034,
+     2,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 930,
+   "s": 90,
+   "styl": "sans",
+   "stredy": [
+    0.5
+   ],
+   "f1": 2060,
+   "slova": [
+    [
+     "dělám to,",
+     2046,
+     0,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 930,
+   "s": 90,
+   "styl": "sans",
+   "stredy": [
+    0.5
+   ],
+   "f1": 2072,
+   "slova": [
+    [
+     "protože",
+     2060,
+     0,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 930,
+   "s": 90,
+   "styl": "sans",
+   "stredy": [
+    0.5
+   ],
+   "f1": 2080,
+   "slova": [
+    [
+     "jsem",
+     2072,
+     0,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 930,
+   "s": 90,
+   "styl": "sans",
+   "stredy": [
+    0.5
+   ],
+   "f1": 2094,
+   "slova": [
+    [
+     "lídr",
+     2080,
+     0,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 930,
+   "s": 90,
+   "styl": "sans",
+   "stredy": [
+    0.5
+   ],
+   "f1": 2120,
+   "slova": [
+    [
+     "té značky",
+     2094,
+     0,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 880,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 2149,
+   "slova": [
+    [
+     "sleduju",
+     2127,
+     0,
+     null
+    ],
+    [
+     "už dlouho",
+     2134,
+     1,
+     null
+    ],
+    [
+     "vím",
+     2147,
+     2,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 430,
+   "s": 96,
+   "styl": "sans tucne",
+   "f1": 2184,
+   "slova": [
+    [
+     "jedinej",
+     2154,
+     0,
+     null
+    ],
+    [
+     "důvod",
+     2162,
+     1,
+     null
+    ],
+    [
+     "koupil",
+     2179,
+     2,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 880,
+   "s": 110,
+   "styl": "sans tucne",
+   "stredy": [
+    0.5
+   ],
+   "f1": 2205,
+   "slova": [
+    [
+     "Represent",
+     2186,
+     0,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "stitek",
+   "x": 140,
+   "y": 880,
+   "s": 70,
+   "casti": [
+    [
+     "George",
+     "sans",
+     2212
+    ],
+    [
+     "Heaton",
+     "serif",
+     2214
+    ]
+   ],
+   "f1": 2238
+  },
+  {
+   "typ": "stitek",
+   "x": 800,
+   "y": 880,
+   "s": 70,
+   "casti": [
+    [
+     "Michael",
+     "sans",
+     2218
+    ],
+    [
+     "Heaton",
+     "serif",
+     2221
+    ]
+   ],
+   "f1": 2238
+  },
+  {
+   "typ": "radek",
+   "y": 400,
+   "s": 92,
+   "styl": "sans",
+   "stredy": [
+    0.27
+   ],
+   "slova": [
+    [
+     "firmu",
+     2254,
+     0
+    ]
+   ],
+   "f1": 2282
+  },
+  {
+   "typ": "radek",
+   "y": 400,
+   "s": 92,
+   "styl": "sans",
+   "stredy": [
+    0.27
+   ],
+   "slova": [
+    [
+     "osobní profil",
+     2282,
+     0
+    ]
+   ],
+   "f1": 2328
+  },
+  {
+   "typ": "radek",
+   "y": 400,
+   "s": 92,
+   "styl": "sans",
+   "stredy": [
+    0.27
+   ],
+   "slova": [
+    [
+     "komunitu",
+     2328,
+     0
+    ]
+   ],
+   "f1": 2348
+  },
+  {
+   "typ": "radek",
+   "y": 400,
+   "s": 92,
+   "styl": "sans",
+   "stredy": [
+    0.27
+   ],
+   "slova": [
+    [
+     "známosti",
+     2348,
+     0
+    ]
+   ],
+   "f1": 2374
+  },
+  {
+   "typ": "radek",
+   "y": 400,
+   "s": 92,
+   "styl": "sans",
+   "stredy": [
+    0.27
+   ],
+   "slova": [
+    [
+     "obchod",
+     2374,
+     0
+    ]
+   ],
+   "f1": 2382
+  },
+  {
+   "typ": "radek",
+   "y": 300,
+   "s": 80,
+   "styl": "sans tucne",
+   "stredy": [
+    0.24,
+    0.62
+   ],
+   "f1": 2447,
+   "slova": [
+    [
+     "napiš",
+     2384,
+     0,
+     null
+    ],
+    [
+     "do komentáře",
+     2390,
+     1,
+     null
+    ]
+   ]
+  },
+  {
+   "typ": "radek",
+   "y": 820,
+   "s": 80,
+   "styl": "sans tucne",
+   "f1": 2447,
+   "slova": [
+    [
+     "pošlu",
+     2429,
+     0,
+     null
+    ],
+    [
+     "návod",
+     2441,
+     2,
+     "serif"
+    ]
+   ]
+  }
+ ],
+ "glitche": [
+  {
+   "f": 41,
+   "n": 3,
+   "druh": "neg",
+   "img": "assets/img/logo_represent_1.jpg",
+   "bloky": [
+    [
+     160,
+     110,
+     560,
+     330
+    ],
+    [
+     820,
+     640,
+     440,
+     250,
+     "seda1",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 69,
+   "n": 3,
+   "bloky": [
+    [
+     0,
+     690,
+     1440,
+     150,
+     "seda2"
+    ],
+    [
+     300,
+     180,
+     400,
+     280,
+     "seda1",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 110,
+   "n": 3,
+   "druh": "neg",
+   "img": "assets/img/la_0.jpg",
+   "bloky": [
+    [
+     0,
+     0,
+     1440,
+     380
+    ],
+    [
+     620,
+     640,
+     700,
+     300,
+     "neg",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 145,
+   "n": 3,
+   "bloky": [
+    [
+     0,
+     330,
+     1440,
+     270,
+     "seda1"
+    ],
+    [
+     120,
+     700,
+     520,
+     210,
+     "seda2",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 185,
+   "n": 3,
+   "druh": "neg",
+   "img": "assets/img/portret_george_1.jpg",
+   "bloky": [
+    [
+     0,
+     200,
+     900,
+     500
+    ],
+    [
+     1000,
+     620,
+     440,
+     300,
+     "neg",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 227,
+   "n": 3,
+   "druh": "neg",
+   "img": "assets/img/studio_0.jpg",
+   "bloky": [
+    [
+     0,
+     0,
+     700,
+     1080
+    ],
+    [
+     900,
+     300,
+     540,
+     400,
+     "neg",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 283,
+   "n": 3,
+   "druh": "neg",
+   "img": "assets/img/tim_proc_0.jpg",
+   "bloky": [
+    [
+     300,
+     0,
+     840,
+     500
+    ],
+    [
+     0,
+     700,
+     600,
+     380,
+     "neg",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 298,
+   "n": 3,
+   "bloky": [
+    [
+     0,
+     0,
+     1440,
+     230,
+     "seda1"
+    ],
+    [
+     0,
+     850,
+     1440,
+     230,
+     "seda2",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 347,
+   "n": 3,
+   "druh": "neg",
+   "img": "assets/img/nataci_1.jpg",
+   "bloky": [
+    [
+     0,
+     300,
+     1440,
+     420
+    ],
+    [
+     200,
+     20,
+     520,
+     250,
+     "neg",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 471,
+   "n": 3,
+   "druh": "neg",
+   "img": "assets/img/portret_cbum_1.jpg",
+   "bloky": [
+    [
+     159,
+     524,
+     956,
+     384,
+     "neg",
+     0,
+     3
+    ],
+    [
+     315,
+     440,
+     980,
+     388,
+     "neg",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 537,
+   "n": 3,
+   "bloky": [
+    [
+     561,
+     34,
+     637,
+     457,
+     "seda1",
+     0,
+     3
+    ],
+    [
+     484,
+     584,
+     916,
+     357,
+     "seda2",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 621,
+   "n": 3,
+   "bloky": [
+    [
+     300,
+     592,
+     920,
+     430,
+     "seda1",
+     0,
+     3
+    ]
+   ]
+  },
+  {
+   "f": 664,
+   "n": 3,
+   "druh": "neg",
+   "img": "assets/img/portret_ross_2.jpg",
+   "bloky": [
+    [
+     59,
+     232,
+     1053,
+     300,
+     "neg",
+     0,
+     3
+    ],
+    [
+     707,
+     444,
+     686,
+     284,
+     "neg",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 688,
+   "n": 3,
+   "bloky": [
+    [
+     455,
+     288,
+     546,
+     395,
+     "seda1",
+     0,
+     3
+    ],
+    [
+     53,
+     197,
+     474,
+     542,
+     "seda2",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 724,
+   "n": 3,
+   "druh": "neg",
+   "img": "assets/img/logo_247_1.jpg",
+   "bloky": [
+    [
+     274,
+     241,
+     763,
+     230,
+     "neg",
+     0,
+     3
+    ]
+   ]
+  },
+  {
+   "f": 801,
+   "n": 3,
+   "druh": "neg",
+   "img": "assets/img/k9_0.jpg",
+   "bloky": [
+    [
+     154,
+     600,
+     778,
+     418,
+     "neg",
+     0,
+     3
+    ],
+    [
+     462,
+     354,
+     712,
+     522,
+     "neg",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 844,
+   "n": 3,
+   "druh": "neg",
+   "img": "assets/img/k10_0.jpg",
+   "bloky": [
+    [
+     208,
+     189,
+     1146,
+     327,
+     "neg",
+     0,
+     3
+    ]
+   ]
+  },
+  {
+   "f": 879,
+   "n": 3,
+   "bloky": [
+    [
+     670,
+     663,
+     598,
+     324,
+     "seda1",
+     0,
+     3
+    ],
+    [
+     81,
+     234,
+     400,
+     504,
+     "seda2",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 987,
+   "n": 3,
+   "druh": "neg",
+   "img": "assets/img/k14_0.jpg",
+   "bloky": [
+    [
+     599,
+     100,
+     430,
+     352,
+     "neg",
+     0,
+     3
+    ]
+   ]
+  },
+  {
+   "f": 1009,
+   "n": 3,
+   "bloky": [
+    [
+     261,
+     148,
+     1097,
+     541,
+     "seda1",
+     0,
+     3
+    ]
+   ]
+  },
+  {
+   "f": 1248,
+   "n": 3,
+   "druh": "neg",
+   "img": "assets/img/ig_DcwA01lRTHy.jpg",
+   "bloky": [
+    [
+     433,
+     403,
+     855,
+     257,
+     "neg",
+     0,
+     3
+    ],
+    [
+     460,
+     193,
+     919,
+     260,
+     "neg",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 1312,
+   "n": 3,
+   "bloky": [
+    [
+     639,
+     585,
+     740,
+     161,
+     "seda1",
+     0,
+     3
+    ],
+    [
+     279,
+     171,
+     1130,
+     169,
+     "seda2",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 1356,
+   "n": 3,
+   "druh": "neg",
+   "img": "assets/img/k21_0.jpg",
+   "bloky": [
+    [
+     188,
+     466,
+     540,
+     254,
+     "neg",
+     0,
+     3
+    ]
+   ]
+  },
+  {
+   "f": 1414,
+   "n": 3,
+   "bloky": [
+    [
+     76,
+     833,
+     748,
+     174,
+     "seda1",
+     0,
+     3
+    ]
+   ]
+  },
+  {
+   "f": 1506,
+   "n": 3,
+   "bloky": [
+    [
+     343,
+     533,
+     1095,
+     522,
+     "seda1",
+     0,
+     3
+    ],
+    [
+     112,
+     541,
+     988,
+     336,
+     "seda2",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 1531,
+   "n": 3,
+   "druh": "neg",
+   "img": "assets/img/k26_0.jpg",
+   "bloky": [
+    [
+     433,
+     192,
+     664,
+     533,
+     "neg",
+     0,
+     3
+    ],
+    [
+     195,
+     443,
+     859,
+     469,
+     "neg",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 1579,
+   "n": 3,
+   "druh": "neg",
+   "img": "assets/img/k27_0.jpg",
+   "bloky": [
+    [
+     160,
+     438,
+     1187,
+     578,
+     "neg",
+     0,
+     3
+    ],
+    [
+     202,
+     113,
+     1126,
+     244,
+     "neg",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 1617,
+   "n": 3,
+   "druh": "neg",
+   "img": "assets/img/k28_0.jpg",
+   "bloky": [
+    [
+     54,
+     320,
+     1151,
+     362,
+     "neg",
+     0,
+     3
+    ]
+   ]
+  },
+  {
+   "f": 1677,
+   "n": 3,
+   "bloky": [
+    [
+     481,
+     256,
+     805,
+     373,
+     "seda1",
+     0,
+     3
+    ],
+    [
+     139,
+     492,
+     976,
+     171,
+     "seda2",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 1691,
+   "n": 3,
+   "bloky": [
+    [
+     398,
+     48,
+     512,
+     437,
+     "seda1",
+     0,
+     3
+    ],
+    [
+     407,
+     523,
+     996,
+     506,
+     "seda2",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 1738,
+   "n": 3,
+   "bloky": [
+    [
+     329,
+     600,
+     986,
+     412,
+     "seda1",
+     0,
+     3
+    ],
+    [
+     89,
+     93,
+     333,
+     217,
+     "seda2",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 1917,
+   "n": 3,
+   "bloky": [
+    [
+     688,
+     203,
+     420,
+     245,
+     "seda1",
+     0,
+     3
+    ],
+    [
+     308,
+     339,
+     711,
+     577,
+     "seda2",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 1976,
+   "n": 3,
+   "bloky": [
+    [
+     176,
+     722,
+     675,
+     186,
+     "seda1",
+     0,
+     3
+    ],
+    [
+     243,
+     435,
+     1177,
+     224,
+     "seda2",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 2146,
+   "n": 3,
+   "druh": "neg",
+   "img": "assets/img/k40_0.jpg",
+   "bloky": [
+    [
+     692,
+     448,
+     370,
+     275,
+     "neg",
+     0,
+     3
+    ],
+    [
+     53,
+     208,
+     733,
+     577,
+     "neg",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 2181,
+   "n": 3,
+   "druh": "neg",
+   "img": "assets/img/logo_represent_1.jpg",
+   "bloky": [
+    [
+     180,
+     815,
+     672,
+     198,
+     "neg",
+     0,
+     3
+    ],
+    [
+     192,
+     512,
+     1000,
+     481,
+     "neg",
+     1,
+     2
+    ]
+   ]
+  },
+  {
+   "f": 2202,
+   "n": 3,
+   "bloky": [
+    [
+     189,
+     277,
+     896,
+     400,
+     "seda1",
+     0,
+     3
+    ]
+   ]
+  }
+ ],
+ "zablesky": [
+  [
+   72,
+   1,
+   0.8
+  ]
+ ],
+ "priprava": {
+  "klipy": [
+   [
+    "k1",
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/jYUcsLdrm3M.mp4",
+    424,
+    50,
+    "scale=-2:1350,crop=1440:1080:(iw-1440)/2:0"
+   ],
+   [
+    "k3c0",
+    "$BR_REELY/podnikatele/heaton/assets/media/kv/bumstead.mp4",
+    0.4,
+    39,
+    "vyska"
+   ],
+   [
+    "k7",
+    "$BR_REELY/podnikatele/heaton/assets/media/c_cadence.mp4",
+    3,
+    40,
+    "stred"
+   ],
+   [
+    "k9",
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/VofeFR5LnZ4.mp4",
+    21.8,
+    47,
+    "stred"
+   ],
+   [
+    "k10",
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/h5brRENzsOU.mp4",
+    21.8,
+    39,
+    "stred"
+   ],
+   [
+    "k12",
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/9fGr_fZTKHY.mp4",
+    1278,
+    41,
+    "stred"
+   ],
+   [
+    "k13",
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/9fGr_fZTKHY.mp4",
+    618,
+    20,
+    "stred"
+   ],
+   [
+    "k14",
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/clFvSb8W9es.mp4",
+    770,
+    26,
+    "stred"
+   ],
+   [
+    "k15",
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/9fGr_fZTKHY.mp4",
+    668,
+    48,
+    "stred"
+   ],
+   [
+    "k16",
+    "$BR_REELY/podnikatele/heaton/assets/media/c_teplaky.mp4",
+    1.27,
+    96,
+    "stred"
+   ],
+   [
+    "k20",
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/9fGr_fZTKHY.mp4",
+    831,
+    48,
+    "stred"
+   ],
+   [
+    "k21",
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/9dwCvRL7n3M.mp4",
+    3,
+    37,
+    "stred"
+   ],
+   [
+    "k22",
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/jYUcsLdrm3M.mp4",
+    509.6,
+    29,
+    "scale=-2:1350,crop=1440:1080:(iw-1440)/2:0"
+   ],
+   [
+    "k23",
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/SAmqCxYgrUw.mp4",
+    556,
+    60,
+    "stred"
+   ],
+   [
+    "k25",
+    "$BR_REELY/podnikatele/heaton/assets/media/tim_telo.mp4",
+    59.18,
+    29,
+    "scale=1440:1080"
+   ],
+   [
+    "k26",
+    "$BR_REELY/podnikatele/heaton/assets/media/c_diy.mp4",
+    1,
+    52,
+    "scale=-2:1350,crop=1440:1080:(iw-1440)/2:0"
+   ],
+   [
+    "k27",
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/VofeFR5LnZ4.mp4",
+    1983.4,
+    42,
+    "stred"
+   ],
+   [
+    "k28",
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/jYUcsLdrm3M.mp4",
+    550,
+    36,
+    "scale=-2:1350,crop=1440:1080:(iw-1440)/2:0"
+   ],
+   [
+    "k29",
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/VofeFR5LnZ4.mp4",
+    2050.3,
+    32,
+    "stred"
+   ],
+   [
+    "k31",
+    "$BR_REELY/podnikatele/heaton/assets/media/c_bumstead.mp4",
+    0.2,
+    51,
+    "stred"
+   ],
+   [
+    "k32c1",
+    "$BR_REELY/podnikatele/heaton/assets/media/c_ross.mp4",
+    2,
+    78,
+    "stred"
+   ],
+   [
+    "k33c0",
+    "$BR_REELY/podnikatele/heaton/assets/media/tim_telo.mp4",
+    71.94,
+    50,
+    "scale=1440:1080"
+   ],
+   [
+    "k37",
+    "$BR_REELY/podnikatele/heaton/zdroj/klipy/9dwCvRL7n3M.mp4",
+    796,
+    44,
+    "scale=-2:1350,crop=1440:1080:(iw-1440)/2:0"
+   ],
+   [
+    "k38",
+    "$BR_REELY/podnikatele/heaton/assets/media/c_leader.mp4",
+    4.3,
+    80,
+    "crop=1108:832:406:124,scale=1440:1080"
+   ],
+   [
+    "k39c2",
+    "$BR_REELY/podnikatele/heaton/assets/media/tim_telo.mp4",
+    81.6,
+    33,
+    "scale=1440:1080"
+   ],
+   [
+    "k40",
+    "$BR_REELY/podnikatele/heaton/assets/media/tim_telo.mp4",
+    82.78,
+    39,
+    "scale=1440:1080"
+   ],
+   [
+    "k43",
+    "$BR_REELY/podnikatele/heaton/assets/media/tim_telo.mp4",
+    86.48,
+    148,
+    "scale=2160:1620,crop=1440:1080:144:60"
+   ]
+  ],
+  "fotky": [
+   [
+    "portret_cbum_1",
+    "$BR_REELY/podnikatele/heaton/zdroj/nalez/portret_cbum_1.jpg"
+   ],
+   [
+    "portret_will_2",
+    "$BR_REELY/podnikatele/heaton/zdroj/nalez/portret_will_2.jpg"
+   ],
+   [
+    "portret_ross_1",
+    "$BR_REELY/podnikatele/heaton/zdroj/nalez/portret_ross_1.jpg"
+   ],
+   [
+    "portret_michael_1",
+    "$BR_REELY/podnikatele/heaton/zdroj/nalez/portret_michael_1.jpg"
+   ],
+   [
+    "portret_cbum_2",
+    "$BR_REELY/podnikatele/heaton/zdroj/nalez/portret_cbum_2.jpg"
+   ],
+   [
+    "ig_Db3qmxyPKZ6",
+    "$BR_REELY/podnikatele/heaton/assets/media/igr/Db3qmxyPKZ6.jpg"
+   ],
+   [
+    "ig_DbGhoqgRVOZ",
+    "$BR_REELY/podnikatele/heaton/assets/media/igr/DbGhoqgRVOZ.jpg"
+   ],
+   [
+    "ig_DbKkFfbOS-j",
+    "$BR_REELY/podnikatele/heaton/assets/media/igr/DbKkFfbOS-j.jpg"
+   ],
+   [
+    "ig_DblcaHaMiUs",
+    "$BR_REELY/podnikatele/heaton/assets/media/igr/DblcaHaMiUs.jpg"
+   ],
+   [
+    "ig_DcWnccKva2E",
+    "$BR_REELY/podnikatele/heaton/assets/media/igr/DcWnccKva2E.jpg"
+   ],
+   [
+    "ig_DcYn6NYxlDm",
+    "$BR_REELY/podnikatele/heaton/assets/media/igr/DcYn6NYxlDm.jpg"
+   ],
+   [
+    "ig_DcwA01lRTHy",
+    "$BR_REELY/podnikatele/heaton/assets/media/igr/DcwA01lRTHy.jpg"
+   ],
+   [
+    "ig_DdO4t7DRK1u",
+    "$BR_REELY/podnikatele/heaton/assets/media/igr/DdO4t7DRK1u.jpg"
+   ],
+   [
+    "ig_DdY7OVjROdY",
+    "$BR_REELY/podnikatele/heaton/assets/media/igr/DdY7OVjROdY.jpg"
+   ],
+   [
+    "ig_Ddyr7vrR6lF",
+    "$BR_REELY/podnikatele/heaton/assets/media/igr/Ddyr7vrR6lF.jpg"
+   ],
+   [
+    "logo_cadence_1",
+    "$BR_REELY/podnikatele/heaton/zdroj/nalez/logo_cadence_1.jpg"
+   ],
+   [
+    "logo_247_1",
+    "$BR_REELY/podnikatele/heaton/zdroj/nalez/logo_247_1.jpg"
+   ],
+   [
+    "logo_cadence_2",
+    "$BR_REELY/podnikatele/heaton/zdroj/nalez/logo_cadence_2.jpg"
+   ],
+   [
+    "logo_owners_1",
+    "$BR_REELY/podnikatele/heaton/zdroj/nalez/logo_owners_1.jpg"
+   ],
+   [
+    "logo_represent_2",
+    "$BR_REELY/podnikatele/heaton/zdroj/nalez/logo_represent_2.jpg"
+   ],
+   [
+    "logo_247_2",
+    "$BR_REELY/podnikatele/heaton/zdroj/nalez/logo_247_2.jpg"
+   ],
+   [
+    "logo_owners_3",
+    "$BR_REELY/podnikatele/heaton/zdroj/nalez/logo_owners_3.jpg"
+   ],
+   [
+    "logo_cadence_3",
+    "$BR_REELY/podnikatele/heaton/zdroj/nalez/logo_cadence_3.jpg"
+   ],
+   [
+    "logo_represent_1",
+    "$BR_REELY/podnikatele/heaton/zdroj/nalez/logo_represent_1.jpg"
+   ],
+   [
+    "logo_247_3",
+    "$BR_REELY/podnikatele/heaton/zdroj/nalez/logo_247_3.jpg"
+   ],
+   [
+    "logo_owners_2",
+    "$BR_REELY/podnikatele/heaton/zdroj/nalez/logo_owners_2.jpg"
+   ],
+   [
+    "produkt_3",
+    "$BR_REELY/podnikatele/heaton/zdroj/nalez/produkt_3.jpg"
+   ],
+   [
+    "produkt_5",
+    "$BR_REELY/podnikatele/heaton/zdroj/nalez/produkt_5.jpg"
+   ],
+   [
+    "av_drallday13",
+    "$BR_REELY/podnikatele/heaton/assets/media/kom/drallday13.jpg"
+   ],
+   [
+    "av_akamdapapash",
+    "$BR_REELY/podnikatele/heaton/assets/media/kom/akamdapapash.jpg"
+   ],
+   [
+    "av_bewareeverything",
+    "$BR_REELY/podnikatele/heaton/assets/media/kom/bewareeverything.jpg"
+   ],
+   [
+    "tvar_43",
+    "$BR_REELY/podnikatele/heaton/zdroj/tvare_g/3.png"
+   ],
+   [
+    "tvar_44",
+    "$BR_REELY/podnikatele/heaton/zdroj/tvare_g/4.png"
+   ],
+   [
+    "tvar_46",
+    "$BR_REELY/podnikatele/heaton/zdroj/tvare_g/6.webp"
+   ],
+   [
+    "portret_ross_2",
+    "$BR_REELY/podnikatele/heaton/zdroj/nalez/portret_ross_2.jpg"
+   ]
+  ],
+  "vyrezy": [
+   [
+    "goodge",
+    "$BR_REELY/podnikatele/heaton/zdroj/vys/goodge_cut.png",
+    560
+   ],
+   [
+    "george_v",
+    "$BR_REELY/podnikatele/heaton/zdroj/vys/george_cut.png",
+    520
+   ]
+  ],
+  "nalepky": [
+   [
+    "george_v",
+    "$BR_REELY/podnikatele/heaton/zdroj/vys/george_cut.png",
+    860
+   ],
+   [
+    "michael_v",
+    "$BR_REELY/podnikatele/heaton/zdroj/vys/michael_cut.png",
+    860
+   ]
+  ],
+  "zvuky": [
+   [
+    "q_teplaky",
+    "$BR_REELY/podnikatele/heaton/assets/media/c_teplaky.mp4",
+    1.27,
+    4.97
+   ],
+   [
+    "q_leader",
+    "$BR_REELY/podnikatele/heaton/assets/media/c_leader.mp4",
+    4.3,
+    7.35
+   ]
+  ]
+ },
+ "zvuk": {
+  "od": 0,
+  "do": 95.2,
+  "suby": [
+   72,
+   350,
+   882,
+   1473,
+   2238
+  ],
+  "hudba": "the-game-hate-it-or-love-it-instrumental.wav",
+  "hudbaOd": 86,
+  "roztah": "tik",
+  "vlozky": [
+   {
+    "t": 43.98,
+    "f": 1056,
+    "n": 89,
+    "soubor": "assets/media/q_teplaky.wav"
+   },
+   {
+    "t": 81.48,
+    "f": 2044,
+    "n": 73,
+    "soubor": "assets/media/q_leader.wav"
+   }
+  ],
+  "ztlum": [
+   [
+    1056,
+    1148,
+    -10
+   ],
+   [
+    2044,
+    2120,
+    -10
+   ],
+   [
+    2238,
+    2382,
+    -9
+   ]
+  ]
+ },
+ "takt": [
+  [
+   0,
+   44,
+   2
+  ],
+  [
+   44,
+   72,
+   2
+  ],
+  [
+   72,
+   113,
+   1
+  ],
+  [
+   113,
+   148,
+   2
+  ],
+  [
+   148,
+   188,
+   2
+  ],
+  [
+   188,
+   230,
+   3
+  ],
+  [
+   230,
+   286,
+   2
+  ],
+  [
+   286,
+   301,
+   2
+  ],
+  [
+   301,
+   350,
+   1
+  ],
+  [
+   350,
+   399,
+   2
+  ],
+  [
+   399,
+   428,
+   2
+  ],
+  [
+   428,
+   474,
+   2
+  ],
+  [
+   474,
+   540,
+   2
+  ],
+  [
+   540,
+   575,
+   2
+  ],
+  [
+   575,
+   624,
+   2
+  ],
+  [
+   624,
+   667,
+   2
+  ],
+  [
+   667,
+   691,
+   2
+  ],
+  [
+   691,
+   727,
+   2
+  ],
+  [
+   727,
+   804,
+   2
+  ],
+  [
+   804,
+   847,
+   2
+  ],
+  [
+   847,
+   882,
+   2
+  ],
+  [
+   882,
+   937,
+   2
+  ],
+  [
+   937,
+   974,
+   2
+  ],
+  [
+   974,
+   990,
+   2
+  ],
+  [
+   990,
+   1012,
+   2
+  ],
+  [
+   1012,
+   1056,
+   2
+  ],
+  [
+   1056,
+   1148,
+   1
+  ],
+  [
+   1148,
+   1186,
+   2
+  ],
+  [
+   1186,
+   1251,
+   2
+  ],
+  [
+   1251,
+   1315,
+   2
+  ],
+  [
+   1315,
+   1359,
+   2
+  ],
+  [
+   1359,
+   1392,
+   2
+  ],
+  [
+   1392,
+   1417,
+   2
+  ],
+  [
+   1417,
+   1473,
+   2
+  ],
+  [
+   1473,
+   1509,
+   2
+  ],
+  [
+   1509,
+   1534,
+   2
+  ],
+  [
+   1534,
+   1582,
+   2
+  ],
+  [
+   1582,
+   1620,
+   2
+  ],
+  [
+   1620,
+   1652,
+   2
+  ],
+  [
+   1652,
+   1680,
+   2
+  ],
+  [
+   1680,
+   1694,
+   2
+  ],
+  [
+   1694,
+   1741,
+   2
+  ],
+  [
+   1741,
+   1815,
+   2
+  ],
+  [
+   1815,
+   1861,
+   2
+  ],
+  [
+   1861,
+   1920,
+   2
+  ],
+  [
+   1920,
+   1979,
+   2
+  ],
+  [
+   1979,
+   2004,
+   2
+  ],
+  [
+   2004,
+   2044,
+   2
+  ],
+  [
+   2044,
+   2120,
+   1
+  ],
+  [
+   2120,
+   2149,
+   2
+  ],
+  [
+   2149,
+   2184,
+   2
+  ],
+  [
+   2184,
+   2205,
+   2
+  ],
+  [
+   2205,
+   2238,
+   2
+  ],
+  [
+   2238,
+   2382,
+   1
+  ],
+  [
+   2382,
+   2447,
+   1
+  ]
+ ]
+}

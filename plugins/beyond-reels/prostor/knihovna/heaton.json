@@ -1,0 +1,263 @@
+{
+ "styl": "mason",
+ "fps": 30,
+ "sirka": 720,
+ "pomer": "4/3",
+ "video": "reels/podnikatele/heaton/renders/heaton-cele-v17.mp4",
+ "reel": "heaton",
+ "polozky": [
+  {
+   "id": "mason-montaz-heaton",
+   "komponenta": "montaz",
+   "od": 0,
+   "do": 20,
+   "nazev": "Montáž portrétů",
+   "popis": "Šest portrétů na černé po dvou snímcích, oči vždy na stejném místě a každý větší, poslední přes celý obraz; úderný otvírák hooku, než padne jméno",
+   "kod": "src/intro-g4.html:82 (s1, assets/media/greg/p0 až p5), oči srovnané nastroje/tvare_g.py, rozmazání v postfx fx/intro-g4.json",
+   "vyskyty": "",
+   "kvalita": 2
+  },
+  {
+   "id": "mason-sipka-heaton",
+   "komponenta": "sipka",
+   "od": 12,
+   "do": 47,
+   "nazev": "Jméno se šipkou zleva",
+   "popis": "Jméno bílým písmem nad hlavou, bílá šipka se zleva kreslí 6 snímků a hrot 3 snímky, drží do střihu; při nástupu blikne bílá silueta postavy na dvojky; představení člověka v prvním záběru",
+   "kod": "src/intro-g4.html:90 až 100 (#sipC, #sipH, silueta assets/media/greg/sil2)",
+   "vyskyty": "",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-text-po-slovech-heaton",
+   "komponenta": "text-po-slovech",
+   "od": 47,
+   "do": 100,
+   "nazev": "Text po slovech na detailu",
+   "popis": "Bílý text vlevo dole naskakuje po slovech, každé slovo jeden snímek šedé, menší a níž, pak plné; pod tím jemný plynulý nájezd 1 na 1,04 na dvojky na detail loga; tvrzení v hooku nad produktem",
+   "kod": "src/intro-g4.html:102 až 108 (radekB, slovo, zoom #hz)",
+   "vyskyty": "",
+   "kvalita": 2
+  },
+  {
+   "id": "mason-whip-pan-heaton",
+   "komponenta": "whip-pan",
+   "od": 94,
+   "do": 118,
+   "nazev": "Whip pan do nové scény",
+   "popis": "Nová scéna vjede zprava za 4 snímky po podílech 0,4 0,12 0,03, stará odjede doleva, na dopadu bílý záblesk; přechod na slově ale do pointy",
+   "kod": "src/intro-g4.html:110 až 113 (s4 x, s3 x, blikObraz)",
+   "vyskyty": "",
+   "kvalita": 2
+  },
+  {
+   "id": "mason-ai-vyrez-heaton",
+   "komponenta": "ai-vyrez",
+   "od": 100,
+   "do": 164,
+   "nazev": "AI výřez s padající částkou",
+   "popis": "AI portrét bez pozadí přijede zespodu na trojky, za ním obří červená částka 1 000 000 000 Kč padá na nulu, na nule bílý záblesk a portrét naráz černobílý; pointa přišel o všechno",
+   "kod": "src/intro-g4.html:116 až 121 (#por4 MK.tw, MK.pocitadlo, grayscale), portrét assets/media/gen/nula_1_cut.png",
+   "vyskyty": "",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-pocitadlo-heaton",
+   "komponenta": "pocitadlo",
+   "od": 257,
+   "do": 301,
+   "nazev": "Číslo načítá za osobou",
+   "popis": "Červená částka přes celou šířku za Georgem se načítá po dvou snímcích až na 3 000 000 000 Kč, na konci tuk; číslo je za člověkem díky masce; tržby a čísla u B-rollu",
+   "kod": "nastroje/miliardy.py (MatAnyone2 maska) zapečené v b_miliardy.mp4, zvuky src/zac.html:363",
+   "vyskyty": "0:04 (hook, padá na nulu)",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-mason-filtr-heaton",
+   "komponenta": "mason-filtr",
+   "od": 301,
+   "do": 395,
+   "nazev": "Mason filtr na B-rollech",
+   "popis": "Teplejší grade, zvednuté černé, měkčí kontrast, jemná záře ve světlech a zrno, k tomu lineární nájezd 1 na 1,035 v každém záběru; sjednotí cizí záběry z YouTube do jednoho looku",
+   "kod": "nastroje/broll_zac.py:9 až 11 (MASON), nájezd src/zac.html:159 až 161",
+   "vyskyty": "všechny B-rolly",
+   "kvalita": 2
+  },
+  {
+   "id": "mason-najezd-heaton",
+   "komponenta": "najezd",
+   "od": 395,
+   "do": 448,
+   "nazev": "Plynulý nájezd na A-roll",
+   "popis": "Pomalý nájezd po křivce sine in out přes celý úsek Tima (1,2 % za sekundu, max 6 %), sousední úseky jako jeden, nikdy rychlé odzoomování",
+   "kod": "src/zac.html:153 až 158 (TIMU, #brW)",
+   "vyskyty": "všechny úseky Tima",
+   "kvalita": 3
+  },
+  {
+   "id": "mason-yt-mrizka-heaton",
+   "komponenta": "yt-mrizka",
+   "od": 448,
+   "do": 499,
+   "nazev": "Mřížka YouTube videí",
+   "popis": "Devět skutečných náhledů s názvem a zhlédnutími naskakuje po dvou snímcích (y 50, 0,94 na 1), celá stěna lineárně najíždí 1 na 1,05 na 15 fps; ukázat, kolik obsahu člověk točí",
+   "kod": "src/zac.html:175 až 186 (.yt, #ytg), náhledy assets/media/yt",
+   "vyskyty": "",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-obri-slovo-heaton",
+   "komponenta": "obri-slovo",
+   "od": 496,
+   "do": 520,
+   "nazev": "PRIORITU přes celou šířku",
+   "popis": "Jedno slovo červenými verzálkami přesně přes celou šířku (SVG textLength 1840) roztažené na výšku 1,55 na bílém, nástup průhledností a doběhem 6 snímků, kick; klíčové slovo věty",
+   "kod": "src/zac.html:112, 188 až 192 (#oPrio)",
+   "vyskyty": "1:44 (HEATON v CTA)",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-zoom-z-displeje-heaton",
+   "komponenta": "zoom-z-displeje",
+   "od": 559,
+   "do": 600,
+   "nazev": "Zoom ven z displeje notebooku",
+   "popis": "Jeho video přes celý obraz, kamera s křivkou in out odjede ven a je to displej notebooku, za kterým sedí AI George; přechod z B-rollu do papírové scény",
+   "kod": "src/zac.html:109, 197 až 204 (#nbW, assets/media/gen/notebook.jpg, notebook.json)",
+   "vyskyty": "",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-karty-123-heaton",
+   "komponenta": "karty-123",
+   "od": 590,
+   "do": 661,
+   "nazev": "Body 1 2 3 za postavou",
+   "popis": "Tři červené karty s čísly naskočí po 0, 5 a 11 snímcích průhledností a posunem na dvojky, každá s klikem; stojí za výřezem postavy s notebookem, takže jsou v hloubce; slib tří věcí",
+   "kod": "src/zac.html:58, 109, 205 až 206 (.velk, notebook_cut.png)",
+   "vyskyty": "",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-karta-bodu-heaton",
+   "komponenta": "karta-bodu",
+   "od": 2001,
+   "do": 2052,
+   "nazev": "Titulní karta bodu",
+   "popis": "Karta s klipem vjede zprava s rozmazáním za 5 snímků, bílý záblesk, obří bílé číslo přes klip a na slovo název bodu tmavě pod kartou, karta lineárně najíždí 1,04; otevření každého bodu",
+   "kod": "src/zac.html:77 až 82, 113 až 115, 208 až 216 (bod, .karta, .kNaz)",
+   "vyskyty": "0:22 (kontakty), 0:40 (prodej)",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-prilet-reelu-heaton",
+   "komponenta": "prilet-reelu",
+   "od": 691,
+   "do": 752,
+   "nazev": "Pás reelů přiletí",
+   "popis": "Řada svislých karet s jeho videi naskakuje po jedné a jede doleva exponenciálním dojezdem 0,89 na snímek, dopady ze Shelby; on se skrze tvorbu spojuje s lidmi",
+   "kod": "src/zac.html:110, 218 až 224 (.reelB, #pas), klipy nastroje/klipy_karet.py",
+   "vyskyty": "",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-hoste-2x2-heaton",
+   "komponenta": "hoste-2x2",
+   "od": 831,
+   "do": 965,
+   "nazev": "Hosté 2x2",
+   "popis": "Náhledy jeho společných videí s hosty 2x2, každá karta naskočí na jméno (y 100 na 0, 7 snímků, 15 fps), celé pomalu najíždí s křivkou in out a přeskočí výstřih bez cuknutí; s kým točí",
+   "kod": "src/zac.html:116, 226 až 235 (.kk, popKarta, #hoW)",
+   "vyskyty": "",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-logo-zaber-heaton",
+   "komponenta": "logo-zaber",
+   "od": 961,
+   "do": 1010,
+   "nazev": "Záběr s logem",
+   "popis": "Značka se ukazuje skutečným záběrem s logem (Cadence na čepici), nikdy napsaným textem, titulek pod logem",
+   "kod": "nastroje/broll_zac.py:37, 59, 63 (LOGO_*, zdroj/loga.json)",
+   "vyskyty": "0:07 (Represent), 0:55 (Represent obchod), 1:27 (247)",
+   "kvalita": 2
+  },
+  {
+   "id": "mason-karta-uprostred-heaton",
+   "komponenta": "karta-uprostred",
+   "od": 1265,
+   "do": 1422,
+   "nazev": "Karta uprostřed se slovy po stranách",
+   "popis": "Svislá karta uprostřed papíru, záběry v ní se střídají se závěrkou, vlevo zůstává začátek věty, vpravo se mění to, co ukazuje; slova naskakují z šedé do tmavé zespodu; výčet obsahu",
+   "kod": "src/zac.html:65 až 72, 117 až 118, 237 až 256 (ukaz, .ukK, .bok)",
+   "vyskyty": "1:13 (natáčí z ruky)",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-citace-stitek-heaton",
+   "komponenta": "citace-stitek",
+   "od": 1420,
+   "do": 1597,
+   "nazev": "Citace na černém štítku",
+   "popis": "Klip George v originále se zvukem, český překlad bílým písmem na černém štítku dole po větách, na začátku závěrka a záblesk; jeho vlastní slova jako důkaz",
+   "kod": "src/zac.html:94, 263 až 272 (.cit, CIT), vložky nastroje/broll_zac.py:14 (VLOZKY)",
+   "vyskyty": "1:31 (lídr značky)",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-titulky-heaton",
+   "komponenta": "titulky",
+   "od": 1596,
+   "do": 1724,
+   "nazev": "Titulky",
+   "popis": "Kousky po 1 až 3 slovech přesně na hlas, 13 snímků minimum, bílé se stínem uprostřed na B-rollu, tmavé na papíře, u Tima kolem hlavy vlevo a vpravo, nikdy přes obličej; slovo velké v obraze se v titulku vynechá",
+   "kod": "src/zac.html:95 až 101, 298 až 360 (.hrud, bL, bR, BOKY)",
+   "vyskyty": "celý reel",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-match-cut-zhlednuti-heaton",
+   "komponenta": "match-cut-zhlednuti",
+   "od": 1862,
+   "do": 1905,
+   "nazev": "Výbuch zhlédnutí",
+   "popis": "Skutečné IG reely s počtem zhlédnutí střídané po 3 snímcích jako match cut, ikona a číslo na stejném místě, každý střih klik; zájem lidí o kolekci",
+   "kod": "nastroje/vybuch.py (b_vybuch.mp4), zvuky src/zac.html:260 až 261",
+   "vyskyty": "",
+   "kvalita": 2
+  },
+  {
+   "id": "mason-slova-za-osobou-heaton",
+   "komponenta": "slova-za-osobou",
+   "od": 2490,
+   "do": 2566,
+   "nazev": "Slova za osobou",
+   "popis": "Červené roztažené verzálky po slovech za člověkem (maska MatAnyone), každé slovo klik, poslední dopad a kick; zvýraznit klíčovou frázi na B-rollu i na Timovi",
+   "kod": "nastroje/za_osobou.py + za_markup.py (za_profil.mp4), src/zac.html:107, 162, 173",
+   "vyskyty": "0:17 (ALE PROČ, nastroje/proc_za.py), 1:05 (OSOBNOST PRODÁVÁ SAMA), 1:10 (VŠECHNO NATÁČÍ DIY)",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-karty-vedle-sebe-heaton",
+   "komponenta": "karty-vedle-sebe",
+   "od": 2339,
+   "do": 2435,
+   "nazev": "Dvě karty vedle sebe",
+   "popis": "Jeho vlog najede sám uprostřed, na klíčové slovo ustoupí doleva a vedle naskočí záběr Represent ve stejné velikosti; obsah má stejnou váhu jako firma",
+   "kod": "src/zac.html:119, 274 až 278 (.vk, karta)",
+   "vyskyty": "",
+   "kvalita": 2
+  },
+  {
+   "id": "mason-cislo-bodu-heaton",
+   "komponenta": "cislo-bodu",
+   "od": 3005,
+   "do": 3095,
+   "nazev": "Body 1 2 3 v CTA",
+   "popis": "Malé červené karty s čísly se vrátí přes Tima pod bradou, každá na své slovo, pod ní bílý název, na konci zhasnou na dvojky; rekapitulace slibu v CTA",
+   "kod": "src/zac.html:59, 62, 287 až 294 (.velkM, .triPod)",
+   "vyskyty": "",
+   "kvalita": 2
+  }
+ ]
+}

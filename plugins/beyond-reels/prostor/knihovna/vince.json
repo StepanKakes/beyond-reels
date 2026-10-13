@@ -1,0 +1,197 @@
+{
+ "styl": "mason",
+ "fps": 30,
+ "sirka": 720,
+ "pomer": "4/3",
+ "video": "jack-styl/renders/vince-v23.mp4",
+ "reel": "vince",
+ "polozky": [
+  {
+   "id": "mason-montaz-vince",
+   "komponenta": "montaz",
+   "od": 0,
+   "do": 48,
+   "nazev": "Montáž obličejů v kartě",
+   "popis": "Obličeje se střídají po 2 snímcích ve fotce zamčené uprostřed, karta každé 2 snímky mění šířku a náklon a celé pomalu najíždí 1 na 1,05. Intro, kterým představíš člověka dřív, než padne jeho jméno",
+   "kod": "src/vince.html:211 (#kfl, tvare.mp4, DLN intro ze Shelby A1)",
+   "vyskyty": "",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-split-dva-vince",
+   "komponenta": "split-dva",
+   "od": 62,
+   "do": 84,
+   "nazev": "Dva produkty vedle sebe",
+   "popis": "Obraz rozdělený svisle na dvě poloviny, v každé jiný produktový záběr, dole tmavý přechod pro titulek, nastoupí a odejde tvrdým střihem. Když jmenuješ dvě značky nebo dvě věci najednou",
+   "kod": "src/vince.html:94 (#b3, .pul)",
+   "vyskyty": "",
+   "kvalita": 2
+  },
+  {
+   "id": "mason-pocitadlo-vince",
+   "komponenta": "pocitadlo",
+   "od": 106,
+   "do": 179,
+   "nazev": "Červené číslo vedle fotky",
+   "popis": "Vedle IG fotky naskočí červené slovo, osoba na fotce blikne bílou siluetou, pak číslo každý snímek roste 21M až 430M, pod něj se na trojky protáhne černé zvýraznění a naskočí malý štítek s jednotkou. Na velké číslo, které má udeřit",
+   "kod": "src/vince.html:219 (#c430, #hl430, #igCut, #kor)",
+   "vyskyty": "",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-titulky-vince",
+   "komponenta": "titulky",
+   "od": 179,
+   "do": 240,
+   "nazev": "Titulky Noske",
+   "popis": "Bílé minusky 96 px dole po 2 až 4 slovech přesně na hlas, bez podkladu, jen jemný stín; na papíře tmavé bez stínu, uprostřed papíru větší, u citace v tmavé pilulce. Výchozí titulky pod A-roll a B-roll",
+   "kod": "src/vince.html:36 (.tit, .tit.papir, .tit.stred, .tit.klip), titulky :262 a :361",
+   "vyskyty": "0:09 uprostřed papíru, 0:37 na papíře, 0:18 v pilulce u klipu",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-obri-slovo-vince",
+   "komponenta": "obri-slovo",
+   "od": 677,
+   "do": 708,
+   "nazev": "Protažené obří slovo",
+   "popis": "Malé černé verzálky nahoře, pod nimi obří červené slovo svisle natažené 2,2krát, naskočí tvrdě na hlas a zmizí střihem. Na řečnickou otázku nebo pointu jednoho slova",
+   "kod": "src/vince.html:120 (#pse, #proc), :103 (#w8)",
+   "vyskyty": "0:08 ANI SLOVO",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-vyrez-najezd-vince",
+   "komponenta": "vyrez-najezd",
+   "od": 260,
+   "do": 300,
+   "nazev": "Výřezy postav najedou z boku",
+   "popis": "Postavy bez pozadí najedou trhaně na trojky jedna zleva, druhá zprava, pak se jemně vaří, nad nimi naskočí jména a uprostřed tmavý text. Na představení dvou lidí najednou",
+   "kod": "src/vince.html:236 (najed, vari2, .vyrez, .jm2)",
+   "vyskyty": "",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-logo-mrizka-vince",
+   "komponenta": "logo-mrizka",
+   "od": 300,
+   "do": 369,
+   "nazev": "Logo a mřížka značek",
+   "popis": "Logo firmy na černé dlaždici naskočí velké uprostřed, zmenší se do mřížky 5 na 3 a kolem po 2 snímcích naskočí loga a produkty dceřiných značek, celé pomalu najíždí. Když ukazuješ, co všechno pod firmu patří",
+   "kod": "src/vince.html:245 (#mriz, .dl, dl, naskoc)",
+   "vyskyty": "",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-broll-dojezd-vince",
+   "komponenta": "broll-dojezd",
+   "od": 369,
+   "do": 462,
+   "nazev": "B-rolly tvrdě na fráze",
+   "popis": "Celoobrazové B-rolly se střídají tvrdým střihem přesně na fráze, každý dojíždí 1,06 na 1, pod nimi titulky. Když vyprávíš o cizím člověku a máš jeho záběry",
+   "kod": "src/vince.html:275 (.broll, MK.tw scale)",
+   "vyskyty": "0:01, 0:30, 0:46, 0:59, 1:02, 1:04",
+   "kvalita": 2
+  },
+  {
+   "id": "mason-yt-mrizka-vince",
+   "komponenta": "yt-mrizka",
+   "od": 462,
+   "do": 543,
+   "nazev": "Stěna videí z YouTube",
+   "popis": "Devět náhledů s názvem a zhlédnutími v mřížce 3 na 3 na papíře, karty naskočí po 2 snímcích na trojky zespodu, celé pomalu najíždí. Důkaz, že člověk soustavně tvoří obsah",
+   "kod": "src/vince.html:276 (.yt, #ytz)",
+   "vyskyty": "",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-klip-karta-vince",
+   "komponenta": "klip-karta",
+   "od": 543,
+   "do": 677,
+   "nazev": "Citace v kartě",
+   "popis": "Klip člověka v zaoblené kartě na papíře najede zespodu na trojky a pak driftuje, nad ním malé jméno, překlad v tmavé pilulce přes spodek karty. Na citaci cizího člověka z jeho videa",
+   "kod": "src/vince.html:289 (#kKlip, #jmK, .tit.klip)",
+   "vyskyty": "0:38, 1:07",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-mbx-cisla-vince",
+   "komponenta": "mbx-cisla",
+   "od": 708,
+   "do": 827,
+   "nazev": "Malé boxy 1 2 3 přes A-roll",
+   "popis": "Vlevo přes A-roll naskočí po 4 snímcích tři červené boxy s čísly a bílým zábleskem, na bod aktivní box blikne a pulzne, ostatní ztlumí a vedle se vysune název bodu. Rituál bodů v případovce",
+   "kod": "src/vince.html:305 (#mb, .mbx, .mbl, blik, puls, ztlum, popis)",
+   "vyskyty": "0:40 bod 2, 0:54 bod 3",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-velky-text-vince",
+   "komponenta": "text-po-slovech",
+   "od": 827,
+   "do": 866,
+   "nazev": "Věta z řádků na papíře",
+   "popis": "Zajímavá věta místo titulků jako velký text na papíře, řádky různé velikosti černé a červené, slova naskakují na hlas z 40 na 100 procent a celé pomalu najíždí. Na větu, kterou si má divák zapamatovat",
+   "kod": "src/vince.html:322 (.kt, slova)",
+   "vyskyty": "0:29, 0:41, 0:45, 1:00",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-logo-zaber-vince",
+   "komponenta": "logo-zaber",
+   "od": 1112,
+   "do": 1157,
+   "nazev": "Logo značky na bílé",
+   "popis": "Ikona značky na barevném čtverci naskočí uprostřed bílé, na zmínku jména odjede doleva a vedle naskočí název. Když v příběhu padne konkrétní firma",
+   "kod": "src/vince.html:331 (#hfB, #hfG, #hfT)",
+   "vyskyty": "",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-zoom-bump-vince",
+   "komponenta": "zoom-bump",
+   "od": 1300,
+   "do": 1345,
+   "nazev": "Skokový zoom v A-rollu",
+   "popis": "Uprostřed věty A-roll tvrdě skočí na větší výřez 1 na 1,14 bez animace, jako druhá kamera. Oživí delší záběr do kamery a zdůrazní další část věty",
+   "kod": "src/vince.html:350 (vS2 scale), :385, :415",
+   "vyskyty": "1:03, 1:09, 1:14",
+   "kvalita": 2
+  },
+  {
+   "id": "mason-web-kopie-vince",
+   "komponenta": "web-kopie",
+   "od": 1688,
+   "do": 1739,
+   "nazev": "Okno webu a jeho kopie",
+   "popis": "Okno prohlížeče s e-shopem naskočí na papíře, na slovo zkopírovat se přes něj na dvojky naskládají tři kopie s bílým zábleskem a dole naskočí ZA TÝDEN. Když říkáš, jak snadno jde něco okopírovat",
+   "kod": "src/vince.html:390 (.web, .fl, #zaT)",
+   "vyskyty": "",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-karty-123-vince",
+   "komponenta": "karty-123",
+   "od": 2204,
+   "do": 2288,
+   "nazev": "Tři boxy s názvy bodů",
+   "popis": "Pod kartou s A-rollem naskočí po 3 snímcích tři červené boxy s číslem v rohu a zábleskem, názvy bodů se do nich doplňují na hlas. Rekapitulace tří bodů ve výzvě",
+   "kod": "src/vince.html:419 (.cbx, #kG2)",
+   "vyskyty": "",
+   "kvalita": 1
+  },
+  {
+   "id": "mason-cta-karta-vince",
+   "komponenta": "cta-karta",
+   "od": 2288,
+   "do": 2372,
+   "nazev": "Výzva pod kartou",
+   "popis": "A-roll ve zmenšené kartě nahoře, pod ní se slovo po slově na hlas vypisuje výzva, klíčové slovo velké červené v uvozovkách. Závěrečná výzva napiš do komentáře",
+   "kod": "src/vince.html:414 (#kCta, #kG1, #kG3)",
+   "vyskyty": "1:10.8",
+   "kvalita": 1
+  }
+ ]
+}

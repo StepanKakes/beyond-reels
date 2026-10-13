@@ -15,7 +15,7 @@ Projekt a knihovna: `$BR_PROSTOR/noske-styl`
 - `js/noske-kit.js` komponenty (window.NK), `noske-kit.css` tokeny a vzhled
 - `src/ukazka-*.html` kompozice, `node build.mjs try` z nich udělá `index.html` (slova vloží z `assets/media/slova_TRY.json`)
 - `zdroj/strih.py` výběr pokusů a střih ticha, `nastroje/zarovnej.py` časy slov, `nastroje/zvuk_try.py` hlas, hudba, SFX
-- B-rolly: `$BR_PROSTOR/B-rolls`, co v nich je: `B-rolls/KATALOG.md`. **Používej je vždy**
+- B-rolly: `$BR_BROLLS`, co v nich je: `B-rolls/KATALOG.md`. **Používej je vždy**
 - Rozbor originálů: `$BR_INSPIRACE/nosek/_rozbor/<id>/SHOTLOG.md`, přepisy v `nosek/_raw/*.txt`
 
 Před stavbou si přečti `reference/komponenty.md` (API a pasti).

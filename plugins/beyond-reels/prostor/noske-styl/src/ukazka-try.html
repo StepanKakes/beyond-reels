@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1440, height=1080">
+    <title>Noske styl: tři fáze obsahu</title>
+    <script>window.NK_FPS = 25;</script>
+    <script src="vendor/gsap.min.js"></script>
+    <script src="js/noske-kit.js"></script>
+    <link rel="stylesheet" href="noske-kit.css">
+    <style>
+      body { margin: 0; background: var(--tma); }
+      #root { position: relative; width: 1440px; height: 1080px; overflow: hidden; }
+      #kamera { z-index: 1; }
+      .broll { z-index: 2; transform-origin: 50% 50%; }
+      .nk-titulky { --titulky-y: 63%; z-index: 8; }  /* nad kartami s grafikou, karty se slovy mají titulky vypnuté */
+
+      /* fáze trychtýře: jedna karta, vrací se se stejnými pilulkami a mění jen to, která svítí */
+
+      /* lidé: mřížka 9 x 3, z nich nakonec svítí jen pár */
+      #lide .ikona { position: absolute; width: 150px; height: 190px; transform: translateX(-50%) scale(0.52); transform-origin: 50% 0; }
+      #lide .ikona .nk-postava { left: 75px; top: 0; }
+
+      #slova .nk-rozhozena, #odkud .nk-rozhozena { color: var(--krem); }
+      #krok .stred, #nejdriv .stred { top: 50%; }
+      #nejdriv .vymena { font-size: 150px; }
+
+      /* platformy středu trychtýře: štítky s ikonou vlevo a vpravo od hlavy, ve výšce ramen */
+      #ikYT { left: 90px; top: 330px; }
+      #ikMail { right: 90px; top: 330px; }
+
+      /* výzva: slovo v uvozovkách, obě nahoře “ ” (Tim 2.10.), jediná červená ve videu */
+      #cta .maly { font-size: 46px; font-weight: 700; letter-spacing: -0.02em; visibility: hidden; }
+      #cta .slovo { margin-top: 56px; font-size: 230px; font-weight: 700; letter-spacing: -0.05em; line-height: 0.9; visibility: hidden; }
+      #cta .slovo em { font-style: normal; color: var(--cervena); }
+      #cta .pod { margin-top: 34px; font-size: 46px; font-weight: 500; letter-spacing: -0.02em; visibility: hidden; }
+
+    </style>
+  </head>
+  <body>
+    <div id="root" class="nk-plocha" data-composition-id="main" data-start="0" data-width="1440" data-height="1080" data-fps="25" data-duration="{{D+0.6}}">
+      <audio id="hlas" src="assets/media/hlas_TRY.wav" data-start="0" data-duration="{{D}}" data-track-index="10" data-volume="1"></audio>
+      <audio id="hudba" src="assets/media/hudba_TRY.wav" data-start="0" data-duration="{{D+0.6}}" data-track-index="11" data-volume="1"></audio>
+      <audio id="sfx" src="assets/media/sfx_TRY.wav" data-start="0" data-duration="{{D+0.6}}" data-track-index="12" data-volume="1"></audio>
+
+      <video id="kamera" class="clip nk-video" src="assets/media/kamera.mp4" muted playsinline data-start="0" data-duration="{{D}}" data-track-index="0"></video>
+      <video id="bVila" class="clip nk-video broll" src="assets/media/b_vila.mp4" muted playsinline data-start="{{U(2)}}" data-duration="{{U(3)-U(2)}}" data-track-index="1"></video>
+      <video id="bCil" class="clip nk-video broll" src="assets/media/b_cil.mp4" muted playsinline data-start="{{U(3)}}" data-duration="{{U(4)-U(3)}}" data-track-index="2"></video>
+      <video id="bTelefon" class="clip nk-video broll" src="assets/media/b_telefon.mp4" muted playsinline data-start="{{T(60)-F(1)}}" data-duration="{{U(7)-T(60)+F(1)}}" data-track-index="1"></video>
+      <video id="bMotorka" class="clip nk-video broll" src="assets/media/b_motorka.mp4" muted playsinline data-start="{{U(10)}}" data-duration="{{T(107)-F(1)-U(10)}}" data-track-index="2"></video>
+      <video id="bNotebook" class="clip nk-video broll" src="assets/media/b_notebook.mp4" muted playsinline data-start="{{U(11)}}" data-duration="{{T(117)-F(1)-U(11)}}" data-track-index="1"></video>
+      <video id="bSurf" class="clip nk-video broll" src="assets/media/b_surf.mp4" muted playsinline data-start="{{U(16)}}" data-duration="{{U(17)-U(16)}}" data-track-index="2"></video>
+      <video id="bKlient" class="clip nk-video broll" src="assets/media/b_klient.mp4" muted playsinline data-start="{{U(22)}}" data-duration="{{U(23)-U(22)}}" data-track-index="1"></video>
+      <div id="ikYT" class="nk-ikonka nk-z-grafika">
+        <svg viewBox="0 0 64 64"><rect x="5" y="13" width="54" height="38" rx="11"></rect><path class="plne" d="M27 23 L42 32 L27 41 Z"></path></svg>
+        <div><span class="hlavni">YouTube</span><span class="vedlejsi">dlouhá videa</span></div>
+      </div>
+      <div id="ikMail" class="nk-ikonka nk-z-grafika">
+        <svg viewBox="0 0 64 64"><rect x="6" y="14" width="52" height="36" rx="6"></rect><path d="M8 17 L32 35 L56 17"></path></svg>
+        <div><span class="hlavni">E-mail</span><span class="vedlejsi">newsletter</span></div>
+      </div>
+
+      <div id="titulky" class="nk-titulky"></div>
+
+      <div id="faze" class="nk-karta"><div id="trychtyr" class="nk-trychtyr"></div></div>
+
+      <div id="lide" class="nk-karta"></div>
+      <div id="krok" class="nk-karta"><div class="stred nk-kotva"><div class="maly">první krok</div><div class="vymena"></div></div></div>
+      <div id="slova" class="nk-karta"><div class="nk-rozhozena"></div></div>
+      <div id="odkud" class="nk-karta"><div class="nk-rozhozena"></div></div>
+      <div id="nejdriv" class="nk-karta papir"><div class="stred nk-kotva"><div class="maly">nejdřív</div><div class="vymena"></div></div></div>
+      <div id="cta" class="nk-karta papir"><div class="stred">
+        <div id="ctaMaly" class="maly">napiš do komentáře</div>
+        <div id="ctaSlovo" class="slovo"><em>“</em>START<em>”</em></div>
+        <div id="ctaPod" class="pod">a pošlu ti materiály zdarma</div>
+      </div></div>
+    </div>
+
+    <script>
+      const W = /*SLOVA:TRY*/;
+      const ST = /*STRIH*/;
+      const S = W.slova, T = (i) => S[i].t, U = (i) => ST[i].od, F = NK.F, $ = (id) => document.getElementById(id);
+      const VIDEO = W.delka, KONEC = VIDEO + 0.6;
+      const tl = gsap.timeline({ paused: true });
+      const TIT = $("titulky");
+
+      /* KAMERA: každý jump cut střídá 1,0 a 1,15 od horního okraje, mezi střihy drift +3 % */
+      const PUNCH = 1.15;
+      // zoom se střídá jen na skutečném střihu; kde kusy jdou ve zdroji po sobě, pokračuje bez skoku
+      let zz = 1; const ZOOM = ST.map((u, i) => { if (i && Math.abs(ST[i - 1].src + ST[i - 1].delka - u.src) > 0.001) zz = zz === 1 ? PUNCH : 1; return zz; });
+      ST.forEach((u, i) => {
+        const t0 = u.od, t1 = ST[i + 1] ? ST[i + 1].od : VIDEO, z = ZOOM[i];
+        const navaz = i && ZOOM[i] === ZOOM[i - 1];
+        if (i === 0) { NK.uvod(tl, $("kamera"), 0, { od: 1.25, snimku: 40 }); tl.to($("kamera"), { scale: 1.03, duration: t1 - F(40), ease: "sine.inOut" }, F(40)); }
+        else if (!navaz) NK.drift(tl, $("kamera"), t0, t1, z, z * 1.03);
+      });
+      const BROLL = ["bVila","bCil","bTelefon","bMotorka","bNotebook","bSurf","bKlient"];
+      BROLL.forEach((id) => {
+        const el = $(id), t0 = +el.dataset.start, d = +el.dataset.duration;
+        tl.fromTo(el, { scale: 1 }, { scale: 1.04, duration: d, ease: "sine.inOut", immediateRender: false }, t0);
+        NK.naBrollu(tl, TIT, t0, t0 + d);
+      });
+
+      /* TRYCHTÝŘ z pilulek přes celou kartu */
+      const pasy = NK.trychtyr($("trychtyr"), ["povědomí", "důvěra", "uzavření"], { sirky: [1120, 820, 520], vyska: 168, mezera: 26 });
+      const kFaze = [[T(11) - F(1), U(1)], [T(107) - F(1), U(11)], [U(18), U(19)], [T(250) - F(1), U(30)]];
+      NK.karta(tl, $("faze"), kFaze[0][0], kFaze[0][1]);
+      pasy.forEach((p, k) => NK.pas(tl, p, T(11) + F(k * 6)));
+      NK.karta(tl, $("faze"), kFaze[1][0], kFaze[1][1]);
+      pasy.forEach((p) => NK.pas(tl, p, kFaze[1][0], { od: 0.3, kam: 0.3 }));
+      NK.zapni(tl, pasy[1].oba, T(108));
+      NK.karta(tl, $("faze"), kFaze[2][0], kFaze[2][1]);
+      pasy.forEach((p) => NK.pas(tl, p, kFaze[2][0], { od: 0.3, kam: 0.3 }));
+      NK.zapni(tl, pasy[2].oba, T(169));
+      NK.karta(tl, $("faze"), kFaze[3][0], kFaze[3][1]);
+      pasy.forEach((p) => NK.pas(tl, p, kFaze[3][0], { od: 1, kam: 1 }));
+      NK.ztlum(tl, pasy[0].oba, T(254), 0.15); NK.ztlum(tl, pasy[1].oba, T(254) + F(2), 0.15);
+
+      /* KARTY SE SLOVY */
+      const kKrok = [T(57) - F(1), T(60) - F(1)], kSlova = [T(139) - F(1), U(15)], kOdkud = [U(27), U(28)], kNejdriv = [T(269) - F(1), U(32)], kCta = [U(35), KONEC];
+      NK.karta(tl, $("krok"), ...kKrok);
+      NK.kotva(tl, $("krok"), [{ text: "short form", t: kKrok[0] }, { text: "obsah", t: T(59) - F(1) }], kKrok[1]);
+
+      const lide = $("lide"), SVITI = [3, 11, 22], ikony = [];
+      for (let r = 0; r < 3; r++) for (let c = 0; c < 9; c++) {
+        const w = document.createElement("div"); w.className = "ikona";
+        w.style.left = 160 + c * 140 + "px"; w.style.top = 150 + r * 135 + "px";
+        const p = document.createElement("div"); p.className = "nk-postava"; w.appendChild(p); lide.appendChild(w); ikony.push(p);
+      }
+      NK.karta(tl, lide, T(72) - F(1), U(8));
+      ikony.forEach((p, i) => NK.postava(tl, p, T(72) + F((i % 9) + Math.floor(i / 9) * 2)));
+      ikony.forEach((p, i) => { if (!SVITI.includes(i)) NK.ztlum(tl, p, T(77) + F((i % 9) * 0.5), 0.15); });
+
+      NK.sklo(tl, $("ikYT"), T(119) - F(2)); NK.skryj(tl, $("ikYT"), U(13));
+      NK.sklo(tl, $("ikMail"), T(121) - F(2)); NK.skryj(tl, $("ikMail"), U(13));
+
+      NK.karta(tl, $("slova"), ...kSlova);
+      NK.rozhozena(tl, $("slova").firstElementChild, [
+        { text: "řešení", x: 0.2, y: -120, v: 76, t: kSlova[0] },
+        { text: "metody", x: 0.5, y: -120, v: 92, t: T(141) - F(1) },
+        { text: "myšlenky", x: 0.8, y: -120, v: 92, t: T(143) - F(1) },
+        { text: "názory", x: 0.32, y: 90, v: 110, t: T(144) - F(1) },
+        { text: "pohledy", x: 0.68, y: 90, v: 150, t: T(145) - F(1), kurziva: true },
+      ], kSlova[1]);
+
+      NK.karta(tl, $("odkud"), ...kOdkud);
+      NK.rozhozena(tl, $("odkud").firstElementChild, [
+        { text: "odkud", x: 0.2, y: -110, v: 70, t: kOdkud[0] },
+        { text: "plyne", x: 0.5, y: -110, v: 88, t: T(238) - F(1) },
+        { text: "nejvíc", x: 0.8, y: -110, v: 104, t: T(239) - F(1) },
+        { text: "klientů?", x: 0.5, y: 90, v: 220, t: T(240) - F(1), kurziva: true },
+      ], kOdkud[1]);
+
+      NK.karta(tl, $("nejdriv"), ...kNejdriv);
+      NK.kotva(tl, $("nejdriv"), [{ text: "povědomí", t: kNejdriv[0] }, { text: "a důvěru", t: T(270) - F(1) }], kNejdriv[1]);
+
+      NK.karta(tl, $("cta"), ...kCta);
+      NK.ukaz(tl, $("ctaMaly"), kCta[0]);
+      NK.ukaz(tl, $("ctaSlovo"), T(295) - F(1));
+      NK.ukaz(tl, $("ctaPod"), T(299) - F(1));
+
+      /* VRSTVENÉ SESTAVY titulků: hook přiletí a poskládá se, jinde kicker nad velkým slovem a schody */
+      NK.zaostreniVrstvy(tl, TIT, 0, { sila: 0.7, kratce: true });
+      const SEST = [
+        NK.sestava(tl, TIT, S, { typ: "kicker", a: [0, 1], b: [2, 2], konec: T(3) - F(1), hook: true, hookSnimku: 13, hookOd: 1.9, nastupB: 8 }),
+        NK.sestava(tl, TIT, S, { typ: "schody", radky: [[3, 5], [6, 8]], serifRadek: 1, konec: T(9) - F(1), rozmazat: true }),
+        NK.sestava(tl, TIT, S, { typ: "kicker", a: [19, 22], b: [23, 23], konec: T(24) - F(1) }),
+        NK.sestava(tl, TIT, S, { typ: "pod", b: [36, 36], a: [37, 39], konec: U(4) }),
+        NK.sestava(tl, TIT, S, { typ: "kicker", a: [40, 43], b: [44, 44], konec: T(45) - F(1) }),
+        NK.sestava(tl, TIT, S, { typ: "kicker", a: [82, 86], b: [87, 87], serifB: true, konec: T(88) - F(1) }),
+        NK.sestava(tl, TIT, S, { typ: "kicker", a: [191, 194], b: [195, 195], serifB: true, konec: T(196) - F(1) }),
+        NK.sestava(tl, TIT, S, { typ: "kicker", a: [244, 244], b: [245, 245], konec: T(246) - F(1) }),
+        NK.sestava(tl, TIT, S, { typ: "schody", radky: [[259, 260], [261, 261], [262, 263]], serifRadek: 2, konec: T(264) - F(1), rozmazat: true }),
+      ];
+
+      /* TITULKY PO SLOVECH: na středu, velikost nese důraz, pointa Instrument Serif */
+      const st = (v, serif) => ({ v, kurziva: !!serif });
+      const STYL = {
+        11: st("l"), 13: st("l"), 17: st("l"), 26: st("l"), 29: st("xl"), 49: st("l", 1), 63: st("l"), 65: st("l"),
+        71: st("l"), 73: st("l"), 75: st("l"), 81: st("l"), 94: st("xl"), 98: st("l"), 103: st("l"),
+        105: st("l"), 112: st("l"), 113: st("l"), 128: st("xl"), 136: st("l"), 137: st("l"),
+        153: st("l", 1), 154: st("xl"), 160: st("l"), 163: st("xl"), 169: st("l"), 177: st("l"), 178: st("xl"),
+        190: st("l"), 206: st("xl"), 210: st("l"), 213: st("l"), 216: st("l", 1), 219: st("xl"), 222: st("l"),
+        227: st("l"), 228: st("l"), 234: st("xl"), 249: st("l"), 253: st("l"), 258: st("xl"),
+        268: st("l"), 275: st("l"), 277: st("l"), 280: st("xl"), 286: st("l"), 288: st("l"),
+      };
+      const VYNECH = [kKrok, kSlova, kOdkud, kNejdriv, kCta, ...kFaze, ...SEST];
+      NK.titulky(tl, TIT, S, { styl: STYL, vynech: VYNECH });
+
+      tl.set({}, {}, KONEC);
+      window.__timelines = window.__timelines || {};
+      window.__timelines.main = tl;
+    </script>
+  </body>
+</html>

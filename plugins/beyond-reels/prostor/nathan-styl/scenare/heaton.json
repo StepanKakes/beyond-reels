@@ -1,0 +1,606 @@
+{
+ "nazev": "heaton",
+ "seed": 1,
+ "hlas": "/Users/stepankakes/Documents/GitHub/beo-motion/hyperframes/lumitris-styl/zdroj/heaton/hlas_telo_studio.wav",
+ "slova": "/Users/stepankakes/Documents/GitHub/beo-motion/hyperframes/lumitris-styl/zdroj/heaton/slova_TELO.json",
+ "zdroje": {
+  "klip": "/Users/stepankakes/Documents/GitHub/beo-motion/hyperframes/reels/podnikatele/heaton/zdroj/klipy/{}.mp4",
+  "img": "/Users/stepankakes/Documents/GitHub/beo-motion/hyperframes/reels/podnikatele/heaton/zdroj/nalez/{}.jpg",
+  "kv": "/Users/stepankakes/Documents/GitHub/beo-motion/hyperframes/reels/podnikatele/heaton/assets/media/kv/{}.mp4",
+  "igr": "/Users/stepankakes/Documents/GitHub/beo-motion/hyperframes/reels/podnikatele/heaton/assets/media/igr/{}.jpg",
+  "media": "/Users/stepankakes/Documents/GitHub/beo-motion/hyperframes/reels/podnikatele/heaton/assets/media/{}.mp4",
+  "th": "assets/media/tim_telo_169.mp4"
+ },
+ "citace": [
+  {
+   "t": 81.48,
+   "pred": 44,
+   "ref": "media:c_leader@4.12",
+   "od": 4.12,
+   "do": 7.4,
+   "preklad": "dělám to, protože jsem lídr té značky",
+   "vf": "crop=1108:832:406:124",
+   "zdroj": "kEGRAKT0ApQ@44.12-47.4"
+  }
+ ],
+ "pohled": [
+  [
+   0.0,
+   0.25,
+   1
+  ],
+  [
+   0.25,
+   7.5,
+   0
+  ],
+  [
+   7.5,
+   17.27,
+   1
+  ],
+  [
+   17.27,
+   22.4,
+   0
+  ],
+  [
+   22.4,
+   23.15,
+   1
+  ],
+  [
+   23.15,
+   35.45,
+   0
+  ],
+  [
+   35.45,
+   36.2,
+   1
+  ],
+  [
+   36.2,
+   36.64,
+   0
+  ],
+  [
+   36.64,
+   38.89,
+   1
+  ],
+  [
+   38.89,
+   43.0,
+   0
+  ],
+  [
+   43.0,
+   43.75,
+   1
+  ],
+  [
+   43.75,
+   44.25,
+   0
+  ],
+  [
+   44.25,
+   45.5,
+   1
+  ],
+  [
+   45.5,
+   47.0,
+   0
+  ],
+  [
+   47.0,
+   48.25,
+   1
+  ],
+  [
+   48.25,
+   50.96,
+   0
+  ],
+  [
+   50.96,
+   51.46,
+   1
+  ],
+  [
+   51.46,
+   54.2,
+   0
+  ],
+  [
+   54.2,
+   57.45,
+   1
+  ],
+  [
+   57.45,
+   57.73,
+   0
+  ],
+  [
+   57.73,
+   65.87,
+   1
+  ],
+  [
+   65.87,
+   66.62,
+   0
+  ],
+  [
+   66.62,
+   66.8,
+   1
+  ],
+  [
+   66.8,
+   76.2,
+   0
+  ],
+  [
+   76.2,
+   81.4,
+   1
+  ],
+  [
+   81.4,
+   82.55,
+   0
+  ],
+  [
+   82.55,
+   83.98,
+   0
+  ],
+  [
+   83.98,
+   85.98,
+   1
+  ],
+  [
+   85.98,
+   86.29,
+   0
+  ],
+  [
+   86.29,
+   89.0,
+   1
+  ],
+  [
+   89.0,
+   90.5,
+   0
+  ],
+  [
+   90.5,
+   94.7,
+   1
+  ],
+  [
+   94.7,
+   95.2,
+   0
+  ]
+ ],
+ "hudba": "thom-yorke-dawn-chorus",
+ "fraze": [
+  {
+   "text": "George Heaton jede bomby.",
+   "obraz": [
+    "klip:kEGRAKT0ApQ@961",
+    "hledej:george_face la"
+   ]
+  },
+  {
+   "text": "Jeho značka Represent",
+   "obraz": [
+    "klip:UhcbWSGmQ18@200.7"
+   ],
+   "duraz": 2
+  },
+  {
+   "text": "dělá 3 miliardy korun ročně,",
+   "obraz": [
+    "klip:9fGr_fZTKHY@328.8",
+    "hledej:store clothing"
+   ],
+   "pocitadlo": {
+    "slovo": 1,
+    "do": 3000000000,
+    "pripona": " Kč",
+    "snimku": 24
+   }
+  },
+  {
+   "text": "v LA má vlastní penthouse",
+   "obraz": [
+    "klip:jYUcsLdrm3M@956.78",
+    "hledej:la city penthouse"
+   ]
+  },
+  {
+   "text": "a Rolls Royce si kupuje v cashi.",
+   "obraz": [
+    "klip:6KurK_1000@17",
+    "klip:6KurK_1000@23.7",
+    "hledej:rolls_royce"
+   ]
+  },
+  {
+   "text": "A přesto po 14 letech",
+   "obraz": null,
+   "roky": [
+    2012,
+    2026
+   ]
+  },
+  {
+   "text": "George tajně udělal z obsahu svou prioritu.",
+   "obraz": "th",
+   "kryt": [
+    "hledej:george_face"
+   ]
+  },
+  {
+   "text": "Ale proč?",
+   "obraz": "th",
+   "kryt": [
+    "hledej:george_face"
+   ]
+  },
+  {
+   "text": "Protože ví, že osobní značka mu odemyká 3 věci, které jinak nezíská.",
+   "obraz": "th",
+   "kryt": [
+    "hledej:george_face"
+   ]
+  },
+  {
+   "text": "Zaprvé kontakty.",
+   "obraz": null,
+   "duraz": 1
+  },
+  {
+   "text": "George se skrze svou tvorbu spojuje s lidmi,",
+   "obraz": [
+    "klip:kEGRAKT0ApQ@1061.2",
+    "hledej:famous_person event"
+   ]
+  },
+  {
+   "text": "ke kterým se běžný podnikatel nikdy nedostane.",
+   "obraz": [
+    "hledej:crowd event",
+    "hledej:famous_person"
+   ]
+  },
+  {
+   "text": "Natáčel s Chrisem Bumsteadem",
+   "obraz": [
+    "klip:VofeFR5LnZ4@511.4",
+    "klip:VofeFR5LnZ4@530"
+   ],
+   "duraz": 3
+  },
+  {
+   "text": "a spojuje se s dalšími zajímavými lidmi.",
+   "obraz": [
+    "hledej:famous_person event",
+    "hledej:crowd event"
+   ]
+  },
+  {
+   "text": "S ultra endurance běžcem Willem Goodgem",
+   "obraz": [
+    "klip:2_e88SqxXcI@203.4"
+   ],
+   "duraz": 5
+  },
+  {
+   "text": "nebo Rossem MacKayem.",
+   "obraz": [
+    "klip:iWQW6bKXZpM@488.4"
+   ],
+   "duraz": 2
+  },
+  {
+   "text": "Společně založili Cadence.",
+   "obraz": [
+    "klip:6vtTkKJdvZQ_0@11.2",
+    "klip:6vtTkKJdvZQ_0@13.9"
+   ],
+   "duraz": 2
+  },
+  {
+   "text": "Díky tomu si tak vytváří partnerství s ostatními značkami,",
+   "obraz": [
+    "klip:gNGOw9g3zjw@1441",
+    "hledej:event team office"
+   ],
+   "duraz": 5
+  },
+  {
+   "text": "ke kterým by se jinak těžko dostával.",
+   "obraz": null
+  },
+  {
+   "text": "Na tom roste jeho byznys dál.",
+   "obraz": [
+    "hledej:office team",
+    "hledej:warehouse"
+   ]
+  },
+  {
+   "text": "Zadruhé prodej,",
+   "obraz": "th",
+   "duraz": 1,
+   "kryt": [
+    "hledej:george_face"
+   ]
+  },
+  {
+   "text": "který nevypadá jako prodej.",
+   "obraz": "th",
+   "kryt": [
+    "hledej:george_face"
+   ]
+  },
+  {
+   "text": "V obsahu ukazuje trénink, práci, zákulisí",
+   "obraz": [
+    "hledej:gym",
+    "hledej:office team",
+    "hledej:warehouse"
+   ]
+  },
+  {
+   "text": "a mezi tím má na sobě novou kolekci.",
+   "obraz": [
+    "klip:O5EyWJE4mHE@120",
+    "hledej:clothing product_closeup"
+   ],
+   "duraz": 7
+  },
+  {
+   "text": "Není to žádný nucený marketing,",
+   "obraz": "th",
+   "duraz": 4,
+   "skrt": true,
+   "kryt": [
+    "klip:O5EyWJE4mHE@123"
+   ]
+  },
+  {
+   "text": "prodává jenom tím, že nosí své vlastní oblečení.",
+   "obraz": [
+    "klip:kHlKdM3Ng-8@82.6",
+    "hledej:clothing george_face"
+   ]
+  },
+  {
+   "text": "Tímhle způsobem přetvořil marketing nových kolekcí",
+   "obraz": [
+    "hledej:clothing product_closeup",
+    "hledej:store"
+   ]
+  },
+  {
+   "text": "v naprosto přirozenou věc, o kterou se lidé zajímají.",
+   "sedi": {
+    "img": "assets/ai/heaton_sedi.png",
+    "slovo": 2,
+    "pomer": 0.5271,
+    "vyska_slova": 0.07
+   }
+  },
+  {
+   "text": "Na nic nemusí tlačit",
+   "obraz": "th",
+   "kryt": [
+    "hledej:george_face"
+   ]
+  },
+  {
+   "text": "a jeho osobnost to neustále prodává sama.",
+   "obraz": "th",
+   "kryt": [
+    "hledej:george_face clothing"
+   ]
+  },
+  {
+   "text": "A zatřetí je autorita.",
+   "obraz": null
+  },
+  {
+   "text": "Tady to je nejzajímavější,",
+   "obraz": "th",
+   "kryt": [
+    "hledej:george_face"
+   ]
+  },
+  {
+   "text": "jelikož všechno natáčí DIY.",
+   "obraz": "th",
+   "duraz": 3,
+   "kryt": [
+    "hledej:george_face"
+   ]
+  },
+  {
+   "text": "Nemá za sebou žádnou velkou produkci.",
+   "obraz": "th",
+   "kryt": [
+    "hledej:george_face"
+   ]
+  },
+  {
+   "text": "Někdy natáčí z ruky,",
+   "obraz": [
+    "hledej:selfie phone_social_media",
+    "hledej:filming_content"
+   ]
+  },
+  {
+   "text": "někdy má s sebou kameramana.",
+   "obraz": [
+    "hledej:filming_content \"camera operator\"",
+    "hledej:camera_gear"
+   ]
+  },
+  {
+   "text": "To je všechno.",
+   "obraz": null
+  },
+  {
+   "text": "Bere to s humorem jako zábavu,",
+   "obraz": [
+    "hledej:george_face laughing"
+   ]
+  },
+  {
+   "text": "ale zároveň tomu dává stejnou prioritu jako své firmě.",
+   "obraz": [
+    "klip:9fGr_fZTKHY@370",
+    "hledej:office team"
+   ],
+   "duraz": 5
+  },
+  {
+   "text": "Protože si moc dobře uvědomuje,",
+   "obraz": null
+  },
+  {
+   "text": "kolik mu jeho osobní profil přináší.",
+   "obraz": [
+    "hledej:phone_social_media",
+    "hledej:filming_content"
+   ],
+   "duraz": 4
+  },
+  {
+   "text": "Celý sub brand Representu 247",
+   "obraz": "th",
+   "duraz": 4,
+   "kryt": [
+    "hledej:george_face"
+   ]
+  },
+  {
+   "text": "stojí na jeho jménu",
+   "obraz": "th",
+   "duraz": 3,
+   "kryt": [
+    "hledej:george_face"
+   ]
+  },
+  {
+   "text": "a na tom, že ukazoval, jak trénuje.",
+   "obraz": [
+    "klip:9fGr_fZTKHY@969.5",
+    "hledej:gym running"
+   ],
+   "duraz": 6
+  },
+  {
+   "text": "Já ho sleduju už dlouho a vím,",
+   "obraz": "th",
+   "kryt": [
+    "hledej:george_face city"
+   ]
+  },
+  {
+   "text": "že jedinej důvod, proč bych si koupil Represent,",
+   "obraz": [
+    "klip:kHlKdM3Ng-8@263.9",
+    "hledej:store clothing"
+   ],
+   "duraz": 7
+  },
+  {
+   "text": "je on a Michael.",
+   "obraz": [
+    "klip:UhcbWSGmQ18@8.8"
+   ],
+   "duraz": 3
+  },
+  {
+   "text": "Pokud máš svou firmu",
+   "obraz": "th",
+   "kryt": [
+    "hledej:george_face office"
+   ]
+  },
+  {
+   "text": "a chceš postavit osobní profil na sítích,",
+   "obraz": "th",
+   "kryt": [
+    "hledej:filming camera phone",
+    "hledej:george_face"
+   ]
+  },
+  {
+   "text": "který ti přinese komunitu, známosti a obchod,",
+   "obraz": "th",
+   "kryt": [
+    "hledej:crowd event community",
+    "hledej:famous_person handshake"
+   ]
+  },
+  {
+   "text": "napiš do komentáře Heaton",
+   "obraz": "th",
+   "duraz": 3,
+   "kryt": [
+    "hledej:george_face"
+   ]
+  },
+  {
+   "text": "a já ti pošlu můj návod.",
+   "obraz": "th",
+   "kryt": [
+    "hledej:george_face phone"
+   ]
+  }
+ ],
+ "diagram": {
+  "fraze": 8,
+  "vetve_fraze": [
+   9,
+   20,
+   30
+  ],
+  "kresli_slovo": "odemyk",
+  "stred": {
+   "ikona": "videocamera-record-bold",
+   "popisek": "osobní značka"
+  },
+  "vetve": [
+   {
+    "ikona": "users-group-rounded-bold",
+    "popisek": "kontakty"
+   },
+   {
+    "ikona": "cart-large-2-bold",
+    "popisek": "prodej"
+   },
+   {
+    "ikona": "crown-bold",
+    "popisek": "autorita"
+   }
+  ]
+ },
+ "komentar": {
+  "fraze": 50,
+  "slovo": 3,
+  "text": "HEATON",
+  "jm": "ty"
+ }
+}

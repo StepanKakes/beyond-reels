@@ -1,0 +1,85 @@
+/* Nathan kit: vzhled podle rozboru reelů Nathana Nazaretha (nathanazareth)
+ * Rozbor $BR_INSPIRACE/nathan/_rozbor/DeK988mxoYq/SHOTLOG.md a VARIANTY.md
+ * Návrhový prostor 1920x1080, #jeviste se škáluje na výstupní rozměr
+ */
+@font-face { font-family: "HN"; src: url("assets/fonts/HN-Bold.ttf"); font-weight: 700; }
+@font-face { font-family: "HN"; src: url("assets/fonts/HN-Medium.ttf"); font-weight: 500; }
+@font-face { font-family: "NZSerif"; src: url("assets/fonts/InstrumentSerif-Italic.ttf"); font-style: italic; font-weight: 400; }
+
+:root {
+  --nz-bila: #FCFAFD;
+  --nz-blok: #FFFFFF;
+  --nz-akcent: #FF0E00;    /* naše červená místo Nathanovy modré #628DCA (Štěpán 12. 10.) */
+  --nz-cervena: #FF0E00;
+  --nz-skrt: #FF0E00;
+  --nz-cerna: #000000;
+  --nz-tmava: #111111;
+  --nz-seda-konec: #A8A6A9;
+  --nz-ikona: #0D0C0E;
+  /* typografické karty: světlá (bílá s teple šedými rohy) a červená (tmavší nahoře, světlejší dole jako Nathanova modrá) */
+  --nz-svetla-stred: #FFFFFF;
+  --nz-svetla-roh: #E4DCDA;
+  --nz-cervena-horni: #B30A00;
+  --nz-cervena-dolni: #FF4A33;
+}
+
+#root { position: relative; overflow: hidden; background: var(--nz-cerna); }
+#jeviste { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; overflow: hidden; background: var(--nz-cerna); }
+
+.nz-zaber { position: absolute; inset: 0; overflow: hidden; }
+.nz-zaber > video, .nz-zaber > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 50%; }
+.nz-plocha { position: absolute; inset: 0; visibility: hidden; }
+.nz-plocha.svetla { background: radial-gradient(ellipse 75% 70% at 42% 45%, var(--nz-svetla-stred) 0%, var(--nz-svetla-stred) 35%, var(--nz-svetla-roh) 100%); }
+.nz-plocha.cervena { background: linear-gradient(180deg, var(--nz-cervena-horni) 0%, var(--nz-cervena-dolni) 100%); }
+.nz-plocha.cerna { background: var(--nz-cerna); }
+.nz-plocha.tmava { background: var(--nz-tmava); }
+.nz-plocha.seda { background: var(--nz-seda-konec); }
+
+.nz-vrstva { position: absolute; inset: 0; pointer-events: none; }
+.nz-t { position: absolute; white-space: nowrap; color: var(--nz-bila); font-family: "HN", sans-serif; font-weight: 700; line-height: 1;
+  letter-spacing: -0.04em; visibility: hidden; font-synthesis: none; }
+.nz-t.male { letter-spacing: -0.03em; }
+.nz-t.akcent { color: var(--nz-akcent); }
+.nz-t.tmava { color: var(--nz-tmava); }
+/* bílé písmo přes pestrý B-roll: jemný tmavý stín pro čitelnost (ne záře) */
+.nz-t.stin { text-shadow: 0 2px 14px rgba(0, 0, 0, 0.38), 0 1px 3px rgba(0, 0, 0, 0.25); }
+.nz-t.cervena { color: var(--nz-cervena); }
+.nz-t.kond { letter-spacing: -0.035em; text-transform: uppercase; }
+.nz-t.skript { font-family: "NZSerif", serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+.nz-t.rozdil { mix-blend-mode: difference; }
+.nz-rada { text-align: center; }
+.nz-s { display: inline-block; }
+.nz-s.pryc { display: none; }
+.nz-blok { position: absolute; background: var(--nz-blok); visibility: hidden; }
+.nz-skrt { position: absolute; height: 6px; background: var(--nz-skrt); }
+.nz-zablesk { position: absolute; inset: 0; background: var(--nz-bila); opacity: 0; }
+.nz-pruh { position: absolute; left: 0; right: 0; height: 378px; background: var(--nz-cerna); }
+.nz-roky { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 25%, #000 75%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0%, #000 25%, #000 75%, transparent 100%); visibility: hidden; }
+.nz-roky .rada { position: absolute; top: 0; left: 0; white-space: nowrap; }
+.nz-roky .rok { position: absolute; font-family: "HN", sans-serif; font-weight: 700; font-size: 106px; line-height: 1; color: var(--nz-bila); font-variant-numeric: tabular-nums; transform: translateX(-50%); }
+.nz-roky .cara { position: absolute; left: 0; width: 1920px; height: 2px; background: linear-gradient(90deg, transparent, var(--nz-bila) 30%, var(--nz-bila) 70%, transparent); }
+.nz-stitek { position: absolute; background: var(--nz-cervena); visibility: hidden; }
+
+/* KONCEPTY (vlastní scény v jazyce stylu, v originálu nejsou) */
+/* diagram: ikony plné černé, čáry 9 px #0D0C0E, popisky HN Bold 42 px, na světlé kartě (R23) */
+.nz-diagram { position: absolute; inset: 0; visibility: hidden; }
+.nz-diagram svg.cary { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: visible; }
+.nz-diagram svg.cary path { fill: none; stroke: var(--nz-ikona); stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; }
+.nz-diagram svg.cary path.prazdna { stroke-dasharray: 2 22; }
+.nz-uzel { position: absolute; display: flex; flex-direction: column; align-items: center; gap: 14px; transform: translateX(-50%); visibility: hidden; }
+.nz-uzel img { width: 150px; height: 150px; }
+.nz-uzel .pop { font-family: "HN", sans-serif; font-weight: 700; font-size: 44px; letter-spacing: -0.03em; color: var(--nz-ikona); white-space: nowrap; }
+.nz-uzel.prazdny .kruh { width: 150px; height: 150px; border-radius: 50%; border: 9px dashed var(--nz-ikona); box-sizing: border-box; opacity: 0.25; }
+/* karta komentáře: plná bílá, bez skla a stínu */
+.nz-komentar { position: absolute; left: 50%; top: 50%; width: 1040px; padding: 40px 48px; box-sizing: border-box; background: var(--nz-bila); border-radius: 28px;
+  display: flex; align-items: center; gap: 32px; visibility: hidden; }
+.nz-komentar .av { width: 104px; height: 104px; border-radius: 50%; background: var(--nz-svetla-roh); flex: none; }
+.nz-komentar .obsah { flex: 1; font-family: "HN", sans-serif; color: var(--nz-ikona); }
+.nz-komentar .jm { font-size: 34px; font-weight: 700; letter-spacing: -0.02em; opacity: 0.55; }
+.nz-komentar .txt { font-size: 76px; font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; min-height: 80px; }
+.nz-komentar .txt .k { display: inline-block; width: 6px; height: 64px; background: var(--nz-akcent); vertical-align: -6px; margin-left: 4px; }
+.nz-komentar img { width: 64px; height: 64px; flex: none; }
+/* sedící postava (R19, Nathan #16): AI fotka bez pozadí na světlé kartě, velké slovo za hlavou, celé spolu snap zoom ven */
+.nz-sedi { position: absolute; inset: 0; opacity: 0; transform-origin: 50% 50%; }
+.nz-sedi > img { position: absolute; }

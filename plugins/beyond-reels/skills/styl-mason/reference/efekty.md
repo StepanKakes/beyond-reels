@@ -39,5 +39,5 @@ LCD vzhled UI (subpixely, mřížka pixelů, hloubka ostrosti, šednutí rohů) 
 
 ## Zvuk (SFX) a komponenty v barvách Beyond
 - Sdílená knihovna `$BR_PROSTOR/sfx/` (README + katalog.json): `zaklad/` Timova schválená sada, `shelby/` vzorky vytažené ze Shelby
-  s `mapa.json` (116 výskytů, hlasitost vůči hlasu). Tabulka kdy co je v `sfx/README.md`, 1:1 stopa `jack-styl/nastroje/zvuk_shelby.py`
+  s `mapa.json` (116 výskytů, hlasitost vůči hlasu). Tabulka kdy co je v `sfx/README.md`, 1:1 stopa byla v jack-styl (zvuk_shelby.py), není součástí pluginu
 - Komponenty Elaine (EK) v Beyond: třída `ek-beyond` na scéně nebo #root (papír, černá, červená, HN + Instrument Serif), ukázka `src/elaine-beyond.html`

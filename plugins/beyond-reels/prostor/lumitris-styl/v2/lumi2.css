@@ -1,0 +1,161 @@
+/* Lumi kit v2: Lumitris styl v barvách Beyond, 4:3 1440x1080, 24 fps
+ * Pravidla a čísla: skill beyond-reels-lumitris, rozbory $BR_INSPIRACE/lumitris/_rozbor
+ */
+@font-face { font-family: "HN"; src: url("assets/fonts/HN-Medium.ttf"); font-weight: 500; }
+@font-face { font-family: "HN"; src: url("assets/fonts/HN-Regular.ttf"); font-weight: 400; }
+@font-face { font-family: "HN"; src: url("assets/fonts/HN-Bold.ttf"); font-weight: 700; }
+@font-face { font-family: "IS"; src: url("assets/fonts/InstrumentSerif-Italic.ttf"); font-style: italic; font-weight: 400; }
+
+:root {
+  --cervena: #FF0E00;
+  --krem: #EDE6DC;
+  --bila: #FCFAFC;
+  --cerna: #000000;
+  --stitek: #1C1A1B;
+  --zavorka: #DEDEDE;
+  --deska1: #8F8F93;
+  --deska2: #DDDDE2;
+  --seda-text: #A0A0A0;
+  --nalepka-pozadi: #E0DEE1;
+}
+
+body { margin: 0; background: var(--cerna); }
+#root { position: relative; width: 1440px; height: 1080px; overflow: hidden; background: var(--cerna); }
+.sc { position: absolute; inset: 0; overflow: hidden; display: none; }  /* display: dítě s visibility visible by jinak prosáklo, skryté efekty nezatěžují capture */
+.kam { position: absolute; inset: 0; transform-origin: 50% 50%; }
+.kam > video, .kam > img.plne { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* grade: tlumená barva nebo ČB, lehké změkčení (originál je měkčí než digitální 4K) */
+.g-tlum { filter: saturate(0.42) contrast(0.95) brightness(0.97); }
+.g-cb { filter: grayscale(1) contrast(1.06) brightness(0.95); }
+.g-puvodni { filter: none; }
+.g-barva { filter: saturate(0.8) contrast(0.97); }
+/* změkčení celého obrazu dělá až nastroje/takt.py (blur ve filtrech je pro capture těžký) */
+
+/* plátno s kuželem světla: střed #2F2F2F, rohy #0D0D0D */
+.platno { background: radial-gradient(ellipse 62% 58% at 50% 46%, #2F2F2F 0%, #1A191B 55%, #0D0D0D 100%); }
+.platno.svetle { background: radial-gradient(ellipse 70% 65% at 50% 45%, #F2F1F2 0%, #D9D8DA 60%, #A8A7AA 100%); }
+
+/* karty: bez rámečku, stínu, rádiusu a rotace, jen měkká hrana */
+.karta { position: absolute; overflow: hidden; visibility: hidden; transform-origin: 50% 50%; }
+.karta > img, .karta > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.karta.mekka { -webkit-mask-image: radial-gradient(ellipse 72% 72% at 50% 50%, #000 62%, transparent 100%); mask-image: radial-gradient(ellipse 72% 72% at 50% 50%, #000 62%, transparent 100%); }
+.karta.okraj { outline: 4px solid #F4F4F4; }
+.karta.cista { overflow: visible; }
+.karta.cista > img { object-fit: contain; }
+.karta .neg { filter: invert(1) hue-rotate(180deg) saturate(1.4); }
+
+/* výřez postavy na barvě: sytá barva, hrubý rastr 21 px, mřížka 135 px, svislý pruh doplňkové barvy */
+.na-barve { background-color: var(--cervena);
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(0,0,0,0.16) 0 4px, transparent 5px),
+    linear-gradient(rgba(0,0,0,0.13) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(0,0,0,0.13) 2px, transparent 2px);
+  background-size: 21px 21px, 135px 135px, 135px 135px; }
+.na-barve.svetla { background-color: #E3E2E4;
+  background-image:
+    radial-gradient(ellipse 70% 65% at 50% 45%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0) 70%),
+    linear-gradient(rgba(0,0,0,0.07) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(0,0,0,0.07) 2px, transparent 2px);
+  background-size: 100% 100%, 135px 135px, 135px 135px; }
+.na-barve.krem { background-color: var(--krem);
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(0,0,0,0.10) 0 4px, transparent 5px),
+    linear-gradient(rgba(0,0,0,0.08) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(0,0,0,0.08) 2px, transparent 2px);
+  background-size: 21px 21px, 135px 135px, 135px 135px; }
+.na-barve.krem .pruh { background: var(--cervena); }
+.na-barve .pruh { position: absolute; left: 0; top: 0; bottom: 0; width: 7%; background: var(--krem); }
+.postava { position: absolute; transform-origin: 50% 100%; }
+.postava img { position: absolute; left: 0; top: 0; width: 100%; height: auto; }
+
+/* rohové závorky */
+.zav { position: absolute; visibility: hidden; }
+.zav i { position: absolute; width: 46px; height: 46px; border: 0 solid var(--zavorka); }
+.zav i:nth-child(1) { left: 0; top: 0; border-left-width: 14px; border-top-width: 14px; }
+.zav i:nth-child(2) { right: 0; top: 0; border-right-width: 14px; border-top-width: 14px; }
+.zav i:nth-child(3) { left: 0; bottom: 0; border-left-width: 14px; border-bottom-width: 14px; }
+.zav i:nth-child(4) { right: 0; bottom: 0; border-right-width: 14px; border-bottom-width: 14px; }
+
+/* okno: ostrý obdélník videa */
+.okno { position: absolute; overflow: hidden; }
+.okno > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* text: slovo naskočí celé, jemná bílá záře místo stínu */
+.t { position: absolute; white-space: nowrap; color: var(--bila); line-height: 1; visibility: hidden; font-synthesis: none;
+  text-shadow: 0 0 9px rgba(255,255,255,0.28), 0 0 34px rgba(255,255,255,0.10); }
+.t.sans { font-family: "HN", sans-serif; font-weight: 500; letter-spacing: -0.035em; }
+.t.sans.tucne { font-weight: 700; }
+.t.serif { font-family: "IS", serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+.t.seda { color: var(--seda-text); }
+.t.tmava { color: #141414; text-shadow: none; }
+.t.bez-zare { text-shadow: none; }
+.t.stred { transform: translate(-50%, -50%); }
+
+/* box výběru: ostrý obdélník roste zleva, text se odkrývá s ním */
+.box { position: absolute; visibility: hidden; overflow: hidden; white-space: nowrap; line-height: 1; padding: 0.12em 0.22em 0.16em; }
+.box.cervena { background: var(--cervena); color: #FFFFFF; }
+.box.krem { background: var(--krem); color: #000000; }
+.box.sans { font-family: "HN", sans-serif; font-weight: 700; letter-spacing: -0.035em; }
+.box.serif { font-family: "IS", serif; font-style: italic; }
+
+/* štítek jména: grotesk a serif v jednom řádku na tmavém boxu */
+.stitek { position: absolute; visibility: hidden; background: var(--stitek); padding: 0.16em 0.3em 0.2em; white-space: nowrap; line-height: 1; }
+.stitek span { visibility: hidden; }
+.stitek .sans { font-family: "HN", sans-serif; font-weight: 700; letter-spacing: -0.035em; color: var(--krem); }
+.stitek .serif { font-family: "IS", serif; font-style: italic; color: #FFFFFF; margin-left: 0.18em; }
+
+/* obří slovo: svisle natažené přes celý rám */
+.obri { position: absolute; left: 50%; top: 50%; white-space: nowrap; line-height: 0.8; visibility: hidden; font-synthesis: none;
+  transform-origin: 50% 50%; color: var(--bila); text-shadow: 0 0 30px rgba(255,255,255,0.35); }
+.obri.sans { font-family: "HN", sans-serif; font-weight: 700; letter-spacing: -0.05em; }
+.obri.serif { font-family: "IS", serif; font-style: italic; }
+.obri.inverze { color: #FFFFFF; mix-blend-mode: difference; text-shadow: none; }
+
+/* glitch bloky */
+.gl { position: absolute; visibility: hidden; background-repeat: no-repeat; }
+.gl.neg { filter: invert(1) hue-rotate(180deg); }
+.gl.seda1 { background: var(--deska1); }
+.gl.seda2 { background: var(--deska2); }
+.gl.bila { background: #FFFFFF; mix-blend-mode: difference; }
+
+/* záblesk do bílé */
+#zablesk { position: absolute; inset: 0; background: #FFFFFF; opacity: 0; pointer-events: none; }
+
+/* grade celého obrazu: zvednutá černá, stlačená světla, viněta */
+#grade-cerna { position: absolute; inset: 0; background: #0D0D0D; mix-blend-mode: lighten; pointer-events: none; }
+#grade-svetla { position: absolute; inset: 0; background: #E4E2E4; mix-blend-mode: darken; pointer-events: none; }
+#vineta { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 75% 75% at 50% 48%, transparent 45%, rgba(0,0,0,0.42) 100%); }
+
+/* vodoznak vpravo nahoře, geometrie jako Lumitris */
+#vodoznak { position: absolute; left: 1166px; top: 64px; display: flex; align-items: center; gap: 10px; color: #FFFFFF; font-family: "HN", sans-serif; text-transform: uppercase; opacity: 0.92; }
+#vodoznak .znak { width: 26px; height: 26px; background: var(--cervena); }
+#vodoznak .r1 { font-size: 12px; font-weight: 500; letter-spacing: 0.06em; line-height: 1; }
+#vodoznak .r2 { font-size: 25px; font-weight: 700; letter-spacing: 0.01em; line-height: 1; }
+
+/* popisky komponent (jen ukázka) */
+.popisek { position: absolute; left: 24px; top: 18px; visibility: hidden; font-family: "HN", sans-serif; font-weight: 500; font-size: 21px;
+  color: #FFFFFF; background: rgba(0,0,0,0.78); padding: 7px 12px 8px; letter-spacing: -0.01em; line-height: 1.15; }
+.popisek b { color: var(--cervena); font-weight: 700; }
+.popisek small { display: block; font-size: 15px; color: #C8C8C8; margin-top: 4px; }
+
+/* outro: černá, slovní znak uprostřed 27 % šířky */
+.outro { position: absolute; left: 50%; top: 50%; visibility: hidden; display: flex; align-items: center; gap: 22px; color: #FFFFFF; font-family: "HN", sans-serif; text-transform: uppercase; }
+.outro .znak { width: 58px; height: 58px; background: var(--cervena); }
+.outro .r1 { font-size: 22px; font-weight: 500; letter-spacing: 0.06em; line-height: 1; }
+.outro .r2 { font-size: 64px; font-weight: 700; letter-spacing: 0.01em; line-height: 1; }
+
+/* YouTube komentáře (tmavý režim), skutečné komentáře ze stažených dat */
+.yt { position: absolute; background: #0F0F0F; border-radius: 18px; padding: 26px 30px 8px; font-family: "Roboto", "HN", sans-serif; color: #F1F1F1; }
+.yt .rad { display: flex; gap: 18px; margin-bottom: 24px; visibility: hidden; }
+.yt .rad img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; flex: none; }
+.yt .jm { font-size: 22px; font-weight: 500; }
+.yt .kdy { color: #AAAAAA; font-weight: 400; margin-left: 8px; }
+.yt .tx { font-size: 27px; line-height: 1.3; margin-top: 4px; }
+.yt .lk { color: #AAAAAA; font-size: 20px; margin-top: 8px; }
+/* pole pro napsání komentáře */
+.pole { position: absolute; display: flex; align-items: center; gap: 22px; }
+.pole img { width: 76px; height: 76px; border-radius: 50%; object-fit: cover; }
+.pole .vstup { flex: 1; height: 140px; border-bottom: 3px solid #F1F1F1; position: relative; }
+.pole .vstup .ph { position: absolute; left: 2px; bottom: 14px; font-family: "HN", sans-serif; font-size: 34px; color: #8A8A8A; }
+.kurzor { display: inline-block; width: 4px; height: 0.9em; background: #FFFFFF; margin-left: 4px; vertical-align: -0.08em; }

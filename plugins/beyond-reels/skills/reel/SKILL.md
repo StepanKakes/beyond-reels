@@ -10,7 +10,7 @@ Každý příkaz v Bash začni `source ~/.config/beyond-reels/env.sh &&`. Když 
 Proměnné: `$BR_PROSTOR` (sdílený prostor beo-motion/hyperframes), `$PY` (Python), `hf` (funkce, HyperFrames v pevné verzi),
 `$BR_WHISPER` (model přepisů), `$BR_PLUGIN` (plugin).
 
-Než cokoli navrhneš, přečti `$BR_PLUGIN/vkus/pravidla.md` a `$BR_PROSTOR/vkus/verdikty.md`. Platí bez připomínání.
+Než cokoli navrhneš, přečti `$BR_PLUGIN/vkus/pravidla.md` a verdikty týmu (ArtifactData `list` kolekce `verdikty` na revizní stránce, odkaz ve skillu `revize`). Platí bez připomínání.
 Ve zvoleném stylu pak jeho skill (`styl-mason`, `styl-noske`, `styl-matt-gray`, `styl-lumitris`, `styl-nathan`).
 
 Šetři kontext: kontrolu renderů, snímků a logů dávej agentovi `overovac` (nebo general-purpose s levnějším modelem), do hlavního
@@ -31,7 +31,7 @@ Pak volným textem: cesta ke zdrojovému videu (nebo víc pokusů), o kom nebo o
 
 ## 2. Projekt
 
-`zsh $BR_PLUGIN/scripts/novy_reel.sh <styl> <nazev>` vytvoří `$BR_PROSTOR/reels/<nazev>` (u Masona se šablonou `src/reel.html`
+`zsh $BR_PLUGIN/scripts/novy_reel.sh <styl> <nazev>` vytvoří `$BR_REELY/<nazev>` (u Masona se šablonou `src/reel.html`
 a sdíleným jádrem kitů, `tools/jadro.sh --stav` ukáže verze). Brief ulož do projektu. Pracovní soubory zdroje do `zdroj/`.
 
 ## 3. Text a střih
@@ -50,9 +50,9 @@ a sdíleným jádrem kitů, `tools/jadro.sh --stav` ukáže verze). Brief ulož 
 
 Napiš `PLAN.md` a ukaž ho jako tabulku. Pro každou větu: čas, věta, **váha** (1 spojka, 2 podpora, 3 pointa; trojek nejvýš
 čtvrtina vět), nosič. Pro věty s váhou 2 a 3 nabídni **2 až 3 směry**:
-- **A obměna z knihovny:** konkrétní komponenta z knihovny (`$BR_PROSTOR/_knihovna/prod/*.json` a karta na revizní stránce, záložka Knihovna) a co se na ní změní pro tuhle větu
+- **A obměna z knihovny:** konkrétní komponenta z knihovny (`$BR_PROSTOR/knihovna/*.json` a karta na revizní stránce, záložka Knihovna) a co se na ní změní pro tuhle větu
 - **B nová varianta:** nová věc inspirovaná knihovnou nebo jiným naším reelem (napiš, kterým)
-- **C B-roll nebo záběr:** z `$BR_PROSTOR/B-rolls/KATALOG.md`, jeho vlastní videa, logo značky
+- **C B-roll nebo záběr:** z `$BR_BROLLS/KATALOG.md`, jeho vlastní videa, logo značky
 
 Pořadí hledání pro každou větu: komponenta z knihovny, B-roll z katalogu, teprve pak nový návrh. Nikdy koncept, který přebalí celou
 pasáž do jedné metafory. Zeptej se, co vybírá (AskUserQuestion po větách s váhou 3, ostatní hromadně), a výběr zapiš do PLAN.md.
@@ -70,7 +70,7 @@ a nahraj ho na revizní stránku (skill `revize`, pole `storyboard`). Render až
   bez záblesku), `MK.kameraSkok`, v libovolném `MK.tw` stačí `{ ease: "softLand" }` a délka se doplní. Žádný pop z nuly.
 - Titulky se tvoří samy (BN.titulkyZeSlov v šabloně). Do `BEZ` jen slova, která jsou ve stejnou chvíli velká v obraze.
 - SFX zapisuj v kompozici u každé změny v obraze do pole a vypiš je (nebo veď paralelně `zdroj/sfx.json`), ať zvuk sedí na obraz.
-- Zvuk: `zdroj/mix.json` podle hlavičky `$BR_PROSTOR/tools/mix.py` (hlas, citace, hudba z `$BR_PROSTOR/hudba/katalog.json`, SFX) a
+- Zvuk: `zdroj/mix.json` podle hlavičky `$BR_PROSTOR/tools/mix.py` (hlas, citace, hudba z `$BR_HUDBA/katalog.json`, SFX) a
   `$PY $BR_PROSTOR/tools/mix.py zdroj/mix.json` > `assets/media/mix.wav`.
 - `node build.mjs reel && hf check . --no-contrast` musí projít (font HN přes `var(--mk-sans)`, žádné záporné z-index).
 
@@ -86,5 +86,5 @@ a nahraj ho na revizní stránku (skill `revize`, pole `storyboard`). Render až
 ## 8. Revize a učení
 
 Skill `revize`: kontrolní kopie na revizní stránku se scénami a titulky, odkaz do chatu. Po komentářích opravy, nová verze,
-odpovědi u komentářů a zápis verdiktů do `$BR_PROSTOR/vkus/verdikty.md` (co schváleno nebo zamítnuto a proč). Hotový reel:
+odpovědi u komentářů a zápis verdiktů do kolekce `verdikty` na revizní stránce (co schváleno nebo zamítnuto a proč). Hotový reel:
 nové povedené komponenty navrhni do knihovny (skill `revize`, část Knihovna).

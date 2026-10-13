@@ -47,7 +47,7 @@ Projekt `$BR_PROSTOR/<jmeno>-styl/` (struktura jako `nathan-styl`: `js/<jmeno>-k
 1. Ukázkový reel 15 až 30 s na našem záběru (brief jako u `/reel`, zvuk standardem `tools/mix.py`), storyboard, render.
 2. Nahrát na revizní stránku (skill `revize`) ukázku i showcase. Komponenty vyříznout do knihovny (`tools/knihovna/klipy.py`,
    kolekce `komponenty` se stylem `<jmeno>`, stav `k_revizi`), aby je tým mohl schvalovat a komentovat.
-3. Opravy podle komentářů, verdikty do `$BR_PROSTOR/vkus/verdikty.md`.
+3. Opravy podle komentářů, verdikty do kolekce `verdikty` na revizní stránce.
 
 ## 7. Nový skill a zapojení do pluginu
 

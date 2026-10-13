@@ -6,15 +6,15 @@ description: Mason styl reelů Beyond (podle Jacka Masona, @longevitypenguin) v 
 # Styl Mason (Beyond)
 
 Mluvíme Jackovým vizuálním jazykem o našich tématech, nekopírujeme jeho videa. Postup výroby je ve skillu `reel`,
-tady je jazyk stylu. Nejdřív `$BR_PLUGIN/vkus/pravidla.md` a `$BR_PROSTOR/vkus/verdikty.md`.
+tady je jazyk stylu. Nejdřív `$BR_PLUGIN/vkus/pravidla.md` a kolekce `verdikty` na revizní stránce.
 
 ## Projekt a komponenty
 
 - Nový reel: `zsh $BR_PLUGIN/scripts/novy_reel.sh mason <nazev>`, šablona `src/reel.html`, jádro kitů v `js/` (MK, BN, EK).
 - API a pasti komponent: `reference/rodiny.md` (MK po rodinách R1 až R10, BN, EK, křivky a plynulé pohyby), nové Beyond komponenty `reference/nove.md`.
-- Hotové reely jako vzor: `$BR_PROSTOR/reels/podnikatele/dalen/src/telo.html` (nejvíc vychytané), `heaton/src/zac.html`
-  a `intro-g4.html` (hook), `steven/src/telo.html`, `$BR_PROSTOR/jack-styl/src/vince.html` (případovka 4:3). Ber z nich řešení, ne celé scény.
-- Knihovna komponent z těchto reelů s ukázkami: revizní stránka, záložka Knihovna, styl Mason (`$BR_PROSTOR/_knihovna/prod/*.json` s popisy a voláním).
+- Hotové reely jako vzor: `$BR_PROSTOR/vzory/dalen-telo.html` (nejvíc vychytané), `vzory/heaton-telo.html`
+  a `vzory/heaton-hook.html` (hook), `vzory/steven-telo.html`, `vzory/vince.html` (případovka 4:3). Ber z nich řešení, ne celé scény.
+- Knihovna komponent z těchto reelů s ukázkami: revizní stránka, záložka Knihovna, styl Mason (`$BR_PROSTOR/knihovna/*.json` s popisy a voláním).
 - Efekty po renderu (radiální blur, fisheye, záře jen podle pravidel): `reference/efekty.md`.
 
 ## Jak editor přemýšlí (celé v `reference/mysleni.md`)
@@ -48,7 +48,7 @@ nastavení, slib tří věcí, body s rituálem, citace, CTA s “SLOVEM” na k
 
 ## Zvláštnosti stylu
 
-- Text za osobou: masky po snímcích (`BN.maskaZaPostavou`, výroba v `reference/nove.md` a `$BR_PROSTOR/reels/podnikatele/heaton/nastroje/za_osobou.py`).
+- Text za osobou: masky po snímcích (`BN.maskaZaPostavou`, výroba v `reference/nove.md` a `$BR_PROSTOR/tools/maska_za_osobou.py`).
   Nápis skrýt, jakmile masky dojdou.
 - Low framerate jen na grafiku (krok 2), kamera a zoomy plynule po křivce, punch-in max 1,15.
 - Titulky: šablona je dělá samy, u Tima nikdy přes obličej (u hlavy až od 500 a do 1420 px, pod bradou 1050).

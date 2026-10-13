@@ -1,0 +1,135 @@
+/* Noske kit: tokeny a vzhled. Styl podle rozboru Toma Noskeho, barvy Beyond
+ * Jeho tmavě zelenou #101A1A nahrazuje naše #111111, jeho krémovou #EFECE2 náš offwhite
+ * Barvy jen tyto, žádné inline hex v kompozicích
+ */
+@font-face { font-family: "HN"; src: url("assets/fonts/HN-Medium.ttf") format("truetype"); font-weight: 500; }
+@font-face { font-family: "HN"; src: url("assets/fonts/HN-Bold.ttf") format("truetype"); font-weight: 700; }
+@font-face { font-family: "IS"; src: url("assets/fonts/InstrumentSerif-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; }
+/* Helvetica nikdy kurzívou (Tim 2.10.), pointa je vždy Instrument Serif Italic */
+
+:root {
+  --tma: #111111;          /* grafické karty, místo jeho #101A1A */
+  --papir: #EFEBE4;        /* světlá karta, teplý offwhite místo jeho #EFECE2 */
+  --krem: #EDE6DC;         /* titulky na videu, jeho #E8D9CC posunutý k neutrálu, ať nejde do oranžova */
+  --tlumena: rgba(237, 230, 220, 0.4);   /* neaktivní stav pilulek a ikon */
+  --cervena: #FF0E00;      /* max jeden datový detail na reel, nikdy na titulcích */
+  --proklad: -0.04em;      /* změřeno -2 až -5 %, velká slova se skoro dotýkají */
+  --proklad-velke: -0.05em;
+}
+
+.nk-plocha { position: absolute; inset: 0; overflow: hidden; background: var(--tma); font-family: "HN", "Helvetica Neue", Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
+
+/* VIDEO: celý záběr, nikdy vyříznutá postava. Původní grade se nemění, .nk-grade jen když Tim chce tmavší Noske look */
+.nk-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 0%; }  /* zoom od horního okraje, ať neusekne vlasy (Tim 2.10.) */
+.nk-video.nk-grade { filter: contrast(1.1) saturate(0.82) brightness(0.9); }
+.nk-vineta { position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: radial-gradient(ellipse 78% 62% at 50% 42%, rgba(17,17,17,0) 45%, rgba(17,17,17,0.55) 100%); }
+
+/* vrstvy: video < vineta < duch (rozostřené číslo) < grafika < titulky < karty */
+.nk-z-duch { z-index: 3; }
+.nk-z-grafika { z-index: 4; }
+.nk-z-titulky { z-index: 5; }
+.nk-z-karta { z-index: 7; }
+
+/* TITULKY: jedno slovo, minusky, krémová, bez stínu a podkladu, na hrudi */
+.nk-titulky { position: absolute; left: 0; right: 0; top: var(--titulky-y, 62%); height: 0; z-index: 5; }
+.nk-slovo {
+  position: absolute; left: 60px; right: 60px; transform: translateY(-50%); visibility: hidden;
+  text-align: center; color: var(--krem); font-weight: 700; letter-spacing: var(--proklad); line-height: 0.95; white-space: nowrap;
+}
+/* tři stupně velikosti, změřeno ~1 : 1,4 : 2 a klíčové slovo 2,5 až 3,7 krát */
+.nk-slovo.s { font-size: 52px; }
+.nk-slovo.m { font-size: 72px; }
+.nk-slovo.l { font-size: 104px; }
+.nk-slovo.xl { font-size: 132px; text-transform: uppercase; letter-spacing: var(--proklad-velke); }
+.nk-slovo .nad { display: block; font-size: 34px; letter-spacing: -0.02em; text-transform: none; margin-bottom: 10px; font-weight: 700; }
+/* pointa: Instrument Serif Italic jako jeho serif, o 12 % větší, ať drží výšku písmen vedle Helveticy */
+.nk-kurziva { font-family: "IS", serif; font-style: italic; font-weight: 400 !important; font-synthesis: none;   /* IS nemá tučný řez, prohlížeč by ho uměle ztučnil (Tim 2.10.: moc tlustý) */
+  text-transform: none; letter-spacing: -0.01em; font-size: 1.12em; }
+.nk-titulky.na-papire .nk-slovo { color: var(--tma); }
+/* přes B-roll zůstává krémová, jen s měkkým stínem pod písmem. Tmavé titulky na fotce nikdy (Tim 2.10.: nečitelné) */
+/* jemný stín pod písmem na každém videu (Tim 2.10.: kontrast vždy, ale ne těžký), na B-rollu o kousek silnější */
+.nk-titulky .nk-slovo, .nk-titulky .nk-sestava { text-shadow: 0 1px 12px rgba(17, 17, 17, 0.32), 0 0 2px rgba(17, 17, 17, 0.22); }
+.nk-titulky.na-brollu .nk-slovo { text-shadow: 0 1px 14px rgba(17, 17, 17, 0.42), 0 0 2px rgba(17, 17, 17, 0.3); }
+
+/* KARTA přes celý obraz, tvrdý střih dovnitř i ven */
+.nk-karta { position: absolute; inset: 0; z-index: 7; background: var(--tma); display: none; color: var(--krem); }
+.nk-karta.papir { background: var(--papir); color: var(--tma); }
+.nk-karta .stred { position: absolute; left: 70px; right: 70px; top: 50%; transform: translateY(-50%); text-align: center; }
+
+/* ROZHOZENÁ slova v jedné řadě přes šířku (need . less . think), každé jinou velikostí */
+.nk-rozhozena { position: absolute; left: 0; right: 0; top: 50%; height: 0; }
+.nk-rozhozena span { position: absolute; transform: translate(-50%, -50%); font-weight: 700; letter-spacing: var(--proklad); white-space: nowrap; visibility: hidden; line-height: 1; }
+
+/* KOTVA: malý řádek drží, slovo pod ním se tvrdě vyměňuje */
+.nk-kotva .maly { font-size: 40px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 18px; }
+.nk-kotva .vymena { position: relative; height: 1.1em; font-size: 128px; font-weight: 700; letter-spacing: var(--proklad-velke); text-transform: uppercase; line-height: 1; }
+.nk-kotva .vymena span { position: absolute; left: 0; right: 0; visibility: hidden; white-space: nowrap; }
+
+/* DUCH: obří číslo, které se rozostří a zůstane za titulky */
+.nk-duch { position: absolute; left: 0; right: 0; text-align: center; z-index: 3; visibility: hidden; color: var(--krem);
+  font-weight: 700; letter-spacing: -0.06em; line-height: 0.85; white-space: nowrap; }
+
+/* PILULKA s obrysem 2 px: aktivní krémová, neaktivní 40 % */
+.nk-pilulka {
+  position: absolute; visibility: hidden; display: inline-flex; align-items: center; justify-content: center;
+  padding: 0.42em 1.05em 0.36em; border: 2px solid currentColor; border-radius: 999px; color: var(--krem);
+  font-size: 30px; font-weight: 700; letter-spacing: -0.01em; text-transform: uppercase; white-space: nowrap; line-height: 1;
+  transform: translateX(-50%);
+}
+
+/* SKLO: skleněná karta s rozostřením pod sebou, bílá 8 %, rádius 24 */
+.nk-sklo {
+  position: absolute; visibility: hidden; display: flex; align-items: center; gap: 28px;
+  padding: 26px 34px; border-radius: 28px; background: rgba(255, 255, 255, 0.16);
+  border: 1.5px solid rgba(255, 255, 255, 0.28); backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
+  color: var(--krem); font-weight: 700; letter-spacing: -0.02em; white-space: nowrap;
+}
+.nk-sklo .hlavni { font-size: 44px; }
+.nk-sklo .vedlejsi { font-size: 30px; opacity: 0.8; font-weight: 500; }
+.nk-sklo .hodnota { margin-left: auto; font-size: 52px; }
+
+/* REDUKCE: věta, ze které se tvrdě vyhazují slova */
+.nk-redukce { font-size: 92px; font-weight: 700; letter-spacing: var(--proklad); line-height: 1.02; }
+.nk-redukce span { display: inline; }
+
+/* POSTAVA jako ikona: plná krémová výplň, hlava a ramena */
+.nk-postava { position: absolute; width: 150px; height: 190px; visibility: hidden; color: var(--krem); transform: translateX(-50%); }
+.nk-postava::before { content: ""; position: absolute; left: 41px; top: 0; width: 68px; height: 68px; border-radius: 50%; background: currentColor; }
+.nk-postava::after { content: ""; position: absolute; left: 0; top: 82px; width: 150px; height: 108px; border-radius: 75px 75px 18px 18px; background: currentColor; }
+
+/* CITACE: profilovka a věta v uvozovkách, žádné bubliny zpráv (Tim, 2.10.2026) */
+.nk-citace .avatar { width: 132px; height: 132px; border-radius: 50%; margin: 0 auto; background: var(--tma); position: relative; overflow: hidden; }
+.nk-citace .avatar::before { content: ""; position: absolute; left: 44px; top: 26px; width: 44px; height: 44px; border-radius: 50%; background: var(--papir); }
+.nk-citace .avatar::after { content: ""; position: absolute; left: 22px; top: 80px; width: 88px; height: 70px; border-radius: 44px 44px 0 0; background: var(--papir); }
+.nk-citace .kdo { margin-top: 16px; font-size: 30px; font-weight: 500; letter-spacing: -0.02em; opacity: 0.55; }
+.nk-citace .radek { margin-top: 12px; font-size: 104px; font-family: "IS", serif; font-weight: 400; font-style: italic; letter-spacing: -0.01em; line-height: 1.02; visibility: hidden; }
+.nk-citace .radek:first-of-type { margin-top: 40px; }
+
+/* TRYCHTÝŘ z obrysových pilulek: na středu karty, zužuje se dolů, popisek uvnitř (text nikdy pod čarou) */
+.nk-trychtyr { position: absolute; inset: 0; }
+.nk-trychtyr .pilulka { position: absolute; left: 50%; transform: translateX(-50%); box-sizing: border-box; display: flex; align-items: center; justify-content: center;
+  border: 2.5px solid var(--krem); border-radius: 999px; color: var(--krem); font-size: 58px; font-weight: 700; letter-spacing: -0.02em; text-transform: uppercase; white-space: nowrap; }
+
+/* ŠTÍTEK S IKONOU: tmavá karta vedle mluvčího (platforma, nástroj), ikona obrysem, text vedle ní */
+.nk-ikonka { position: absolute; visibility: hidden; display: flex; align-items: center; gap: 24px; padding: 24px 34px 24px 28px;
+  border-radius: 26px; background: var(--tma); color: var(--krem); white-space: nowrap; }
+.nk-ikonka svg { width: 64px; height: 64px; flex: none; fill: none; stroke: var(--krem); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+.nk-ikonka svg .plne { fill: var(--krem); stroke: none; }
+.nk-ikonka .hlavni { display: block; font-size: 44px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.nk-ikonka .vedlejsi { display: block; margin-top: 8px; font-size: 28px; font-weight: 500; letter-spacing: -0.01em; opacity: 0.65; line-height: 1; }
+
+/* VRSTVENÁ SESTAVA: blok na místě titulků, vše na středu */
+.nk-sestava { position: absolute; left: 0; right: 0; top: 0; display: none; text-align: center; color: var(--krem); }
+.nk-sestava .a { font-size: 50px; font-weight: 700; letter-spacing: -0.02em; line-height: 1; visibility: hidden; white-space: nowrap; }
+.nk-sestava .a.verzalky { text-transform: uppercase; font-size: 42px; letter-spacing: 0; }
+.nk-sestava .a span, .nk-sestava .b span { visibility: hidden; }
+.nk-sestava .b { font-size: 136px; font-weight: 700; letter-spacing: var(--proklad-velke); line-height: 0.92; white-space: nowrap; margin-top: 16px; }
+.nk-sestava.pod .b { margin-top: 0; }
+.nk-sestava.pod .a { margin-top: 18px; }
+.nk-sestava .b.nk-kurziva { font-size: 168px; font-weight: 400; letter-spacing: -0.01em; }
+.nk-sestava.schody .radek { font-size: 96px; font-weight: 700; letter-spacing: var(--proklad); line-height: 1.02; white-space: nowrap; visibility: hidden; }
+.nk-sestava.schody .radek.nk-kurziva { font-size: 122px; font-weight: 400; }
+.nk-titulky.na-brollu .nk-sestava { text-shadow: 0 1px 14px rgba(17, 17, 17, 0.42), 0 0 2px rgba(17, 17, 17, 0.3); }
+.nk-sestava .a { font-size: 54px; }
+.nk-sestava.schody .radek + .radek { margin-top: 10px; }

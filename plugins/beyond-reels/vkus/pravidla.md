@@ -1,7 +1,7 @@
 # Vkus Beyond: pravidla pro každý reel v každém stylu
 
 Sepsáno z připomínek Tima a Štěpána k reelům Dalen, Heaton, Steven, Vince, Noske, Nathan a Lumitris (září až říjen 2026).
-Platí bez připomínání. Co se naučíme z revizí, přibývá do `$BR_PROSTOR/vkus/verdikty.md` (sdílený v gitu), ten má přednost, když si odporují.
+Platí bez připomínání. Co se naučíme z revizí, přibývá do kolekce `verdikty` v databázi revizní stránky (sdílí ji celý tým, čte se přes ArtifactData `list`), ta má přednost, když si odporují.
 
 ## Originalita a knihovna
 - Naše komponenty v knihovně jsou inspirace, ne stavebnice. Schválená = připravená k použití, ne povinná. Neschválené nejsou zakázané.
@@ -19,7 +19,7 @@ Platí bez připomínání. Co se naučíme z revizí, přibývá do `$BR_PROSTO
 - Tim jen v úsecích, kdy kouká do kamery. Čtení z telefonu nebo uhnutí pohledem zakrýt B-rollem nebo grafikou, ani na pár snímků.
 - Webka nikdy vystřižená z pozadí. Výstřižky jen u AI fotek a cizích lidí z jejich videí.
 - Šipka ke jménu vždy zleva, hrot vedle obličeje, nikdy přes něj (obličej měř po snímcích).
-- B-rolly z `$BR_PROSTOR/B-rolls` (KATALOG.md), čitelné, bez skoku na jiný záběr uvnitř (scdet). Grade neměnit.
+- B-rolly z `$BR_BROLLS` (KATALOG.md), čitelné, bez skoku na jiný záběr uvnitř (scdet). Grade neměnit.
 - AI fotky: jen Seedream v4 edit, 2 až 3 generace, studiový portrét od stehen nahoru na bílém, bez glow, pak BiRefNet bez pozadí.
 
 ## Zakázáno

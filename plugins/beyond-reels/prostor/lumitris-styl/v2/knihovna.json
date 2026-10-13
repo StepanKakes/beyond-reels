@@ -1,0 +1,17 @@
+{
+  "styl": "lumitris", "fps": 24, "sirka": 720, "pomer": "4/3", "video": "renders/komponenty.mp4",
+  "polozky": [
+    {"id": "lumi-studeny-uvod", "od": 0, "do": 44, "nazev": "Studený úvod", "funkce": "lumi2 tah + štítek", "popis": "Nájezd 1,06 S křivkou, zmrazení, štítek grotesk a serif. Obří slovo na 2 snímky, svisle natažené 3x."},
+    {"id": "lumi-kolaz-karet", "od": 44, "do": 72, "nazev": "Koláž karet ve 3D", "funkce": "lumi2 karty", "popis": "Karty bez rámečků ve 3 hloubkách rozostření, první snímky v negativu. Kamera dojíždí, takt 12 fps."},
+    {"id": "lumi-citac-box", "od": 72, "do": 113, "nazev": "Čítač a box výběru", "funkce": "lumi2 prvek", "popis": "Čítač skáče po 1 až 2 snímcích, box roste zleva po 2 snímcích. Takt 24 fps, odhalení s vrcholem na střihu."},
+    {"id": "lumi-najezd-do-strihu", "od": 113, "do": 148, "nazev": "Nájezd do střihu", "funkce": "lumi2 tah", "popis": "Nájezd 1,00 na 1,24 se zrychlením, karta naskočí v negativu. Řádek slov ve slotech 18, 50 a 82 % šířky."},
+    {"id": "lumi-vyrez-na-barve", "od": 148, "do": 188, "nazev": "Výřez na barvě", "funkce": "lumi2 vyrez", "popis": "Černobílý tiskový rastr 6 px, červená s mřížkou, šedá kopie siluety. Pan s dojezdem, obří slovo s inverzí."},
+    {"id": "lumi-serie-karet", "od": 188, "do": 230, "nazev": "Série karet", "funkce": "lumi2 serie", "popis": "Nový obraz každé 3 snímky, karta roste. Takt 8 fps, řádek odchází rozostřením."},
+    {"id": "lumi-s-krivka", "od": 230, "do": 286, "nazev": "S křivka s glitchem", "funkce": "lumi2 tah + glitch", "popis": "Nájezd 1,20 za 14 snímků, černobílý záběr, červený box. Glitch: negativ dalšího záběru 2 snímky před střihem."},
+    {"id": "lumi-aroll-slova-pres-tvar", "od": 286, "do": 301, "nazev": "A-roll: slova přes tvář", "funkce": "lumi2 texty", "popis": "Černobílý A-roll, obří slovo přes obličej na 1 snímek. Takt 12 fps."},
+    {"id": "lumi-aroll-okno-skoky", "od": 301, "do": 350, "nazev": "A-roll: okno se skoky", "funkce": "lumi2 okna", "popis": "Šířka okna skáče 46, 62 a 77 % na slovech, bez animace. Takt 24 fps, aby byla vidět ústa."},
+    {"id": "lumi-rohove-zavorky", "od": 350, "do": 400, "nazev": "Rohové závorky", "funkce": "lumi2 zavorky", "popis": "Závorky se rozšíří S křivkou za 22 snímků, karty v negativu. Takt 12 fps."},
+    {"id": "lumi-nalepka", "od": 400, "do": 460, "nazev": "Nálepka", "funkce": "lumi2 karty (cista)", "popis": "Výřez postavy s hranatým obrysem jako stříhaný papír. Světlé plátno, karty v hloubce rozostřené."},
+    {"id": "lumi-outro", "od": 460, "do": 520, "nazev": "Outro", "funkce": "lumi2 outro", "popis": "Znak třikrát blikne po 1 snímku a zmenší se z 1,19 na 1,00. Bez vodoznaku."}
+  ]
+}

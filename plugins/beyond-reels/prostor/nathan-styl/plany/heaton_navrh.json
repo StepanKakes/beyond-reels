@@ -1,0 +1,3328 @@
+{
+ "fps": 30,
+ "w": 1920,
+ "h": 1080,
+ "delka": 2975,
+ "profil": {
+  "male": 54,
+  "sloupec": 760,
+  "th_x": 1448,
+  "tau": [
+   6,
+   9
+  ],
+  "blink": 0.32431526306379116,
+  "bloky": 0.0,
+  "okno": 0.4174236597183107,
+  "karaoke": 0.15819115672673156,
+  "swap": 0.0,
+  "kond": 0.13098510160219617,
+  "snap": 0.0637543834709694,
+  "zablesk": 0.04085042429566019,
+  "karta_prvni": "tmava",
+  "letterbox": true
+ },
+ "zabery": [
+  {
+   "typ": "broll",
+   "ref": "klip:kEGRAKT0ApQ@961.00",
+   "f0": 0,
+   "f1": 44,
+   "opak": 0,
+   "zoom": [
+    1.087,
+    1.0,
+    "expo.out",
+    68
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:VofeFR5LnZ4@1886.95",
+   "f0": 45,
+   "f1": 88,
+   "opak": 0,
+   "zoom": [
+    1.0,
+    1.0306,
+    "none"
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:9fGr_fZTKHY@333.15",
+   "f0": 88,
+   "f1": 141,
+   "opak": 0,
+   "zoom": [
+    1.0,
+    1.0278,
+    "none"
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:clFvSb8W9es@433.65",
+   "f0": 141,
+   "f1": 184,
+   "opak": 0,
+   "zoom": [
+    1.0181,
+    1.0,
+    "none"
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:6KurK_1000@17.25",
+   "f0": 184,
+   "f1": 233,
+   "opak": 0,
+   "zoom": [
+    1.0347,
+    1.0,
+    "none"
+   ]
+  },
+  {
+   "typ": "karta",
+   "ref": null,
+   "f0": 233,
+   "f1": 287,
+   "opak": 0,
+   "plocha": "tmava"
+  },
+  {
+   "typ": "th",
+   "ref": null,
+   "f0": 287,
+   "f1": 377,
+   "opak": 0,
+   "zoomy": [
+    [
+     287,
+     378,
+     1.0591,
+     1.0,
+     "none"
+    ]
+   ]
+  },
+  {
+   "typ": "karta",
+   "ref": null,
+   "f0": 377,
+   "f1": 499,
+   "opak": 0,
+   "plocha": "svetla"
+  },
+  {
+   "typ": "karta",
+   "ref": null,
+   "f0": 499,
+   "f1": 533,
+   "opak": 0,
+   "plocha": "svetla"
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:kEGRAKT0ApQ@1061.25",
+   "f0": 533,
+   "f1": 603,
+   "opak": 0,
+   "okno": {
+    "tvar": "16:9",
+    "strana": "vpravo",
+    "pozadi": "svetla",
+    "vyjezd": true
+   },
+   "zoom": [
+    1.0,
+    1.0328,
+    "none"
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:SAmqCxYgrUw@839.85",
+   "f0": 603,
+   "f1": 673,
+   "opak": 0,
+   "zoom": [
+    1.0,
+    1.0466,
+    "none"
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:VofeFR5LnZ4@511.55",
+   "f0": 673,
+   "f1": 717,
+   "opak": 0,
+   "zoom": [
+    1.0,
+    1.0283,
+    "none"
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:9dwCvRL7n3M@3.15",
+   "f0": 717,
+   "f1": 776,
+   "opak": 0,
+   "zoom": [
+    1.0273,
+    1.0,
+    "none"
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:2_e88SqxXcI@203.40",
+   "f0": 776,
+   "f1": 820,
+   "opak": 0,
+   "zoom": [
+    1.0237,
+    1.0,
+    "none"
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:iWQW6bKXZpM@488.65",
+   "f0": 821,
+   "f1": 865,
+   "opak": 0,
+   "zoom": [
+    1.0,
+    1.0397,
+    "none"
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:6vtTkKJdvZQ_0@11.45",
+   "f0": 865,
+   "f1": 907,
+   "opak": 0,
+   "zoom": [
+    1.022,
+    1.0,
+    "none"
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:gNGOw9g3zjw@1441.15",
+   "f0": 907,
+   "f1": 955,
+   "opak": 0,
+   "zoom": [
+    1.0,
+    1.0258,
+    "none"
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:6vtTkKJdvZQ_0@213.15",
+   "f0": 956,
+   "f1": 1004,
+   "opak": 0,
+   "zoom": [
+    1.0205,
+    1.0,
+    "none"
+   ]
+  },
+  {
+   "typ": "karta",
+   "ref": null,
+   "f0": 1004,
+   "f1": 1056,
+   "opak": 0,
+   "plocha": "svetla"
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:9fGr_fZTKHY@753.75",
+   "f0": 1056,
+   "f1": 1099,
+   "opak": 0,
+   "okno": {
+    "tvar": "16:9",
+    "strana": "vpravo",
+    "pozadi": "tmava",
+    "vyjezd": true
+   },
+   "zoom": [
+    1.0,
+    1.016,
+    "none"
+   ]
+  },
+  {
+   "typ": "karta",
+   "ref": null,
+   "f0": 1099,
+   "f1": 1125,
+   "opak": 0,
+   "plocha": "svetla"
+  },
+  {
+   "typ": "th",
+   "ref": null,
+   "f0": 1125,
+   "f1": 1158,
+   "opak": 0,
+   "zoomy": [
+    [
+     1125,
+     1159,
+     1.016,
+     1.0,
+     "none"
+    ]
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:jYUcsLdrm3M@499.85",
+   "f0": 1159,
+   "f1": 1170,
+   "opak": 0,
+   "zoom": [
+    1.0096,
+    1.0,
+    "none"
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:gNGOw9g3zjw@200.45",
+   "f0": 1170,
+   "f1": 1216,
+   "opak": 0,
+   "zoom": [
+    1.0277,
+    1.0,
+    "none"
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:UhcbWSGmQ18@196.65",
+   "f0": 1217,
+   "f1": 1263,
+   "opak": 0,
+   "zoom": [
+    1.0,
+    1.0217,
+    "none"
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:O5EyWJE4mHE@120.00",
+   "f0": 1263,
+   "f1": 1322,
+   "opak": 0,
+   "okno": {
+    "tvar": "16:9",
+    "strana": "vlevo",
+    "pozadi": "svetla",
+    "vyjezd": true
+   },
+   "zoom": [
+    1.0,
+    1.0197,
+    "none"
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:iWQW6bKXZpM@819.95",
+   "f0": 1322,
+   "f1": 1333,
+   "opak": 0,
+   "zoom": [
+    1.0126,
+    1.0,
+    "none"
+   ]
+  },
+  {
+   "typ": "th",
+   "ref": null,
+   "f0": 1334,
+   "f1": 1359,
+   "opak": 0,
+   "zoomy": [
+    [
+     1334,
+     1360,
+     1.0,
+     1.0154,
+     "none"
+    ]
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:SAmqCxYgrUw@507.45",
+   "f0": 1360,
+   "f1": 1371,
+   "opak": 0,
+   "zoom": [
+    1.0,
+    1.0093,
+    "none"
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:kHlKdM3Ng-8@82.75",
+   "f0": 1371,
+   "f1": 1411,
+   "opak": 0,
+   "zoom": [
+    1.0,
+    1.0313,
+    "none"
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:VofeFR5LnZ4@2241.75",
+   "f0": 1412,
+   "f1": 1450,
+   "opak": 0,
+   "zoom": [
+    1.0,
+    1.0234,
+    "none"
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:kHlKdM3Ng-8@454.15",
+   "f0": 1450,
+   "f1": 1490,
+   "opak": 0,
+   "okno": {
+    "tvar": "16:9",
+    "strana": "vpravo",
+    "pozadi": "svetla",
+    "vyjezd": true
+   },
+   "zoom": [
+    1.0,
+    1.0244,
+    "none"
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:kEGRAKT0ApQ@768.25",
+   "f0": 1491,
+   "f1": 1531,
+   "opak": 0,
+   "okno": {
+    "tvar": "16:9",
+    "strana": "vpravo",
+    "pozadi": "svetla",
+    "vyjezd": false
+   },
+   "zoom": [
+    1.0,
+    1.0178,
+    "none"
+   ]
+  },
+  {
+   "typ": "karta",
+   "ref": null,
+   "f0": 1531,
+   "f1": 1627,
+   "opak": 0,
+   "plocha": "svetla"
+  },
+  {
+   "typ": "th",
+   "ref": null,
+   "f0": 1627,
+   "f1": 1659,
+   "opak": 0,
+   "zoomy": [
+    [
+     1627,
+     1660,
+     1.0152,
+     1.0,
+     "none"
+    ]
+   ]
+  },
+  {
+   "typ": "th",
+   "ref": null,
+   "f0": 1659,
+   "f1": 1716,
+   "opak": 0,
+   "zoomy": [
+    [
+     1659,
+     1717,
+     1.0359,
+     1.0,
+     "none"
+    ]
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:9fGr_fZTKHY@511.45",
+   "f0": 1717,
+   "f1": 1728,
+   "opak": 0,
+   "zoom": [
+    1.0,
+    1.0051,
+    "none"
+   ]
+  },
+  {
+   "typ": "karta",
+   "ref": null,
+   "f0": 1728,
+   "f1": 1773,
+   "opak": 0,
+   "plocha": "svetla"
+  },
+  {
+   "typ": "th",
+   "ref": null,
+   "f0": 1773,
+   "f1": 1863,
+   "opak": 0,
+   "zoomy": [
+    [
+     1773,
+     1864,
+     1.0411,
+     1.0,
+     "none"
+    ]
+   ]
+  },
+  {
+   "typ": "th",
+   "ref": null,
+   "f0": 1863,
+   "f1": 1914,
+   "opak": 0,
+   "zoomy": [
+    [
+     1863,
+     1915,
+     1.0225,
+     1.0,
+     "none"
+    ]
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:jYUcsLdrm3M@675.75",
+   "f0": 1914,
+   "f1": 1987,
+   "opak": 0,
+   "zoom": [
+    1.0,
+    1.0456,
+    "none"
+   ]
+  },
+  {
+   "typ": "karta",
+   "ref": null,
+   "f0": 1987,
+   "f1": 2005,
+   "opak": 0,
+   "plocha": "tmava"
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:iWQW6bKXZpM@11.35",
+   "f0": 2005,
+   "f1": 2062,
+   "opak": 0,
+   "okno": {
+    "tvar": "1:1",
+    "strana": "vlevo",
+    "pozadi": "svetla",
+    "vyjezd": true
+   },
+   "zoom": [
+    1.0,
+    1.0277,
+    "none"
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:9fGr_fZTKHY@370.00",
+   "f0": 2062,
+   "f1": 2109,
+   "opak": 0,
+   "zoom": [
+    1.0297,
+    1.0,
+    "none"
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:iWQW6bKXZpM@630.45",
+   "f0": 2110,
+   "f1": 2156,
+   "opak": 0,
+   "zoom": [
+    1.0,
+    1.0244,
+    "none"
+   ]
+  },
+  {
+   "typ": "karta",
+   "ref": null,
+   "f0": 2156,
+   "f1": 2213,
+   "opak": 0,
+   "plocha": "svetla"
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:gNGOw9g3zjw@870.55",
+   "f0": 2213,
+   "f1": 2286,
+   "opak": 0,
+   "okno": {
+    "tvar": "16:9",
+    "strana": "vlevo",
+    "pozadi": "svetla",
+    "vyjezd": true
+   },
+   "zoom": [
+    1.0,
+    1.0332,
+    "none"
+   ]
+  },
+  {
+   "typ": "th",
+   "ref": null,
+   "f0": 2286,
+   "f1": 2392,
+   "opak": 0,
+   "zoomy": [
+    [
+     2286,
+     2393,
+     1.0,
+     1.0643,
+     "none"
+    ]
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:9fGr_fZTKHY@969.55",
+   "f0": 2392,
+   "f1": 2443,
+   "opak": 0,
+   "zoom": [
+    1.0429,
+    1.0,
+    "none"
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "media:c_leader@4.12",
+   "f0": 2443,
+   "f1": 2542,
+   "opak": 0,
+   "citace": true,
+   "vf": "crop=1108:832:406:124"
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:AdYeVBwtqK0@53.45",
+   "f0": 2542,
+   "f1": 2581,
+   "opak": 0,
+   "zoom": [
+    1.0,
+    1.0216,
+    "none"
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:O5EyWJE4mHE@689.35",
+   "f0": 2581,
+   "f1": 2649,
+   "opak": 0,
+   "okno": {
+    "tvar": "1:1",
+    "strana": "vlevo",
+    "pozadi": "tmava",
+    "vyjezd": true
+   },
+   "zoom": [
+    1.0,
+    1.0379,
+    "none"
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:uKPeQPJWa90@62.25",
+   "f0": 2649,
+   "f1": 2691,
+   "opak": 0,
+   "zoom": [
+    1.0,
+    1.0346,
+    "none"
+   ]
+  },
+  {
+   "typ": "th",
+   "ref": null,
+   "f0": 2691,
+   "f1": 2720,
+   "opak": 0,
+   "zoomy": [
+    [
+     2691,
+     2721,
+     1.0,
+     1.0114,
+     "none"
+    ]
+   ]
+  },
+  {
+   "typ": "th",
+   "ref": null,
+   "f0": 2720,
+   "f1": 2766,
+   "opak": 0,
+   "zoomy": [
+    [
+     2720,
+     2767,
+     1.0,
+     1.0233,
+     "none"
+    ]
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:clFvSb8W9es@914.55",
+   "f0": 2767,
+   "f1": 2780,
+   "opak": 0,
+   "zoom": [
+    1.015,
+    1.0,
+    "none"
+   ]
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:kEGRAKT0ApQ@578.05",
+   "f0": 2780,
+   "f1": 2815,
+   "opak": 0,
+   "zoom": [
+    1.0,
+    1.0276,
+    "none"
+   ]
+  },
+  {
+   "typ": "th",
+   "ref": null,
+   "f0": 2816,
+   "f1": 2871,
+   "opak": 0,
+   "zoomy": [
+    [
+     2816,
+     2872,
+     1.0281,
+     1.0,
+     "none"
+    ]
+   ]
+  },
+  {
+   "typ": "karta",
+   "ref": null,
+   "f0": 2871,
+   "f1": 2918,
+   "opak": 0,
+   "plocha": "tmava"
+  },
+  {
+   "typ": "broll",
+   "ref": "klip:9dwCvRL7n3M@505.05",
+   "f0": 2918,
+   "f1": 2959,
+   "opak": 0,
+   "zoom": [
+    1.0325,
+    1.0,
+    "none"
+   ]
+  },
+  {
+   "typ": "karta",
+   "ref": null,
+   "f0": 2959,
+   "f1": 2960,
+   "plocha": "seda"
+  },
+  {
+   "typ": "karta",
+   "ref": null,
+   "f0": 2960,
+   "f1": 2975,
+   "plocha": "cerna"
+  }
+ ],
+ "texty": [
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "George",
+     "f": 6
+    },
+    {
+     "text": "Heaton",
+     "f": 16
+    },
+    {
+     "text": "jede",
+     "f": 32
+    },
+    {
+     "text": "bomby",
+     "f": 42
+    },
+    {
+     "text": "Jeho",
+     "f": 55
+    }
+   ],
+   "f1": 88,
+   "x": 552,
+   "y": 402,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "značka",
+   "f": 63,
+   "f1": 88,
+   "x": 552,
+   "y": 427,
+   "s": 255.5,
+   "font": "hn",
+   "smer": "dol",
+   "D": 79,
+   "tau": 4.5
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "Represent",
+     "f": 71
+    }
+   ],
+   "f1": 88,
+   "x": 1368,
+   "y": 682,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "dělá",
+     "f": 88
+    },
+    {
+     "text": "korun",
+     "f": 122
+    },
+    {
+     "text": "ročně,",
+     "f": 130
+    }
+   ],
+   "f1": 141,
+   "x": 960,
+   "y": 610,
+   "s": 54,
+   "zarovnani": "stred",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "pocitadlo",
+   "od": 0,
+   "do": 3000000000,
+   "pripona": " Kč",
+   "f": 97,
+   "fDo": 121,
+   "f1": 141,
+   "x": 960,
+   "y": 450,
+   "s": 128
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "v",
+     "f": 141
+    },
+    {
+     "text": "LA",
+     "f": 145
+    },
+    {
+     "text": "má",
+     "f": 153
+    }
+   ],
+   "f1": 184,
+   "x": 230,
+   "y": 435,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "vlastní",
+   "f": 157,
+   "f1": 184,
+   "x": 230,
+   "y": 477,
+   "s": 223.4,
+   "font": "hn",
+   "smer": "dol",
+   "D": 96,
+   "tau": 5.9
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "penthouse",
+     "f": 170
+    }
+   ],
+   "f1": 184,
+   "x": 880,
+   "y": 701,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "a",
+     "f": 184
+    },
+    {
+     "text": "Rolls",
+     "f": 187
+    },
+    {
+     "text": "Royce",
+     "f": 197
+    },
+    {
+     "text": "si",
+     "f": 202
+    }
+   ],
+   "f1": 233,
+   "x": 552,
+   "y": 343,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "kupuje",
+   "f": 207,
+   "f1": 233,
+   "x": 552,
+   "y": 360,
+   "s": 270,
+   "font": "hn",
+   "smer": "dol",
+   "D": 88,
+   "tau": 5.8
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "v",
+     "f": 216
+    },
+    {
+     "text": "cashi",
+     "f": 219
+    }
+   ],
+   "f1": 233,
+   "x": 1368,
+   "y": 679,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "A",
+     "f": 233
+    },
+    {
+     "text": "přesto",
+     "f": 237
+    },
+    {
+     "text": "po",
+     "f": 254
+    },
+    {
+     "text": "letech",
+     "f": 272
+    }
+   ],
+   "f1": 287,
+   "x": 960,
+   "y": 600,
+   "s": 54,
+   "zarovnani": "stred",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "roky",
+   "od": 2012,
+   "do": 2026,
+   "f": 234,
+   "fDo": 260,
+   "f1": 287,
+   "y": 437
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "George",
+     "f": 287
+    },
+    {
+     "text": "tajně",
+     "f": 300
+    },
+    {
+     "text": "udělal",
+     "f": 310
+    },
+    {
+     "text": "z",
+     "f": 320
+    },
+    {
+     "text": "obsahu",
+     "f": 323
+    },
+    {
+     "text": "svou",
+     "f": 335
+    }
+   ],
+   "f1": 377,
+   "x": 1005,
+   "y": 393,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "prioritu",
+   "f": 340,
+   "f1": 377,
+   "x": 1057,
+   "y": 416,
+   "s": 245.9,
+   "font": "hn",
+   "smer": "dol",
+   "D": 91,
+   "tau": 5.6
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "Ale",
+     "f": 355
+    },
+    {
+     "text": "proč?",
+     "f": 364
+    }
+   ],
+   "f1": 377,
+   "x": 1839,
+   "y": 698,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "Protože",
+     "f": 377
+    },
+    {
+     "text": "ví,",
+     "f": 390
+    },
+    {
+     "text": "že",
+     "f": 397
+    }
+   ],
+   "f1": 401,
+   "x": 960,
+   "y": 900,
+   "s": 54,
+   "zarovnani": "stred",
+   "karaoke": false,
+   "padani": false,
+   "barva": "akcent"
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "Zaprvé",
+     "f": 499
+    }
+   ],
+   "f1": 533,
+   "x": 960,
+   "y": 980,
+   "s": 54,
+   "zarovnani": "stred",
+   "karaoke": false,
+   "padani": false,
+   "barva": "akcent"
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "George",
+     "f": 533
+    },
+    {
+     "text": "se",
+     "f": 546
+    },
+    {
+     "text": "skrze",
+     "f": 554
+    },
+    {
+     "text": "svou",
+     "f": 563
+    }
+   ],
+   "f1": 603,
+   "x": 200,
+   "y": 409,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "tvorbu",
+   "f": 567,
+   "f1": 603,
+   "x": 200,
+   "y": 445,
+   "s": 163.8,
+   "font": "hn",
+   "smer": "dol",
+   "D": 110,
+   "tau": 5.4
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "spojuje",
+     "f": 583
+    },
+    {
+     "text": "s",
+     "f": 591
+    },
+    {
+     "text": "lidmi,",
+     "f": 593
+    }
+   ],
+   "f1": 603,
+   "x": 672,
+   "y": 611,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "ke",
+     "f": 603
+    },
+    {
+     "text": "kterým",
+     "f": 608
+    },
+    {
+     "text": "se",
+     "f": 615
+    },
+    {
+     "text": "běžný",
+     "f": 620
+    },
+    {
+     "text": "podnikatel",
+     "f": 631
+    }
+   ],
+   "f1": 673,
+   "x": 282,
+   "y": 422,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "nikdy",
+   "f": 646,
+   "f1": 673,
+   "x": 282,
+   "y": 445,
+   "s": 242.5,
+   "font": "hn",
+   "smer": "dol",
+   "D": 89,
+   "tau": 5.0
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "nedostane",
+     "f": 654
+    }
+   ],
+   "f1": 673,
+   "x": 864,
+   "y": 732,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "NATÁČEL CHRISEM",
+   "f": 673,
+   "f1": 717,
+   "x": 448,
+   "y": 131,
+   "s": 120,
+   "font": "kond",
+   "smer": "dol",
+   "D": 93,
+   "tau": 5.3
+  },
+  {
+   "typ": "velke",
+   "text": "BUMSTEADEM",
+   "f": 700,
+   "f1": 717,
+   "x": 508,
+   "y": 244,
+   "s": 142.5,
+   "font": "kond",
+   "smer": "dol",
+   "D": 80,
+   "tau": 4.5,
+   "blur": true
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "a",
+     "f": 717
+    },
+    {
+     "text": "spojuje",
+     "f": 724
+    },
+    {
+     "text": "se",
+     "f": 733
+    },
+    {
+     "text": "s",
+     "f": 736
+    },
+    {
+     "text": "dalšími",
+     "f": 739
+    }
+   ],
+   "f1": 776,
+   "x": 208,
+   "y": 407,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "zajímavými",
+   "f": 751,
+   "f1": 776,
+   "x": 208,
+   "y": 458,
+   "s": 127.0,
+   "font": "hn",
+   "smer": "dol",
+   "D": 89,
+   "tau": 4.7
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "lidmi",
+     "f": 766
+    }
+   ],
+   "f1": 776,
+   "x": 838,
+   "y": 611,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "S",
+     "f": 776
+    },
+    {
+     "text": "ultra",
+     "f": 781
+    },
+    {
+     "text": "endurance",
+     "f": 790
+    },
+    {
+     "text": "běžcem",
+     "f": 801
+    },
+    {
+     "text": "Willem",
+     "f": 813
+    },
+    {
+     "text": "Goodgem",
+     "f": 821
+    },
+    {
+     "text": "nebo",
+     "f": 832
+    }
+   ],
+   "f1": 865,
+   "x": 637,
+   "y": 412,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "Rossem",
+   "f": 839,
+   "f1": 865,
+   "x": 1008,
+   "y": 449,
+   "s": 152.3,
+   "font": "hn",
+   "smer": "dol",
+   "D": 93,
+   "tau": 5.3
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "MacKayem",
+     "f": 848
+    }
+   ],
+   "f1": 865,
+   "x": 1570,
+   "y": 616,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "Společně",
+     "f": 865
+    }
+   ],
+   "f1": 907,
+   "x": 979,
+   "y": 349,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "založili",
+   "f": 876,
+   "f1": 907,
+   "x": 979,
+   "y": 377,
+   "s": 212.1,
+   "font": "hn",
+   "smer": "dol",
+   "D": 109,
+   "tau": 5.0
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "Cadence",
+     "f": 890
+    }
+   ],
+   "f1": 907,
+   "x": 1611,
+   "y": 588,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "Díky",
+     "f": 907
+    },
+    {
+     "text": "tomu",
+     "f": 915
+    },
+    {
+     "text": "si",
+     "f": 925
+    },
+    {
+     "text": "tak",
+     "f": 929
+    },
+    {
+     "text": "vytváří",
+     "f": 935
+    }
+   ],
+   "f1": 1004,
+   "x": 374,
+   "y": 405,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "partnerství",
+   "f": 950,
+   "f1": 1004,
+   "x": 374,
+   "y": 458,
+   "s": 110,
+   "font": "hn",
+   "smer": "dol",
+   "D": 93,
+   "tau": 5.4
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "s",
+     "f": 971
+    },
+    {
+     "text": "ostatními",
+     "f": 974
+    },
+    {
+     "text": "značkami,",
+     "f": 989
+    }
+   ],
+   "f1": 1004,
+   "x": 904,
+   "y": 592,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "ke",
+     "f": 1004
+    },
+    {
+     "text": "kterým",
+     "f": 1009
+    },
+    {
+     "text": "by",
+     "f": 1015
+    },
+    {
+     "text": "se",
+     "f": 1017
+    },
+    {
+     "text": "jinak",
+     "f": 1021
+    }
+   ],
+   "f1": 1056,
+   "x": 631,
+   "y": 312,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false,
+   "barva": "akcent"
+  },
+  {
+   "typ": "velke",
+   "text": "těžko",
+   "f": 1030,
+   "f1": 1056,
+   "x": 631,
+   "y": 334,
+   "s": 270,
+   "font": "hn",
+   "smer": "dol",
+   "D": 88,
+   "tau": 5.8,
+   "barva": "akcent",
+   "blur": true
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "dostával",
+     "f": 1035
+    }
+   ],
+   "f1": 1056,
+   "x": 1297,
+   "y": 623,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false,
+   "barva": "akcent"
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "Na",
+     "f": 1056
+    },
+    {
+     "text": "tom",
+     "f": 1062
+    },
+    {
+     "text": "roste",
+     "f": 1066
+    }
+   ],
+   "f1": 1099,
+   "x": 182,
+   "y": 393,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "jeho",
+   "f": 1071,
+   "f1": 1099,
+   "x": 187,
+   "y": 412,
+   "s": 258.5,
+   "font": "hn",
+   "smer": "dol",
+   "D": 94,
+   "tau": 5.6
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "byznys",
+     "f": 1078
+    },
+    {
+     "text": "dál",
+     "f": 1088
+    }
+   ],
+   "f1": 1099,
+   "x": 686,
+   "y": 725,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "Zadruhé",
+     "f": 1099
+    }
+   ],
+   "f1": 1125,
+   "x": 960,
+   "y": 980,
+   "s": 54,
+   "zarovnani": "stred",
+   "karaoke": false,
+   "padani": false,
+   "barva": "akcent"
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "který",
+     "f": 1125
+    }
+   ],
+   "f1": 1170,
+   "x": 1073,
+   "y": 437,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "nevypadá",
+   "f": 1135,
+   "f1": 1170,
+   "x": 1073,
+   "y": 483,
+   "s": 175.2,
+   "font": "hn",
+   "smer": "dol",
+   "D": 113,
+   "tau": 5.6
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "jako",
+     "f": 1150
+    },
+    {
+     "text": "prodej",
+     "f": 1152
+    }
+   ],
+   "f1": 1170,
+   "x": 1823,
+   "y": 691,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "V",
+     "f": 1170
+    },
+    {
+     "text": "obsahu",
+     "f": 1176
+    },
+    {
+     "text": "ukazuje",
+     "f": 1189
+    },
+    {
+     "text": "trénink,",
+     "f": 1200
+    },
+    {
+     "text": "práci,",
+     "f": 1218
+    }
+   ],
+   "f1": 1263,
+   "x": 557,
+   "y": 428,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "zákulisí",
+   "f": 1236,
+   "f1": 1263,
+   "x": 557,
+   "y": 469,
+   "s": 240.6,
+   "font": "hn",
+   "smer": "dol",
+   "D": 86,
+   "tau": 4.7
+  },
+  {
+   "typ": "velke",
+   "text": "MEZI SOBĚ",
+   "f": 1266,
+   "f1": 1322,
+   "x": 1146,
+   "y": 126,
+   "s": 127.2,
+   "font": "kond",
+   "smer": "dol",
+   "D": 114,
+   "tau": 5.4
+  },
+  {
+   "typ": "velke",
+   "text": "NOVOU KOLEKCI",
+   "f": 1294,
+   "f1": 1322,
+   "x": 999,
+   "y": 248,
+   "s": 120,
+   "font": "kond",
+   "smer": "dol",
+   "D": 95,
+   "tau": 5.9
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "Není",
+     "f": 1323
+    },
+    {
+     "text": "to",
+     "f": 1328
+    },
+    {
+     "text": "žádný",
+     "f": 1332
+    },
+    {
+     "text": "nucený",
+     "f": 1344
+    },
+    {
+     "text": "marketing,",
+     "f": 1355
+    }
+   ],
+   "f1": 1371,
+   "x": 1444,
+   "y": 520,
+   "s": 54,
+   "zarovnani": "stred",
+   "karaoke": true,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "prodává",
+     "f": 1371
+    },
+    {
+     "text": "jenom",
+     "f": 1385
+    },
+    {
+     "text": "tím,",
+     "f": 1394
+    },
+    {
+     "text": "že",
+     "f": 1400
+    },
+    {
+     "text": "nosí",
+     "f": 1405
+    },
+    {
+     "text": "své",
+     "f": 1416
+    }
+   ],
+   "f1": 1450,
+   "x": 1060,
+   "y": 417,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "vlastní",
+   "f": 1420,
+   "f1": 1450,
+   "x": 1060,
+   "y": 456,
+   "s": 260.1,
+   "font": "hn",
+   "smer": "dol",
+   "D": 100,
+   "tau": 4.9
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "oblečení",
+     "f": 1432
+    }
+   ],
+   "f1": 1450,
+   "x": 1816,
+   "y": 712,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "Tímhle",
+     "f": 1450
+    },
+    {
+     "text": "způsobem",
+     "f": 1461
+    }
+   ],
+   "f1": 1531,
+   "x": 174,
+   "y": 389,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "přetvořil",
+   "f": 1476,
+   "f1": 1531,
+   "x": 174,
+   "y": 433,
+   "s": 131.6,
+   "font": "hn",
+   "smer": "dol",
+   "D": 96,
+   "tau": 5.7
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "marketing",
+     "f": 1487
+    },
+    {
+     "text": "nových",
+     "f": 1503
+    },
+    {
+     "text": "kolekcí",
+     "f": 1510
+    }
+   ],
+   "f1": 1531,
+   "x": 701,
+   "y": 600,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "Na",
+     "f": 1628
+    },
+    {
+     "text": "nic",
+     "f": 1632
+    },
+    {
+     "text": "nemusí",
+     "f": 1637
+    },
+    {
+     "text": "tlačit",
+     "f": 1647
+    }
+   ],
+   "f1": 1659,
+   "x": 1448,
+   "y": 520,
+   "s": 54,
+   "zarovnani": "stred",
+   "karaoke": true,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "a",
+     "f": 1659
+    },
+    {
+     "text": "jeho",
+     "f": 1660
+    }
+   ],
+   "f1": 1728,
+   "x": 1065,
+   "y": 407,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "osobnost",
+   "f": 1667,
+   "f1": 1728,
+   "x": 1065,
+   "y": 439,
+   "s": 183.0,
+   "font": "hn",
+   "smer": "dol",
+   "D": 116,
+   "tau": 4.7
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "to",
+     "f": 1681
+    },
+    {
+     "text": "neustále",
+     "f": 1684
+    },
+    {
+     "text": "prodává",
+     "f": 1698
+    },
+    {
+     "text": "sama",
+     "f": 1713
+    }
+   ],
+   "f1": 1728,
+   "x": 1831,
+   "y": 623,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "A",
+     "f": 1728
+    },
+    {
+     "text": "zatřetí",
+     "f": 1732
+    }
+   ],
+   "f1": 1773,
+   "x": 960,
+   "y": 980,
+   "s": 54,
+   "zarovnani": "stred",
+   "karaoke": false,
+   "padani": false,
+   "barva": "akcent"
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "Tady",
+     "f": 1773
+    },
+    {
+     "text": "to",
+     "f": 1779
+    },
+    {
+     "text": "je",
+     "f": 1782
+    },
+    {
+     "text": "nejzajímavější,",
+     "f": 1785
+    },
+    {
+     "text": "jelikož",
+     "f": 1803
+    },
+    {
+     "text": "všechno",
+     "f": 1816
+    }
+   ],
+   "f1": 1863,
+   "x": 850,
+   "y": 322,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "natáčí",
+   "f": 1824,
+   "f1": 1863,
+   "x": 1077,
+   "y": 359,
+   "s": 266.8,
+   "font": "hn",
+   "smer": "dol",
+   "D": 100,
+   "tau": 4.7
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "DIY",
+     "f": 1845
+    }
+   ],
+   "f1": 1863,
+   "x": 1819,
+   "y": 615,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "Nemá",
+     "f": 1863
+    },
+    {
+     "text": "za",
+     "f": 1872
+    },
+    {
+     "text": "sebou",
+     "f": 1876
+    }
+   ],
+   "f1": 1914,
+   "x": 1086,
+   "y": 422,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "žádnou",
+   "f": 1882,
+   "f1": 1914,
+   "x": 1086,
+   "y": 463,
+   "s": 220.1,
+   "font": "hn",
+   "smer": "dol",
+   "D": 108,
+   "tau": 5.7
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "velkou",
+     "f": 1891
+    },
+    {
+     "text": "produkci",
+     "f": 1900
+    }
+   ],
+   "f1": 1914,
+   "x": 1810,
+   "y": 695,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "Někdy",
+     "f": 1914
+    },
+    {
+     "text": "natáčí",
+     "f": 1921
+    },
+    {
+     "text": "z",
+     "f": 1933
+    },
+    {
+     "text": "ruky,",
+     "f": 1936
+    }
+   ],
+   "f1": 1987,
+   "x": 593,
+   "y": 357,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "někdy",
+   "f": 1952,
+   "f1": 1987,
+   "x": 593,
+   "y": 380,
+   "s": 270,
+   "font": "hn",
+   "smer": "dol",
+   "D": 103,
+   "tau": 5.3,
+   "blink": 3
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "má",
+     "f": 1959
+    },
+    {
+     "text": "s",
+     "f": 1961
+    },
+    {
+     "text": "sebou",
+     "f": 1963
+    },
+    {
+     "text": "kameramana",
+     "f": 1970
+    }
+   ],
+   "f1": 1987,
+   "x": 1327,
+   "y": 705,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "To",
+     "f": 1987
+    },
+    {
+     "text": "je",
+     "f": 1991
+    },
+    {
+     "text": "všechno",
+     "f": 1993
+    }
+   ],
+   "f1": 2005,
+   "x": 1019,
+   "y": 520,
+   "s": 54,
+   "zarovnani": "stred",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "Bere",
+     "f": 2005
+    },
+    {
+     "text": "to",
+     "f": 2010
+    },
+    {
+     "text": "s",
+     "f": 2014
+    }
+   ],
+   "f1": 2062,
+   "x": 1256,
+   "y": 442,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "humorem",
+   "f": 2018,
+   "f1": 2062,
+   "x": 1256,
+   "y": 486,
+   "s": 111.1,
+   "font": "hn",
+   "smer": "dol",
+   "D": 108,
+   "tau": 4.9,
+   "blur": true
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "jako",
+     "f": 2032
+    },
+    {
+     "text": "zábavu,",
+     "f": 2041
+    }
+   ],
+   "f1": 2062,
+   "x": 1738,
+   "y": 607,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "ale",
+     "f": 2062
+    },
+    {
+     "text": "zároveň",
+     "f": 2071
+    },
+    {
+     "text": "tomu",
+     "f": 2087
+    },
+    {
+     "text": "dává",
+     "f": 2092
+    },
+    {
+     "text": "stejnou",
+     "f": 2106
+    }
+   ],
+   "f1": 2156,
+   "x": 275,
+   "y": 406,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "prioritu",
+   "f": 2116,
+   "f1": 2156,
+   "x": 275,
+   "y": 436,
+   "s": 195.0,
+   "font": "hn",
+   "smer": "dol",
+   "D": 118,
+   "tau": 5.6
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "jako",
+     "f": 2126
+    },
+    {
+     "text": "své",
+     "f": 2131
+    },
+    {
+     "text": "firmě",
+     "f": 2142
+    }
+   ],
+   "f1": 2156,
+   "x": 895,
+   "y": 675,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "Protože",
+   "f": 2156,
+   "f1": 2213,
+   "x": 603,
+   "y": 336,
+   "s": 284.2,
+   "font": "skript",
+   "smer": "dol",
+   "D": 58,
+   "tau": 8,
+   "barva": "akcent"
+  },
+  {
+   "typ": "schody",
+   "slova": [
+    {
+     "text": "si",
+     "f": 2169
+    },
+    {
+     "text": "moc",
+     "f": 2173
+    },
+    {
+     "text": "dobře",
+     "f": 2180
+    },
+    {
+     "text": "uvědomuje,",
+     "f": 2189
+    }
+   ],
+   "f1": 2213,
+   "pozice": [
+    [
+     722,
+     636
+    ],
+    [
+     787,
+     676
+    ],
+    [
+     923,
+     715
+    ],
+    [
+     1083,
+     761
+    ]
+   ],
+   "s": 54,
+   "barva": "akcent"
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "kolik",
+     "f": 2213
+    },
+    {
+     "text": "mu",
+     "f": 2222
+    },
+    {
+     "text": "jeho",
+     "f": 2233
+    },
+    {
+     "text": "osobní",
+     "f": 2240
+    }
+   ],
+   "f1": 2286,
+   "x": 1285,
+   "y": 366,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "profil",
+   "f": 2253,
+   "f1": 2286,
+   "x": 1285,
+   "y": 395,
+   "s": 207.5,
+   "font": "hn",
+   "smer": "dol",
+   "D": 92,
+   "tau": 5.6,
+   "blink": 1
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "přináší",
+     "f": 2262
+    }
+   ],
+   "f1": 2286,
+   "x": 1755,
+   "y": 647,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "Celý",
+     "f": 2286
+    },
+    {
+     "text": "sub",
+     "f": 2299
+    },
+    {
+     "text": "brand",
+     "f": 2305
+    },
+    {
+     "text": "Representu",
+     "f": 2317
+    },
+    {
+     "text": "247",
+     "f": 2335
+    }
+   ],
+   "f1": 2392,
+   "x": 1082,
+   "y": 297,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "stojí",
+   "f": 2360,
+   "f1": 2392,
+   "x": 1187,
+   "y": 334,
+   "s": 270,
+   "font": "hn",
+   "smer": "dol",
+   "D": 105,
+   "tau": 6.0
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "na",
+     "f": 2369
+    },
+    {
+     "text": "jeho",
+     "f": 2372
+    },
+    {
+     "text": "jménu",
+     "f": 2378
+    }
+   ],
+   "f1": 2392,
+   "x": 1709,
+   "y": 656,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "a",
+     "f": 2392
+    },
+    {
+     "text": "na",
+     "f": 2395
+    },
+    {
+     "text": "tom,",
+     "f": 2399
+    },
+    {
+     "text": "že",
+     "f": 2404
+    }
+   ],
+   "f1": 2443,
+   "x": 1010,
+   "y": 352,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "ukazoval,",
+   "f": 2408,
+   "f1": 2443,
+   "x": 1010,
+   "y": 387,
+   "s": 168.8,
+   "font": "hn",
+   "smer": "dol",
+   "D": 105,
+   "tau": 4.8
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "jak",
+     "f": 2423
+    },
+    {
+     "text": "trénuje",
+     "f": 2429
+    }
+   ],
+   "f1": 2443,
+   "x": 1716,
+   "y": 583,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "Já",
+     "f": 2544
+    },
+    {
+     "text": "ho",
+     "f": 2548
+    }
+   ],
+   "f1": 2581,
+   "x": 380,
+   "y": 421,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "sleduju",
+   "f": 2553,
+   "f1": 2581,
+   "x": 380,
+   "y": 458,
+   "s": 154.7,
+   "font": "hn",
+   "smer": "dol",
+   "D": 93,
+   "tau": 4.9
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "už",
+     "f": 2560
+    },
+    {
+     "text": "dlouho",
+     "f": 2565
+    },
+    {
+     "text": "a",
+     "f": 2574
+    },
+    {
+     "text": "vím,",
+     "f": 2577
+    }
+   ],
+   "f1": 2581,
+   "x": 876,
+   "y": 657,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "že",
+     "f": 2581
+    },
+    {
+     "text": "jedinej",
+     "f": 2584
+    },
+    {
+     "text": "důvod,",
+     "f": 2595
+    },
+    {
+     "text": "proč",
+     "f": 2602
+    },
+    {
+     "text": "bych",
+     "f": 2607
+    },
+    {
+     "text": "si",
+     "f": 2611
+    },
+    {
+     "text": "koupil",
+     "f": 2615
+    }
+   ],
+   "f1": 2649,
+   "x": 964,
+   "y": 407,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "Represent,",
+   "f": 2622,
+   "f1": 2649,
+   "x": 1224,
+   "y": 450,
+   "s": 110,
+   "font": "hn",
+   "smer": "dol",
+   "D": 94,
+   "tau": 5.7
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "je",
+     "f": 2649
+    },
+    {
+     "text": "on",
+     "f": 2655
+    },
+    {
+     "text": "a",
+     "f": 2662
+    }
+   ],
+   "f1": 2691,
+   "x": 630,
+   "y": 406,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "Michael",
+   "f": 2665,
+   "f1": 2691,
+   "x": 630,
+   "y": 437,
+   "s": 188.5,
+   "font": "hn",
+   "smer": "dol",
+   "D": 88,
+   "tau": 5.2
+  },
+  {
+   "typ": "velke",
+   "text": "Pokud",
+   "f": 2691,
+   "f1": 2720,
+   "x": 1059,
+   "y": 375,
+   "s": 268.9,
+   "font": "hn",
+   "smer": "dol",
+   "D": 97,
+   "tau": 5.5
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "máš",
+     "f": 2699
+    },
+    {
+     "text": "svou",
+     "f": 2705
+    },
+    {
+     "text": "firmu",
+     "f": 2710
+    }
+   ],
+   "f1": 2720,
+   "x": 1837,
+   "y": 650,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "a",
+     "f": 2720
+    },
+    {
+     "text": "chceš",
+     "f": 2725
+    }
+   ],
+   "f1": 2780,
+   "x": 1056,
+   "y": 336,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "postavit",
+   "f": 2731,
+   "f1": 2780,
+   "x": 1056,
+   "y": 362,
+   "s": 222.4,
+   "font": "hn",
+   "smer": "dol",
+   "D": 104,
+   "tau": 5.8
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "osobní",
+     "f": 2744
+    },
+    {
+     "text": "profil",
+     "f": 2755
+    },
+    {
+     "text": "na",
+     "f": 2761
+    },
+    {
+     "text": "sítích,",
+     "f": 2768
+    }
+   ],
+   "f1": 2780,
+   "x": 1840,
+   "y": 623,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "který",
+     "f": 2780
+    },
+    {
+     "text": "ti",
+     "f": 2785
+    },
+    {
+     "text": "přinese",
+     "f": 2788
+    },
+    {
+     "text": "komunitu,",
+     "f": 2802
+    }
+   ],
+   "f1": 2871,
+   "x": 1063,
+   "y": 409,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "známosti",
+   "f": 2825,
+   "f1": 2871,
+   "x": 1063,
+   "y": 454,
+   "s": 188.9,
+   "font": "hn",
+   "smer": "dol",
+   "D": 102,
+   "tau": 5.8
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "a",
+     "f": 2855
+    },
+    {
+     "text": "obchod,",
+     "f": 2862
+    }
+   ],
+   "f1": 2871,
+   "x": 1833,
+   "y": 639,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "napiš",
+     "f": 2871
+    },
+    {
+     "text": "do",
+     "f": 2880
+    },
+    {
+     "text": "komentáře",
+     "f": 2882
+    }
+   ],
+   "f1": 2918,
+   "x": 960,
+   "y": 300,
+   "s": 54,
+   "zarovnani": "stred",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "a",
+     "f": 2918
+    },
+    {
+     "text": "já",
+     "f": 2920
+    },
+    {
+     "text": "ti",
+     "f": 2925
+    }
+   ],
+   "f1": 2959,
+   "x": 629,
+   "y": 397,
+   "s": 54,
+   "zarovnani": "vlevo",
+   "karaoke": false,
+   "padani": false
+  },
+  {
+   "typ": "velke",
+   "text": "pošlu",
+   "f": 2929,
+   "f1": 2959,
+   "x": 629,
+   "y": 416,
+   "s": 270,
+   "font": "hn",
+   "smer": "dol",
+   "D": 83,
+   "tau": 5.7,
+   "blink": 3
+  },
+  {
+   "typ": "rada",
+   "slova": [
+    {
+     "text": "můj",
+     "f": 2939
+    },
+    {
+     "text": "návod",
+     "f": 2943
+    }
+   ],
+   "f1": 2959,
+   "x": 1291,
+   "y": 731,
+   "s": 54,
+   "zarovnani": "vpravo",
+   "karaoke": false,
+   "padani": false
+  }
+ ],
+ "zvuky": [
+  {
+   "t": 1.5666666666666667,
+   "jm": "boom",
+   "rel": 0.9381723156458706,
+   "od": 0.0,
+   "delka": 0.6,
+   "pitch": -7,
+   "lp": 150,
+   "fadeout": 0.15,
+   "pasmo_hlasu": true
+  },
+  {
+   "t": 7.666666666666667,
+   "jm": "svih_vitr",
+   "rel": -29,
+   "hp": 2500,
+   "delka": 0.55,
+   "fadeout": 0.2
+  },
+  {
+   "t": 22.5,
+   "jm": "boom",
+   "rel": 1.0413058115657585,
+   "od": 0.0,
+   "delka": 0.6,
+   "pitch": -7,
+   "lp": 150,
+   "fadeout": 0.15,
+   "pasmo_hlasu": true
+  },
+  {
+   "t": 43.258997136950846,
+   "jm": "boom",
+   "rel": -6,
+   "od": 0.0,
+   "delka": 1.3,
+   "pitch": -5,
+   "lp": 150,
+   "fadein": 0.9,
+   "fadeout": 0.3,
+   "pasmo_hlasu": true
+  },
+  {
+   "t": 71.93333333333334,
+   "jm": "boom",
+   "rel": 1.0411236911603834,
+   "od": 0.0,
+   "delka": 0.6,
+   "pitch": -7,
+   "lp": 150,
+   "fadeout": 0.15,
+   "pasmo_hlasu": true
+  },
+  {
+   "t": 89.8,
+   "jm": "boom",
+   "rel": 1.362544906812841,
+   "od": 0.0,
+   "delka": 0.6,
+   "pitch": -7,
+   "lp": 150,
+   "fadeout": 0.15,
+   "pasmo_hlasu": true
+  },
+  {
+   "t": 90.66666666666667,
+   "jm": "boom",
+   "rel": -6,
+   "od": 0.0,
+   "delka": 1.3,
+   "pitch": -5,
+   "lp": 150,
+   "fadein": 0.9,
+   "fadeout": 0.3,
+   "pasmo_hlasu": true
+  }
+ ],
+ "ticho": [
+  [
+   42.333,
+   43.259
+  ],
+  [
+   89.933,
+   90.667
+  ]
+ ],
+ "zablesky": [
+  [
+   234,
+   0.82
+  ],
+  [
+   1628,
+   0.74
+  ]
+ ],
+ "koncepty": [
+  {
+   "typ": "diagram",
+   "useky": [
+    [
+     377,
+     499
+    ],
+    [
+     499,
+     533
+    ],
+    [
+     1099,
+     1125
+    ],
+    [
+     1728,
+     1773
+    ]
+   ],
+   "plneni": [
+    511,
+    1113,
+    1750
+   ],
+   "stred": {
+    "x": 960,
+    "y": 150,
+    "ikona": "videocamera-record-bold",
+    "popisek": "osobní značka"
+   },
+   "vetve": [
+    {
+     "x": 480,
+     "y": 600,
+     "ikona": "users-group-rounded-bold",
+     "popisek": "kontakty"
+    },
+    {
+     "x": 960,
+     "y": 600,
+     "ikona": "cart-large-2-bold",
+     "popisek": "prodej"
+    },
+    {
+     "x": 1440,
+     "y": 600,
+     "ikona": "crown-bold",
+     "popisek": "autorita"
+    }
+   ],
+   "kresli": 426,
+   "stred_f": 401
+  },
+  {
+   "typ": "sedi",
+   "f0": 1531,
+   "f1": 1627,
+   "img": "assets/ai/heaton_sedi.png",
+   "obr": [
+    812,
+    250,
+    295,
+    560
+   ],
+   "slovo": {
+    "text": "PŘIROZENOU",
+    "f": 1550,
+    "x": 462,
+    "y": 222,
+    "s": 156.5
+   },
+   "nad": {
+    "slova": [
+     {
+      "text": "v",
+      "f": 1531
+     },
+     {
+      "text": "naprosto",
+      "f": 1534
+     }
+    ],
+    "x": 462,
+    "y": 140,
+    "s": 54,
+    "zarovnani": "vlevo"
+   },
+   "pod": {
+    "slova": [
+     {
+      "text": "věc,",
+      "f": 1572
+     },
+     {
+      "text": "o",
+      "f": 1585
+     },
+     {
+      "text": "kterou",
+      "f": 1590
+     },
+     {
+      "text": "se",
+      "f": 1597
+     },
+     {
+      "text": "lidé",
+      "f": 1600
+     },
+     {
+      "text": "zajímají",
+      "f": 1609
+     }
+    ],
+    "x": 960,
+    "y": 850,
+    "s": 54,
+    "zarovnani": "stred"
+   },
+   "zoom": [
+    1.265,
+    1.0,
+    51
+   ]
+  },
+  {
+   "typ": "komentar",
+   "f": 2873,
+   "f1": 2918,
+   "text": "HEATON",
+   "jm": "ty",
+   "casy": [
+    2901,
+    2903,
+    2904,
+    2906,
+    2907,
+    2909
+   ]
+  }
+ ],
+ "letterbox": {
+  "snimku": 57
+ },
+ "citace": [
+  {
+   "t": 81.48,
+   "pred": 38,
+   "ref": "media:c_leader@4.12",
+   "od": 4.12,
+   "do": 7.4,
+   "preklad": "dělám to, protože jsem lídr té značky",
+   "vf": "crop=1108:832:406:124",
+   "zdroj": "kEGRAKT0ApQ@44.12-47.4"
+  }
+ ],
+ "konec_reci": 2953
+}

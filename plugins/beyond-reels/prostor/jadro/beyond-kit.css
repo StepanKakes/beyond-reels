@@ -1,0 +1,153 @@
+/* Helvetica Neue: soubory v assets/fonts vytáhne tools/hn_ze_systemu.py ze systému každého Macu (písmo se nesmí šířit, plugin ho nenese) */
+/* Beyond kit: tokeny a vzhled prvků. Barvy jen tyto, žádné inline hex v kompozicích */
+@font-face { font-family: "HN"; src: url("assets/fonts/HN-Medium.ttf") format("truetype"); font-weight: 500; }
+@font-face { font-family: "HN"; src: url("assets/fonts/HN-Bold.ttf") format("truetype"); font-weight: 700; }
+@font-face { font-family: "HN"; src: url("assets/fonts/HN-BoldItalic.ttf") format("truetype"); font-weight: 700; font-style: italic; }
+
+:root {
+  --cervena: #FF0E00;
+  --cervena-svetla: #FF5A3D;   /* lesk ikon a přechody, jen jako druhý tón červené */
+  --cerna: #111111;
+  --papir: #FBF9FC;            /* pozadí místo čisté bílé, změřeno u Bena a Georgiose */
+  --papir-tmavsi: #EDEAEF;
+  --bila: #FFFFFF;
+  --zablesk: #FFF1E6;          /* krémový záblesk */
+  --proklad: -0.045em;         /* Helvetica Bold se sníženým prokladem */
+  --zrno: 0.07;
+}
+
+.bk-plocha { position: absolute; inset: 0; overflow: hidden; background: var(--papir); font-family: "HN", "Helvetica Neue", Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
+.bk-tma { background: var(--cerna); }
+
+/* vrstvy hloubky: pozadí < velké slovo < postava < grafika < titulky < záblesk */
+.bk-z-pozadi { z-index: 1; }
+.bk-z-velke { z-index: 2; }
+.bk-postava { z-index: 3; }
+.bk-z-grafika { z-index: 4; }
+.bk-z-titulky { z-index: 5; }
+.bk-z-zablesk { z-index: 8; }
+
+/* titulek po slovech na hrudi: bílé verzálky, jemný stín, 1 slovo */
+.bk-titulky { position: absolute; left: 0; right: 0; top: var(--titulky-y, 64%); height: 0; z-index: 5; }
+.bk-titulek {
+  position: absolute; left: 0; right: 0; transform: translateY(-50%);
+  text-align: center; color: var(--bila); font-weight: 700; font-size: 74px; letter-spacing: var(--proklad); line-height: 1;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.38);
+}
+.bk-titulky.na-papire .bk-titulek { color: var(--cerna); text-shadow: none; }
+
+/* velké slovo za hlavou */
+.bk-velke {
+  position: absolute; left: 0; right: 0; text-align: center; z-index: 2; visibility: hidden;
+  font-weight: 700; letter-spacing: -0.06em; line-height: 0.86; color: var(--cervena); white-space: nowrap;
+}
+
+/* kurzíva jako druhý hlas (místo jeho serifu, protože držíme jen Helveticu) */
+.bk-kurziva { font-style: italic; font-weight: 700; letter-spacing: -0.035em; text-transform: none; }
+
+/* štítek a pilulka */
+.bk-stitek {
+  position: absolute; visibility: hidden; display: inline-flex; align-items: center; gap: 0.35em;
+  padding: 0.28em 0.55em 0.24em; background: var(--cervena); color: var(--bila);
+  font-weight: 700; letter-spacing: -0.03em; line-height: 1; text-transform: uppercase; white-space: nowrap;
+}
+.bk-stitek.pilulka { border-radius: 999px; padding: 0.3em 0.75em 0.26em; }
+.bk-stitek.tmavy { background: var(--cerna); color: var(--cervena); }
+.bk-stitek.svetly { background: var(--bila); color: var(--cervena); }
+
+/* box pro psaní po písmenech */
+.bk-box { position: absolute; visibility: hidden; background: var(--bila); padding: 0.16em 0.32em 0.1em; line-height: 1; }
+.bk-box.tmavy { background: var(--cerna); }
+.bk-box-text { color: var(--cervena); font-weight: 700; letter-spacing: var(--proklad); text-transform: uppercase; white-space: nowrap; }
+
+/* bublina (modrou z originálu nahrazuje černá, akcent červený) */
+.bk-bublina {
+  position: absolute; visibility: hidden; padding: 0.42em 0.8em 0.36em; border-radius: 1.1em 1.1em 1.1em 0.25em;
+  background: var(--cerna); color: var(--bila); font-weight: 500; letter-spacing: -0.02em; line-height: 1.05; white-space: nowrap;
+}
+
+/* kosočtverec s číslem */
+.bk-kosoctverec { position: absolute; visibility: hidden; width: 1em; height: 1em; }
+.bk-kosoctverec::before { content: ""; position: absolute; inset: 0; background: var(--cervena); transform: rotate(45deg) scale(0.74); }
+.bk-kosoctverec span { position: absolute; inset: 0; display: grid; place-items: center; color: var(--bila); font-weight: 700; font-size: 0.5em; letter-spacing: -0.04em; }
+
+/* číselná dlaždice 1 2 3 (Fred) */
+.bk-dlazdice { position: absolute; visibility: hidden; background: var(--cervena); color: transparent; -webkit-text-stroke: 3px var(--cervena-svetla); font-weight: 700; display: grid; place-items: center; line-height: 1; }
+.bk-dlazdice.plna { color: var(--bila); -webkit-text-stroke: 0; }
+.bk-dlazdice.slaba { background: color-mix(in oklab, var(--cervena) 38%, var(--papir)); }
+
+/* pixelová ikona */
+.bk-ikona {
+  position: absolute; visibility: hidden; width: 240px; height: 240px; border-radius: 34px; display: grid; place-items: center;
+  background: linear-gradient(170deg, var(--cervena-svetla) 0%, var(--cervena) 46%, #C80B00 100%);
+  box-shadow: inset 0 3px 0 rgba(255, 255, 255, 0.45), inset 0 -6px 12px rgba(0, 0, 0, 0.18), 0 0 46px rgba(255, 14, 0, 0.45);
+}
+.bk-ikona-glyf { width: 80%; height: 80%; image-rendering: pixelated; filter: drop-shadow(0 0 6px rgba(255, 240, 230, 0.7)); }
+
+/* znak pro psaní čísla */
+.bk-znak { display: inline-block; transform-origin: 50% 85%; }
+
+/* efekty */
+.bk-zablesk { position: absolute; inset: 0; background: var(--zablesk); opacity: 0; z-index: 8; pointer-events: none; mix-blend-mode: screen; }
+.bk-zablesk.cerveny { background: var(--cervena); mix-blend-mode: normal; }
+
+/* zrno přes celý snímek, sjednotí zvětšenou webku s ostrou grafikou */
+.bk-zrno { position: absolute; inset: -50%; z-index: 9; pointer-events: none; opacity: var(--zrno); mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+
+/* vaření: prvky s .bk-vari poskakují přes CSS proměnné z BK.vareni (translate nezasahuje do GSAP transform, proto přes margin a rotate) */
+.bk-vari { translate: var(--bx, 0px) var(--by, 0px); rotate: var(--br, 0deg); }
+
+/* trychtýř */
+.bk-trychtyr { position: absolute; }
+.bk-vrstva { position: absolute; left: 0; right: 0; height: 30%; visibility: hidden; background: var(--vrstva, var(--papir-tmavsi)); display: grid; place-items: center; }
+.bk-vrstva span { color: var(--vrstva-text, var(--cerna)); font-weight: 700; letter-spacing: var(--proklad); text-transform: uppercase; font-size: 46px; line-height: 1; }
+
+/* papír s jemnou mřížkou (Ddq: #F8F8F8 a linky o pár odstínů tmavší) */
+.bk-mrizka { position: absolute; inset: 0; z-index: 0; background-color: var(--papir);
+  background-image: linear-gradient(var(--mrizka) 1px, transparent 1px), linear-gradient(90deg, var(--mrizka) 1px, transparent 1px);
+  background-size: 54px 54px; background-position: -1px -1px; }
+:root { --mrizka: #EEEBF0; }
+
+/* karta s webkou: celý záběr, žádné vystřihování, zaoblení a měkký stín */
+.bk-karta { position: absolute; overflow: hidden; border-radius: 26px; background: var(--cerna); z-index: 3; visibility: hidden;
+  box-shadow: 0 18px 50px rgba(17, 17, 17, 0.16), 0 2px 6px rgba(17, 17, 17, 0.08); }
+.bk-karta video, .bk-karta img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* věta nad kartou a akcent pod ní */
+.bk-veta { position: absolute; left: 60px; right: 60px; z-index: 5; text-align: center; }
+.bk-veta-radek { position: absolute; left: 0; right: 0; bottom: 0; }
+.bk-veta.cerna { color: var(--cerna); font-weight: 700; font-size: 60px; letter-spacing: var(--proklad); line-height: 1.02; text-transform: uppercase; }
+.bk-veta.akcent .bk-veta-radek { top: 0; bottom: auto; }
+.bk-veta.akcent { color: var(--cervena); font-weight: 700; font-style: italic; font-size: 104px; letter-spacing: -0.055em; line-height: 0.95; text-transform: uppercase; }
+.bk-veta.slovo { color: var(--cerna); font-weight: 700; font-size: 58px; letter-spacing: var(--proklad); line-height: 1; text-transform: uppercase; }
+
+/* avatar sledujícího */
+.bk-avatar { position: absolute; width: 96px; height: 96px; margin: -48px 0 0 -48px; border-radius: 50%; visibility: hidden; z-index: 4;
+  background: var(--av, var(--papir-tmavsi)); overflow: hidden; transition: none; box-shadow: 0 0 0 4px var(--papir); }
+.bk-avatar.tmavy { --av: #2A2A2A; --av-ikona: #8C8C8C; }
+.bk-avatar::before { content: ""; position: absolute; left: 50%; top: 22%; width: 34%; height: 34%; margin-left: -17%; border-radius: 50%; background: var(--av-ikona, #BDBABF); }
+.bk-avatar::after { content: ""; position: absolute; left: 50%; top: 62%; width: 64%; height: 60%; margin-left: -32%; border-radius: 50% 50% 0 0; background: var(--av-ikona, #BDBABF); }
+
+/* cesta s uzly */
+.bk-cesta { position: absolute; z-index: 4; }
+.bk-cesta-svg { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: visible; }
+.bk-cesta-svg line { stroke: var(--cerna); stroke-width: 3; vector-effect: non-scaling-stroke; visibility: hidden; }
+.bk-uzel { position: absolute; top: 50%; width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; background: var(--cerna); visibility: hidden; }
+.bk-uzel span { position: absolute; left: 50%; top: -88px; transform: translateX(-50%); white-space: nowrap; color: var(--cerna); font-weight: 700; font-size: 46px; letter-spacing: var(--proklad); text-transform: uppercase; }
+.bk-uzel.aktivni { background: var(--cervena); }
+.bk-uzel.aktivni span { color: var(--cervena); }
+
+/* spojnice z obsahu do fází */
+.bk-spojnice { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3; overflow: visible; pointer-events: none; }
+.bk-spojnice path { fill: none; stroke: var(--cervena); stroke-width: 3; stroke-dasharray: 1 1; visibility: hidden; }
+
+/* DM bublina (příchozí zpráva) */
+.bk-dm { position: absolute; visibility: hidden; z-index: 6; padding: 0.5em 0.85em 0.44em; border-radius: 1.15em 1.15em 1.15em 0.3em; background: var(--bila); color: var(--cerna);
+  font-weight: 500; font-size: 54px; letter-spacing: -0.02em; line-height: 1.05; white-space: nowrap; box-shadow: 0 10px 34px rgba(17, 17, 17, 0.14); }
+.bk-dm.ja { background: var(--cervena); color: var(--bila); border-radius: 1.15em 1.15em 0.3em 1.15em; }
+
+/* pilulka s obsahem (ikona přehrát) */
+.bk-pilulka-obsah { position: absolute; visibility: hidden; z-index: 5; display: inline-flex; align-items: center; gap: 0.45em; padding: 0.42em 0.8em 0.38em 0.6em; border-radius: 999px;
+  background: var(--cerna); color: var(--bila); font-weight: 700; font-size: 44px; letter-spacing: var(--proklad); text-transform: uppercase; line-height: 1; white-space: nowrap; }
+.bk-pilulka-obsah::before { content: ""; width: 0; height: 0; border-left: 0.62em solid var(--cervena); border-top: 0.38em solid transparent; border-bottom: 0.38em solid transparent; }

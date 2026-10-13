@@ -5,13 +5,13 @@
 set -e
 source ~/.config/beyond-reels/env.sh 2>/dev/null || { echo "Nejdřív spusť setup.sh pluginu"; exit 1; }
 STYL=${1:?styl}; NAZEV=${2:?název reelu, třeba heaton nebo klient-petr}
-P="$BR_PROSTOR/reels/$NAZEV"; [[ -e "$P" ]] && { echo "Projekt $P už existuje"; exit 1; }
+P="$BR_REELY/$NAZEV"; [[ -e "$P" ]] && { echo "Projekt $P už existuje"; exit 1; }
 SAB="${0:A:h}/sablona"
 case $STYL in
   mason)
     mkdir -p "$P"/{src,zdroj,nastroje,renders,vendor,assets/{media,sfx,fonts}}
     cp "$SAB/build.mjs" "$SAB/hyperframes.json" "$P/"; cp "$SAB/src/reel.html" "$P/src/"
-    cp "$BR_PROSTOR/jack-styl/vendor/gsap.min.js" "$P/vendor/"
+    cp "$BR_PROSTOR/vendor/gsap.min.js" "$P/vendor/"
     zsh "$BR_PROSTOR/tools/jadro.sh" "$P" ;;
   noske|matt-gray|nathan)
     Z="$BR_PROSTOR/$STYL-styl"; [[ -d "$Z" ]] || { echo "Chybí $Z"; exit 1; }

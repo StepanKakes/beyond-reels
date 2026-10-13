@@ -1,0 +1,7 @@
+jadro (sdílené jádro kitů reelů Beyond)
+
+Křivky KRIVKY a výchozí délky DELKY v js/mason-kit.js a pravidla nástupů, odjezdů,
+švihu a skoku kamery (prijezd, odjezd, svih, kameraSkok) vycházejí z projektu
+motionmaxxing (Tejas Makwana, github.com/Tejashmakwana/motionmaxxing),
+licence Apache License 2.0: https://www.apache.org/licenses/LICENSE-2.0
+Matematika křivek je převzata z runtime/motion.js, ostatní kód je vlastní.

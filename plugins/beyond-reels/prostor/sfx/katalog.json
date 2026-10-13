@@ -1,0 +1,187 @@
+{
+ "zaklad": {
+  "klik1": {
+   "soubor": "zaklad/klik1.wav",
+   "d": 0.12,
+   "pouziti": "mouse hard click, slova víceslovných vět (střídat s klik2), -30 dB"
+  },
+  "klik2": {
+   "soubor": "zaklad/klik2.wav",
+   "d": 0.12,
+   "pouziti": "mouse hard click, střídat s klik1"
+  },
+  "klik3": {
+   "soubor": "zaklad/klik3.wav",
+   "d": 0.2,
+   "pouziti": "classic click, NEPOUŽÍVAT (Tim 2.10.)"
+  },
+  "klik4": {
+   "soubor": "zaklad/klik4.wav",
+   "d": 0.33,
+   "pouziti": "mouse click, nástupy prvků (avatary, uzly, štítky, zprávy)"
+  },
+  "pop": {
+   "soubor": "zaklad/pop.wav",
+   "d": 0.25,
+   "pouziti": "pop, prvek vyskočí"
+  },
+  "sub": {
+   "soubor": "zaklad/sub.wav",
+   "d": 0.9,
+   "pouziti": "sub dopad, výzva na černé, velký moment"
+  },
+  "svih": {
+   "soubor": "zaklad/svih.wav",
+   "d": 0.45,
+   "pouziti": "krátký švih, plynulý přesun karty"
+  },
+  "svih2": {
+   "soubor": "zaklad/svih2.wav",
+   "d": 0.7,
+   "pouziti": "delší švih, karta se zmenší, čáry"
+  },
+  "svihF": {
+   "soubor": "zaklad/svihF.wav",
+   "d": 1.8,
+   "pouziti": "dlouhý švih Floral"
+  },
+  "tuk": {
+   "soubor": "zaklad/tuk.wav",
+   "d": 0.18,
+   "pouziti": "dřevěný ťuk, NEPOUŽÍVAT"
+  },
+  "tuk2": {
+   "soubor": "zaklad/tuk2.wav",
+   "d": 0.22,
+   "pouziti": "měkký ťuk"
+  },
+  "zaverka": {
+   "soubor": "zaklad/zaverka.wav",
+   "d": 0.22,
+   "pouziti": "závěrka, obrázek nebo záběr dosedne"
+  },
+  "kick": {
+   "soubor": "zaklad/kick.wav",
+   "d": null,
+   "pouziti": "Floral kick1 (původní), dopad prvku, který přijede (výřezy, karty, kopie oken)"
+  },
+  "boom": {
+   "soubor": "zaklad/boom.wav",
+   "d": null,
+   "pouziti": "Floral sub drop short (původní), velký moment (430M, ZA TÝDEN)"
+  },
+  "svih_hluboky": {
+   "soubor": "zaklad/svih_hluboky.wav",
+   "d": 1.6,
+   "pouziti": "Deep Whoosh (Nikko Hunt, DEITH_SFX), hlavní švih od 4.10.2026, vrchol 0,5 s po začátku, pouštět 0,45 s před střihem; Tim 12. 10.: spolu se svih_vitr jediné švihy, ztlumené, ať nejsou výrazné"
+  },
+  "svih_rychly": {
+   "soubor": "zaklad/svih_rychly.wav",
+   "d": 1.2,
+   "pouziti": "fast whoosh (DEITH_SFX), vrchol 0,5 s"
+  },
+  "cisla": {
+   "soubor": "zaklad/cisla.wav",
+   "d": 0.4,
+   "pouziti": "Display Digits 3 (DEITH_SFX), číslo se načítá, zkrácené na 0,4 s"
+  },
+  "svih_vitr": {
+   "soubor": "zaklad/svih_vitr.wav",
+   "d": 1.45,
+   "pouziti": "mixkit cinematic wind swoosh (DEITH_SFX), vzdušný filmový švih na přílet karet a přesuny, vrchol 0,4 s po začátku; Tim 12. 10. vybral spolu se svih_hluboky, oba tiše (kolem -32 dB)"
+  }
+ },
+ "shelby": {
+  "svih1": {
+   "soubor": "shelby/svih1.wav",
+   "typ": "svih",
+   "popis": "Svižný, vzdušný průlet.",
+   "zdroj_snimek": 2106,
+   "d": 0.8
+  },
+  "svih2": {
+   "soubor": "shelby/svih2.wav",
+   "typ": "svih",
+   "popis": "A rapid, airy whoosh sound with a clear sweep from low to high frequencies.",
+   "zdroj_snimek": 28,
+   "d": 0.34
+  },
+  "pop1": {
+   "soubor": "shelby/pop1.wav",
+   "typ": "pop",
+   "popis": "A brief, snappy pop sound with a distinct percussive quality.",
+   "zdroj_snimek": 219,
+   "d": 0.62
+  },
+  "pop2": {
+   "soubor": "shelby/pop2.wav",
+   "typ": "pop",
+   "popis": "A quick, high-pitched bubble pop sound.",
+   "zdroj_snimek": 1699,
+   "d": 0.69
+  },
+  "dopad1": {
+   "soubor": "shelby/dopad1.wav",
+   "typ": "dopad",
+   "popis": "A quick, dry impact sound with a distinct percussive attack.",
+   "zdroj_snimek": 72,
+   "d": 0.4
+  },
+  "dopad2": {
+   "soubor": "shelby/dopad2.wav",
+   "typ": "dopad",
+   "popis": "A concise, sharp impact sound with a percussive, almost metallic quality.",
+   "zdroj_snimek": 66,
+   "d": 0.34
+  },
+  "klik1": {
+   "soubor": "shelby/klik1.wav",
+   "typ": "klik",
+   "popis": "Short, clean digital percussive tap.",
+   "zdroj_snimek": 300,
+   "d": 0.33
+  },
+  "klik2": {
+   "soubor": "shelby/klik2.wav",
+   "typ": "klik",
+   "popis": "Krátké digitální klepnutí.",
+   "zdroj_snimek": 2025,
+   "d": 0.34
+  },
+  "sub1": {
+   "soubor": "shelby/sub1.wav",
+   "typ": "sub",
+   "popis": "Hluboký basový úder s dozvukem.",
+   "zdroj_snimek": 2101,
+   "d": 0.33
+  },
+  "najezd1": {
+   "soubor": "shelby/najezd1.wav",
+   "typ": "najezd",
+   "popis": "A deep, building rumble that quickly ascends in frequency and volume.",
+   "zdroj_snimek": 131,
+   "d": 0.4
+  },
+  "zaverka1": {
+   "soubor": "shelby/zaverka1.wav",
+   "typ": "zaverka",
+   "popis": "Mechanical double-click sound typical of a camera.",
+   "zdroj_snimek": 403,
+   "d": 0.96
+  },
+  "cink1": {
+   "soubor": "shelby/cink1.wav",
+   "typ": "cink",
+   "popis": "A clear, high-pitched metallic bell ding with a bright tone and a smooth resonant decay.",
+   "zdroj_snimek": 2,
+   "d": 0.37
+  },
+  "psani1": {
+   "soubor": "shelby/psani1.wav",
+   "typ": "psani",
+   "popis": "Rychlé cvakání klávesnice.",
+   "zdroj_snimek": 2066,
+   "d": 0.34
+  }
+ }
+}

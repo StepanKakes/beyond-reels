@@ -1,0 +1,110 @@
+/* Matt kit: tokeny a vzhled prvků ve stylu Matta Graye (@matthgray) v barvách Beyond
+ * Změřeno v $BR_INSPIRACE/matt-gray/_rozbor/<id>/SHOTLOG.md, px na 1080x1920
+ * Barvy jen tyto tokeny, žádné inline hex v kompozicích
+ */
+@font-face { font-family: "HN"; src: url("assets/fonts/HN-Regular.ttf") format("truetype"); font-weight: 400; }
+@font-face { font-family: "HN"; src: url("assets/fonts/HN-Medium.ttf") format("truetype"); font-weight: 500; }
+@font-face { font-family: "HN"; src: url("assets/fonts/HN-Bold.ttf") format("truetype"); font-weight: 700; }
+@font-face { font-family: "HN"; src: url("assets/fonts/HN-BoldItalic.ttf") format("truetype"); font-weight: 700; font-style: italic; }
+
+:root {
+  /* Matt má limetku #D4F443 s černým písmem. Beyond akcent je červená s bílým písmem,
+     přepnutí na limetku = přidat třídu .mg-limetka na #root */
+  --mg-akcent: #FF0E00;
+  --mg-akcent-text: #FFFFFF;
+  --mg-akcent-bledy: #FFE3E0;   /* zvýrazněná buňka, den v kalendáři (u Matta #F2FA89) */
+  --mg-pozadi: #FDFDFD;          /* plochá bílá, žádný papír */
+  --mg-cerna: #141214;
+  --mg-seda: #575458;            /* velké číslo nadpisu sekce */
+  --mg-duch: #B9B6BA;            /* text, který ještě nedojel */
+  --mg-mrizka: #E1E0E2;
+  --mg-bila: #FFFFFF;
+  --mg-proklad: -0.035em;
+  --mg-bunka: 72.7px;            /* rozteč mřížky */
+  --mg-hranice: 1291px;          /* split: grafika nad, video pod */
+  --mg-titulek-y: 1202px;        /* střed titulku v celoobrazovém režimu */
+}
+.mg-limetka { --mg-akcent: #D4F443; --mg-akcent-text: #141214; --mg-akcent-bledy: #F2FA89; }
+
+.mg-plocha { position: absolute; inset: 0; overflow: hidden; background: var(--mg-pozadi); color: var(--mg-cerna);
+  font-family: "HN", "Helvetica Neue", Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
+
+/* vrstvy: svět grafiky < video box < celoobrazové video < titulky */
+.mg-svet { position: absolute; left: 0; top: 0; width: 1080px; height: var(--mg-hranice); z-index: 1; }
+.mg-box { position: absolute; left: 31px; top: var(--mg-hranice); width: 988px; height: calc(1920px - var(--mg-hranice));
+  border-radius: 18px 18px 0 0; overflow: hidden; z-index: 3; background: var(--mg-cerna); }
+.mg-box video, .mg-full video, .mg-full img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mg-full { position: absolute; inset: 0; z-index: 5; overflow: hidden; opacity: 0; background: var(--mg-cerna); }
+
+/* mřížka: svislé čáry na x = 539 + k * buňka, nahoře prázdno, k bokům a dolů slábne */
+.mg-mrizka { position: absolute; inset: -146px -146px 0 -146px; pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--mg-mrizka) 2px, transparent 2px),
+    linear-gradient(to bottom, var(--mg-mrizka) 2px, transparent 2px);
+  background-size: var(--mg-bunka) var(--mg-bunka);
+  background-position: calc(146px + 539px - 1px) 0;
+  -webkit-mask-image: radial-gradient(ellipse 62% 58% at 50% 62%, #000 45%, transparent 100%);
+          mask-image: radial-gradient(ellipse 62% 58% at 50% 62%, #000 45%, transparent 100%); }
+
+/* text */
+.mg-text { position: absolute; left: 0; right: 0; text-align: center; letter-spacing: var(--mg-proklad); line-height: 1; }
+.mg-radek { display: block; white-space: nowrap; }
+.mg-lehky { font-weight: 400; }
+.mg-tucny { font-weight: 700; text-transform: uppercase; }
+.mg-slovo { display: inline-block; visibility: hidden; will-change: transform, opacity, filter; }
+.mg-mezera { display: inline-block; width: 0.26em; }
+
+/* podklad pod řádkem (wipe zleva), leží za textem */
+.mg-podklad-obal { position: relative; display: inline-block; padding: 0.05em 0.16em 0.02em; }
+/* podklad leží NAD černým textem a nese vlastní kopii textu v barvě akcent-text, odhaluje se maskou zleva */
+.mg-podklad { position: absolute; inset: 0; z-index: 1; background: var(--mg-akcent); color: var(--mg-akcent-text);
+  padding: inherit; white-space: nowrap; clip-path: inset(0% 100% 0% 0%); }
+
+/* titulek v celoobrazovém režimu: bílý, tučný, smíšená velká a malá, bez stínu, tvrdý střih */
+.mg-titulky { position: absolute; left: 0; right: 0; top: var(--mg-titulek-y); height: 0; z-index: 6; }
+.mg-titulek { position: absolute; left: 60px; right: 60px; transform: translateY(-50%); text-align: center; visibility: hidden;
+  color: var(--mg-bila); font-weight: 700; font-size: 72px; letter-spacing: -0.02em; line-height: 1; }
+.mg-titulky.stin .mg-titulek { text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35); }
+.mg-titulek.velky { font-size: 150px; letter-spacing: -0.04em; color: var(--mg-akcent); }
+
+/* štítek: plná akcentová dlaždice, rohy 8 px, tvrdý 2px obrys, bez stínu */
+.mg-stitek { position: absolute; visibility: hidden; display: flex; align-items: center; justify-content: center; overflow: hidden;
+  background: var(--mg-akcent); color: var(--mg-akcent-text); border: 2px solid var(--mg-cerna); border-radius: 8px;
+  font-weight: 700; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1; white-space: nowrap; }
+.mg-stitek.bez-obrysu { border: 0; }
+.mg-stitek .mg-stitek-text { display: inline-block; }
+.mg-stitek.linky { flex-direction: column; gap: 10px; }
+.mg-stitek.linky i { display: block; width: 62%; height: 4px; background: currentColor; border-radius: 2px; }
+.mg-stitek.zhasly { background: var(--mg-bila); color: var(--mg-cerna); }
+
+/* obrysový box (uzel diagramu), karta s videem */
+.mg-uzel { position: absolute; visibility: hidden; display: flex; align-items: center; justify-content: center;
+  background: var(--mg-pozadi); border: 3px solid var(--mg-cerna); font-weight: 700; text-transform: uppercase; letter-spacing: -0.02em; }
+.mg-karta { position: absolute; visibility: hidden; overflow: hidden; border-radius: 14px; border: 2px solid var(--mg-cerna); background: var(--mg-cerna); }
+.mg-karta.akcent { border-color: var(--mg-akcent); border-width: 6px; }
+.mg-karta video, .mg-karta img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* čáry diagramu: černé 3,5 px, kreslí se přes dash */
+.mg-svg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; pointer-events: none; }
+.mg-svg path, .mg-svg line, .mg-svg circle { fill: none; stroke: var(--mg-cerna); stroke-width: 3.5; stroke-linecap: round; }
+
+/* nadpis sekce: oblouk vlevo, akcentová tečka, velké šedé kurzívní číslo, dva řádky */
+.mg-sekce { position: absolute; left: 0; top: 0; width: 1080px; height: var(--mg-hranice); visibility: hidden; }
+.mg-sekce .tecka { position: absolute; width: 40px; height: 40px; border-radius: 50%; background: var(--mg-akcent); visibility: hidden; }
+.mg-sekce .cislo { position: absolute; font-weight: 700; font-style: italic; color: var(--mg-seda); font-size: 400px; line-height: 0.72; letter-spacing: -0.06em; visibility: hidden; }
+.mg-sekce .nazev { position: absolute; font-weight: 700; text-transform: uppercase; font-size: 100px; line-height: 0.95; letter-spacing: -0.035em; }
+
+/* zvýraznění buňky (kalendář, tabulka): skáče tvrdě */
+.mg-bunka-zvyr { position: absolute; background: var(--mg-akcent-bledy); visibility: hidden; }
+
+/* pruh na slovo (pyramida přes talking head): pruh se maže, slovo se odhaluje stejnou maskou */
+.mg-pruh { position: absolute; display: flex; align-items: center; justify-content: center; }
+.mg-pruh .vypln { position: absolute; inset: 0; background: var(--mg-akcent); }
+.mg-pruh .slovo { position: relative; visibility: hidden; color: var(--mg-bila); font-weight: 700; text-transform: uppercase; font-size: 72px; letter-spacing: -0.02em; line-height: 1; }
+/* hlavička přes talking head: plný akcentový pruh bez zaoblení, text vlevo */
+.mg-hlavicka { position: absolute; background: var(--mg-akcent); color: var(--mg-akcent-text); font-weight: 700; text-transform: uppercase;
+  font-size: 38px; letter-spacing: -0.02em; line-height: 49px; height: 49px; padding: 0 16px 0 8px; white-space: nowrap; }
+
+/* náhled lead magnetu na konci */
+.mg-nahled { position: absolute; visibility: hidden; background: var(--mg-bila); border-radius: 10px; overflow: hidden;
+  box-shadow: 0 1px 0 rgba(20, 18, 20, 0.06), 0 0 0 1px rgba(20, 18, 20, 0.08); }

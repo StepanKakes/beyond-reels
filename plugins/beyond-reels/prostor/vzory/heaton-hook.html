@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1440">
+    <title>Heaton hook G4</title>
+    <script src="vendor/gsap.min.js"></script>
+    <script src="js/mason-kit.js"></script>
+    <link rel="stylesheet" href="beyond-kit.css">
+    <link rel="stylesheet" href="mason-kit.css">
+    <style>
+      /* Hook G: Mason o Gregu Lavovi (Db55l3zx7wS, rozbor _rozbor/Db55l3zx7wS/SHOTLOG.md) 1:1 do obrazovky notebooku (f74, slovo "but" = naše "ale"):
+         bílá 1 sn., portréty na černé po 2 sn. a každý větší, bílý záblesk, záběr se jménem a bílou šipkou zleva (déle než originál, Tim),
+         záblesk Georgeovy postavy (bílá silueta, Vince), bílý záblesk, produkt v ruce s tmavým textem po slovech; od "ale" whip pan do vlastního konce
+         (4 = 1 Dalen jinak, 2 telefon v ruce, 3 rámeček s NULE). Efekty jen na whip pan (fx/intro-g4.json) */
+      body { margin: 0; background: var(--papir); }
+      #root { position: relative; width: 1920px; height: 1440px; overflow: hidden; background: var(--papir); font-family: var(--mk-sans); -webkit-font-smoothing: antialiased; }
+      .sc { position: absolute; inset: 0; overflow: hidden; display: none; }
+      .abs { position: absolute; }
+      #s1 { background: #000; }
+      .pf { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); object-fit: cover; visibility: hidden; }
+      .bila { background: var(--papir); }
+      .fl { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 8; }
+      .v43 { position: absolute; left: -320px; top: 0; width: 2560px; height: 1440px; object-fit: cover; }
+      .sil { position: absolute; left: -320px; top: 0; width: 2560px; height: 1440px; visibility: hidden; }
+      .jm { position: absolute; color: #fff; font-weight: 700; font-size: 96px; letter-spacing: -0.04em; line-height: 1; white-space: nowrap; visibility: hidden; transform-origin: 0 100%; }
+      #s3 { background: #0f0f0f; }
+      #hz { position: absolute; left: 0; top: 0; width: 1920px; height: 1440px; transform-origin: 0 0; }
+      #hz img { position: absolute; left: 94px; top: -508px; width: 1640px; height: 2050px; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%); }
+      .tx { position: absolute; z-index: 6; left: 130px; font-weight: 700; font-size: 100px; letter-spacing: -0.04em; line-height: 1.12; white-space: nowrap; }
+      .tx span { display: inline-block; margin-right: 0.22em; visibility: hidden; transform-origin: 0 100%; }
+      #ocas { position: absolute; inset: 0; }
+      /* konec 1: vlog z ruky ve filmovém gradu, slova vlevo dole dozrávají z červené do bílé, "na nule" zůstává červené */
+      #vD1 { position: absolute; left: -330px; top: -60px; width: 2580px; height: 1780px; object-fit: cover; object-position: 50% 0; filter: brightness(0.72) contrast(1.12) saturate(0.8); }
+      /* konec 2: telefon v ruce na papíře (AI, průhledný displej), vlog za displejem, tmavý text vlevo, REC 00:00 */
+      #tel { position: absolute; left: -50px; top: -219px; width: 2662px; height: 1997px; z-index: 2; }
+      #disp { position: absolute; left: 981px; top: 157px; width: 539px; height: 1206px; overflow: hidden; z-index: 1; background: #000; }
+      #disp video { position: absolute; left: -790px; top: -2%; height: 125%; width: auto; }
+      #rec { position: absolute; left: 1030px; top: 230px; z-index: 3; display: flex; align-items: center; gap: 14px; color: #fff; font-weight: 700; font-size: 72px; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; visibility: hidden; text-shadow: 0 1px 8px rgba(17, 17, 17, 0.5); }
+      #rec i { width: 34px; height: 34px; border-radius: 50%; background: var(--cervena); display: block; }
+      /* konec 3: rámeček s vlogem, NULE nad jeho hlavou zapečené v diy_nule.mp4 */
+      #kRam { position: absolute; left: 24px; top: 194px; width: 1872px; height: 1053px; border-radius: 26px; overflow: hidden; background: var(--cerna); }
+      #kRam video { position: absolute; left: 0; top: -40px; width: 100%; height: 1400px; object-fit: cover; object-position: 50% 0; }
+      .hrud { position: absolute; left: 50%; top: 1090px; transform: translateX(-50%); color: #fff; font-weight: 700; font-size: 96px; letter-spacing: -0.035em; line-height: 1; white-space: nowrap; visibility: hidden; text-shadow: 0 2px 22px rgba(17, 17, 17, 0.75), 0 0 4px rgba(17, 17, 17, 0.6); z-index: 5; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1440" data-fps="30" data-duration="{{D}}">
+      <audio id="zvuk" src="assets/media/mix_intro_g4.wav" data-start="0" data-duration="{{D}}" data-track-index="9" data-volume="1"></audio>
+      <div id="s0" class="sc bila"></div>
+      <div id="s1" class="sc"></div>
+      <div id="z1" class="sc bila"></div>
+      <div id="s2" class="sc"><video id="vJm" class="v43 clip" src="assets/media/c_jmeno2.mp4" muted playsinline data-start="0.433" data-duration="{{T(4)-0.467}}" data-track-index="2"></video><div id="sily"></div>
+        <svg class="abs" style="left:0; top:0" width="1920" height="1440" viewBox="0 0 1920 1440"><path id="sipC" d="M300 490 C 300 640, 560 700, 860 690" pathLength="1" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round" style="visibility:hidden; stroke-dasharray:1 1; stroke-dashoffset:1"/><path id="sipH" d="M818 652 L 866 690 L 820 730" pathLength="1" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" style="visibility:hidden; stroke-dasharray:1 1; stroke-dashoffset:1"/></svg>
+        <div id="jm1" class="jm" style="left:120px; top:360px">George</div><div id="jm2" class="jm" style="left:470px; top:360px">Heaton</div></div>
+      <div id="z2" class="sc bila"></div>
+      <div id="s3" class="sc"><div id="hz"><img src="assets/media/greg/hoodie2.jpg" alt=""></div>
+        <div class="tx" style="top:1170px; left:150px; color: #fff"><div id="r3a"></div><div id="r3b"></div></div></div>
+      <div id="s4" class="sc">
+        <div id="ocas"><div class="abs bila" style="inset:0"></div><div id="cis4" style="position:absolute; left:-1500px; right:-1500px; top:240px; text-align:center; color:var(--cervena); font-weight:700; font-size:255px; letter-spacing:-0.05em; line-height:0.8; white-space:nowrap; font-variant-numeric:tabular-nums; transform:scaleY(1.2); transform-origin:50% 0; visibility:hidden"></div><div id="por4" class="abs" style="inset:0; z-index:3"><img id="gAI" src="assets/media/gen/nula_1_cut.png" alt="" style="position:absolute; left:360px; top:390px; width:1200px; height:auto"></div></div>
+      </div>
+    </div>
+    <script>
+      const S = /*SLOVA:INTRO*/.slova;
+      const root = document.getElementById("root");
+      MK.init(root);
+      const tl = gsap.timeline({ paused: true });
+      const F = (n) => n / 30, $ = (id) => document.getElementById(id), T = (i) => S[i].t, KONEC = {{D}};
+      const sc = (id, t0, t1) => { if (t0 <= 0) $(id).style.display = "block"; else { tl.set($(id), { display: "none" }, 0); tl.set($(id), { display: "block" }, t0); } tl.set($(id), { display: "none" }, t1); };
+      const vis = (el, t) => tl.set(el, { visibility: "visible" }, t), hid = (el, t) => tl.set(el, { visibility: "hidden" }, t);
+      /* slovo jako u Grega: 1 snímek šedé, menší a o 15 px níž, další snímek plné */
+      /* záblesk na každou změnu stavu (Tim): obraz přebělí bílá vrstva, tmavé slovo blikne bíle, bílé slovo a šipka zazáří; dohasíná na dvojky (Vince FL) */
+      const FL = [1, 1, 0.75, 0.75, 0.45, 0.45, 0.2, 0.2, 0];
+      const blikObraz = (kont, t, tab = [0.85, 0.85, 0.45, 0.45, 0]) => { const f = MK.div(kont, "fl"); tab.forEach((o, i) => tl.set(f, { opacity: o }, t + F(i))); };
+      /* bez glow (Tim): tmavé slovo jen problikne světle šedou, bílé text ani šipka nic */
+      const blikSlovo = (el, t, tmave) => { if (tmave) FL.forEach((o, i) => tl.set(el, { color: o ? `rgb(${Math.round(17 + 238 * o)}, ${Math.round(17 + 238 * o)}, ${Math.round(17 + 238 * o)})` : "" }, t + F(i))); };
+      const blikSvg = () => {};
+      const slovo = (el, t, sedA = 0.45, tmave = true) => { vis(el, t); tl.set(el, { opacity: sedA, scale: 0.9, y: 15 }, t).set(el, { opacity: 1, scale: 1, y: 0 }, t + F(1)); blikSlovo(el, t + F(1), tmave); };
+      const radek = (kont, slova) => slova.map(([w, t]) => { const e = document.createElement("span"); e.textContent = w; kont.appendChild(e); slovo(e, t); return e; });
+
+      /* f0 bílá, f1 až f13 černá s portréty po 2 sn. (nastroje/tvare_g.py: oči všude na 960, 650 a stejně velké), každý větší (Greg 20,7 / 31,8 / 37,5 / 39,5 / 44 % W, poslední přes celý obraz), f14 bílý záblesk */
+      sc("s0", 0, F(1)); sc("s1", F(1), F(12)); sc("z1", F(12), F(13));
+      [[530, 437, 1, 2], [815, 613, 2, 4], [959, 759, 4, 6], [1011, 875, 6, 8], [1126, 987, 8, 10], [1920, 1440, 10, 12]].forEach(([w, h, a, b], i) => {
+        const im = document.createElement("img"); im.src = `assets/media/greg/p${i}.jpg`; im.alt = ""; im.className = "pf"; Object.assign(im.style, { width: w + "px", height: h + "px" }); if (i === 5) { im.style.top = "50%"; }
+        $("s1").appendChild(im); vis(im, F(a)); hid(im, F(b));   // rozmazání a zesvětlení při střídání v postfx (fx/intro-g*.json, "portrety")
+      });
+
+      /* f15 až T(4): George ve své šatně, jméno po slovech (Heaton 1 sn. šedé a menší), šipka zleva se kreslí 9 sn. ease out a drží až do střihu
+         (Tim: déle než Greg), po dokreslení bílá silueta jeho postavy blikne na dvojky a dohasne */
+      const T2 = F(13), T3 = T(4) - F(1);
+      sc("s2", T2, T3); sc("z2", T3, T(4));
+      vis($("jm1"), T2); blikSlovo($("jm1"), T2, false); slovo($("jm2"), T2 + F(1), 0.5, false);
+      /* šipka po snímcích podle Grega f14 až f22: čára za 6 sn. ease out (krátká čárka, 40 %, 65 %, 80 %, 92 %, celá), pak hrot za 3 sn., drží do střihu */
+      [0.88, 0.6, 0.35, 0.2, 0.08, 0].forEach((o, i) => tl.set($("sipC"), { visibility: "visible", strokeDashoffset: o }, T2 + F(i)));
+      [0.6, 0.25, 0].forEach((o, i) => tl.set($("sipH"), { visibility: "visible", strokeDashoffset: o }, T2 + F(6 + i)));
+      blikSvg($("sipC").parentNode, T2 + F(9));
+      const tf = T2;   // silueta blikne hned při nástupu záběru (Tim)
+      [1, 0.75, 0.5, 0.28, 0.1, 0].forEach((o, i) => { const k = Math.round((tf + F(i) - T2) * 30);   // o 30 % rychleji než FL (6 sn. místo 9)
+        const im = document.createElement("img"); im.src = `assets/media/greg/sil2/${String(Math.min(35, k)).padStart(2, "0")}.png`; im.alt = ""; im.className = "sil"; $("sily").appendChild(im); tl.set(im, { visibility: "visible", opacity: o }, tf + F(i)); hid(im, tf + F(i + 1)); });
+
+      /* T(4) až T(7): mikina Represent zezadu (Timova fotka), tmavý text vlevo po slovech jako "billion dollar / brand" */
+      sc("s3", T(4), T(7) + F(4)); blikObraz($("s3"), T(4));
+      const radekB = (kont, sl) => sl.forEach(([w, t]) => { const e = document.createElement("span"); e.textContent = w; kont.appendChild(e); slovo(e, t, 0.45, false); });
+      radekB($("r3a"), [["postavil", T(4) - F(1)], ["miliardovou", T(5) - F(1)]]);
+      /* detail loga na mikině (Timova fotka hoodie2, logo 65 % šířky, okraje fotky do černé mikiny), jen jemný plynulý nájezd 1 > 1,04 na dvojky jako u George, bez skoku; bílý text na černé */
+      const LX = 960, LY = 440, zoom = (k, px, py, t) => tl.set($("hz"), { scale: k, x: px - k * LX, y: py - k * LY }, t);
+      for (let f = 0, n = Math.round((T(7) + F(4) - T(4)) * 15); f <= n; f++) zoom(1 + 0.04 * f / n, LX, LY, T(4) + F(f * 2));
+      radekB($("r3b"), [["značku", T(6) - F(1)]]);
+
+      /* od "ale": whip pan, nová scéna vjede zprava (podíl šířky jako Greg f74 až f78), stará odjede doleva */
+      sc("s4", T(7), KONEC + 1);
+      blikObraz($("s4"), T(7) + F(4), [0.6, 0.6, 0.3, 0.3, 0]);
+      [0.4, 0.12, 0.03, 0.005, 0].forEach((p, i) => { tl.set($("s4"), { x: p * 1920 }, T(7) + F(i)); tl.set($("s3"), { x: (p - 1) * 1920 }, T(7) + F(i)); });
+      /* konec 4 jako Dalen "jako by nic neměl": AI portrét bez pozadí přijede zespodu na trojky, za ním 1 000 000 000 Kč,
+         od "jako" padá na dvojky k nule, na "nule" záblesk a portrét naráz černobílý (výraz neutrální, žádná smutná verze) */
+      const kc = (v) => Math.round(v).toLocaleString("cs-CZ").replace(/\s/g, " ") + " Kč", T4 = T(7) + F(3);
+      MK.tw(tl, $("por4"), { y: 1300 }, { y: 0 }, T4, 15, { k: 0.78, krok: 3 });
+      MK.drift(tl, $("por4"), T4 + F(15), KONEC - T4 - F(15), { y: -8, scale: 1.012 });
+      tl.set($("cis4"), { textContent: kc(1000000000), visibility: "visible", opacity: 0.4 }, T4 + F(4)).set($("cis4"), { opacity: 1 }, T4 + F(6));
+      MK.pocitadlo(tl, $("cis4"), T(10), 1000000000, 0, Math.round((T(15) - F(1) - T(10)) * 30), { krok: 2, ease: gsap.parseEase("power2.in"), format: kc });
+      tl.set($("gAI"), { filter: "grayscale(1) contrast(1.05)" }, T(15) - F(1)); blikObraz($("s4"), T(15) - F(1));
+
+      tl.set({}, {}, KONEC);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

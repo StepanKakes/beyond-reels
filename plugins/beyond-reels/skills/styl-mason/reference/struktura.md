@@ -8,7 +8,7 @@ description: Jak skládat Beyond reely v Jackově (Mason) stylu jako celek, ne j
 
 # Struktura Beyond reelů (Mason styl)
 
-Změřeno na 7 videích Jacka Masona (`$BR_INSPIRACE/_rozbor/<id>/ZARIZENI.md`, sekce B). Grafické komponenty a myšlení jsou ve skillu `styl-mason` (`reference/mysleni.md`, `reference/rodiny.md`). Vzor hotového reelu: `$BR_PROSTOR/jack-styl/src/dalen.html`.
+Změřeno na 7 videích Jacka Masona (`$BR_INSPIRACE/_rozbor/<id>/ZARIZENI.md`, sekce B). Grafické komponenty a myšlení jsou ve skillu `styl-mason` (`reference/mysleni.md`, `reference/rodiny.md`). Vzor hotového reelu: `$BR_PROSTOR/vzory/dalen-telo.html`.
 
 ## 1. Vyber formát
 
@@ -49,7 +49,7 @@ Pravidla ze všech sedmi hooků:
 - Vždy **doslovný důkaz věty**, nikdy nálada (Ben: "Britain" = Londýn, "one employee" = barista). B-roll bez titulku nebo grafiky neexistuje.
 - Délka 0,4 až 3 s. Výčet = slovo na záběr (BRITAIN'S, YOUNGEST, BILLIONAIRE po 13 sn.).
 - Cizí materiál sjednotit: v kartě přirozené barvy, přes celý snímek duotone (`BN.duotone`, černá > teplý papír).
-- Timova vlastní B-rolly: `$BR_PROSTOR/B-rolls` (KATALOG.md), v Mason stylu do rámečku karty.
+- Timova vlastní B-rolly: `$BR_BROLLS` (KATALOG.md), v Mason stylu do rámečku karty.
 - Talking head bez střihu oživit zoom bumpem (+9 % za 8 sn.) a návratem z B-rollu (1,11 > 1 za 40 sn.).
 
 ## 5. Rytmus a poměry (cíle)

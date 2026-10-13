@@ -17,7 +17,7 @@ Další nápady stejnou metodou (zatím nepostavené): žebříček (pořadí ja
 
 ## Z reelu Dalen (4. 10. 2026, Tim schválil ve v15)
 
-Vzor celé kompozice: `reels/podnikatele/dalen/src/telo.html` a `intro.html`. Knihovna: sdílené jádro `$BR_PROSTOR/jadro` (`js/beyond-nove.js` BN, `js/mason-kit.js` MK), styly v `jadro/mason-kit.css`.
+Vzor celé kompozice: `$BR_PROSTOR/vzory/dalen-telo.html`. Knihovna: sdílené jádro `$BR_PROSTOR/jadro` (`js/beyond-nove.js` BN, `js/mason-kit.js` MK), styly v `jadro/mason-kit.css`.
 
 - `MK.slovaZespodu(tl, radek, slova)`: řádek slov, slovo přijede zespodu za 4 snímky na dvojky, místo drží od začátku (řádek neposkakuje). Tim nechce zvětšování z rozmazání (`slovaRozmazane`).
 - `BN.titulkyZeSlov(slova, { bez, strihy, klipy, konec, vlastni, zlom })`: titulky po 1 až 3 slovech ze zarovnaných slov, zlom na interpunkci a na střihu scény, nikdy nenaskočí před střihem. Vykreslit třídou `.bn-tit` (styl Vince: bílé 96 px se stínem), `.tma` jen na papíře. Ruční výběr frází vynechával slova.

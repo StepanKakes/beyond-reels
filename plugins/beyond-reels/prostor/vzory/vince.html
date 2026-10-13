@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1440">
+    <title>Vince Nijhof intro</title>
+    <script src="vendor/gsap.min.js"></script>
+    <script src="js/mason-kit.js"></script>
+    <link rel="stylesheet" href="beyond-kit.css">
+    <link rel="stylesheet" href="mason-kit.css">
+    <link rel="stylesheet" href="tema-jack.css">
+    <style>
+      /* Vince intro v3: Georgios hook od začátku (r-georgios-cele s1 až s8) v barvách Beyond,
+         pak bratři jako výřezy s trhaným pohybem na trojky, pak logo OOAK a jejich produkty */
+      :root { --mk-akcent: #FF0E00; --mk-papir: #FBF9FC; --o: #FF0E00; --cerna: #111111; }
+      body { margin: 0; background: var(--mk-papir); }
+      #root { position: relative; width: 1920px; height: 1440px; overflow: hidden; background: var(--mk-papir); font-family: var(--mk-sans); }
+      .sc { position: absolute; inset: 0; overflow: hidden; }
+      .tma { background: #000; } .noc { background: var(--cerna); }
+      .abs { position: absolute; }
+      .vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .caps { position: absolute; font-weight: 700; letter-spacing: -0.04em; text-transform: uppercase; line-height: 0.9; white-space: nowrap; }
+      .o { color: var(--o); } .b { color: #fff; } .c { color: var(--cerna); }
+      .cap { position: absolute; color: #fff; font-weight: 700; letter-spacing: -0.03em; text-transform: uppercase; line-height: 1; text-shadow: 0 1px 6px rgba(0,0,0,0.45); white-space: nowrap; visibility: hidden; }
+      .jack { position: absolute; left: 660px; top: 230px; width: 600px; height: 850px; overflow: hidden; border-radius: 24px 24px 0 0; }
+      .jack video { width: 100%; height: 100%; object-fit: cover; }
+      .ws { position: absolute; color: var(--o); font-weight: 700; font-size: 66px; letter-spacing: -0.04em; text-transform: uppercase; white-space: nowrap; visibility: hidden; }
+      .pil { position: absolute; background: var(--o); color: #fff; font-weight: 700; letter-spacing: -0.03em; text-transform: uppercase; line-height: 1; white-space: nowrap; padding: 0.3em 0.55em 0.24em; border-radius: 0.24em; visibility: hidden; }
+      .pil.cerny { background: var(--cerna); }
+      .pil.bily { background: #fff; color: var(--cerna); }
+      .vyrez { position: absolute; bottom: 0; visibility: hidden; }
+      .vyrez img { display: block; width: 100%; height: auto; }
+      .hl { background: linear-gradient(#111111, #111111) no-repeat 0 50% / 0% 100%; padding: 0.02em 0.1em 0; }
+      .broll { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; visibility: hidden; }
+      /* titulky jako Noske: minusky, bez obrysu a podkladu, jemný stín; na papíře tmavé bez stínu */
+      .tit { position: absolute; left: 0; right: 0; top: 1092px; text-align: center; color: #fff; font-weight: 700; font-size: 96px; letter-spacing: -0.035em; line-height: 1; white-space: nowrap; z-index: 50; visibility: hidden; text-shadow: 0 2px 22px rgba(17, 17, 17, 0.75), 0 0 4px rgba(17, 17, 17, 0.6); }
+      .tit.stred { color: var(--cerna); text-shadow: none; top: 720px; transform: translateY(-50%); font-size: 96px; line-height: 0.98; letter-spacing: -0.04em; }
+      .pul { position: absolute; top: 0; width: 960px; height: 1440px; object-fit: cover; }
+      .yt { position: absolute; width: 540px; visibility: hidden; }
+      .yt img { display: block; width: 540px; height: 304px; object-fit: cover; border-radius: 14px; }
+      .yt b { display: block; margin-top: 14px; color: var(--cerna); font-size: 25px; line-height: 1.18; letter-spacing: -0.01em; font-weight: 700; height: 60px; overflow: hidden; }
+      .yt i { display: block; margin-top: 4px; color: #6B6B70; font-size: 21px; font-style: normal; font-weight: 500; }
+      .tit.papir { color: var(--cerna); text-shadow: none; top: 1110px; }
+      .tit.klip { top: 895px; text-shadow: none; font-size: 86px; }
+      .tit.klip span { display: inline-block; background: rgba(17, 17, 17, 0.8); padding: 0.16em 0.42em 0.2em; border-radius: 0.22em; }
+      /* Fred Z14 čtverce: akcentní obdélník, obrysová číslice, fade z papíru do akcentu */
+      .tri { position: absolute; top: 60px; width: 580px; height: 1320px; border-radius: 10px; background: var(--o); display: grid; place-items: center; visibility: hidden; }
+      .tri b { color: #fff; font-size: 560px; font-weight: 700; line-height: 1; letter-spacing: -0.05em; }
+      .tri u { position: absolute; left: 0; right: 0; bottom: 150px; text-align: center; color: #fff; text-decoration: none; font-weight: 700; font-size: 96px; letter-spacing: -0.045em; text-transform: uppercase; line-height: 1; visibility: hidden; }
+      .web { position: absolute; left: 220px; top: 120px; width: 1280px; height: 800px; border-radius: 18px; overflow: hidden; background: #fff; box-shadow: 0 18px 50px rgba(17, 17, 17, 0.16), 0 2px 6px rgba(17, 17, 17, 0.08); visibility: hidden; }
+      .web i { position: absolute; left: 0; right: 0; top: 0; height: 48px; background: #EDEAEF; }
+      .web i::before { content: ""; position: absolute; left: 22px; top: 17px; width: 14px; height: 14px; border-radius: 7px; background: #C9C5CC; box-shadow: 22px 0 0 #C9C5CC, 44px 0 0 #C9C5CC; }
+      .web i::after { content: "doreandrose.com"; position: absolute; left: 50%; top: 9px; transform: translateX(-50%); width: 420px; height: 30px; border-radius: 15px; background: #fff; color: #6B6B70; font-size: 17px; font-weight: 500; font-style: normal; line-height: 30px; text-align: center; }
+      .web img { position: absolute; left: 0; top: 48px; width: 100%; height: 752px; object-fit: cover; object-position: 50% 0; }
+      #kCta { position: absolute; left: 320px; top: 70px; width: 1280px; height: 720px; border-radius: 26px; overflow: hidden; background: var(--cerna); box-shadow: 0 18px 50px rgba(17, 17, 17, 0.16), 0 2px 6px rgba(17, 17, 17, 0.08); }
+      .cbx { position: absolute; top: 880px; width: 520px; height: 300px; border-radius: 10px; background: var(--o); visibility: hidden; }
+      .cbx b { position: absolute; left: 26px; top: 20px; color: #fff; font-size: 70px; font-weight: 700; line-height: 1; letter-spacing: -0.05em; }
+      .cbx u { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-40%); text-align: center; color: #fff; text-decoration: none; font-weight: 700; font-size: 80px; letter-spacing: -0.045em; text-transform: uppercase; line-height: 1; visibility: hidden; }
+      .fl { position: absolute; inset: 0; border-radius: inherit; background: #fff; opacity: 0; }
+      .mbx { position: absolute; left: 70px; width: 170px; height: 200px; border-radius: 8px; background: var(--o); display: grid; place-items: center; visibility: hidden; }
+      .mbx b { color: #fff; font-size: 150px; font-weight: 700; letter-spacing: -0.05em; line-height: 1; }
+      .mbl { position: absolute; left: 272px; color: #fff; font-weight: 700; font-size: 78px; letter-spacing: -0.045em; text-transform: uppercase; line-height: 1; white-space: nowrap; text-shadow: 0 2px 22px rgba(17, 17, 17, 0.6); visibility: hidden; }
+      #hfB { position: relative; width: 300px; height: 300px; border-radius: 68px; background: #D1FE17; display: grid; place-items: center; visibility: hidden; }
+      .kt { position: absolute; left: 0; right: 0; text-align: center; font-weight: 700; text-transform: uppercase; letter-spacing: -0.045em; line-height: 0.9; white-space: nowrap; }
+      .kt span { visibility: hidden; }
+      .sc.bila { background: #fff; } .sc.pap { background: var(--mk-papir); }
+      #hfG { position: absolute; left: 0; right: 0; top: 720px; display: flex; justify-content: center; align-items: center; gap: 56px; transform: translateY(-50%); }
+      #hfI { width: 190px; height: 190px; color: #131313; }
+      #hfT { font-variant-ligatures: none; color: var(--cerna); font-weight: 700; font-size: 200px; letter-spacing: -0.05em; line-height: 1; visibility: hidden; }
+      #kKlip, #kKlip2, #kKlip4 { position: absolute; left: 180px; top: 230px; width: 1560px; height: 878px; border-radius: 26px; overflow: hidden; background: var(--cerna); box-shadow: 0 18px 50px rgba(17, 17, 17, 0.16), 0 2px 6px rgba(17, 17, 17, 0.08); }
+      #kKlip video, #kKlip2 video, #kKlip4 video { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .karta { position: absolute; overflow: hidden; }
+      .karta video, .karta img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+      #pocit { position: absolute; left: -1000px; right: -1000px; top: 60px; text-align: center; color: var(--o); font-weight: 700; font-size: 210px; letter-spacing: -0.05em; line-height: 0.8; white-space: nowrap; font-variant-numeric: tabular-nums; transform: scaleY(1.2); transform-origin: 50% 0; visibility: hidden; }
+      .jm2 { position: absolute; color: var(--cerna); font-weight: 700; font-size: 64px; letter-spacing: -0.03em; text-transform: uppercase; line-height: 1; white-space: nowrap; visibility: hidden; }
+      .dl { position: absolute; width: 355px; height: 442px; border-radius: 18px; overflow: hidden; background: #fff; visibility: hidden; }
+      .dl img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+      .dl.logo img { inset: auto; left: 12%; top: 50%; width: 76%; height: auto; transform: translateY(-50%); object-fit: contain; }
+      .dl.logo.tmavy { background: var(--cerna); }
+      .dl.logo.svetly { background: var(--cerna); }
+      .dl.logo.svetly img { filter: brightness(0) invert(1); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1440" data-fps="30" data-duration="79.097">
+      <audio id="mix" src="assets/media/mix_vince.wav" data-start="0" data-duration="79.097" data-track-index="9" data-volume="1"></audio>
+
+      <!-- A1 obličeje po 2 sn. zamčené uprostřed, karta mění šířku (DLN intro = Shelby A1) -->
+      <div id="s1" class="sc"><div id="s1zoom" class="abs" style="inset:0; transform-origin:960px 720px">
+        <div class="karta" id="kfl" style="top:0; left:270px; width:1380px; height:1440px"><img src="assets/media/vince/tvare_0.jpg" alt=""><video id="vFl" class="clip" src="assets/media/vince/tvare.mp4" muted playsinline data-start="0" data-duration="{{T(4)}}" data-track-index="2"></video></div></div></div>
+      <!-- A3 B-rolly z Vinceho vlogu na slova "vede skupinu ecommerce značek", tvrdé střihy -->
+      <div id="s3" class="sc tma">
+        <video id="b2" class="broll clip" src="assets/media/vince/b_chuze.mp4" muted playsinline data-start="{{T(4)}}" data-duration="{{T(5)-T(4)}}" data-track-index="4"></video>
+        <div id="b3" class="broll" style="overflow:hidden"><video id="pvH" class="pul clip" src="assets/media/vince/pv_hears.mp4" muted playsinline data-start="{{T(5)}}" data-duration="{{T(7)-T(5)}}" data-track-index="7" style="left:0"></video><video id="pvD" class="pul clip" src="assets/media/vince/pv_dr.mp4" muted playsinline data-start="{{T(5)}}" data-duration="{{T(7)-T(5)}}" data-track-index="8" style="left:960px"></video><div class="abs" style="left:0; right:0; bottom:0; height:460px; background: linear-gradient(rgba(17,17,17,0), rgba(17,17,17,0.5))"></div></div>
+        <video id="b4" class="broll clip" src="assets/media/vince/b_vecer.mp4" muted playsinline data-start="{{T(7)}}" data-duration="{{T(9)-T(7)}}" data-track-index="6"></video></div>
+      <!-- A4 Georgios A4 1:1 (r-georgios-cele s5), posunuté doprava: IG fotka stojí, vlevo přes ni velké červené slovo, výměny tvrdým střihem -->
+      <div id="s4" class="sc"><div id="igF" class="abs" style="left:960px; top:307px; width:806px; height:826px; transform-origin:50% 60%"><img class="abs" src="assets/media/vince/ig_vince.jpg" alt="" style="inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 40%"><img id="igCut" class="abs" src="assets/media/vince/ig_vince_cut.png" alt="" style="inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 40%; filter: brightness(0) invert(1); opacity:0"></div>
+        <div id="c430" class="caps o" style="left:140px; width:948px; top:517px; text-align:center; font-size:210px; z-index:2; transform: translateY(-50%); line-height:0.9"><span id="hl430" class="hl"></span></div>
+        <div id="kor" class="caps o" style="left:164px; width:900px; top:650px; text-align:center; font-size:51px; z-index:2; visibility:hidden">korun za minulý měsíc</div></div>
+      <!-- B Timův A-roll přes celý snímek s titulky -->
+      <div id="s6" class="sc tma"><video id="vG" class="vid clip" src="assets/media/vince/tim_karta.mp4" muted playsinline data-start="{{T(14)}}" data-duration="{{T(22)-T(14)}}" data-track-index="1"></video></div>
+      <!-- B Georgios s8 -->
+      <div id="s8" class="sc"><div id="w8" class="caps o" style="left:0; right:0; top:720px; text-align:center; font-size:300px; letter-spacing:-0.06em; transform: translateY(-50%) scaleY(2.6); transform-origin: 50% 50%"></div></div>
+      <!-- C bratři: výřezy najíždějí trhaně na trojky -->
+      <div id="s9" class="sc">
+        <div id="vVin" class="vyrez" style="left:-30px; width:900px"><img src="assets/media/vince/vince_cut.png" alt=""></div>
+        <div id="vNick" class="vyrez" style="left:1240px; width:700px"><img src="assets/media/vince/nick.png" alt=""></div>
+        <div id="pVin" class="jm2" style="left:420px; top:380px">Vince Nijhof</div>
+        <div id="pNick" class="jm2" style="left:1590px; top:420px">Nick Nijhof</div></div>
+      <!-- E "Dnes natáčí...": B-rolly z vlogu, pak stěna jeho videí z YouTube -->
+      <div id="s11" class="sc tma">
+        <video id="e1" class="broll clip" src="assets/media/vince/c_auto.mp4" muted playsinline data-start="12.29" data-duration="1.43" data-track-index="3"></video>
+        <video id="e2" class="broll clip" src="assets/media/vince/c_podium.mp4" muted playsinline data-start="13.72" data-duration="1.15" data-track-index="4"></video>
+        <video id="e3" class="broll clip" src="assets/media/vince/c_noc.mp4" muted playsinline data-start="14.87" data-duration="0.51" data-track-index="5"></video></div>
+      <div id="s12" class="sc"><div id="ytz" class="abs" style="inset:0; transform-origin:960px 720px"></div></div>
+      <!-- F klip 1: karta na papíře, český titulek pod ní -->
+      <div id="s13" class="sc"><div id="jmK" class="jm2" style="left:180px; top:150px; font-size:44px">Vince Nijhof</div>
+        <div id="kKlip"><video id="vK1" class="clip" src="assets/media/vince/klip1v.mp4" muted playsinline data-start="18.08" data-duration="4.6" data-track-index="2"></video></div></div>
+      <!-- G PTÁŠ SE PROČ -->
+      <div id="s14" class="sc"><div id="pse" class="caps c" style="left:0; right:0; top:200px; text-align:center; font-size:96px; visibility:hidden">ptáš se</div>
+        <div id="proc" class="caps o" style="left:0; right:0; top:840px; text-align:center; font-size:330px; letter-spacing:-0.06em; transform: translateY(-50%) scaleY(2.2); transform-origin: 50% 50%; visibility:hidden">proč?</div></div>
+      <!-- H Tim přes celý obraz: tři věci -->
+      <div id="s15" class="sc tma"><video id="vT3" class="vid clip" src="assets/media/vince/tim_tri.mp4" muted playsinline data-start="23.58" data-duration="2.83" data-track-index="1"></video>
+        <video id="vZ1" class="vid clip" src="assets/media/vince/tim_z1.mp4" muted playsinline data-start="26.41" data-duration="4.41" data-track-index="3" style="visibility:hidden"></video></div>
+      <!-- J bod 1: velký text přes obraz, slova naskakují na hlas -->
+      <div id="s17" class="sc pap"><div id="kAz" class="abs" style="inset:0; transform-origin:960px 720px">
+        <div class="kt c" style="top:400px; font-size:170px"><span>čím</span> <span>víc</span> <span>lidí</span></div>
+        <div class="kt o" style="top:655px; font-size:400px"><span>tě</span> <span>zná</span></div></div></div>
+      <div id="s18" class="sc pap"><div id="kBz" class="abs" style="inset:0; transform-origin:960px 720px">
+        <div class="kt o" style="top:430px; font-size:300px"><span>oslovovat</span></div>
+        <div class="kt c" style="top:760px; font-size:260px"><span>ty</span> <span>sám</span></div></div></div>
+      <!-- K mastermind: hrad, panel, Vince jde a mluví -->
+      <div id="s19" class="sc tma">
+        <video id="m1" class="broll clip" src="assets/media/vince/m_hrad.mp4" muted playsinline data-start="30.807" data-duration="1.233" data-track-index="3"></video>
+        <video id="m2" class="broll clip" src="assets/media/vince/m_panel.mp4" muted playsinline data-start="32.04" data-duration="2.95" data-track-index="4"></video>
+        <video id="m3" class="broll clip" src="assets/media/vince/m_bob.mp4" muted playsinline data-start="34.99" data-duration="2.057" data-track-index="5"></video></div>
+      <!-- L Higgsfield na bílé: ikona, pak název -->
+      <div id="s20" class="sc bila"><div id="hfZ" class="abs" style="inset:0; transform-origin:960px 720px"><div id="hfG"><div id="hfB"><svg id="hfI" viewBox="0 0 20 20" fill="none"><path d="M18.3498 9.83713L18.3339 9.65759C18.1831 7.93447 17.0963 4.69261 14.0816 4.69261C11.8445 4.69261 10.1545 6.97097 8.66311 8.97967C7.47302 10.5883 6.4419 11.9683 5.3073 11.9683C5.00574 11.9357 4.61708 11.7805 4.3792 11.4294C4.16497 11.1108 4.10948 10.7026 4.22046 10.2126C4.39489 9.43684 5.39463 8.7182 6.44963 7.95063C7.02864 7.54238 7.6238 7.10955 8.03634 6.69311C9.22643 5.5091 9.82932 4.65164 9.82932 3.2717C9.82932 1.89176 9.09157 1.20565 8.47276 0.911636C7.23514 0.323844 5.41851 0.666781 4.26026 1.69583C4.08583 1.85922 3.91117 2.01418 3.75243 2.16119C2.58622 3.23097 1.80094 3.95781 0 3.40232V5.63972C2.38791 6.72588 4.39512 4.65164 5.15675 3.69633C5.74372 3.06758 6.36253 2.70006 6.82283 2.70006H6.84671C7.05298 2.70825 7.22741 2.78995 7.35454 2.93696C7.56081 3.18204 7.64018 3.46786 7.60038 3.78622C7.51305 4.45594 6.83875 5.23967 5.60113 6.09713C4.14928 7.10159 1.7218 8.78374 1.53122 10.8987C1.3884 12.4177 2.15003 13.9365 3.34012 14.5243C6.11669 15.8798 7.80665 13.5444 9.5994 11.0783C10.9719 9.1756 12.273 7.37103 14.0818 7.37103C15.7081 7.37103 16.311 8.75916 16.311 9.63301V9.80459L16.1523 9.83713C12.2095 10.5558 10.0595 14.3611 10.0595 16.1167C10.0595 17.8724 11.5034 19.375 13.2804 19.375C15.359 19.375 17.9293 17.5458 18.3419 12.4013L18.3578 12.2136H20V9.83737H18.3498V9.83713ZM16.1998 12.4746C15.8826 15.5531 14.3513 16.9904 13.4232 16.9904C13.0027 16.9904 12.4158 16.631 12.4158 15.9615C12.4158 15.2104 13.5026 12.932 15.946 12.2543L16.2316 12.1808L16.1998 12.4748V12.4746Z" fill="currentColor" /></svg></div><span id="hfT">Higgsfield</span></div></div></div>
+      <!-- M klip 2 v kartě -->
+      <div id="s21" class="sc"><div id="jmK2" class="jm2" style="left:180px; top:150px; font-size:44px">Vince Nijhof</div>
+        <div id="kKlip2"><video id="vK2" class="clip" src="assets/media/vince/klip2v.mp4" muted playsinline data-start="38.54" data-duration="1.975" data-track-index="2"></video></div></div>
+      <!-- N bod 2 status: Timův A-roll (pod ostatními scénami bodu 2) -->
+      <div id="s23" class="sc tma">
+        <video id="vS1" class="vid clip" src="assets/media/vince/tim_s1.mp4" muted playsinline data-start="40.515" data-duration="1.22" data-track-index="1"></video>
+        <video id="vS2" class="vid clip" src="assets/media/vince/tim_s2.mp4" muted playsinline data-start="41.735" data-duration="4.05" data-track-index="3" style="visibility:hidden"></video>
+        <video id="vS4" class="vid clip" src="assets/media/vince/tim_s4.mp4" muted playsinline data-start="49.385" data-duration="2.945" data-track-index="4" style="visibility:hidden"></video></div>
+      <div id="s24" class="sc pap"><div id="kCz" class="abs" style="inset:0; transform-origin:960px 720px">
+        <div class="kt o" style="top:400px; font-size:400px"><span>status</span></div>
+        <div class="kt c" style="top:790px; font-size:150px"><span>je</span> <span>důvod</span> <span>proč</span></div></div></div>
+      <div id="s25" class="sc pap"><div id="kDz" class="abs" style="inset:0; transform-origin:960px 720px">
+        <div class="kt c" style="top:430px; font-size:150px"><span>místo aby se</span></div>
+        <div class="kt o" style="top:620px; font-size:300px"><span>vnucoval</span></div></div></div>
+      <div id="s26" class="sc tma"><video id="vFi" class="broll clip" src="assets/media/vince/m_firmy.mp4" muted playsinline data-start="46.41" data-duration="1.17" data-track-index="5"></video></div>
+      <div id="s27" class="sc tma"><video id="vVl" class="broll clip" src="assets/media/vince/m_vlog.mp4" muted playsinline data-start="47.58" data-duration="1.875" data-track-index="6"></video></div>
+      <div id="s28" class="sc tma"><div id="ytz2" class="abs" style="inset:0; display:none"></div><video id="bRa" class="broll clip" src="assets/media/vince/m_raut.mp4" muted playsinline data-start="52.33" data-duration="2.325" data-track-index="5" style="visibility:visible"></video></div>
+      <!-- O bod 3 odlišení a výzva (nové časy) -->
+      <div id="s30" class="sc tma">
+        <video id="vT3a" class="vid clip" src="assets/media/vince/tim_t3.mp4" muted playsinline data-start="54.655" data-duration="1.61" data-track-index="1"></video>
+        <video id="vLi" class="vid clip" src="assets/media/vince/tim_li.mp4" muted playsinline data-start="57.965" data-duration="1.525" data-track-index="3" style="visibility:hidden"></video>
+        <video id="vVi" class="vid clip" src="assets/media/vince/tim_vi.mp4" muted playsinline data-start="63.315" data-duration="1.225" data-track-index="4" style="visibility:hidden"></video>
+        <video id="vSo" class="vid clip" src="assets/media/vince/tim_so.mp4" muted playsinline data-start="68.977" data-duration="1.87" data-track-index="5" style="visibility:hidden"></video>
+        <video id="bMl" class="broll clip" src="assets/media/vince/m_mluvi.mp4" muted playsinline data-start="59.49" data-duration="1.47" data-track-index="6"></video>
+        <video id="bSt" class="broll clip" src="assets/media/vince/st_vince.mp4" muted playsinline data-start="62.02" data-duration="1.295" data-track-index="7"></video>
+        <video id="bSa" class="broll clip" src="assets/media/vince/m_sal.mp4" muted playsinline data-start="64.54" data-duration="2.185" data-track-index="8"></video></div>
+      <div id="s31" class="sc pap"><div id="kEz" class="abs" style="inset:0; transform-origin:960px 620px">
+        <div class="web" id="w0"><img src="assets/media/vince/web_dr.png" alt=""><i></i></div><div class="web" id="w1"><img src="assets/media/vince/web_dr.png" alt=""><i></i><div class="fl" id="wf1"></div></div>
+        <div class="web" id="w2"><img src="assets/media/vince/web_dr.png" alt=""><i></i><div class="fl" id="wf2"></div></div><div class="web" id="w3"><img src="assets/media/vince/web_dr.png" alt=""><i></i><div class="fl" id="wf3"></div></div>
+        <div id="zaT" class="kt c" style="top:1150px; font-size:170px"><span>za</span> <span>týden</span></div></div></div>
+      <div id="s33" class="sc pap"><div id="kFz" class="abs" style="inset:0; transform-origin:960px 720px">
+        <div class="kt o" style="top:480px; font-size:210px"><span>nezkopíruješ</span></div>
+        <div class="kt c" style="top:760px; font-size:260px"><span>nikdy</span></div></div></div>
+      <div id="s35" class="sc pap"><div id="jmK4" class="jm2" style="left:180px; top:150px; font-size:44px">Vince Nijhof</div>
+        <div id="kKlip4"><video id="vK4" class="clip" src="assets/media/vince/klip4v.mp4" muted playsinline data-start="66.725" data-duration="2.251" data-track-index="2"></video></div></div>
+      <div id="s36" class="sc pap"><div id="kCta">
+          <video id="vC1" class="vid clip" src="assets/media/vince/tim_c1.mp4" muted playsinline data-start="70.847" data-duration="3.98" data-track-index="1"></video>
+          <video id="vC2" class="vid clip" src="assets/media/vince/tim_c2.mp4" muted playsinline data-start="74.827" data-duration="2.81" data-track-index="3" style="visibility:hidden"></video>
+          <video id="vC3" class="vid clip" src="assets/media/vince/tim_c3.mp4" muted playsinline data-start="77.637" data-duration="1.46" data-track-index="4" style="visibility:hidden"></video></div>
+        <div id="kG1" class="abs" style="inset:0"><div class="kt c" style="top:840px; font-size:80px"><span>pokud</span> <span>máš</span> <span>v</span> <span>česku</span> <span>firmu</span></div>
+          <div class="kt c" style="top:930px; font-size:80px"><span>a</span> <span>chceš</span> <span>postavit</span></div>
+          <div class="kt o" style="top:1040px; font-size:190px"><span>osobní</span> <span>značku</span></div></div>
+        <div id="kG2" class="abs" style="inset:0"><div class="cbx" id="cb1" style="left:120px"><b>1</b><u id="cu1">známosti</u><div class="fl" id="cf1"></div></div>
+          <div class="cbx" id="cb2" style="left:700px"><b>2</b><u id="cu2">status</u><div class="fl" id="cf2"></div></div>
+          <div class="cbx" id="cb3" style="left:1280px"><b>3</b><u id="cu3">odlišení</u><div class="fl" id="cf3"></div></div></div>
+        <div id="kG3" class="abs" style="inset:0"><div class="kt c" style="top:850px; font-size:90px"><span>napiš</span> <span>do</span> <span>komentáře</span></div>
+          <div class="kt o" style="top:950px; font-size:220px"><span>„vince“</span></div>
+          <div class="kt c" style="top:1260px; font-size:72px"><span>a</span> <span>já</span> <span>ti</span> <span>pošlu</span> <span>můj</span> <span>návod</span></div></div></div>
+      <!-- malé boxy 1 2 3 přes Timův A-roll vlevo, popisek bodu vedle -->
+      <div id="mb" class="abs" style="inset:0; z-index:40; visibility:hidden">
+        <div class="mbx" id="mb1" style="top:340px"><b>1</b><div class="fl" id="fl1"></div></div><div class="mbl" id="lb1" style="top:401px">známosti</div>
+        <div class="mbx" id="mb2" style="top:570px"><b>2</b><div class="fl" id="fl2"></div></div><div class="mbl" id="lb2" style="top:631px">status</div>
+        <div class="mbx" id="mb3" style="top:800px"><b>3</b><div class="fl" id="fl3"></div></div><div class="mbl" id="lb3" style="top:861px">odlišení</div></div>
+      <div id="tits" class="abs" style="inset:0; z-index:50"></div>
+      <!-- D mřížka: uprostřed OOAK, vlevo Dore & Rose, vpravo Hears -->
+      <div id="s10" class="sc"><div id="mriz" class="abs" style="inset:0; transform-origin:960px 720px"></div></div>
+    </div>
+    <script>
+      const D = /*SLOVA:VINCE*/;
+      const S = D.slova, W = (i) => S[i].t;
+      const root = document.getElementById("root");
+      MK.init(root);
+      const F = MK.F, tl = gsap.timeline({ paused: true });
+      const $ = (id) => document.getElementById(id);
+      const vis = (el, t) => tl.set(el, { visibility: "visible" }, t), hid = (el, t) => tl.set(el, { visibility: "hidden" }, t);
+      const fadeIn = (el, t, n = 3, od = 0) => { vis(el, t); MK.tw(tl, el, { opacity: od }, { opacity: 1 }, t, n, { ease: (p) => p }); };
+      const sc = (id, t0, t1) => { tl.set($(id), { display: "none" }, 0); tl.set($(id), { display: "block" }, t0); if (t1 != null) tl.set($(id), { display: "none" }, t1); };
+      // vaření: každý 6. snímek jemný posun a natočení (max 1,2 px)
+      const vari = (el, od, do_, px = 1.2) => { for (let t = od, i = 0; t < do_; t += F(6), i++) tl.set(el, { rotation: (i % 2 ? 1 : -1) * 0.15, y: ((i % 3) - 1) * px }, t); };
+      const A3 = W(2), A4 = W(6), B = W(14), B8 = W(22), C = W(24), Dd = W(29), K1 = 12.6, KONEC = 63.612, S1 = 43.095, S2 = 44.635, S3 = 49.565, S4 = 53.865, K3 = 59.215, Z1 = 27.51, MM = 32.27, HF = 39.13, K2 = 40.91, KE = 22.98, PR = 23.28, TR = 24.33;
+      sc("s1", 0, W(4)); sc("s3", W(4), W(9)); sc("s4", W(9), B); sc("s6", B, B8); sc("s8", B8, C); sc("s9", C, Dd); sc("s10", Dd, K1);
+
+      /* A1: DLN intro 1:1 (Shelby A1), 7 obličejů po 2 sn., karta každé 2 sn. jinak široká a nakloněná, pak stojí na posledním
+         šířky ze Shelby měření (výška 1080), celé najíždí 1 > 1,05; blur, radiální blur a záře v postfx jako u DLN */
+      [[1, 402, 1451, 0], [3, 546, 1916, 2.5], [5, 601, 1372, 3], [7, 593, 1366, 0], [9, 103, 1573, 0], [11, 522, 1411, 0], [13, 500, 1632, -1.5], [15, 560, 1700, 2], [17, 450, 1500, 0], [19, 300, 1600, -2], [21, 399, 1364, 0]]
+        .forEach(([f, l, r, rot]) => { const w = Math.min(1900, (Math.min(r, 1956) - l - 80) * 1440 / 1080); tl.set($("kfl"), { left: 960 - w / 2, width: w, rotation: rot }, F(f - 1)); });
+      MK.tw(tl, $("s1zoom"), { scale: 1 }, { scale: 1.05 }, 0, Math.round(W(4) * 30), { ease: (p) => p });
+      /* A3 až W(9): B-rolly tvrdým střihem na slova (Vince na pódiu, Vince jde a mluví, produkty Hears a Dore & Rose vedle sebe, Vince večer mluví), každý jemně dojíždí 1,06 > 1 */
+      [["b2", W(4), W(5)], ["b3", W(5), W(7)], ["b4", W(7), W(9)]].forEach(([id, t0, t1]) => { vis($(id), t0); hid($(id), t1); MK.tw(tl, $(id), { scale: 1.06 }, { scale: 1 }, t0, Math.round((t1 - t0) * 30), { ease: (p) => p }); });
+
+      /* A4 až B: Georgios A4. Slova na hlas tvrdým střihem, na "přes" číslo každý snímek 21 > 430 MIL (10 sn.),
+         pak se pod číslo na trojky protáhne černé zvýraznění zleva a naskočí malý štítek */
+      const c4 = $("c430"), hl = $("hl430"), slovo = (txt, t, fs) => { tl.set(hl, { innerHTML: txt }, t); tl.set(c4, { fontSize: fs }, t); };
+      slovo("vydělala", W(9), 165);
+      [21, 54, 98, 140, 187, 231, 280, 322, 371, 409].forEach((v, i) => slovo(v + "M", W(10) + F(i), 190));
+      const L = W(10) + F(10);
+      slovo('430M', L, 190);
+      ["0%", "34%", "68%", "100%"].forEach((w, i) => tl.set(hl, { backgroundSize: w + " 100%" }, L + F(i * 3)));
+      /* záblesk jen Vince: bílá silueta z výřezu bliká na dvojky a dohasne, fotka se usadí 1,04 > 1 */
+      [1, 1, 0.75, 0.75, 0.45, 0.45, 0.2, 0.2, 0].forEach((o, i) => tl.set($("igCut"), { opacity: o }, W(9) + F(i)));
+      MK.tw(tl, $("igF"), { scale: 1.04 }, { scale: 1 }, W(9), 6, { k: 0.7, krok: 2 });
+      vis($("kor"), L + F(9));
+
+      /* B: Timův A-roll přes celý snímek, s8 ANI SLOVO */
+      MK.tw(tl, $("vG"), { scale: 1.04 }, { scale: 1 }, B, 12, { k: 0.8 });
+      [["ani", W(22), 300], ["slovo", W(23), 290]].forEach(([s, t, fs]) => tl.set($("w8"), { textContent: s, fontSize: fs }, t));
+
+      /* C: výřezy najedou z boku trhaně na trojky (10 fps) bez rozmazání, pak vaří každý 6. snímek, jména bez podkladu */
+      const vari2 = (el, od, do_) => { for (let t = od, i = 0; t < do_; t += F(8), i++) tl.set(el, { rotation: (i % 2 ? 1 : -1) * 0.04, y: ((i % 3) - 1) * 0.4 }, t); };
+      const najed = (el, t, z) => { vis(el, t); MK.tw(tl, el, { x: z }, { x: 0 }, t, 12, { k: 0.72, krok: 3 }); vari2(el, t + F(12), Dd); };
+      najed($("vVin"), C, -900);
+      vis($("pVin"), W(25)); MK.tw(tl, $("pVin"), { opacity: 0.4 }, { opacity: 1 }, W(25), 3, { k: 0.6 });
+      najed($("vNick"), W(27), 900);
+      vis($("pNick"), W(28)); MK.tw(tl, $("pNick"), { opacity: 0.4 }, { opacity: 1 }, W(28), 3, { k: 0.6 });
+      gsap.set([$("pVin"), $("pNick")], { xPercent: -50 });
+
+      /* D: mřížka 5 x 3 na papíře, bez září. Uprostřed OOAK na černé dlaždici (naskočí na trojky), pak sloupec Dore & Rose
+         vlevo (logo nahoře uprostřed + produkty), pak Hears vpravo (logo dole uprostřed + fotky); dlaždice po 2 sn. na trojky */
+      const GX = (c) => 40 + c * 371, GY = (r) => 40 + r * 458.7;
+      const dl = (c, r, html, cls = "") => { const e = MK.div($("mriz"), "dl " + cls, html); gsap.set(e, { left: GX(c), top: GY(r) }); return e; };
+      const img = (src) => `<img src="assets/media/vince/${src}" alt="">`;
+      const oo = dl(2, 1, img("ooak.png"), "logo tmavy"); oo.style.zIndex = 5;
+      vis(oo, Dd); MK.tw(tl, oo, { scale: 3.2 }, { scale: 2.4 }, Dd, 9, { k: 0.75, krok: 3 });
+      MK.tw(tl, oo, { scale: 2.4 }, { scale: 2.5 }, Dd + F(9), Math.round((W(34) - Dd) * 30) - 9, { ease: (p) => p, krok: 2 });
+      MK.tw(tl, oo, { scale: 2.5 }, { scale: 1 }, W(34), 9, { k: 0.75, krok: 3 });
+      const drL = dl(2, 0, img("dore-rose-logo.png"), "logo svetly"), heL = dl(2, 2, img("hears-logo.png"), "logo svetly");
+      const drT = [[1, 0], [0, 0], [1, 1], [0, 1], [1, 2], [0, 2]].map(([c, r], i) => dl(c, r, img(`g_d${i}.jpg`)));
+      const heT = [[3, 0], [4, 0], [3, 1], [4, 1], [3, 2], [4, 2]].map(([c, r], i) => dl(c, r, img(`g_h${i}.jpg`)));
+      const naskoc = (e, t, dx) => { vis(e, t); MK.tw(tl, e, { x: dx, scale: 0.9 }, { x: 0, scale: 1 }, t, 6, { k: 0.75, krok: 3 }); };
+      naskoc(drL, W(34) + F(9), 0); drT.forEach((e, i) => naskoc(e, W(34) + F(11 + i * 2), -60));
+      naskoc(heL, W(36), 0); heT.forEach((e, i) => naskoc(e, W(36) + F(2 + i * 2), 60));
+      MK.tw(tl, $("mriz"), { scale: 1 }, { scale: 1.04 }, W(34), Math.round((K1 - Dd) * 30), { ease: (p) => p, krok: 2 });
+
+      /* Titulky dole po 2 až 4 slovech přesně na hlas, kromě záběrů, kde velký text říká totéž (číslo, ANI SLOVO) */
+      const TIT = [ [4, 5], [6, 8], [14, 17], [18, 21], [26, 28]];
+      const KW = new Set();
+      const kw = (t) => t.replace(/\*/g, "");
+      TIT.forEach(([a, b], k) => {
+        const txt = S.slice(a, b + 1).map((x, j) => { const w = x.w.replace(/[.,!?]/g, "").replace("e-commerce", "ecommerce").toLowerCase(); return KW.has(a + j) ? `*${w}*` : w; }).join(" ").replace(/\* \*/g, " ");
+        const st = a === 26, e = MK.div($("tits"), "tit" + (st ? " stred" : ""), st ? "s bratrem<br>nickem" : kw(txt));
+        const konec = k + 1 < TIT.length && TIT[k + 1][0] === b + 1 ? W(b + 1) : Math.min(S[b].e + 0.25, b + 1 < S.length ? W(b + 1) : K1);
+        vis(e, W(a)); hid(e, konec);
+      });
+
+      /* E: 12,6 až 15,72 B-rolly tvrdě na fráze, každý dojíždí 1,06 > 1; pak stěna videí z jeho kanálu, karty naskočí po 2 sn. na trojky, celé pomalu najíždí */
+      sc("s11", K1, 15.72); sc("s12", 15.72, 18.5);
+      [["e1", K1, 14.06], ["e2", 14.06, 15.21], ["e3", 15.21, 15.72]].forEach(([id, t0, t1]) => { vis($(id), t0); hid($(id), t1); MK.tw(tl, $(id), { scale: 1.06 }, { scale: 1 }, t0, Math.round((t1 - t0) * 30), { ease: (p) => p }); });
+      const YT = [["pH7u0gOOyQQ", "Spending $500K a Day on Ads from a Castle in Tuscany", "71K"], ["HmbFuorkRMc", "We Visited Our Suppliers in China After Scaling to $20M/Month", "136K"], ["qD4PeYkKf2Y", "Inside Our Summer Building a $1 Billion Ecom Brand", "79K"],
+        ["Uq0yjnomtB0", "10 Life Lessons from a $100M Ecom Founder", "39K"], ["yfx4v2T6ZOI", "What 30 Days Locked in a Mansion as a $100M+ Ecom Brand Owner Looks Like", "43K"], ["JfSEzdbLkAQ", "24 Hours Preparing for a $829K Black Friday in Dubai", "52K"],
+        ["cGyrouwZg3A", "Preparing Our Ecom Brands for a $20M Q4 in China", "130K"], ["h4xef2QYABg", "The Brand Strategy Behind our $50M Ecom Brands", "65K"], ["ONEfgMyfMro", "Building our Brands in New York City", "33K"]];
+      YT.forEach(([id, nazev, zhl], i) => {
+        const e2 = MK.div($("ytz2"), "yt", `<img src="assets/media/vince/yt/${id}.jpg" alt=""><b>${nazev}</b><i>${zhl} views</i>`);
+        gsap.set(e2, { left: 90 + (i % 3) * 600, top: 98 + Math.floor(i / 3) * 418, visibility: "visible" });
+        const e = MK.div($("ytz"), "yt", `<img src="assets/media/vince/yt/${id}.jpg" alt=""><b>${nazev}</b><i>${zhl} views</i>`);
+        gsap.set(e, { left: 90 + (i % 3) * 600, top: 98 + Math.floor(i / 3) * 418 });
+        const t = 15.72 + F([4, 0, 6, 2, 8, 10, 14, 12, 16][i]);
+        vis(e, t); MK.tw(tl, e, { y: 50, scale: 0.94 }, { y: 0, scale: 1 }, t, 6, { k: 0.75, krok: 3 });
+      });
+      MK.tw(tl, $("ytz"), { scale: 1 }, { scale: 1.05 }, 15.72, Math.round((18.5 - 15.72) * 30), { ease: (p) => p, krok: 2 });
+
+      /* F: klip 1 v kartě, najede zespodu na trojky, pak drift; jméno nad kartou */
+      sc("s13", 18.5, KE);
+      MK.tw(tl, $("kKlip"), { y: 700 }, { y: 0 }, 18.5, 12, { k: 0.78, krok: 3 });
+      MK.drift(tl, $("kKlip"), 18.5 + F(12), KE - 18.5 - F(12), { y: -6, scale: 1.01 });
+      vis($("jmK"), 18.5 + F(6)); MK.tw(tl, $("jmK"), { opacity: 0.4 }, { opacity: 1 }, 18.5 + F(6), 3, { k: 0.6 });
+
+      /* G: PTÁŠ SE malé, PROČ? obří červené na papíře */
+      sc("s14", KE, TR);
+      vis($("pse"), PR + 0.07); MK.tw(tl, $("pse"), { opacity: 0.4 }, { opacity: 1 }, PR + 0.07, 3, { k: 0.6 });
+      vis($("proc"), PR + 0.25);
+
+      /* H: Tim přes celý obraz (tři věci, pak za prvé), přes něj vlevo malé boxy 1 2 3 */
+      const T3 = TR + 0.45;
+      sc("s15", TR, MM);
+      MK.tw(tl, $("vT3"), { scale: 1.04 }, { scale: 1 }, TR, 12, { k: 0.8 });
+      vis($("vZ1"), Z1); MK.tw(tl, $("vZ1"), { scale: 1.1 }, { scale: 1.06 }, Z1, Math.round((MM - Z1) * 30), { ease: (p) => p, krok: 2 });
+      const mbOkna = [[T3, 28.70], [30.0, 30.68], [43.095, 44.635]];
+      tl.set($("mb"), { display: "none" }, 0); mbOkna.forEach(([a, b]) => { tl.set($("mb"), { display: "block", visibility: "visible" }, a); tl.set($("mb"), { display: "none" }, b); });
+      /* boxy naskočí trhaně po 4 sn. s bílým zábleskem jako u Vince */
+      const FL = [1, 1, 0.75, 0.75, 0.45, 0.45, 0.2, 0.2, 0];
+      const blik = (el, t) => FL.forEach((o, i) => tl.set(el, { opacity: o }, t + F(i)));
+      const puls = (el, t, k0 = 1.1) => [k0, k0, 1 + (k0 - 1) * 0.4, 1 + (k0 - 1) * 0.4, 1].forEach((k, j) => tl.set(el, { scale: k }, t + F(j)));
+      [1, 2, 3].forEach((n, i) => { const t = T3 + F(i * 4); vis($("mb" + n), t); puls($("mb" + n), t, 1.14); blik($("fl" + n), t); });
+      const ztlum = (els, t) => [0.7, 0.7, 0.45, 0.45, 0.3].forEach((o, j) => tl.set(els, { opacity: o }, t + F(j)));
+      const popis = (el, t) => { vis(el, t); MK.tw(tl, el, { opacity: 0.4, x: -24 }, { opacity: 1, x: 0 }, t, 6, { k: 0.75, krok: 2 }); };
+      /* bod 1: jednička blikne a zvedne se, dvojka a trojka zhasnou na dvojky, vedle ZNÁMOSTI */
+      blik($("fl1"), Z1); puls($("mb1"), Z1); ztlum([$("mb2"), $("mb3")], Z1); popis($("lb1"), 28.02);
+      /* bod 2: jednička a ZNÁMOSTI zhasnou, dvojka se rozsvítí, blikne, vedle STATUS */
+
+      ztlum([$("mb1"), $("lb1")], S1); tl.set($("mb2"), { opacity: 1 }, S1); blik($("fl2"), S1); puls($("mb2"), S1); popis($("lb2"), 43.80);
+
+      /* velký text: slova naskočí na hlas (40 % > 100 % za 3 sn.), celé pomalu najíždí na dvojky */
+      sc("s17", 28.70, 30.0); sc("s18", 30.68, MM);
+      const slova = (sel, casy) => [...document.querySelectorAll(sel)].forEach((e, i) => { vis(e, casy[i]); MK.tw(tl, e, { opacity: 0.4 }, { opacity: 1 }, casy[i], 3, { k: 0.6 }); });
+      slova("#kAz span", [28.70, 28.95, 29.14, 29.40, 29.54]); slova("#kBz span", [30.68, 31.27, 31.46]);
+      MK.tw(tl, $("kAz"), { scale: 1 }, { scale: 1.04 }, 28.70, 39, { ease: (p) => p, krok: 2 });
+      MK.tw(tl, $("kBz"), { scale: 1 }, { scale: 1.04 }, 30.68, Math.round((MM - 30.68) * 30), { ease: (p) => p, krok: 2 });
+
+      /* mastermind: B-rolly tvrdě na fráze, každý dojíždí 1,06 > 1 */
+      sc("s19", MM, HF);
+      [["m1", MM, 33.55], ["m2", 33.55, 36.5], ["m3", 36.5, HF]].forEach(([id, t0, t1]) => { vis($(id), t0); hid($(id), t1); MK.tw(tl, $(id), { scale: 1.06 }, { scale: 1 }, t0, Math.round((t1 - t0) * 30), { ease: (p) => p }); });
+
+      /* Higgsfield: bílá, ikona naskočí trhaně uprostřed, na slovo přijede doleva a vedle naskočí název */
+      sc("s20", HF, K2);
+      const hfW = 56 + $("hfT").getBoundingClientRect().width || 1096, hfN = 39.59;
+      vis($("hfB"), HF); tl.set($("hfG"), { x: hfW / 2 }, HF);
+      MK.tw(tl, $("hfB"), { scale: 0.55 }, { scale: 1 }, HF, 9, { k: 0.75, krok: 3 });
+      MK.tw(tl, $("hfG"), { x: hfW / 2 }, { x: 0 }, hfN, 8, { k: 0.75, krok: 2 });
+      vis($("hfT"), hfN + F(2)); MK.tw(tl, $("hfT"), { opacity: 0.4 }, { opacity: 1 }, hfN + F(2), 3, { k: 0.6 });
+      MK.tw(tl, $("hfZ"), { scale: 1 }, { scale: 1.04 }, HF, Math.round((K2 - HF) * 30), { ease: (p) => p, krok: 2 });
+
+      /* klip 2 v kartě jako klip 1 */
+      sc("s21", K2, S1);
+      MK.tw(tl, $("kKlip2"), { y: 700 }, { y: 0 }, K2, 12, { k: 0.78, krok: 3 });
+      MK.drift(tl, $("kKlip2"), K2 + F(12), S1 - K2 - F(12), { y: -6, scale: 1.01 });
+      vis($("jmK2"), K2 + F(6)); MK.tw(tl, $("jmK2"), { opacity: 0.4 }, { opacity: 1 }, K2 + F(6), 3, { k: 0.6 });
+
+      /* bod 2 STATUS: A-roll pod vším, přes něj velký text, montáž, vlog, návrat stěny videí, klip 3 */
+      sc("s23", S1, 56.74);
+      [["vS1", S1, S2], ["vS2", 45.73, S3], ["vS4", S4, 56.74]].forEach(([id, a, b]) => { vis($(id), a); hid($(id), b); });
+      MK.tw(tl, $("vS1"), { scale: 1.04 }, { scale: 1 }, S1, 12, { k: 0.8 });
+      tl.set($("vS2"), { scale: 1 }, 45.73); tl.set($("vS2"), { scale: 1.14, transformOrigin: "50% 38%" }, 47.37);
+      MK.tw(tl, $("vS4"), { scale: 1.08 }, { scale: 1.02 }, S4, Math.round((56.74 - S4) * 30), { ease: (p) => p, krok: 2 });
+      sc("s24", S2, 45.73); slova("#kCz span", [44.65, 44.90, 45.03, 45.47]);
+      MK.tw(tl, $("kCz"), { scale: 1 }, { scale: 1.04 }, S2, Math.round((45.73 - S2) * 30), { ease: (p) => p, krok: 2 });
+      sc("s25", S3, 50.75); slova("#kDz span", [49.75, 50.22]);
+      MK.tw(tl, $("kDz"), { scale: 1 }, { scale: 1.04 }, S3, Math.round((50.75 - S3) * 30), { ease: (p) => p, krok: 2 });
+      sc("s26", 50.75, 51.92); vis($("vFi"), 50.75); MK.tw(tl, $("vFi"), { scale: 1.06 }, { scale: 1 }, 50.75, 35, { ease: (p) => p });
+      sc("s27", 51.92, S4); vis($("vVl"), 51.92); MK.tw(tl, $("vVl"), { scale: 1.06 }, { scale: 1 }, 51.92, 58, { ease: (p) => p });
+      sc("s28", 56.74, K3); MK.tw(tl, $("bRa"), { scale: 1.06 }, { scale: 1 }, 56.74, 60, { ease: (p) => p }); MK.tw(tl, $("ytz2"), { scale: 1.12 }, { scale: 1.04 }, 56.74, 9, { k: 0.75, krok: 3 });
+      MK.tw(tl, $("ytz2"), { scale: 1.04 }, { scale: 1.07 }, 56.74 + F(9), Math.round((K3 - 56.74) * 30) - 9, { ease: (p) => p, krok: 2 });
+
+      /* titulky druhé části (absolutní časy ve složené stopě) */
+      [["dnes natáčí", 12.66, 12.95], ["jak vypadá jeho život", 12.95, 14.06], ["sdílí své zkušenosti", 14.06, 15.21], ["příběh", 15.21, 15.72],
+       ["a teď když se otevírám", 18.55, 19.84, 2], ["a natáčím tahle videa", 19.84, 21.02, 2], ["přináší mi to spoustu výhod", 21.02, KE - 0.05, 2],
+       ["ptáš se", 0, 0, 9],
+       ["jsou za tím tři věci", TR + 0.1, TR + 0.45], ["které mu samotná firma", TR + 0.61, TR + 1.76], ["jen tak nezíská", TR + 1.76, TR + 2.9], ["za prvé", 27.56, 28.02], ["tím méně musíš", 30.0, 30.68],
+       ["vince díky svému jménu", 32.45, 33.09], ["pořádá mastermindy", 33.09, 34.6], ["kde se potkává", 34.65, 35.37], ["s velkými podnikateli", 35.37, 36.55], ["a partneři", 36.57, 37.2], ["se mu tak ozývají sami", 37.24, 38.4],
+       ["nedávno to byl třeba", 39.2, 39.59, 1],
+       ["používáme hodně jejich produktů", K2, K2 + 1.08, 2], ["ozvali se nám sami", K2 + 1.08, K2 + 1.8, 2],
+       ["za druhé", 43.11, 43.78], ["se s tebou lidé chtějí bavit", 45.73, 47.37], ["ještě předtím", 47.37, 47.95], ["než vejdeš do místnosti", 47.95, 49.0],
+       ["roky budoval firmy", 50.75, 51.92], ["a dnes ukazuje jeho příběh", 51.92, 53.6], ["zkušenosti", 53.87, 54.42], ["a jak přemýšlí", 54.42, 55.45], ["a díky tomu přitahuje", 55.52, 56.74]]
+        .forEach(([txt, t0, t1, druh]) => { if (druh === 9) return; const e = MK.div($("tits"), "tit" + (druh === 1 ? " papir" : druh === 2 ? " klip" : ""), druh === 2 ? `<span>${kw(txt)}</span>` : kw(txt)); vis(e, t0); hid(e, t1); });
+
+      /* pauzy pryč (Tim 4.10.2026): časy výše jsou ve stopě v14, převedou se mapou na novou stopu bez pauz (zdroj/vince/mapa.json).
+         Všechno, co přibude pod tímto blokem, piš rovnou v nových časech (pozice v zdroj/vince/pozice3.json). */
+      const MAPA = [[0.0, 0.0], [12.29, 12.29], [12.63, 12.29], [15.73, 15.39], [16.0, 15.39], [18.3, 17.69], [18.5, 18.08], [22.98, 22.56], [23.5, 22.7], [24.15, 23.35], [24.42, 23.45], [27.12, 26.15], [27.55, 26.25], [31.86, 30.56], [32.33, 30.66], [38.47, 36.8], [39.23, 36.9], [40.57, 38.24], [40.91, 38.38], [42.745, 40.215], [43.125, 40.355], [44.245, 41.475], [45.095, 41.575], [49.045, 45.525], [50.125, 45.625], [53.625, 49.125], [53.795, 49.225], [58.965, 54.395], [59.215, 54.535], [63.012, 58.332], [63.612, 58.832]];
+      const M = (t) => { if (t <= MAPA[0][0]) return t; for (let i = 1; i < MAPA.length; i++) { const [a, x] = MAPA[i - 1], [b, y] = MAPA[i]; if (t <= b) return b > a ? x + (t - a) * (y - x) / (b - a) : y; } return t + MAPA[MAPA.length - 1][1] - MAPA[MAPA.length - 1][0]; };
+      tl.getChildren(false, true, true).forEach((c) => c.startTime(M(c.startTime())));
+      /* ===== bod 3 ODLIŠENÍ a výzva, nové časy (pozice3.json) ===== */
+      const P3 = 54.495, ES = 56.105, LI = 57.805, VI = 63.155, K4 = 66.425, SO = 68.57, C1 = 70.44, C2 = 75.40, KON = 77.93;
+      tl.set($("s28"), { display: "none" }, P3);
+      sc("s30", P3, C1);
+      [["vT3a", P3, ES], ["vLi", LI, 59.33], ["bMl", 59.33, 60.80], ["bSt", 61.86, VI], ["vVi", VI, 64.38], ["bSa", 64.38, K4], ["vSo", SO, C1]].forEach(([id, a, b]) => { vis($(id), a); hid($(id), b); });
+      MK.tw(tl, $("vT3a"), { scale: 1.04 }, { scale: 1 }, P3, 12, { k: 0.8 });
+      [["bMl", 59.33, 60.80], ["bSt", 61.86, VI], ["bSa", 64.38, K4]].forEach(([id, a, b]) => MK.tw(tl, $(id), { scale: 1.06 }, { scale: 1 }, a, Math.round((b - a) * 30), { ease: (p) => p }));
+      tl.set($("vVi"), { scale: 1.08 }, VI); tl.set($("vSo"), { scale: 1.1, transformOrigin: "50% 38%" }, SO);
+      /* rituál bodu 3: jednička a dvojka zhasnou, trojka blikne, vedle ODLIŠENÍ */
+      tl.set($("mb"), { display: "block", visibility: "visible" }, P3); tl.set($("mb"), { display: "none" }, ES);
+      ztlum([$("mb2"), $("lb2")], P3); tl.set($("mb3"), { opacity: 1 }, P3); blik($("fl3"), P3); puls($("mb3"), P3); popis($("lb3"), 55.23);
+      /* velké texty */
+      /* e-shop: okno webu naskočí, na "zkopírovat" se na dvojky naskládají tři kopie s bílým zábleskem, pak ZA TÝDEN */
+      sc("s31", ES, LI);
+      vis($("w0"), 56.17); MK.tw(tl, $("w0"), { scale: 0.9 }, { scale: 1 }, 56.17, 6, { k: 0.75, krok: 3 });
+      [1, 2, 3].forEach((n) => { const t = 56.69 + F((n - 1) * 3), w = $("w" + n); gsap.set(w, { left: 220 + n * 60, top: 120 + n * 50 }); vis(w, t); puls(w, t, 1.05); blik($("wf" + n), t); });
+      slova("#zaT span", [57.24, 57.42]);
+      MK.tw(tl, $("kEz"), { scale: 1 }, { scale: 1.03 }, ES, Math.round((LI - ES) * 30), { ease: (p) => p, krok: 2 });
+      sc("s33", 60.80, 61.86); slova("#kFz span", [60.80, 61.40]);
+      MK.tw(tl, $("kFz"), { scale: 1 }, { scale: 1.04 }, 60.80, 32, { ease: (p) => p, krok: 2 });
+      /* klip 4 */
+      sc("s35", K4, SO);
+      MK.tw(tl, $("kKlip4"), { y: 700 }, { y: 0 }, K4, 12, { k: 0.78, krok: 3 });
+      MK.drift(tl, $("kKlip4"), K4 + F(12), SO - K4 - F(12), { y: -6, scale: 1.01 });
+      vis($("jmK4"), K4 + F(6)); MK.tw(tl, $("jmK4"), { opacity: 0.4 }, { opacity: 1 }, K4 + F(6), 3, { k: 0.6 });
+      [["za třetí", 54.48, 55.2], ["lidi které máš kolem sebe", 57.89, 59.16], ["a osobu", 59.16, 59.72], ["kterou chtějí poslouchat", 59.72, 60.80],
+       ["tu si musíš vytvořit sám", 61.86, 63.12], ["vince ve videích nepoučuje", 63.2, 64.38], ["on ukazuje jak jeho firma", 64.38, 65.30], ["reálně funguje", 65.30, 66.35],
+       ["lidi nutně neučíme", K4, K4 + 1.13, 2], ["jen ukazujeme co děláme", K4 + 1.13, SO - 0.1, 2], ["a lidé tak chtějí", SO, 69.3], ["být její součástí", 69.3, 70.38]]
+        .forEach(([txt, t0, t1, druh]) => { const e = MK.div($("tits"), "tit" + (druh === 2 ? " klip" : ""), druh === 2 ? `<span>${txt}</span>` : txt); vis(e, t0); hid(e, t1); });
+      /* v17: posuny po delším "proč" a doznění klipu 4 (zdroj/vince/posuny.json). Nové věci piš pod tento blok v konečných časech. */
+      const POSUNY = [[23.35, 0.16], [66.29, 0.14], [68.43, 0.107]];   // v23: klip 4 o 5 snímků kratší (pauza po citaci)
+      tl.getChildren(false, true, true).forEach((c) => { const t = c.startTime(); c.startTime(t + POSUNY.reduce((a, [h, d]) => a + (t >= h ? d : 0), 0)); });
+      /* ===== výzva v konečných časech (Tim do kamery, záběr 267,4 až 275,3, tři kusy se skokovým střihem) ===== */
+      const VC = 70.847, VC2 = 74.827, VC3 = 77.637, KONF = 79.097;
+      tl.set($("s36"), { display: "none" }, 0); tl.set($("s36"), { display: "block" }, VC);
+      tl.set($("s30"), { display: "block" }, 70.651); tl.set($("s30"), { display: "none" }, VC); tl.set($("vSo"), { visibility: "visible" }, 70.651);
+      MK.tw(tl, $("kCta"), { scale: 1.04 }, { scale: 1 }, VC, 9, { k: 0.75, krok: 3 });
+      vis($("vC2"), VC2); tl.set($("vC2"), { scale: 1.08 }, VC2); vis($("vC3"), VC3);
+      [[$("kG2"), 0], [$("kG3"), 0]].forEach(([e]) => tl.set(e, { display: "none" }, 0));
+      slova("#kG1 span", [70.901, 71.061, 71.241, 71.361, 71.741, 72.031, 72.141, 72.341, 72.821, 73.061]); tl.set($("kG1"), { display: "none" }, 73.451);
+      tl.set($("kG2"), { display: "block" }, 73.451);
+      [1, 2, 3].forEach((n, i) => { const t = 73.451 + F(i * 3); vis($("cb" + n), t); puls($("cb" + n), t, 1.08); blik($("cf" + n), t); });
+      [["cu2", 74.351, 2], ["cu1", 74.851, 1], ["cu3", 75.501, 3]].forEach(([id, t, n]) => { vis($(id), t); MK.tw(tl, $(id), { opacity: 0.4 }, { opacity: 1 }, t, 3, { k: 0.6 }); blik($("cf" + n), t); puls($("cb" + n), t, 1.05); });
+      tl.set($("kG2"), { display: "none" }, 76.251); tl.set($("kG3"), { display: "block" }, 76.251);
+      slova("#kG3 span", [76.251, 76.551, 76.651, 77.201, 77.651, 77.711, 77.801, 77.871, 77.971, 78.101]);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
