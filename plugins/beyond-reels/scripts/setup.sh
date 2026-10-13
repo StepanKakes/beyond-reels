@@ -18,7 +18,7 @@ chybi() { print -P "%F{red}chybí%f $1"; CHYBI=1; }
 
 # 1) programy z Homebrew
 command -v brew >/dev/null || { echo "Chybí Homebrew: nainstaluj ho z https://brew.sh a spusť setup znovu"; exit 1; }
-for p in ffmpeg node uv yt-dlp whisper-cli gh; do
+for p in ffmpeg node uv yt-dlp whisper-cli; do
   if command -v $p >/dev/null; then ok $p
   elif (( KONTROLA )); then chybi $p
   else f=$p; [[ $p == whisper-cli ]] && f=whisper-cpp; brew install $f >/dev/null && ok "$p (nainstalováno)"; fi
@@ -33,14 +33,14 @@ if [[ -z $MEDIA ]]; then
   done
 fi
 if [[ -n $MEDIA && -d $MEDIA/hudba && -d $MEDIA/B-rolls ]]; then ok "média v $MEDIA"
-elif (( ! KONTROLA )) && command -v gh >/dev/null && gh release view media -R StepanKakes/beyond-reels >/dev/null 2>&1; then
-  # balík leží jako příloha vydání "media" v repu pluginu (asi 1 GB)
+elif (( ! KONTROLA )); then
+  # balík leží jako příloha veřejného vydání "media" v repu pluginu (asi 1 GB), stačí curl
   MEDIA=~/Documents/beyond-reels-media; mkdir -p $MEDIA
   echo "stahuju média (asi 1 GB)"
-  gh release download media -R StepanKakes/beyond-reels -p beyond-reels-media.zip -D $BR --clobber \
+  curl -fL --progress-bar -o $BR/beyond-reels-media.zip https://github.com/StepanKakes/beyond-reels/releases/download/media/beyond-reels-media.zip \
     && unzip -q -o $BR/beyond-reels-media.zip -d $MEDIA && rm -f $BR/beyond-reels-media.zip && ok "média v $MEDIA (stažena)"
 else
-  chybi "balík médií (hudba a B-rolly): přihlas se do GitHubu (gh auth login) a spusť setup znovu, nebo rozbal beyond-reels-media.zip do ~/Documents/beyond-reels-media"
+  chybi "balík médií (hudba a B-rolly): spusť setup bez --kontrola, stáhne ho sám"
   MEDIA=~/Documents/beyond-reels-media
 fi
 print "BR_REELY=$REELY\nBR_MEDIA=$MEDIA" > $CFG/nastaveni.sh

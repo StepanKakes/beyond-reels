@@ -21,28 +21,22 @@
 
 ## Instalace
 
-Jednou na každém Macu s Apple čipem, asi deset minut. Potřebuješ [Homebrew](https://brew.sh) a přístup k tomuhle repu (napiš Štěpánovi svůj GitHub).
+Jednou na každém Macu s Apple čipem, asi deset minut. Potřebuješ jen [Homebrew](https://brew.sh), GitHub účet ne.
 
-**1. Přihlas se do GitHubu** v Terminálu, repo je soukromé:
-
-```bash
-brew install gh && gh auth login && gh auth setup-git
-```
-
-**2. Přidej plugin** v Claude Code:
+**1. Přidej plugin** v Claude Code:
 
 ```
 /plugin marketplace add StepanKakes/beyond-reels
 /plugin install beyond-reels@beyond
 ```
 
-**3. Spusť setup.** Nainstaluje nástroje a Python, stáhne hudbu a B-rolly (1 GB), model pro přepisy a vytáhne Helvetica Neue ze systému tvého Macu:
+**2. Spusť setup.** Nainstaluje nástroje a Python, stáhne hudbu a B-rolly (1 GB), model pro přepisy a vytáhne Helvetica Neue ze systému tvého Macu:
 
 ```bash
 zsh ~/.claude/plugins/marketplaces/beyond/plugins/beyond-reels/scripts/setup.sh
 ```
 
-**4. Restartuj Claude Code** a napiš `/beyond-reels:reel`.
+**3. Restartuj Claude Code** a napiš `/beyond-reels:reel`.
 
 > [!TIP]
 > Revize běží na stránce [Revize reelů](https://claude.ai/artifact/NCnPwTFvfcjDD8PfuyNQH2). O přístup s úpravami požádej Štěpána, bez něj nejdou komentáře ani knihovna komponent.
@@ -129,7 +123,6 @@ Hlídá je Claude sám, nové přibývají z revizí do [`vkus/pravidla.md`](plu
 
 | Problém | Řešení |
 |---|---|
-| `marketplace add` hlásí chybu přístupu | nemáš přístup k repu nebo chybí `gh auth setup-git` |
 | Claude o pluginu neví | `/plugin`, záložka Installed, případně restart Claude Code |
 | Chybí nástroj, cesta nebo média | `setup.sh --kontrola` řekne co, pak setup bez parametru |
 | Písmo vypadá jinak | setup znovu vytáhne Helveticu, v kompozici vždy `var(--mk-sans)` |
