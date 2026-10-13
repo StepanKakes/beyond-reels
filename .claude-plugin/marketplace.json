@@ -1,0 +1,16 @@
+{
+  "name": "beyond",
+  "owner": {
+    "name": "Beyond"
+  },
+  "plugins": [
+    {
+      "name": "beyond-reels",
+      "source": "./plugins/beyond-reels",
+      "description": "Reely Beyond v HyperFrames: průvodce /reel, styly, knihovna komponent a revize s komentáři"
+    }
+  ],
+  "metadata": {
+    "description": "Pluginy týmu Beyond"
+  }
+}

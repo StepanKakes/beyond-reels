@@ -1,0 +1,64 @@
+<!doctype html>
+<!-- Šablona reelu Beyond (4:3, 1920 x 1440, 30 fps). node build.mjs reel > index.html (slova z assets/media/slova_REEL.json).
+     Scény se kotví na slova přes T(i) a E(i) (v atributech s dvojitými složenými závorkami), nikdy na sekundy: přestřih textu je pak posune sám.
+     Titulky se tvoří samy ze slov (BN.titulkyZeSlov), BEZ = jen úseky, kde totéž říká velký text v obraze. -->
+<html lang="cs">
+  <head>
+    <meta charset="utf-8">
+    <title>Reel</title>
+    <link rel="stylesheet" href="beyond-kit.css"><link rel="stylesheet" href="mason-kit.css"><link rel="stylesheet" href="elaine-kit.css">
+    <script src="vendor/gsap.min.js"></script>
+    <script src="js/mason-kit.js"></script><script src="js/beyond-nove.js"></script><script src="js/elaine-kit.js"></script>
+    <style>
+      body { margin: 0; background: var(--papir); }
+      #root { position: relative; width: 1920px; height: 1440px; overflow: hidden; background: var(--papir); font-family: var(--mk-sans); -webkit-font-smoothing: antialiased; }
+      .sc { position: absolute; inset: 0; display: none; overflow: hidden; }
+      .sc.pap { background: var(--papir); }
+      .full { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+      .clip { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      /* titulky: jednotné (Tim 5. 10.), bílé s jemným stínem přes záběry, tmavé na papíře se světlou aurou, stejná pozice a velikost */
+      #capL { position: absolute; inset: 0; z-index: 40; pointer-events: none; }
+      .tit { position: absolute; left: 0; right: 0; top: 1092px; text-align: center; color: #fff; font-weight: 700; font-size: 80px; letter-spacing: -0.035em; line-height: 1; white-space: nowrap; visibility: hidden;
+             text-shadow: 0 2px 22px rgba(17, 17, 17, 0.75), 0 0 4px rgba(17, 17, 17, 0.6); }
+      .tit.tma { color: var(--cerna); text-shadow: 0 0 18px rgba(244, 242, 238, 0.9); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1440" data-fps="30" data-duration="{{D}}">
+      <audio id="zvuk" src="assets/media/mix.wav" data-start="0" data-duration="{{D}}" data-track-index="9" data-volume="1"></audio>
+      <!-- A-roll (sestříhaný Tim a citace), pod všemi scénami -->
+      <video id="vA" class="clip" src="assets/media/aroll.mp4" muted playsinline data-start="0" data-duration="{{D}}" data-track-index="0"></video>
+
+      <!-- SCÉNY: každá .sc s id, zapíná se v timeline přes sc("id", T(i), T(j)) -->
+
+      <div id="capL"></div>
+    </div>
+    <script>
+      const $ = (id) => document.getElementById(id), F = (n) => n / 30;
+      const SL = /*SLOVA:REEL*/, W = SL.slova, T = (i) => W[i].t, E = (i) => W[i].e, D = SL.delka;
+      MK.init($("root"));
+      const tl = gsap.timeline({ paused: true });
+      const STRIHY = [], PAPIR = [];   // časy střihů scén a úseky s papírem (tam tmavé titulky)
+      function sc(id, t0, t1) { STRIHY.push(t0, t1); if ($(id).classList.contains("pap")) PAPIR.push([t0, t1]); MK.nastav(tl, $(id), { display: "block" }, t0); MK.nastav(tl, $(id), { display: "none" }, t1); }
+
+      /* ---------- scény (beat mapa z PLAN.md) ---------- */
+
+
+      /* ---------- titulky ---------- */
+      const BEZ = [];   // [[i0, i1]] jen slova, která jsou ve stejnou chvíli velká v obraze
+      const MIN = 13;   // titulek kratší než 13 sn. se nesmí ukázat, slovo se půjčí sousedovi ve větě
+      const TIT = BN.titulkyZeSlov(W, { bez: BEZ, strihy: STRIHY, konec: D, vlastni: /^(Tim|Beyond|Instagram|YouTube)/ });
+      TIT.forEach((k, n) => {
+        const dalsi = TIT[n + 1] ? TIT[n + 1].t0 : D, t1 = Math.min(Math.max(k.t1, k.t0 + F(MIN)), dalsi);
+        if (t1 - k.t0 < F(MIN) - 1e-3) console.warn("titulek kratší než 13 sn.:", k.text, "(slož ho se sousedem ve větě)");
+        const e = MK.div($("capL"), "tit", k.text);
+        if (PAPIR.some(([a, b]) => k.t0 + F(2) >= a && k.t0 + F(2) < b)) e.classList.add("tma");
+        MK.nastav(tl, e, { visibility: "visible" }, k.t0); MK.nastav(tl, e, { visibility: "hidden" }, t1);
+      });
+
+      tl.set({}, {}, D);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
