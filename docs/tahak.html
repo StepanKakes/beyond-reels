@@ -121,12 +121,13 @@
     <h2 id="instalace">Instalace</h2>
     <p>Jednou na každém Macu s Apple čipem. Celé to trvá asi deset minut a potřebuješ k tomu <a href="https://brew.sh">Homebrew</a></p>
     <ol class="kroky">
-      <li><h3>Přidej plugin</h3><p>Rozbal <code>beyond-reels-plugin.zip</code> do <code>~/Documents/beyond-reels-plugin</code> a v Claude Code napiš</p>
-        <div class="blok"><pre id="k1">/plugin marketplace add ~/Documents/beyond-reels-plugin
+      <li><h3>Přihlas se do GitHubu</h3><p>Repo je soukromé, Štěpán tě do něj přidá podle tvého GitHub jména. Pak v Terminálu</p>
+        <div class="blok"><pre id="k0">brew install gh && gh auth login && gh auth setup-git</pre><button class="kopiruj" data-cil="k0" type="button">Kopírovat</button></div></li>
+      <li><h3>Přidej plugin</h3><p>V Claude Code napiš</p>
+        <div class="blok"><pre id="k1">/plugin marketplace add StepanKakes/beyond-reels
 /plugin install beyond-reels@beyond</pre><button class="kopiruj" data-cil="k1" type="button">Kopírovat</button></div></li>
-      <li><h3>Rozbal média</h3><p>Hudbu a B-rolly ze zipu <code>beyond-reels-media.zip</code> (1 GB) rozbal do <code>~/Documents/beyond-reels-media</code></p></li>
-      <li><h3>Spusť setup</h3><p>Nainstaluje nástroje a Python, stáhne model pro přepisy a vytáhne Helvetica Neue ze systému tvého Macu</p>
-        <div class="blok"><pre id="k3">zsh ~/Documents/beyond-reels-plugin/plugins/beyond-reels/scripts/setup.sh</pre><button class="kopiruj" data-cil="k3" type="button">Kopírovat</button></div></li>
+      <li><h3>Spusť setup</h3><p>Nainstaluje nástroje a Python, stáhne hudbu a B-rolly (1 GB), model pro přepisy a vytáhne Helvetica Neue ze systému tvého Macu</p>
+        <div class="blok"><pre id="k3">zsh ~/.claude/plugins/marketplaces/beyond/plugins/beyond-reels/scripts/setup.sh</pre><button class="kopiruj" data-cil="k3" type="button">Kopírovat</button></div></li>
       <li><h3>Požádej o přístup k revizím</h3><p>Stránku Revize reelů ti nasdílí Štěpán. Bez ní nejdou komentáře ani knihovna komponent</p></li>
     </ol>
     <div class="tip"><b>Text za lidmi</b> (obří slovo za osobou) potřebuje navíc MatAnyone2, asi 2,5 GB. Spusť setup s <code>--matanyone</code>, až ho budeš poprvé potřebovat</div>
@@ -192,7 +193,7 @@
         <tr><td>Chybí nástroj nebo cesta</td><td>Setup s <code>--kontrola</code> řekne co, pak setup bez parametru</td></tr>
         <tr><td>Chybí hudba nebo B-rolly</td><td>Rozbal média do <code>~/Documents/beyond-reels-media</code> a spusť setup</td></tr>
         <tr><td>Písmo vypadá jinak</td><td>Setup znovu vytáhne Helveticu, v kompozici vždy <code>var(--mk-sans)</code></td></tr>
-        <tr><td>Nová verze pluginu</td><td>Nový zip rozbal přes starý, pak <code>/plugin</code>, Marketplaces, beyond, Update</td></tr>
+        <tr><td>Nová verze pluginu</td><td><code>/plugin</code>, Marketplaces, beyond, Update, pak restart Claude Code</td></tr>
       </tbody>
     </table></div>
 
