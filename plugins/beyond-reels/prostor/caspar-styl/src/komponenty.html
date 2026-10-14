@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1440">
+    <title>Caspar styl: komponenty</title>
+    <script src="vendor/gsap.min.js"></script>
+    <script src="js/mason-kit.js"></script>
+    <script src="js/beyond-nove.js"></script>
+    <script src="js/caspar-kit.js"></script>
+    <link rel="stylesheet" href="caspar-kit.css">
+    <style>
+      body { margin: 0; background: var(--ck-cerna); }
+      #root { position: relative; width: 1920px; height: 1440px; }
+      .ck-zaber { z-index: 1; }
+      #zaHlavou { z-index: 2; }
+      #masky { z-index: 3; }
+      #masky img { position: absolute; inset: 0; width: 100%; height: 100%; visibility: hidden; }
+      #bObjeti { z-index: 4; }
+      #bObjeti video { position: absolute; inset: 0; }
+      #karty { z-index: 6; }
+      #texty { z-index: 8; }
+      #titulky { z-index: 9; }
+      #sklad { display: none; }
+    </style>
+  </head>
+  <body>
+    <!-- Showcase: každá komponenta 3 s za sebou, popisek vlevo dole (jen pro knihovnu). Časy úseků jsou v ÚSEKY níže. -->
+    <div id="root" class="ck-plocha" data-composition-id="main" data-start="0" data-width="1920" data-height="1440" data-fps="30" data-duration="37.2">
+      <div id="a1" class="ck-zaber"><video id="v1" class="clip" src="assets/media/tim_telo.mp4" muted playsinline data-start="0" data-duration="9" data-media-start="7.84" data-track-index="1"></video></div>
+      <div id="a2" class="ck-zaber"><video id="v2" class="clip" src="assets/media/tim_telo.mp4" muted playsinline data-start="9" data-duration="3" data-media-start="14.6" data-track-index="2"></video></div>
+      <div id="a3" class="ck-zaber"><video id="v3" class="clip" src="assets/media/tim_telo.mp4" muted playsinline data-start="12" data-duration="3" data-media-start="9.4" data-track-index="3"></video></div>
+      <div id="a4" class="ck-zaber"><video id="v4" class="clip" src="assets/media/tim_telo.mp4" muted playsinline data-start="15" data-duration="3" data-media-start="11.0" data-track-index="4"></video></div>
+      <div id="a5" class="ck-zaber"><video id="v5" class="clip" src="assets/media/tim_telo.mp4" muted playsinline data-start="18" data-duration="3" data-media-start="12.6" data-track-index="5"></video></div>
+      <div id="a6" class="ck-zaber"><video id="v6" class="clip" src="assets/media/tim_telo.mp4" muted playsinline data-start="36" data-duration="1.2" data-media-start="8.4" data-track-index="6"></video></div>
+      <div id="zaHlavou" class="ck-vrstva"></div>
+      <div id="masky" class="ck-vrstva"><!--MASKY:za_veci:mv--></div>
+      <div id="bObjeti" class="ck-zaber">
+        <video id="vObjeti" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="33" data-duration="2.77" data-media-start="19.70" data-track-index="7"></video>
+        <video id="vBumstead2" class="clip" src="assets/media/bumstead.mp4" muted playsinline data-start="35.74" data-duration="0.26" data-media-start="0" data-track-index="8"></video>
+      </div>
+      <div id="karty" class="ck-vrstva"></div>
+      <div id="texty" class="ck-vrstva"></div>
+      <div id="titulky" class="ck-titulky"></div>
+      <div id="popisky" class="ck-vrstva" style="z-index: 50"></div>
+      <div id="sklad">
+        <img id="logoRep" src="assets/media/represent.svg" alt="">
+        <video id="vOkno" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="27" data-duration="3" data-media-start="4.73" data-track-index="9"></video>
+        <video id="vVlozka" class="clip" src="assets/media/bumstead.mp4" muted playsinline data-start="15" data-duration="3" data-media-start="0" data-track-index="10"></video>
+        <img id="ig1" src="assets/media/igr/Db3qmxyPKZ6.jpg" alt=""><img id="ig2" src="assets/media/igr/DbGhoqgRVOZ.jpg" alt="">
+        <img id="ig3" src="assets/media/igr/DcWnccKva2E.jpg" alt=""><img id="ig4" src="assets/media/igr/DdY7OVjROdY.jpg" alt="">
+      </div>
+    </div>
+    <script>
+      const root = document.getElementById("root");
+      MK.init(root);
+      const tl = gsap.timeline({ paused: true });
+      const F = CK.F, $ = (id) => document.getElementById(id), K = $("karty"), X = $("texty"), P = $("popisky");
+      // ÚSEKY pro knihovnu (s): id, od, do. Stejný seznam je v plany/komponenty.json pro tools/knihovna/klipy.py
+      const U = (id, od, do_, text) => CK.popisek(tl, P, text, od, do_);
+
+      // C4 + C5 dvouúrovňová sestava, jedno červené slovo
+      U("caspar-sestava", 0, 3, "C4 C5 sestava");
+      CK.sestava(tl, X, [[{ w: "z obsahu svou", t: 0.3, u: "d", serif: true }], [{ w: "prioritu", t: 0.9, u: "v", akcent: true }]], { tma: true, y: 0.82, t1: 3 });
+
+      // C17 rozházená slova kolem hlavy
+      U("caspar-rozhozena", 3, 6, "C17 rozházená slova");
+      CK.rozhozena(tl, X, [{ w: "po", t: 3.3, u: "v", serif: true }, { w: "14", t: 3.6, u: "o" }, { w: "letech", t: 4.2, u: "z" }],
+        { y: 0.45, mezera: [0.33, 0.66], vlevo: 2, t1: 6 });
+
+      // C18 schody vedle hlavy
+      U("caspar-schody", 6, 9, "C18 schody");
+      CK.schody(tl, X, [{ w: "osobní", t: 6.3, u: 0.04 }, { w: "značka", t: 6.7, u: 0.04 }, { w: "mu odemyká", t: 7.1, u: 0.04 }],
+        { x: 0.02, y: 0.34, dx: 0.015, t1: 9 });
+
+      // C7 slovo za hlavou (masky 14,6 až 16,75 s záběru)
+      U("caspar-za-hlavou", 9, 11.1, "C7 slovo za hlavou");
+      CK.zaHlavou(tl, $("zaHlavou"), "3 věci", 9, 12, { prefix: "mv", pocet: /*POCET:za_veci*/, y: 0.17, vyska: 0.18, sirka: 0.86 });
+
+      // C10 rámeček kolem obličeje a text po slovech vedle (obličej změřen v 9,5 s záběru)
+      U("caspar-oblicej", 12, 15, "C10 rámeček obličeje");
+      CK.oblicejBox(tl, X, { x: 720, y: 370, w: 520, h: 560 }, [{ w: "postav", t: 12.4 }, { w: "se mnou", t: 12.8 }, { w: "firmu", t: 13.2 }], 12.1, 15);
+
+      // C9 vložený klip, punch-in A-rollu a jmenovka
+      U("caspar-vlozka", 15, 18, "C9 vložka a punch");
+      CK.vlozka(tl, X, $("vVlozka"), 15.3, 18, { aroll: $("a4"), x: 0.8, y: 0.4, w: 0.26, pomer: 760 / 1034, jmeno: "Chris Bumstead" });
+
+      // C11 pomalý pull-back s titulky Beyond
+      U("caspar-pullback", 18, 21, "C11 pull-back");
+      CK.pullBack(tl, $("a5"), 18, 21, { od: 1.06 });
+      CK.titulky(tl, $("titulky"), [{ text: "protože ví, že osobní značka", t0: 18.1, t1: 19.5 }, { text: "mu odemyká 3 věci", t0: 19.5, t1: 21 }], { tma: () => true });
+
+      // C2 papírová karta slovo po slovu s logem
+      U("caspar-karta-slova", 21, 24, "C2 karta slovo po slovu");
+      CK.kartaSlova(tl, K, [[{ w: "jeho", t: 21.2 }, { w: "značka", t: 21.6 }], [{ el: $("logoRep"), t: 22.1 }, { w: "dělá", t: 22.6 }]], 21, 24);
+
+      // C3 červená karta s obřím slovem
+      U("caspar-karta-akcent", 24, 27, "C3 červená karta");
+      CK.kartaAkcent(tl, K, "kontakty", 24, 27, { nad: "zaprvé", tNad: 24.4 });
+
+      // C1 okno s výměnou záběrů a C15 výměna slova
+      U("caspar-okno", 27, 30, "C1 C15 okno a výměna");
+      CK.okno(tl, K, [$("vOkno")], 27, 30, { w: 0.46, y: 0.37 });
+      const s = CK.sestava(tl, X, [[{ w: "v LA má vlastní", t: 27.1, u: "d", serif: true }], [{ w: "penthouse", t: 27.6, u: "v" }]], { tma: true, y: 0.79, t1: 30 });
+      CK.vymena(tl, s.slova[1], "Rolls Royce", 28.4);
+      CK.vymena(tl, s.slova[1], "v cashi", 29.2, { akcent: true });
+
+      // C13 kartičky vsunuté do karty (skutečné miniatury reelů)
+      U("caspar-vsun", 30, 33, "C13 kartičky do karty");
+      const k13 = MK.div(K, "ck-karta akcent"); MK.ukaz(tl, k13, 30); MK.skryj(tl, k13, 33); MK.strih(tl, k13, 33);
+      CK.vsun(tl, k13, [$("ig1"), $("ig2"), $("ig3"), $("ig4")], 30.2, { y: 0.5, w: 0.19 });
+
+      // C8 klip se zmenší do rámečku na papíře
+      U("caspar-ramecek", 33, 36, "C8 rámeček");
+      CK.ramecek(tl, root, $("bObjeti"), 33.6, 36, { z: 3 });
+      CK.sestava(tl, X, [[{ w: "ke kterým se", t: 34.0, u: "d", serif: true }], [{ w: "běžný", t: 34.3, u: 0.075 }], [{ w: "podnikatel", t: 34.6, u: 0.045 }], [{ w: "nikdy", t: 35.0, u: 0.075, akcent: true }]],
+        { tma: true, x: 0.815, y: 0.5, t1: 36 });
+      MK.strih(tl, $("bObjeti"), 36);
+
+      // C12 švih z A-rollu na kartu
+      U("caspar-svih", 36, 37.2, "C12 švih");
+      const k12 = CK.kartaAkcent(tl, K, "dál", 36.6, 37.2, { karta: "cerna" });
+      CK.svih(tl, $("a6"), k12.el, 36.6);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

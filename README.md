@@ -84,6 +84,9 @@ Každý styl má vlastní skill a kit. Komponenty z hotových reelů jsou inspir
   <tr>
     <td valign="top"><img src="docs/obr/st_lumitris.jpg" alt="Lumitris"><br><b>Lumitris</b><br><sub>Rychlý dokumentární edit, trhaný takt</sub></td>
     <td valign="top"><img src="docs/obr/st_nathan.jpg" alt="Nathan"><br><b>Nathan</b><br><sub>Klidný, velké slovo, B-rolly v oknech</sub></td>
+    <td valign="top"><img src="docs/obr/st_caspar.jpg" alt="Caspar"><br><b>Caspar</b><br><sub>Důraz typografií, karty, B-rolly lidí z příběhu</sub></td>
+  </tr>
+  <tr>
     <td valign="top"><br><b>Tvůj styl</b><br><sub><code>/beyond-reels:novy-styl</code> se ho naučí z odkazů na reely tvůrce</sub></td>
   </tr>
 </table>

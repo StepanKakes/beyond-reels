@@ -1,0 +1,107 @@
+{
+ "delka": 23.0,
+ "hlas": "/Users/stepankakes/Documents/GitHub/beo-motion/hyperframes/reels/podnikatele/heaton/zdroj/hlas_telo_studio.wav",
+ "hudba": {
+  "soubor": "/Users/stepankakes/Documents/GitHub/beo-motion/hyperframes/hudba/she-will-instrumental.wav",
+  "od": 0,
+  "uroven_z": 15
+ },
+ "sfx": [
+  [
+   1.85,
+   "zaverka",
+   -30
+  ],
+  [
+   1.85,
+   "klik1",
+   -31
+  ],
+  [
+   2.11,
+   "klik1",
+   -31
+  ],
+  [
+   2.49,
+   "klik1",
+   -31
+  ],
+  [
+   2.95,
+   "klik1",
+   -31
+  ],
+  [
+   3.22,
+   "sub",
+   -24
+  ],
+  [
+   4.73,
+   "zaverka",
+   -30
+  ],
+  [
+   5.67,
+   "klik2",
+   -31
+  ],
+  [
+   6.25,
+   "klik2",
+   -31
+  ],
+  [
+   7.21,
+   "sub",
+   -27
+  ],
+  [
+   8.61,
+   "sub",
+   -26
+  ],
+  [
+   11.33,
+   "klik1",
+   -31
+  ],
+  [
+   13.37,
+   "klik1",
+   -31
+  ],
+  [
+   13.73,
+   "klik1",
+   -31
+  ],
+  [
+   14.17,
+   "klik1",
+   -31
+  ],
+  [
+   14.6,
+   "sub",
+   -24
+  ],
+  [
+   16.5,
+   "svih_hluboky",
+   -24
+  ],
+  [
+   20.08,
+   "svih",
+   -30
+  ],
+  [
+   20.6,
+   "klik2",
+   -31
+  ]
+ ],
+ "vystup": "assets/media/mix_ukazka.wav"
+}

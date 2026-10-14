@@ -1,7 +1,7 @@
 {
   "name": "beyond-reels",
-  "version": "0.3.1",
-  "description": "Reely Beyond v HyperFrames: průvodce /reel, styly (Mason, Noske, Matt Gray, Lumitris, Nathan), nový styl z odkazů, knihovna komponent a revize s komentáři",
+  "version": "0.4.0",
+  "description": "Reely Beyond v HyperFrames: průvodce /reel, styly (Mason, Noske, Matt Gray, Lumitris, Nathan, Caspar), nový styl z odkazů, knihovna komponent a revize s komentáři",
   "author": {
     "name": "Beyond"
   }

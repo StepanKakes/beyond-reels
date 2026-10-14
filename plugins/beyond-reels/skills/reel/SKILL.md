@@ -1,6 +1,6 @@
 ---
 name: reel
-description: Průvodce výrobou reelu Beyond od surového videa po render na revizní stránce. Použij, když někdo z týmu chce udělat reel, edit, případovku, rozbor podnikatele, klientský příběh nebo motion grafiku do reelu, napíše /reel, "udělej reel", "střihni to", "jako mason / noske / matt gray / lumitris / nathan", nebo pošle video a chce z něj reel. Zeptá se na styl a brief, navrhne ke každé větě víc směrů z naší knihovny komponent, po schválení postaví kompozici v HyperFrames se sdíleným jádrem, zvukem podle standardu a nahraje render k revizi s komentáři.
+description: Průvodce výrobou reelu Beyond od surového videa po render na revizní stránce. Použij, když někdo z týmu chce udělat reel, edit, případovku, rozbor podnikatele, klientský příběh nebo motion grafiku do reelu, napíše /reel, "udělej reel", "střihni to", "jako mason / noske / matt gray / lumitris / nathan / caspar", nebo pošle video a chce z něj reel. Zeptá se na styl a brief, navrhne ke každé větě víc směrů z naší knihovny komponent, po schválení postaví kompozici v HyperFrames se sdíleným jádrem, zvukem podle standardu a nahraje render k revizi s komentáři.
 ---
 
 # /reel: od videa k revizi
@@ -11,7 +11,7 @@ Proměnné: `$BR_PROSTOR` (sdílený prostor beo-motion/hyperframes), `$PY` (Pyt
 `$BR_WHISPER` (model přepisů), `$BR_PLUGIN` (plugin).
 
 Než cokoli navrhneš, přečti `$BR_PLUGIN/vkus/pravidla.md` a verdikty týmu (ArtifactData `list` kolekce `verdikty` na revizní stránce, odkaz ve skillu `revize`). Platí bez připomínání.
-Ve zvoleném stylu pak jeho skill (`styl-mason`, `styl-noske`, `styl-matt-gray`, `styl-lumitris`, `styl-nathan`).
+Ve zvoleném stylu pak jeho skill (`styl-mason`, `styl-noske`, `styl-matt-gray`, `styl-lumitris`, `styl-nathan`, `styl-caspar`).
 
 Jak pracovat a dělit práci mezi agenty a modely: `$BR_PLUGIN/vkus/prace.md` (přečti na začátku). Krátce: Mac měří první
 (`souhrn_videa.py`, `kontrola_renderu.py`, whisper, ebur128), oči deleguj agentovi `beyond-reels:overovac` (Sonnet) a rozbory
@@ -22,7 +22,8 @@ Zvuk nikdy nepřehrávej nahlas.
 
 Jedním voláním AskUserQuestion se zeptej na to, co ze zadání neplyne:
 - **Styl:** Mason (papír, červená, grafika na každou frázi, případovky), Noske (filmový talking head, typografické karty),
-  Matt Gray (mřížka s diagramem nahoře, webka dole), Lumitris (rychlý dokumentární edit 4:3), Nathan (klidný, velké slovo za hlavou, B-roll v oknech)
+  Matt Gray (mřížka s diagramem nahoře, webka dole), Lumitris (rychlý dokumentární edit 4:3), Nathan (klidný, velké slovo za hlavou, B-roll v oknech),
+  Caspar (řečí vedený příběh, důraz typografií, karty a B-rolly lidí z příběhu)
 - **Typ:** rozbor cizího byznysu, klientský příběh, vlastní framework, talking head insight
 - **Délka:** do 45 s, 45 až 90 s, delší
 - **Konec:** CTA slovo (“START”, “AUDIT”...), odkaz v bio, bez CTA

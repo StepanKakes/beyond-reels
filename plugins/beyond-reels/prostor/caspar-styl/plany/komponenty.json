@@ -1,0 +1,71 @@
+{
+ "fps": 30,
+ "sirka": 720,
+ "polozky": [
+  {
+   "id": "caspar-sestava",
+   "od": 0,
+   "do": 90
+  },
+  {
+   "id": "caspar-rozhozena",
+   "od": 90,
+   "do": 180
+  },
+  {
+   "id": "caspar-schody",
+   "od": 180,
+   "do": 270
+  },
+  {
+   "id": "caspar-za-hlavou",
+   "od": 270,
+   "do": 333
+  },
+  {
+   "id": "caspar-oblicej",
+   "od": 360,
+   "do": 450
+  },
+  {
+   "id": "caspar-vlozka",
+   "od": 450,
+   "do": 540
+  },
+  {
+   "id": "caspar-pullback",
+   "od": 540,
+   "do": 630
+  },
+  {
+   "id": "caspar-karta-slova",
+   "od": 630,
+   "do": 720
+  },
+  {
+   "id": "caspar-karta-akcent",
+   "od": 720,
+   "do": 810
+  },
+  {
+   "id": "caspar-okno",
+   "od": 810,
+   "do": 900
+  },
+  {
+   "id": "caspar-vsun",
+   "od": 900,
+   "do": 990
+  },
+  {
+   "id": "caspar-ramecek",
+   "od": 990,
+   "do": 1080
+  },
+  {
+   "id": "caspar-svih",
+   "od": 1080,
+   "do": 1116
+  }
+ ]
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1440">
+    <title>Caspar styl: ukázka Heaton</title>
+    <script src="vendor/gsap.min.js"></script>
+    <script src="js/mason-kit.js"></script>
+    <script src="js/beyond-nove.js"></script>
+    <script src="js/caspar-kit.js"></script>
+    <link rel="stylesheet" href="caspar-kit.css">
+    <style>
+      body { margin: 0; background: var(--ck-cerna); }
+      #root { position: relative; width: 1920px; height: 1440px; }
+      #tim { z-index: 1; }
+      #zaHlavou { z-index: 2; }
+      #masky { z-index: 3; }
+      #masky img { position: absolute; inset: 0; width: 100%; height: 100%; visibility: hidden; }
+      #bZac, #bObjeti { z-index: 4; }
+      #bObjeti video { position: absolute; inset: 0; }
+      #karty { z-index: 6; }
+      #texty { z-index: 8; }
+      #titulky { z-index: 9; }
+      #sklad { display: none; }
+    </style>
+  </head>
+  <body>
+    <div id="root" class="ck-plocha" data-composition-id="main" data-start="0" data-width="1920" data-height="1440" data-fps="30" data-duration="{{D}}">
+      <audio id="mix" src="assets/media/mix_ukazka.wav" data-start="0" data-duration="{{D}}" data-track-index="20" data-volume="1"></audio>
+
+      <!-- A-roll: Tim jen v úseku, kdy kouká do kamery (pohled.json 7,5 až 17,27 s) -->
+      <div id="tim" class="ck-zaber"><video id="vTim" class="clip" src="assets/media/tim_telo.mp4" muted playsinline data-start="7.84" data-duration="8.88" data-media-start="7.84" data-track-index="1"></video></div>
+      <div id="zaHlavou" class="ck-vrstva"></div>
+      <div id="masky" class="ck-vrstva"><!--MASKY:za_veci:mv--></div>
+
+      <!-- B-rolly: hotová stopa reelu Heaton (b_zac.mp4 má stejný čas jako hlas těla) -->
+      <div id="bZac" class="ck-zaber"><video id="vZac" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="0" data-duration="1.85" data-media-start="0" data-track-index="2"></video></div>
+      <div id="bObjeti" class="ck-zaber">
+        <video id="vObjeti" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="17.81" data-duration="2.77" data-media-start="19.70" data-track-index="3"></video>
+        <video id="vBumstead" class="clip" src="assets/media/bumstead.mp4" muted playsinline data-start="20.55" data-duration="{{D-20.55}}" data-media-start="0" data-track-index="4"></video>
+      </div>
+
+      <div id="karty" class="ck-vrstva"></div>
+      <div id="texty" class="ck-vrstva"></div>
+      <div id="titulky" class="ck-titulky"></div>
+
+      <div id="sklad">
+        <img id="logoRep" src="assets/media/represent.svg" alt="">
+        <video id="vOkno" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="4.73" data-duration="3.11" data-media-start="4.73" data-track-index="5"></video>
+      </div>
+    </div>
+    <script>
+      const root = document.getElementById("root");
+      MK.init(root);
+      const tl = gsap.timeline({ paused: true });
+      const S = /*SLOVA*/, D = {{D}};
+      const T = (i) => S[i].t, F = CK.F, $ = (id) => document.getElementById(id);
+      const K = $("karty"), X = $("texty");
+
+      // 0 až 1,85 hook na Georgeovi: dvouúrovňová sestava (C4), jméno tichým serifem, BOMBY obří
+      CK.sestava(tl, X, [
+        [{ w: "George", t: T(0), u: "d", serif: true }, { w: "Heaton", t: T(1), u: "d", serif: true }, { w: "jede", t: T(2), u: "d", serif: true }],
+        [{ w: "bomby", t: T(3), u: "o" }],
+      ], { y: 0.79, t1: 1.85 });
+
+      // 1,85 až 3,22 papírová karta slovo po slovu (C2), značka jako logo, ne text
+      CK.kartaSlova(tl, K, [
+        [{ w: "jeho", t: T(4) }, { w: "značka", t: T(5) }],
+        [{ el: $("logoRep"), t: T(6) }, { w: "dělá", t: T(7) }],
+      ], 1.85, 3.22);
+
+      // 3,22 až 4,73 červená karta s obřím číslem (C3), drobný dovětek pod ním
+      const mld = CK.kartaAkcent(tl, K, "3 miliardy", 3.22, 4.73, { y: 0.46, vyska: 0.26 });
+      CK.sestava(tl, mld.el, [[{ w: "korun", t: T(10) }, { w: "ročně", t: T(11) }]], { y: 0.72 });
+
+      // 4,73 až 7,84 okno na papíře (C1 v Beyond verzi), záběry se mění uvnitř, sestava pod ním stojí a mění slova (C15)
+      CK.okno(tl, K, [$("vOkno")], 4.73, 7.84, { w: 0.46, y: 0.37 });
+      const s4 = CK.sestava(tl, X, [
+        [{ w: "v LA má vlastní", t: T(12), u: "d", serif: true }],
+        [{ w: "penthouse", t: T(16), u: "v" }],
+      ], { tma: true, y: 0.79, t1: 7.84 });
+      CK.vymena(tl, s4.slova[0], "a", T(17) - F(1), { tvrde: true });
+      CK.vymena(tl, s4.slova[1], "Rolls Royce", T(18) - F(1));
+      CK.vymena(tl, s4.slova[0], "si kupuje", T(20) - F(1), { tvrde: true });
+      CK.vymena(tl, s4.slova[1], "v cashi", T(22) - F(1), { akcent: true });
+
+      // 7,84 až 11,93 Tim do kamery, pomalý pull-back (C11), čísla kolem hlavy (C17), pointa dole červeně (C5)
+      CK.pullBack(tl, $("tim"), 7.84, 11.93, { od: 1.06 });
+      CK.rozhozena(tl, X, [
+        { w: "po", t: T(26), u: "v", serif: true }, { w: "14", t: T(27), u: "o" }, { w: "letech", t: T(28), u: "z" },
+      ], { y: 0.45, mezera: [0.33, 0.66], vlevo: 2, t1: 9.62 });
+      CK.sestava(tl, X, [
+        [{ w: "z obsahu svou", t: T(32), u: "d", serif: true }],
+        [{ w: "prioritu", t: T(35), u: "v", akcent: true }],
+      ], { tma: true, y: 0.82, t1: 11.93 });
+
+      // 11,93 Ale proč: punch-in od horního okraje (C9a), 12,57 střih zpět na celek
+      CK.punch(tl, $("tim"), 11.93, { na: 1.13 });
+      MK.nastav(tl, $("tim"), { scale: 1 }, 12.57);
+
+      // 13,38 až 14,6 schody vlevo od hlavy (C18)
+      CK.schody(tl, X, [
+        { w: "osobní", t: T(41), u: 0.04 }, { w: "značka", t: T(42), u: 0.04 }, { w: "mu odemyká", t: T(43), u: 0.04 },
+      ], { x: 0.02, y: 0.34, dx: 0.015, t1: 14.6 });
+
+      // 14,6 až 16,52 obří slovo za hlavou (C7), masky 14,6 až 16,75 s, konec před švihem, ať masky nezůstanou stát
+      CK.zaHlavou(tl, $("zaHlavou"), "3 věci", 14.6, 16.52, { prefix: "mv", pocet: /*POCET:za_veci*/, y: 0.17, vyska: 0.18, sirka: 0.86 });
+
+      // 16,72 švih (C12) na červenou kartu KONTAKTY
+      const kon = CK.kartaAkcent(tl, K, "kontakty", 16.72, 17.81, { nad: "zaprvé", tNad: T(50) });
+      CK.svih(tl, $("tim"), kon.el, 16.72);
+
+      // 17,81 George objímá běžce, 20,08 klip se zmenší do rámečku na papíře (C8), vpravo sestava, uvnitř Chris Bumstead
+      CK.ramecek(tl, root, $("bObjeti"), 20.08, D, { z: 3 });
+      CK.sestava(tl, X, [
+        [{ w: "ke kterým se", t: T(60), u: "d", serif: true }],
+        [{ w: "běžný", t: T(63), u: 0.075 }],
+        [{ w: "podnikatel", t: T(64), u: 0.045 }],
+        [{ w: "nikdy", t: T(65), u: 0.075, akcent: true }],
+        [{ w: "nedostane", t: T(66), u: "d", serif: true }],
+      ], { tma: true, x: 0.815, y: 0.5 });
+      CK.jmenovka(tl, X, "Chris Bumstead", MK.w(0.0375) + 28, MK.h(0.7975) - MK.h(0.075), 20.6, null);
+
+      // titulky Beyond všude, kde totéž není velké v obraze
+      const kousky = BN.titulkyZeSlov(S, {
+        bez: [[0, 23], [26, 28], [32, 35], [41, 46], [50, 51], [60, 66]],
+        strihy: [1.85, 3.22, 4.73, 7.84, 11.93, 12.57, 16.72, 17.81, 20.08], vlastni: /^George/,
+      });
+      // přes Timovo bílé triko tmavé titulky (bílé nikdy přes bílé triko)
+      CK.titulky(tl, $("titulky"), kousky, { tma: (t) => t >= 7.84 && t < 16.72 });
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

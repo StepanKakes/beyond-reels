@@ -1,0 +1,60 @@
+/* Caspar kit: téma Beyond pro styl podle Caspara Tremletta (rozbor ~/Documents/inspirace-reels/caspar/_rozbor/STYL.md)
+ * Barvy a písma jen odsud, komponenty v js/caspar-kit.js čtou proměnné, žádné inline hex v reelu */
+@font-face { font-family: "HN"; src: url("assets/fonts/HN-Bold.ttf") format("truetype"); font-weight: 700; }
+@font-face { font-family: "IS"; src: url("assets/fonts/InstrumentSerif-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+
+:root {
+  --ck-papir: #F4F2EE;
+  --ck-cerna: #111111;
+  --ck-bila: #FFFFFF;
+  --ck-akcent: #FF0E00;          /* jedna věc v záběru, místo Casparovy oranžové #FB6B01 */
+  --ck-sans: "HN", "Helvetica Neue", Helvetica, sans-serif;
+  --ck-serif: "IS", serif;       /* Casparovy minusky = osobní hlas, vždy rovný řez */
+  --ck-proklad: -0.035em;
+  --ck-stin: 0 0.04em 0.35em rgba(0, 0, 0, 0.35);   /* jemný stín přes záběr, žádná záře */
+  --ck-aura: 0 0 0.3em rgba(244, 242, 238, 0.9);     /* tmavý text na papíře */
+  --ck-titulky-y: 70%;           /* u Tima pod bradou (obličej y 41 až 48 %, výška 29 až 36 %) */
+}
+
+.ck-plocha { position: absolute; inset: 0; overflow: hidden; background: var(--ck-cerna); font-family: var(--ck-sans); font-weight: 700; -webkit-font-smoothing: antialiased; font-synthesis: none; }
+.ck-vrstva { position: absolute; inset: 0; pointer-events: none; }
+.ck-zaber { position: absolute; inset: 0; overflow: hidden; transform-origin: 50% 0%; }
+.ck-zaber > video, .ck-zaber > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* C4 sestava, C17 rozházená slova, C18 schody */
+.ck-sestava { position: absolute; display: flex; flex-direction: column; align-items: center; line-height: 1.1; color: var(--ck-bila); text-shadow: var(--ck-stin); white-space: nowrap; }
+.ck-sestava.vlevo { align-items: flex-start; }
+.ck-radek { display: flex; align-items: baseline; justify-content: center; }
+.ck-sl { display: inline-block; position: relative; padding: 0 0.11em; letter-spacing: var(--ck-proklad); text-transform: uppercase; visibility: hidden; }
+.ck-sl.serif { font-family: var(--ck-serif); font-weight: 400; text-transform: none; letter-spacing: -0.01em; }
+.ck-sl.akcent { color: var(--ck-akcent); }
+.ck-sl .nove { position: absolute; left: 50%; top: 0; transform: translateX(-50%); opacity: 0; }
+.ck-sl .nove.ck-akcent { color: var(--ck-akcent); }
+.ck-logo { padding: 0 0.11em; } .ck-logo img { display: block; width: auto; }
+.tma .ck-sl, .ck-sl.tma { color: var(--ck-cerna); text-shadow: none; }
+.tma .ck-sl.akcent { color: var(--ck-akcent); }
+.ck-volne { position: absolute; transform: translate(-50%, -50%); color: var(--ck-bila); text-shadow: var(--ck-stin); white-space: nowrap; line-height: 1; }
+
+/* C2 papírová karta, C3 červená karta, C1 okno, C8 rámeček */
+.ck-karta { position: absolute; inset: 0; overflow: hidden; visibility: hidden; }
+.ck-karta.papir { background: var(--ck-papir); }
+.ck-karta.akcent { background: var(--ck-akcent); }
+.ck-karta.cerna { background: var(--ck-cerna); }
+.ck-blok { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+.ck-obri { position: absolute; left: 0; top: 0; overflow: visible; }
+.ck-obri text { font-family: var(--ck-sans); font-weight: 700; fill: var(--ck-bila); text-transform: uppercase; }
+.ck-okno { position: absolute; overflow: hidden; background: var(--ck-cerna); visibility: hidden; }
+.ck-okno > video, .ck-okno > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ck-papir-pod { position: absolute; inset: 0; background: var(--ck-papir); visibility: hidden; }
+
+/* C9 jmenovka, C10 rámeček kolem obličeje */
+.ck-stitek { position: absolute; background: var(--ck-akcent); color: var(--ck-bila); padding: 0.28em 0.45em 0.22em; letter-spacing: var(--ck-proklad); white-space: nowrap; line-height: 1; visibility: hidden; }
+.ck-box { position: absolute; border: solid var(--ck-akcent); visibility: hidden; }
+
+/* titulky Beyond: bílé Bold s jemným stínem, bez verzálek, stejná pozice */
+.ck-titulky { position: absolute; left: 0; right: 0; top: var(--ck-titulky-y); text-align: center; }
+.ck-titulek { position: absolute; left: 0; right: 0; color: var(--ck-bila); text-shadow: var(--ck-stin); letter-spacing: -0.02em; line-height: 1; visibility: hidden; }
+.ck-titulek.tma { color: var(--ck-cerna); text-shadow: var(--ck-aura); }
+
+/* popisek komponenty v showcase (jen knihovna, v reelu nikdy) */
+.ck-popisek { position: absolute; left: 36px; bottom: 30px; font: 700 26px var(--ck-sans); color: var(--ck-bila); background: rgba(17, 17, 17, 0.72); padding: 8px 14px; letter-spacing: -0.01em; visibility: hidden; z-index: 50; }
