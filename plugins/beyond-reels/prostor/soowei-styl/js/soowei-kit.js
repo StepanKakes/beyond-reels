@@ -1,6 +1,7 @@
 /* SooWei kit (SW): YouTube intro 16:9 podle SooWei Goha (@sooweigoh) v jazyce Beyond
  *
  * Rozbor: ~/Documents/inspirace-reels/soowei/_rozbor/STYL.md, po snímcích GR2vYzl5n34/SHOTLOG.md a ROZBOR.md (recepty SW1 až SW14).
+ * Velikosti textu o 25 až 30 % větší než originál a bez stínu (Štěpán 15. 10. 2026).
  * Originál běží na 25 fps, tady 30 fps: snímky originálu x 1,2. Výchozí hodnoty = změřený originál při 1920x1080,
  * barvy a písma Beyond (soowei-kit.css), rozhodnutí Štěpána 15. 10. 2026: blur při nástupu 1:1, bez SFX.
  *
@@ -86,7 +87,7 @@
    * za 2,4 sn. a doostření 12 px za 7 sn., starty rozložené přes 6 sn. (u delších jmen přes 1 sn. na písmeno),
    * jedno písmeno na konci na 1 sn. ztlumené na 50 % (originál W ve f10). Jméno člověka ano, značku nikdy (pravidla). */
   function jmeno(tl, rodic, slovo, t, o = {}) {
-    const el = text(rodic, { px: o.px ?? 0.119, y: o.y ?? 0.57 });
+    const el = text(rodic, { px: o.px ?? 0.15, y: o.y ?? 0.56 });
     el.style.letterSpacing = "-0.035em";
     const pis = [...slovo].map((c) => {
       const sp = MK.div(el, c === " " ? "mez" : "pi"); if (c !== " ") sp.textContent = c; return sp;
@@ -109,7 +110,7 @@
    * Originál kurzíva 49 px, u nás Instrument Serif rovný o 18 % větší (menší výška písmen), střed y 66,5 % (originál 64,5 %, níž kvůli dolním dotažním jmen).
    * Všechna slova naráz: průhlednost a doostření 6 px za 6 sn., bez posunu. */
   function podtitul(tl, rodic, slovo, t, o = {}) {
-    const el = text(rodic, { px: (o.px ?? 0.05) * 1.18, y: o.y ?? 0.665, trida: "serif" });
+    const el = text(rodic, { px: (o.px ?? 0.064) * 1.18, y: o.y ?? 0.685, trida: "serif" });
     el.textContent = slovo;
     MK.ukaz(tl, el, t); doostri(tl, el, t, { nOp: 6, nBl: 6, blur: 6 });
     if (o.t1 != null) pryc(tl, el, o.t1);
@@ -121,7 +122,7 @@
    * průhlednost za 3,6 sn. (krátká slova) až 7 sn. (dlouhá), doostření 14 px za 8,4 sn. power2.out.
    * Bold (originál Semibold 600) 94 px (8,7 %) u prvního B-rollu, 82 px (7,6 %) dál, střed y 49 %. Konec tvrdě se střihem. */
   function titulek(tl, rodic, slova, o = {}) {
-    const el = text(rodic, { px: o.px ?? 0.087, y: o.y ?? 0.49, trida: "tucne" + (o.tma ? " tma" : "") });
+    const el = text(rodic, { px: o.px ?? 0.11, y: o.y ?? 0.49, trida: "tucne" + (o.tma ? " tma" : "") });
     const spany = slovaDo(el, slova);
     MK.ukaz(tl, el, Math.max(0, slova[0].t - F(1)));
     slova.forEach((s, i) => doostri(tl, spany[i], Math.max(0, s.t - F(1)), { nOp: (s.w || "logo").length <= 4 ? 3.6 : s.w.length <= 8 ? 5 : 7 }));
@@ -143,7 +144,7 @@
     return seznam.map((f, k) => {
       const t0 = f.t0 ?? Math.max(0, f.slova[0].t - F(1)), t1 = f.t1 ?? (seznam[k + 1] ? (seznam[k + 1].t0 ?? seznam[k + 1].slova[0].t - F(1)) : o.t1);
       const duraz = f.duraz || f.slova.some((s) => s.box);
-      const el = text(rodic, { px: duraz ? (o.pxDuraz ?? 0.091) : (o.px ?? 0.069), y: o.y ?? 0.59, trida: (duraz ? "tucne" : "") + (o.tma ? " tma" : "") });
+      const el = text(rodic, { px: duraz ? (o.pxDuraz ?? 0.12) : (o.px ?? 0.09), y: o.y ?? 0.59, trida: (duraz ? "tucne" : "") + (o.tma ? " tma" : "") });
       const spany = slovaDo(el, f.slova);
       MK.ukaz(tl, el, t0);
       if (duraz) f.slova.forEach((s, i) => doostri(tl, spany[i], Math.max(t0, s.t - F(1)), { nOp: 3.6 }));
@@ -177,7 +178,7 @@
   const cesky = (v, des = 0) => { const [c, d] = Math.abs(v).toFixed(des).split("."); return (v < 0 ? "-" : "") + c.replace(/\B(?=(\d{3})+(?!\d))/g, "\u00A0") + (d ? "," + d : ""); };
   function pocitadlo(tl, rodic, t, o = {}) {
     const cil = o.do ?? 4000000, n = o.n ?? 20, k = o.k ?? 0.183, fl = rozmazaniFiltry();
-    const el = text(rodic, { px: o.px ?? 0.12, y: o.y ?? 0.5, trida: "sw-cislo" + (o.tma ? " tma" : "") });
+    const el = text(rodic, { px: o.px ?? 0.15, y: o.y ?? 0.5, trida: "sw-cislo" + (o.tma ? " tma" : "") });
     const pred = o.pred ?? "", za = o.za ?? "";
     const cisla = MK.div(el, ""); cisla.style.display = "inline-grid";
     const kroky = [];
@@ -216,7 +217,7 @@
       el.appendChild(p.media); p.media.style.width = tre + "px"; p.media.style.left = "50%"; p.media.style.transform = "translateX(-50%)";
       p.media.style.objectPosition = `${(p.x ?? 0.5) * 100}% 50%`;
       if (p.text) {
-        const tx = text(el, { px: o.px ?? 0.068, y: 0.49, trida: "tucne" }); tx.style.whiteSpace = "pre"; tx.style.lineHeight = "1.05";
+        const tx = text(el, { px: o.px ?? 0.082, y: 0.49, trida: "tucne" }); tx.style.whiteSpace = "pre"; tx.style.lineHeight = "1.05";
         tx.style.left = "50%"; tx.style.right = "auto"; tx.style.width = tre + "px"; tx.style.marginLeft = -tre / 2 + "px"; tx.textContent = p.text;
       }
       return el;
@@ -288,7 +289,7 @@
       d.innerHTML = `<b class="h"></b>` + Array.from({ length: 11 }, () => `<b class="${rnd() < 0.18 ? "a" : ""}" style="width:${Math.round(55 + rnd() * 45)}%"></b>`).join("");
       return d;
     });
-    const nad = (s) => { const n = MK.div(el, "sw-nadpis"); n.style.fontSize = H * 0.07 + "px"; n.style.top = H * 0.11 + "px"; n.style.transform = "translateY(-50%)"; n.textContent = s; return n; };
+    const nad = (s) => { const n = MK.div(el, "sw-nadpis"); n.style.fontSize = H * 0.085 + "px"; n.style.top = H * 0.11 + "px"; n.style.transform = "translateY(-50%)"; n.textContent = s; return n; };
     const nadpisy = [nad(o.nadpis || ""), ...kroky.map((s) => nad(s.nadpis || o.nadpis || ""))];
     nadpisy.slice(1).forEach((n) => (n.style.opacity = 0));
     // kolejnice y 82,6 %, x 23,1 až 76,9 %, uzly 6,4 % výšky
@@ -297,7 +298,7 @@
     const uzly = kroky.map((s, i) => {
       const x = kroky.length > 1 ? ((x1 - x0) * i) / (kroky.length - 1) : (x1 - x0) / 2;
       const u = MK.div(kol, "sw-uzel"); Object.assign(u.style, { left: x + "px", width: d + "px", height: d + "px" }); MK.div(u, "tecka");
-      const p = MK.div(kol, "sw-uzel-pop"); Object.assign(p.style, { left: x + "px", top: d * 0.75 + "px", fontSize: H * 0.036 + "px" });
+      const p = MK.div(kol, "sw-uzel-pop"); Object.assign(p.style, { left: x + "px", top: d * 0.75 + "px", fontSize: H * 0.045 + "px" });
       const sl = slovaDo(p, s.text.split(" ").map((w) => ({ w })));
       return { u, sl };
     });
@@ -337,7 +338,7 @@
     const W = MK.W, H = MK.H, el = MK.div(rodic, "sw-papir"), sir = W * (o.sirka ?? 0.5);
     const vnitrek = MK.div(el, ""); Object.assign(vnitrek.style, { position: "absolute", top: 0, bottom: 0, right: 0, width: sir + "px" });
     const nd = MK.div(vnitrek, "sw-ruka"); nd.textContent = o.nadpis || "";
-    Object.assign(nd.style, { left: W * 0.094 + "px", top: H * 0.107 + "px", fontSize: (H * 0.051) / 0.714 + "px", transform: "translateY(-50%)" });
+    Object.assign(nd.style, { left: W * 0.094 + "px", top: H * 0.107 + "px", fontSize: (H * 0.066) / 0.714 + "px", transform: "translateY(-50%)" });
     const p = prubeh30(PAPIR25), posun = W * (o.posun ?? 0.2);
     MK.ukaz(tl, el, t);
     MK.tabulka(tl, el, t, "width", p.map((v) => v * sir), "px");

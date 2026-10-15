@@ -18,8 +18,8 @@
   --sw-sans: "HN", "Helvetica Neue", Helvetica, sans-serif;
   --sw-serif: "IS", serif;         /* místo kurzívy originálu, vždy rovný řez */
   --sw-proklad: -0.025em;          /* originál -0,02 až -0,035 em */
-  --sw-aura: 0 0 0.3em rgba(244, 242, 238, 0.9);    /* tmavý text přes světlé triko nebo papír */
-  --sw-stin: 0 0.04em 0.09em rgba(0, 0, 0, 0.35);   /* měkký stín z rozboru (posun 4 px, rozmazání 8 px při 94 px) */
+  --sw-aura: none;                 /* Štěpán 15. 10.: žádná aura ani stín pod textem */
+  --sw-stin: none;
 }
 
 .sw-plocha { position: absolute; inset: 0; overflow: hidden; background: var(--sw-cerna); font-family: var(--sw-sans); font-weight: 500;
