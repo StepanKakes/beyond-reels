@@ -22,6 +22,12 @@ Rozbor originálu po snímcích: `$BR_INSPIRACE/caspar/_rozbor/DebbKfoAPPe/SHOTL
 - Karty a text na kartách se hýbou po 2 snímcích (`krok: 2`), titulky a sestavy přes záběr plynule.
 - Běžná řeč jde titulky Beyond (`BN.titulkyZeSlov` + `CK.titulky`), klíčové věty jako sestava a tam titulek vynech (`bez`). Cíl kolem jedné sestavy na 4 až 6 s.
 
+## Hook
+
+Hook dělej 1:1 podle originálu (Štěpán 15. 10. 2026), postup a čísla v `reference/STYL.md` (sekce Hook 1:1), hotový vzor
+`src/ukazka.html` 0 až 4,73 s: postava s kolaží reelů za hlavou, malý řádek a obří červené slovo, šedý nástup velkého prvku,
+bílá karta s jedním slovem, úzké slovo na červené kartě. Záběr postavy statický, hlava 20 až 30 % výšky, titulky na hrudi.
+
 ## Komponenty (`window.CK`, `js/caspar-kit.js`)
 
 | ID | volání | co |
@@ -40,6 +46,9 @@ Rozbor originálu po snímcích: `$BR_INSPIRACE/caspar/_rozbor/DebbKfoAPPe/SHOTL
 | C12 | `CK.svih(tl, stara, nova, t)` | švih jádra bez záblesku, titulky stojí |
 | C7 | `CK.zaHlavou(tl, rodic, text, t0, t1, o)` | obří slovo za hlavou pod maskami z `tools/maska_za_osobou.py` |
 | C13 | `CK.vsun(tl, rodic, media, t, o)` | skutečné miniatury přijedou do karty |
+| C13 | `CK.kolaz(tl, rodic, media, t, o)` | kolaž reelů za postavou (hook), pod maskami |
+| hook | `CK.hookTitulek(tl, rodic, male, velke, o)` | malý řádek Medium minuskami a obří červené slovo |
+| C14 | `CK.sedyNastup(tl, el, t, o)` | šedý nástup, zmenšení a stoupání, jen v hooku |
 
 Ukázky: `src/ukazka.html` (22 s reelu Heaton v Caspar stylu), `src/komponenty.html` (showcase všech komponent, úseky v `plany/komponenty.json`).
 Build: `node build.mjs <nazev>` (src/<nazev>.html > index.html, `/*SLOVA*/` a `{{T(i)}}` ze `assets/media/slova_<nazev>.json`,

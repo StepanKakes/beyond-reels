@@ -33,6 +33,16 @@ Schovej je v `<div id="sklad" style="display:none">`.
 - `vlozka(tl, rodic, media, t, t1, o)`: okno `o.w`, `o.pomer`, `o.x`, `o.y`, `o.aroll` dostane punch, `o.jmeno` jmenovku.
 - `vsun(tl, rodic, media, t, o)`: řada miniatur přijede zdola do karty po 3 sn.
 
+## Hook 1:1
+
+- `hookTitulek(tl, rodic, male, velke, o)`: `male = [{w, t}]` minuskami Medium, `velke = {w, t}` obří akcent. `o`: `t1` (tvrdý konec),
+  `xMale` (0,479), `yMale` (0,64), `male` (0,055), `y` (0,75), `velikost` (0,13), `pruhlednost` (0,9). S prázdným `velke.w` jen malý řádek.
+- `sedyNastup(tl, el, t, o)`: průhlednost 0,3 > 1 lineárně za 13 sn., od 17. sn. zmenšení na 0,884 a stoupání o 5 % H za 22 sn.
+  Logo jako velký prvek: img s třídou `ck-logo-bila` (bílé), ve `ck-volne` obalu, výška 0,112 H.
+- `kolaz(tl, rodic, media, t, o)`: `o.mista` [{x, y, w, rot}], `drift` (1,03), `t1`. Kolaž a masky dej do stejného obalu záběru
+  (`<div class="ck-zaber">` s videem, vrstvou kolaže a vrstvou masek), masky vyrob z připraveného klipu v 30 fps a 4:3.
+- `kartaSlova(..., {jednoSlovo: true})` a `kartaAkcent(..., {uzke: 0.62})`: měřené varianty karet z hooku.
+
 ## Kamera a švih
 
 - `pullBack(tl, el, t0, t1, {od: 1.06})`, `punch(tl, el, t, {na: 1.13})`: zpět z punche jen střihem (`MK.nastav(tl, el, {scale: 1}, t)`).

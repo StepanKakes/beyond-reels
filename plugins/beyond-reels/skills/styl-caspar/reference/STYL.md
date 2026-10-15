@@ -70,6 +70,17 @@ Střih padá těsně před první slovo věty, takže každá věta začíná no
   C11 pomalý pull-back 3 až 6 % lineárně; C12 švih whip 7 až 8 sn. bez záblesku; karty po 2 snímcích (krokově) jako originál.
 - **Zvuk:** standard mix.py. SFX jen hluboký úder (sub) ze `sfx/zaklad` na kartu, pop-in a výměnu slova, klik na slova po jednom.
 
+## Hook 1:1 (Štěpán 15. 10. 2026: hook chce přesně jako originál)
+
+Záběry 01 až 03 originálu (sn. 0 až 134), v ukázce `src/ukazka.html` 0 až 4,73 s, v knihovně `caspar-hook`:
+1. Postava (u nás George, statický záběr, hlava kolem 23 % výšky), za ní se od 3. snímku skládá kolaž skutečných reelů po 3 sn.
+   pod maskou postavy a jemně driftuje (`CK.kolaz`). Malý řádek Helvetica Neue Medium minuskami (ascender 5,5 % H, y 64 %),
+   obří červené slovo 13 % H na y 75 % s 90 % krytím, nástup 4 sn., zmenšení o 6 % za 18 sn. (`CK.hookTitulek`). Tvrdý konec, 1 prázdný snímek.
+2. Velký prvek šedým nástupem 30 > 100 % za 13 sn., pak zmenšení na 0,884 a stoupání o 5 % H (`CK.sedyNastup`), u nás logo značky.
+3. Bílá karta: jedno slovo uprostřed, tvrdé výměny, zmenšení 1,42 > 1 za 35 sn., odjezd nahoru o 7 % H zrychlením, po 2 snímcích (`CK.kartaSlova` s `jednoSlovo`).
+4. Červená karta s úzkým slovem 10,7 % H, šířka na znak 0,62 výšky verzálky, nájezd zdola o 8 % za 10 sn. (`CK.kartaAkcent` s `uzke`).
+Výjimky z pravidel jen pro hook: šedý průsvitný nástup a Helvetica Medium minuskami. Akcent zůstává naše červená.
+
 ## Co nepřebíráme a proč
 
 - **C1 sprint 6 střihů po 0,15 s:** porušuje klid (záběr aspoň 1,7 s) a blíží se stroboskopu. Náhrada: titulek stojí, za ním se

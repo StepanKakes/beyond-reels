@@ -16,7 +16,10 @@
       #zaHlavou { z-index: 2; }
       #masky { z-index: 3; }
       #masky img { position: absolute; inset: 0; width: 100%; height: 100%; visibility: hidden; }
-      #bZac, #bObjeti { z-index: 4; }
+      #bObjeti { z-index: 4; }
+      #hook { z-index: 1; }
+      #hook .ck-vrstva { position: absolute; inset: 0; }
+      #hookMasky img { position: absolute; inset: 0; width: 100%; height: 100%; visibility: hidden; }
       #bObjeti video { position: absolute; inset: 0; }
       #karty { z-index: 6; }
       #texty { z-index: 8; }
@@ -34,7 +37,12 @@
       <div id="masky" class="ck-vrstva"><!--MASKY:za_veci:mv--></div>
 
       <!-- B-rolly: hotová stopa reelu Heaton (b_zac.mp4 má stejný čas jako hlas těla) -->
-      <div id="bZac" class="ck-zaber"><video id="vZac" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="0" data-duration="1.85" data-media-start="0" data-track-index="2"></video></div>
+      <!-- hook 1:1 podle Caspara (záběr 01): George, za ním skládaná kolaž jeho skutečných reelů, nad ní masky postavy -->
+      <div id="hook" class="ck-zaber">
+        <video id="vHook" class="clip" src="assets/media/hook_george.mp4" muted playsinline data-start="0" data-duration="2.95" data-media-start="0" data-track-index="2"></video>
+        <div id="hookKolaz" class="ck-vrstva"></div>
+        <div id="hookMasky" class="ck-vrstva"><!--MASKY:za_george:mg--></div>
+      </div>
       <div id="bObjeti" class="ck-zaber">
         <video id="vObjeti" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="17.81" data-duration="2.77" data-media-start="19.70" data-track-index="3"></video>
         <video id="vBumstead" class="clip" src="assets/media/bumstead.mp4" muted playsinline data-start="20.55" data-duration="{{D-20.55}}" data-media-start="0" data-track-index="4"></video>
@@ -45,7 +53,11 @@
       <div id="titulky" class="ck-titulky"></div>
 
       <div id="sklad">
-        <img id="logoRep" src="assets/media/represent.svg" alt="">
+        <img id="logoRep" class="ck-logo-bila" src="assets/media/represent.svg" alt="">
+        <img id="r1" src="assets/media/igr/Db3qmxyPKZ6.jpg" alt=""><img id="r2" src="assets/media/igr/DblcaHaMiUs.jpg" alt="">
+        <img id="r3" src="assets/media/igr/DbKkFfbOS-j.jpg" alt=""><img id="r4" src="assets/media/igr/DcwA01lRTHy.jpg" alt="">
+        <img id="r5" src="assets/media/igr/DcYn6NYxlDm.jpg" alt=""><img id="r6" src="assets/media/igr/Ddyr7vrR6lF.jpg" alt="">
+        <img id="r7" src="assets/media/igr/DcWnccKva2E.jpg" alt="">
         <video id="vOkno" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="4.73" data-duration="3.11" data-media-start="4.73" data-track-index="5"></video>
       </div>
     </div>
@@ -57,21 +69,26 @@
       const T = (i) => S[i].t, F = CK.F, $ = (id) => document.getElementById(id);
       const K = $("karty"), X = $("texty");
 
-      // 0 až 1,85 hook na Georgeovi: dvouúrovňová sestava (C4), jméno tichým serifem, BOMBY obří
-      CK.sestava(tl, X, [
-        [{ w: "George", t: T(0), u: "d", serif: true }, { w: "Heaton", t: T(1), u: "d", serif: true }, { w: "jede", t: T(2), u: "d", serif: true }],
-        [{ w: "bomby", t: T(3), u: "o" }],
-      ], { y: 0.79, t1: 1.85 });
-
-      // 1,85 až 3,22 papírová karta slovo po slovu (C2), značka jako logo, ne text
-      CK.kartaSlova(tl, K, [
-        [{ w: "jeho", t: T(4) }, { w: "značka", t: T(5) }],
-        [{ el: $("logoRep"), t: T(6) }, { w: "dělá", t: T(7) }],
-      ], 1.85, 3.22);
-
-      // 3,22 až 4,73 červená karta s obřím číslem (C3), drobný dovětek pod ním
-      const mld = CK.kartaAkcent(tl, K, "3 miliardy", 3.22, 4.73, { y: 0.46, vyska: 0.26 });
-      CK.sestava(tl, mld.el, [[{ w: "korun", t: T(10) }, { w: "ročně", t: T(11) }]], { y: 0.72 });
+      // HOOK 1:1 PODLE CASPARA (záběry 01 až 03 originálu, sn. 0 až 134)
+      // 0 až 2,95 George, od 3. snímku se za ním skládá kolaž jeho reelů (C13), nad ní masky postavy
+      CK.kolaz(tl, $("hookKolaz"), ["r1", "r2", "r3", "r4", "r5", "r6", "r7"].map($), F(3), {
+        mista: [{ x: 0.13, y: 0.24, w: 0.16, rot: -3 }, { x: 0.87, y: 0.26, w: 0.16, rot: 3 }, { x: 0.5, y: 0.2, w: 0.15, rot: 0 },
+          { x: 0.15, y: 0.66, w: 0.17, rot: 2 }, { x: 0.85, y: 0.66, w: 0.17, rot: -2 }, { x: 0.32, y: 0.12, w: 0.14, rot: 2 },
+          { x: 0.68, y: 0.11, w: 0.14, rot: -2 }], drift: 1.03, t1: 2.95 });
+      BN.maskaZaPostavou(tl, "mg", 0, /*POCET:za_george*/, 2.95);
+      // "i haven't / POSTED": malý řádek minuskami a obří červené slovo, tvrdý konec, 1 prázdný snímek
+      CK.hookTitulek(tl, X, [{ w: "George", t: T(0) }, { w: "Heaton", t: T(1) }, { w: "jede", t: T(2) }], { w: "bomby", t: T(3) }, { t1: 1.833 });
+      // "75 DAYS": šedý nástup za 13 sn., pak se zmenšuje a stoupá (C14 1:1), značka jako logo
+      CK.hookTitulek(tl, X, [{ w: "jeho", t: T(4) }, { w: "značka", t: T(5) }], { w: "", t: T(6) }, { t1: 2.95, yMale: 0.6 });   // jen malý řádek, velký prvek je logo
+      const logo = MK.div(X, "ck-volne"); gsap.set(logo, { left: MK.W / 2, top: MK.H * 0.72 });
+      logo.appendChild($("logoRep")); $("logoRep").style.height = MK.H * 0.112 + "px"; $("logoRep").style.display = "block";
+      MK.nastav(tl, $("logoRep"), { visibility: "hidden" }, 0);
+      CK.sedyNastup(tl, $("logoRep"), 1.867);   // jako 75 DAYS hned po prázdném snímku, ať stihne doběhnout do bílé a zmenšovat se
+      MK.strih(tl, logo, 2.95);
+      // 2,95 až 4,35 bílá karta, jedno slovo uprostřed, tvrdé výměny, zmenšení a odjezd nahoru (C2 1:1)
+      CK.kartaSlova(tl, K, [[{ w: "dělá", t: T(7) }, { w: "3", t: T(8) }, { w: "miliardy", t: T(9) }, { w: "korun", t: T(10) }]], 2.95, 4.35, { jednoSlovo: true });
+      // 4,35 až 4,73 červená karta s úzkým slovem, nájezd zdola (C3 1:1, BETTER)
+      CK.kartaAkcent(tl, K, "ročně", 4.35, 4.73, { uzke: 0.62 });
 
       // 4,73 až 7,84 okno na papíře (C1 v Beyond verzi), záběry se mění uvnitř, sestava pod ním stojí a mění slova (C15)
       CK.okno(tl, K, [$("vOkno")], 4.73, 7.84, { w: 0.46, y: 0.37 });
@@ -124,7 +141,7 @@
       // titulky Beyond všude, kde totéž není velké v obraze
       const kousky = BN.titulkyZeSlov(S, {
         bez: [[0, 23], [26, 28], [32, 35], [41, 46], [50, 51], [60, 66]],
-        strihy: [1.85, 3.22, 4.73, 7.84, 11.93, 12.57, 16.72, 17.81, 20.08], vlastni: /^George/,
+        strihy: [1.833, 2.95, 4.35, 4.73, 7.84, 11.93, 12.57, 16.72, 17.81, 20.08], vlastni: /^George/,
       });
       // přes Timovo bílé triko tmavé titulky (bílé nikdy přes bílé triko)
       CK.titulky(tl, $("titulky"), kousky, { tma: (t) => t >= 7.84 && t < 16.72 });

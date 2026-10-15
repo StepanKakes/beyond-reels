@@ -141,18 +141,34 @@
     return n;
   }
 
-  /* C2 PAPÍROVÁ KARTA SLOVO PO SLOVU (bílá karta sn. 73 až 124): slova přibývají, celek se plynule zmenšuje
-   * z 8,1 na 5,7 % výšky (1,42x > 1), před střihem odjede nahoru zrychlením. Animace po 2 snímcích jako originál.
-   * radky jako u sestavy (bez u = základní velikost), o: {od: 1.42, odjezd: true, krok: 2, y} */
+  /* C2 PAPÍROVÁ KARTA SLOVO PO SLOVU (bílá karta sn. 73 až 123, "AND MY BUSINESS HAS NEVER BEEN")
+   * Originál 1:1 (o.jednoSlovo): jedno slovo uprostřed (x 50 %, y 50,5 %), slova se mění tvrdě, celek se zmenšuje
+   * z 8,1 na 5,7 % výšky (1,42x > 1) ease-out za 35 sn. a pak stojí, od 16 sn. před střihem stoupá zrychlením o 7,1 % výšky
+   * (kroky 3, 5, 6, 9, 11, 16, 22 px po 2 snímcích) a karta končí tvrdým střihem. Vše po 2 snímcích.
+   * Bez jednoSlovo slova přibývají do řádků (Beyond varianta). o: {od: 1.42, zoomN: 35, odjezd: 0.071, odjezdN: 16, krok: 2, y} */
   function kartaSlova(tl, rodic, radky, t0, t1, o = {}) {
-    const k = MK.div(rodic, "ck-karta papir");
+    const k = MK.div(rodic, "ck-karta papir"), krok = o.krok ?? 2;
     MK.ukaz(tl, k, t0);
-    const s = sestava(tl, k, radky.map((r) => r.map((w) => ({ u: "z", ...w }))), { tma: true, y: o.y ?? 0.5, krok: o.krok ?? 2 });
-    const nOdjezd = o.odjezd === false ? 0 : 13, n = Math.max(6, Math.round((t1 - t0) * 30) - nOdjezd);
-    MK.tw(tl, s.el, { scale: o.od || 1.42 }, { scale: 1 }, t0, n, { ease: "softLand", krok: o.krok ?? 2 });
-    if (nOdjezd) MK.tw(tl, s.el, { y: 0 }, { y: -MK.h(0.75) }, t1 - F(nOdjezd), nOdjezd, { ease: "accelExit", krok: o.krok ?? 2 });
+    let blok, s = null;
+    if (o.jednoSlovo) {
+      blok = MK.div(k, "ck-sestava tma");
+      MK.stred(blok, MK.W / 2, poz(o.y ?? 0.505, MK.H));
+      const slova = radky.flat();
+      slova.forEach((w, i) => {
+        const d = MK.div(blok, "ck-volne"); d.style.left = "0"; d.style.top = "0";
+        const sl = slovo(d, { u: "z", ...w });
+        MK.ukaz(tl, sl, i ? mezi(w.t) : t0);
+        if (slova[i + 1]) MK.skryj(tl, sl, mezi(slova[i + 1].t));
+      });
+    } else {
+      s = sestava(tl, k, radky.map((r) => r.map((w) => ({ u: "z", ...w }))), { tma: true, y: o.y ?? 0.5, krok });
+      blok = s.el;
+    }
+    const nOdjezd = o.odjezd === false ? 0 : o.odjezdN || 16;
+    MK.tw(tl, blok, { scale: o.od || 1.42 }, { scale: 1 }, t0, Math.min(o.zoomN || 35, Math.round((t1 - t0) * 30) - nOdjezd), { ease: "softLand", krok });
+    if (nOdjezd) MK.tw(tl, blok, { y: 0 }, { y: -MK.h(o.odjezd || 0.071) }, t1 - F(nOdjezd), nOdjezd, { ease: "accelExit", krok });
     pryc(tl, k, t1);
-    return { el: k, sestava: s };
+    return { el: k, blok, sestava: s };
   }
 
   /* OBŘÍ SLOVO PŘES ŠÍŘKU: SVG text natažený na přesnou šířku (textLength), výška verzálek pevná,
@@ -171,17 +187,80 @@
     return { svg, text: tx };
   }
 
-  /* C3 ČERVENÁ KARTA S OBŘÍM SLOVEM (BETTER sn. 124, PROPERLY sn. 1231): karta tvrdým střihem, slovo najede zdola
-   * softLand 12 sn. po 2 snímcích. o: {nad: "malý řádek nad" (serif nebo drobná), barva karty "akcent"|"cerna", vyska, sirka} */
+  /* C3 ČERVENÁ KARTA S OBŘÍM SLOVEM (BETTER sn. 124 až 134, PROPERLY sn. 1231): karta tvrdým střihem, slovo najede zdola po 2 snímcích.
+   * Originál 1:1 (o.uzke: 0.62): úzké slovo, výška verzálek 10,7 % H, šířka na znak 0,62 výšky verzálky (BETTER = 22,5 % W),
+   * střed y 50,2 %, nájezd zdola o 8 % výšky ease-out za 10 sn. a doznívá do střihu.
+   * Beyond varianta (bez uzke): slovo přes 86 % šířky, výška 30 %, nájezd o 35 % za 12 sn.
+   * o: {uzke, vyska, sirka, y, posun, n, nad (serifový řádek nad), tNad, karta "akcent"|"cerna"} */
   function kartaAkcent(tl, rodic, text, t0, t1, o = {}) {
     const k = MK.div(rodic, "ck-karta " + (o.karta || "akcent"));
     MK.ukaz(tl, k, t0);
     const g = MK.div(k, "ck-vrstva");
-    const ob = obri(g, text, { vyska: o.vyska ?? 0.3, sirka: o.sirka, y: o.y ?? 0.55 });
-    MK.tw(tl, g, { y: MK.h(0.35) }, { y: 0 }, t0, 12, { ease: "softLand", krok: o.krok ?? 2 });
-    if (o.nad) sestava(tl, k, [[{ w: o.nad, t: o.tNad ?? t0 + F(1), u: "d", serif: o.serifNad !== false }]], { y: (o.y ?? 0.55) - (o.vyska ?? 0.3) / 2 - 0.08 });
+    const vyska = o.vyska ?? (o.uzke ? 0.107 : 0.3), y = o.y ?? (o.uzke ? 0.502 : 0.55);
+    const sirka = o.sirka ?? (o.uzke ? [...text].length * o.uzke * vyska * MK.H : undefined);
+    const ob = obri(g, text, { vyska, sirka, y });
+    MK.tw(tl, g, { y: MK.h(o.posun ?? (o.uzke ? 0.08 : 0.35)) }, { y: 0 }, t0, o.n || (o.uzke ? 10 : 12), { ease: "softLand", krok: o.krok ?? 2 });
+    if (o.nad) sestava(tl, k, [[{ w: o.nad, t: o.tNad ?? t0 + F(1), u: "d", serif: o.serifNad !== false }]], { y: y - vyska / 2 - 0.08 });
     pryc(tl, k, t1);
     return { el: k, obri: ob };
+  }
+
+  /* HOOK 1:1 (záběr 01, sn. 0 až 72): malý řádek minuskami a pod ním obří akcentové slovo
+   * Malý řádek: Helvetica Neue Medium minuskami, výška ascenderu 5,5 % H, střed x 47,9 %, y 64 %, slova tvrdě s řečí ("i" sn. 2, "haven't" sn. 6).
+   * Obří slovo: verzálky 13 % H, střed y 75 %, akcent s průhledností 90 %, nástup 50 > 90 % za 4 sn. ease-out,
+   * zároveň se zmenší o 6 % a zvedne o 1,5 % H za 18 sn. Oba řádky končí tvrdě (o.t1), originál pak 1 prázdný snímek.
+   * male: [{w, t}], velke: {w, t}, o: {t1, xMale, yMale, male (0.055), y (0.75), velikost (0.13), pruhlednost (0.9), akcent (true)} */
+  function hookTitulek(tl, rodic, male, velke, o = {}) {
+    const el = MK.div(rodic, "ck-vrstva");
+    const r = MK.div(el, "ck-volne ck-hook-male");
+    gsap.set(r, { left: poz(o.xMale ?? 0.479, MK.W), top: poz(o.yMale ?? 0.64, MK.H) });
+    r.style.fontSize = (MK.H * (o.male ?? 0.055)) / 0.75 + "px";   // ascender Helvetica Neue ~0,75 em
+    male.forEach((w, i) => {
+      const sp = document.createElement("span"); sp.className = "ck-hw"; sp.textContent = (i ? " " : "") + w.w; r.appendChild(sp);
+      MK.ukaz(tl, sp, mezi(w.t));
+    });
+    const d = MK.div(el, "ck-volne");
+    gsap.set(d, { left: MK.W * 0.5, top: poz(o.y ?? 0.75, MK.H) });
+    const v = slovo(d, { w: velke.w, u: o.velikost ?? 0.13, akcent: o.akcent !== false });
+    const t = mezi(velke.t), cil = o.pruhlednost ?? 0.9;
+    MK.ukaz(tl, v, t);
+    MK.tw(tl, v, { opacity: 0.5 }, { opacity: cil }, t, 4, { ease: "softLand" });
+    MK.tw(tl, v, { scale: 1.066, y: MK.h(0.015) }, { scale: 1, y: 0 }, t, 18, { ease: "softLand" });
+    if (o.t1 != null) pryc(tl, el, o.t1);
+    return { el, male: r, velke: v };
+  }
+
+  /* C14 ŠEDÝ NÁSTUP 1:1 ("75 DAYS" sn. 31 až 70): průhlednost 30 > 100 % lineárně za 13 sn. (přes záběr vypadá šedě),
+   * od 17. sn. se zmenší na 0,884 (11,2 > 9,9 % H) a zvedne o 5 % H za 22 sn. lineárně.
+   * Pozor: pravidla Beyond jinak zakazují nástup průhledností, tady jen na výslovné přání (hook 1:1).
+   * el: prvek (slovo nebo logo), o: {n: 13, zmensi: true, na: 0.884, nahoru: 0.05, zmensiN: 22} */
+  function sedyNastup(tl, el, t, o = {}) {
+    MK.ukaz(tl, el, t);
+    MK.tw(tl, el, { opacity: 0.3 }, { opacity: 1 }, t, o.n || 13, { ease: "cruise" });
+    if (o.zmensi !== false) MK.tw(tl, el, { scale: 1, y: 0 }, { scale: o.na || 0.884, y: -MK.h(o.nahoru ?? 0.05) }, t + F(17), o.zmensiN || 22, { ease: "cruise" });
+  }
+
+  /* C13 KOLÁŽ ZA ŘEČNÍKEM (sn. 3 až 72): skutečné kartičky (miniatury reelů, profil) se od 3. snímku skládají za postavou
+   * po 3 snímcích, každá přijede o 4 % výšky zdola softLand 12 sn. Nad kolaží musí ležet masky postavy (maska_za_osobou.py).
+   * Originál je hustá zeď kolem hlavy a jemně driftuje (o.drift: 1.03 za celý záběr, lineárně).
+   * Past: miniatury reelů natočených na šířku (POV z auta) vypadají v kolaži otočené, vybírej vzpřímené.
+   * media: img elementy, o: {mista: [{x, y, w, rot}] (podíly), pomer (9/16), rozestup (3), drift, t1} */
+  function kolaz(tl, rodic, media, t, o = {}) {
+    const mista = o.mista || [{ x: 0.16, y: 0.4, w: 0.17, rot: -3 }, { x: 0.84, y: 0.38, w: 0.17, rot: 3 }, { x: 0.31, y: 0.22, w: 0.15, rot: 2 },
+      { x: 0.69, y: 0.2, w: 0.15, rot: -2 }, { x: 0.5, y: 0.14, w: 0.16, rot: 0 }];
+    const el = MK.div(rodic, "ck-vrstva");
+    media.forEach((m, i) => {
+      const p = mista[i % mista.length], w = MK.W * p.w, h = w / (o.pomer || 9 / 16);
+      const ok = MK.div(el, "ck-okno"); ok.appendChild(m);
+      gsap.set(ok, { width: w, height: h, rotation: p.rot || 0 }); MK.stred(ok, MK.W * p.x, MK.H * p.y);
+      const ti = t + F((o.rozestup || 3) * i);
+      MK.ukaz(tl, ok, ti);
+      MK.tw(tl, ok, { y: MK.h(0.04) }, { y: 0 }, ti, 12, { ease: "softLand" });
+      MK.tw(tl, ok, { opacity: 0.2 }, { opacity: 1 }, ti, 5, { ease: "cruise" });
+    });
+    if (o.drift && o.t1 != null) tl.fromTo(el, { scale: 1 }, { scale: o.drift, duration: o.t1 - t, ease: MK.KRIVKY.cruise, immediateRender: false }, t);
+    if (o.t1 != null) pryc(tl, el, o.t1);
+    return { el };
   }
 
   /* C1 V BEYOND VERZI: OKNO S VÝMĚNOU FOTEK (originál: 6 střihů po 4 až 6 sn. pod stojícím titulkem, sn. 135 až 168)
@@ -327,6 +406,6 @@
     return d;
   }
 
-  window.CK = { F, UROVNE, pismo, sestava, rozhozena, schody, vymena, kartaSlova, obri, kartaAkcent, okno, ramecek, vlozka, jmenovka, punch,
+  window.CK = { F, UROVNE, pismo, sestava, hookTitulek, sedyNastup, kolaz, rozhozena, schody, vymena, kartaSlova, obri, kartaAkcent, okno, ramecek, vlozka, jmenovka, punch,
     oblicejBox, pullBack, svih, zaHlavou, vsun, titulky, popisek };
 })();

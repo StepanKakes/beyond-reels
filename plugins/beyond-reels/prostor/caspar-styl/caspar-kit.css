@@ -1,6 +1,7 @@
 /* Caspar kit: téma Beyond pro styl podle Caspara Tremletta (rozbor ~/Documents/inspirace-reels/caspar/_rozbor/STYL.md)
  * Barvy a písma jen odsud, komponenty v js/caspar-kit.js čtou proměnné, žádné inline hex v reelu */
 @font-face { font-family: "HN"; src: url("assets/fonts/HN-Bold.ttf") format("truetype"); font-weight: 700; }
+@font-face { font-family: "HN"; src: url("assets/fonts/HN-Medium.ttf") format("truetype"); font-weight: 500; }
 @font-face { font-family: "IS"; src: url("assets/fonts/InstrumentSerif-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
 
 :root {
@@ -34,6 +35,11 @@
 .tma .ck-sl, .ck-sl.tma { color: var(--ck-cerna); text-shadow: none; }
 .tma .ck-sl.akcent { color: var(--ck-akcent); }
 .ck-volne { position: absolute; transform: translate(-50%, -50%); color: var(--ck-bila); text-shadow: var(--ck-stin); white-space: nowrap; line-height: 1; }
+
+/* hook 1:1: malý řádek minuskami Medium jako originál */
+.ck-hook-male { font-family: var(--ck-sans); font-weight: 500; letter-spacing: -0.01em; }
+.ck-hw { visibility: hidden; }
+.ck-logo-bila { filter: brightness(0) invert(1); }
 
 /* C2 papírová karta, C3 červená karta, C1 okno, C8 rámeček */
 .ck-karta { position: absolute; inset: 0; overflow: hidden; visibility: hidden; }
