@@ -22,12 +22,12 @@
       <div id="grafika" class="sw-vrstva"></div>
       <div id="popisky" class="sw-vrstva" style="z-index: 50"></div>
       <div id="sklad">
-        <video id="v1" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="0" data-duration="3" data-media-start="0" data-track-index="1"></video>
-        <video id="v2" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="3" data-duration="3" data-media-start="23.5" data-track-index="2"></video>
+        <video id="v1" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="0" data-duration="3" data-media-start="19.55" data-track-index="1"></video>
+        <video id="v2" class="clip" src="assets/media/tim_telo.mp4" muted playsinline data-start="3" data-duration="3" data-media-start="9.0" data-track-index="2"></video>
         <video id="v3" style="object-position: 50% 100%; transform-origin: 50% 100%" class="clip" src="assets/media/b_miliardy.mp4" muted playsinline data-start="6" data-duration="1.46" data-media-start="0" data-track-index="3"></video>
-        <video id="v3b" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="7.46" data-duration="1.54" data-media-start="1.0" data-track-index="4"></video>
-        <video id="v4" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="9" data-duration="3" data-media-start="6.0" data-track-index="5"></video>
-        <video id="vP1" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="10" data-duration="2" data-media-start="0.3" data-track-index="6"></video>
+        <video id="v3b" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="7.46" data-duration="1.54" data-media-start="0.4" data-track-index="4"></video>
+        <video id="v4" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="9" data-duration="3" data-media-start="4.65" data-track-index="5"></video>
+        <video id="vP1" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="10.2" data-duration="1.8" data-media-start="0.1" data-track-index="6"></video>
         <video id="vP2" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="10" data-duration="2" data-media-start="5.6" data-track-index="7"></video>
         <video id="v5" class="clip" src="assets/media/tim_telo.mp4" muted playsinline data-start="12" data-duration="5" data-media-start="8.45" data-track-index="8"></video>
         <video id="vK" class="clip" src="assets/media/tim_telo.mp4" muted playsinline data-start="22" data-duration="6" data-media-start="10.0" data-track-index="9"></video>
@@ -53,7 +53,7 @@
       U(3, 6, "SW4 SW9 titulek po slovech, klouzání");
       const b = SW.zaber(tl, Z, $("v2"), 3, 6);
       SW.klouzani(tl, $("v2"), 3);
-      SW.titulek(tl, b, sl(3.3, "s dalšími zajímavými lidmi", 0.3));
+      SW.titulek(tl, b, sl(3.3, "s dalšími zajímavými lidmi", 0.3), { tma: true, y: 0.78 });   // Tim v bílém triku: tmavý titulek pod bradou
 
       // SW7: počítadlo s rozmazáním pohybem a jednotkou
       U(6, 9, "SW7 počítadlo");
@@ -61,7 +61,7 @@
       SW.klouzani(tl, $("v3"), 6, { zaklad: 1.2, dy: 0 });
       SW.pocitadlo(tl, c, 6.1, { do: 3000000000, za: "Kč ročně", tZa: 7.0, t1: 7.46 });
       const c2 = SW.zaber(tl, Z, $("v3b"), 7.46, 9);
-      SW.pocitadlo(tl, c2, 7.6, { do: 14, za: "let", tZa: 8.3 });
+      SW.pocitadlo(tl, c2, 7.6, { do: 14, za: "let", tZa: 8.3, y: 0.78 });
 
       // SW8: triptych harmonika
       U(9, 12, "SW8 triptych");
