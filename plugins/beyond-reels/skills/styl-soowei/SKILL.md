@@ -23,8 +23,8 @@ a na začátky kapitol (papír s nadpisem). Zatím rozebrané jen intro jednoho 
 - Zvuk: hlas (studio_hlas) a SFX podle výběru Štěpána 15. 10. 2026 (originál je bez SFX), mix `tools/mix.py`, -14 LUFS.
   Upravené zvuky jsou v `prostor/soowei-styl/zdroj/sfx`, časy a hlasitosti v `zdroj/mix_ukazka.json`:
   boom na první snímek (-25), jméno 5 jemných tiků po 0,1 s (-36), podtitul klik2 (-31), střih na B-roll závěrka s náběhem
-  posunutým na střih (-28), počítadlo tikání jen dokud počítá (-32), triptych riser, který končí s dojezdem panelů, bez cinknutí (-30),
-  klik1 na každé slovo frází u Tima (-30), červený box hluboký whoosh s vrcholem na dojezdu boxu (-27), karta nízký kick (-26),
+  posunutým na střih (-28), počítadlo tikání o 5 půltónů hlubší jen dokud počítá (-35), triptych riser, který končí s dojezdem panelů, bez cinknutí (-30),
+  klik1 (-30) jen když slova naskakují po jednom (titulky na B-rollech, důrazové fráze), fráze naskočená celá najednou má jeden klik, červený box hluboký whoosh s vrcholem na dojezdu boxu (-27), karta nízký kick (-26),
   nadpis a kolejnice závěrka (-28), papír hluboký whoosh (-26). Důraz, slovo titulku, jednotka a tah fixkou bez zvuku.
   Výběr zvuků se dělá na stránce https://claude.ai/artifact/7nNtyN7BVMRSdFk7L17b1D (databáze `prirazeni`).
 - Podíl jako originál: A-roll kolem 35 %, B-roll s titulkem 27 %, grafika 38 %.

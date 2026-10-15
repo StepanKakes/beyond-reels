@@ -38,9 +38,24 @@
    -31
   ],
   [
+   1.847,
+   "zdroj/sfx/klik1.wav",
+   -30
+  ],
+  [
    1.85,
    "zdroj/sfx/zaverka.wav",
    -28
+  ],
+  [
+   2.107,
+   "zdroj/sfx/klik1.wav",
+   -30
+  ],
+  [
+   2.947,
+   "zdroj/sfx/klik1.wav",
+   -30
   ],
   [
    3.25,
@@ -48,9 +63,39 @@
    -28
   ],
   [
+   3.28,
+   "zdroj/sfx/pocitani.wav",
+   -35
+  ],
+  [
    4.716,
    "zdroj/sfx/zaverka.wav",
    -28
+  ],
+  [
+   4.727,
+   "zdroj/sfx/klik1.wav",
+   -30
+  ],
+  [
+   4.867,
+   "zdroj/sfx/klik1.wav",
+   -30
+  ],
+  [
+   5.087,
+   "zdroj/sfx/klik1.wav",
+   -30
+  ],
+  [
+   5.247,
+   "zdroj/sfx/klik1.wav",
+   -30
+  ],
+  [
+   5.667,
+   "zdroj/sfx/klik1.wav",
+   -30
   ],
   [
    6.0,
@@ -58,22 +103,32 @@
    -28
   ],
   [
-   3.28,
-   "zdroj/sfx/pocitani.wav",
-   -32
-  ],
-  [
    6.58,
    "zdroj/sfx/riser.wav",
    -30
   ],
   [
-   7.827,
+   6.727,
    "zdroj/sfx/klik1.wav",
    -30
   ],
   [
-   7.907,
+   6.867,
+   "zdroj/sfx/klik1.wav",
+   -30
+  ],
+  [
+   7.207,
+   "zdroj/sfx/klik1.wav",
+   -30
+  ],
+  [
+   7.327,
+   "zdroj/sfx/klik1.wav",
+   -30
+  ],
+  [
+   7.84,
    "zdroj/sfx/klik1.wav",
    -30
   ],
@@ -98,22 +153,7 @@
    -30
   ],
   [
-   9.987,
-   "zdroj/sfx/klik1.wav",
-   -30
-  ],
-  [
    10.367,
-   "zdroj/sfx/klik1.wav",
-   -30
-  ],
-  [
-   10.687,
-   "zdroj/sfx/klik1.wav",
-   -30
-  ],
-  [
-   10.767,
    "zdroj/sfx/klik1.wav",
    -30
   ],
@@ -121,6 +161,11 @@
    11.107,
    "zdroj/sfx/klik1.wav",
    -30
+  ],
+  [
+   11.327,
+   "zdroj/sfx/whoosh_box.wav",
+   -27
   ],
   [
    11.327,
@@ -133,22 +178,7 @@
    -30
   ],
   [
-   12.107,
-   "zdroj/sfx/klik1.wav",
-   -30
-  ],
-  [
    12.567,
-   "zdroj/sfx/klik1.wav",
-   -30
-  ],
-  [
-   13.007,
-   "zdroj/sfx/klik1.wav",
-   -30
-  ],
-  [
-   13.227,
    "zdroj/sfx/klik1.wav",
    -30
   ],
@@ -166,16 +196,6 @@
    14.067,
    "zdroj/sfx/klik1.wav",
    -30
-  ],
-  [
-   14.167,
-   "zdroj/sfx/klik1.wav",
-   -30
-  ],
-  [
-   11.327,
-   "zdroj/sfx/whoosh_box.wav",
-   -27
   ],
   [
    14.55,
