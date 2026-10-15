@@ -29,6 +29,21 @@
     if (b > 0) MK.tw(tl, el, { filter: `blur(${b}px)` }, { filter: "blur(0px)" }, t, nBl, { ease: p2out });
   }
 
+  // cubic-bezier jako funkce pro GSAP (x1, y1, x2, y2), Newton nad x
+  function bezier(x1, y1, x2, y2) {
+    const c = (a, b, t) => 3 * a * t * (1 - t) * (1 - t) + 3 * b * t * t * (1 - t) + t * t * t;
+    return (x) => { let t = x; for (let i = 0; i < 8; i++) { const e = c(x1, x2, t) - x, dt = 1e-4, dd = (c(x1, x2, t + dt) - c(x1, x2, t - dt)) / (2 * dt); if (Math.abs(dd) < 1e-6) break; t = Math.min(1, Math.max(0, t - e / dd)); } return c(y1, y2, t); };
+  }
+  // VYJETÍ ODSPODU (měřeno po snímcích v _rozbor/GR2vYzl5n34/TEXT_VSTUP.md: 12-hour, days, you, 21 years old, štítky karty)
+  // Celé slovo volně bez masky: posun 0,43 em (4 % výšky u 98 px) > 0 expo.out 0,7 s (zbytek 0,6 až 0,7 na snímek, bez přestřelu),
+  // průhlednost power2.out 0,37 s, gaussovský blur 8 px > 0 expo.out 0,24 s (doostří dřív, než slovo dosedne).
+  function vyjed(tl, el, t, o = {}) {
+    const fs = parseFloat(getComputedStyle(el).fontSize) || 40;
+    gsap.set(el, { display: "inline-block" });
+    MK.tw(tl, el, { y: (o.em ?? 0.43) * fs }, { y: 0 }, t, o.n ?? 21, { ease: "expo.out" });
+    MK.tw(tl, el, { opacity: 0 }, { opacity: 1 }, t, o.nOp ?? 11, { ease: p2out });
+    MK.tw(tl, el, { filter: `blur(${o.blur ?? 8}px)` }, { filter: "blur(0px)" }, t, o.nBl ?? 7.2, { ease: "expo.out" });
+  }
   // text na středu x, svislý střed y (podíl výšky), velikost písma v px nebo podílu výšky
   function text(rodic, o = {}) {
     const el = MK.div(rodic, "sw-text" + (o.trida ? " " + o.trida : ""));
@@ -112,7 +127,7 @@
   function podtitul(tl, rodic, slovo, t, o = {}) {
     const el = text(rodic, { px: (o.px ?? 0.064) * 1.18, y: o.y ?? 0.685, trida: "serif" });
     el.textContent = slovo;
-    MK.ukaz(tl, el, t); doostri(tl, el, t, { nOp: 6, nBl: 6, blur: 6 });
+    MK.ukaz(tl, el, t); vyjed(tl, el, t, { blur: 5 });   // S1 21 years old: odspodu, blur menší
     if (o.t1 != null) pryc(tl, el, o.t1);
     return el;
   }
@@ -147,7 +162,7 @@
       const el = text(rodic, { px: duraz ? (o.pxDuraz ?? 0.12) : (o.px ?? 0.09), y: o.y ?? 0.59, trida: (duraz ? "tucne" : "") + (o.tma ? " tma" : "") });
       const spany = slovaDo(el, f.slova);
       MK.ukaz(tl, el, t0);
-      if (duraz) f.slova.forEach((s, i) => doostri(tl, spany[i], Math.max(t0, s.t - F(1)), { nOp: 3.6 }));
+      if (duraz) f.slova.forEach((s, i) => vyjed(tl, spany[i], Math.max(t0, s.t - F(1))));
       else spany.forEach((sp) => MK.nastav(tl, sp, { opacity: 1 }, t0));
       boxy(tl, el, f.slova.some((s) => s.box) ? f.slova : [{ t: 0 }]);
       if (t1 != null) pryc(tl, el, t1);
@@ -271,53 +286,63 @@
     return el;
   }
 
-  /* SW11 KARTA S KOLEJNICÍ (S8 f453 až 599)
-   * Šedé vinětované pozadí, karta 59,8 x 60 % (x 20,2 %, y 16,7 %), rohy 52 px, vlevo papír s rozmazanou osnovou dokumentu,
-   * vpravo záběr (video). Vstup: karta vyplní obraz (1,67) a zmenší se za 29 sn. power3.out, rohy se zakulatí.
-   * Nadpis 75 px Bold (7 %) sjede shora od 6 sn. za 14 sn., kolejnice vyjede zdola od 10 sn. za 11 sn. (power2.out).
-   * Kroky: starý nadpis zmizí za 2,4 sn., nový naskočí průhledností za 12 sn. od +3,6 sn., dokument se vymění tvrdě,
-   * aktivní uzel se zbarví za 6 sn., popisek pod ním po slovech.
-   * o.kroky: [{ text: "kontakty", nadpis: "co jinak nezíská", t }] (t null = jen popisek na kolejnici bez aktivace) */
+  /* SW11 KARTA S KOLEJNICÍ (S8 f453 až 599, měřeno po snímcích v _rozbor/GR2vYzl5n34/KARTA.md)
+   * Pevná šedá viněta, nad ní skupina nadpis + karta + kolejnice, která se jako celek zmenší z 1,675 na 1 (origin 960 x 451,5,
+   * cubic-bezier 0,40 0 0,14 0,95, 1,19 s, začíná 1,5 sn. před střihem) a zároveň se doostří z 2,2 px (měřeno proti originálu). Nadpis a kolejnice
+   * nemají vlastní pohyb, do obrazu je vynese zoom. Karta 1150 x 647 (x 385, y 181), rohy 58 px, bez stínu, vlevo papír
+   * 562 px s osnovou dokumentu, dělicí pás 12 px #919191, vpravo záběr bez zoomu.
+   * Krok (s.t): panely se vymění tvrdě, starý nadpis lineárně zmizí za 3 sn., nový naskočí od +3 sn. průhledností a doostřením
+   * vyjetím odspodu 24 px s blurem 6 px (bez překryvu), starý uzel zhasne lineárně za 7 sn., nový se plní lineárně až 22 sn.,
+   * slova popisku vyjedou odspodu (vyjed) od +3,4 sn. po 0,12 s. Odchod tvrdým střihem.
+   * o.kroky: [{ text: "kontakty", nadpis, t, slova: [časy] }], krok bez t je aktivní od začátku s hotovým popiskem. */
+  const BZOOM = bezier(0.40, 0, 0.14, 0.95);
   function karta(tl, rodic, media, t, t1, o = {}) {
-    const W = MK.W, H = MK.H, el = MK.div(rodic, "sw-sede");
-    const kw = W * 0.598, kh = H * 0.6, kx = W * 0.202, ky = H * 0.167;
-    const k = MK.div(el, "sw-karta"); Object.assign(k.style, { left: kx + "px", top: ky + "px", width: kw + "px", height: kh + "px" });
+    const W = MK.W, H = MK.H, k1 = H / 1080, el = MK.div(rodic, "sw-sede");
+    const sk = MK.div(el, "sw-skupina");
+    gsap.set(sk, { transformOrigin: `${W / 2}px ${451.5 * k1}px` });
+    const k = MK.div(sk, "sw-karta"); Object.assign(k.style, { left: 385 * k1 + "px", top: 181 * k1 + "px", width: 1150 * k1 + "px", height: 647 * k1 + "px", borderRadius: 58 * k1 + "px" });
     const lev = MK.div(k, "pul"), prav = MK.div(k, "pul p"); prav.appendChild(media);
+    lev.style.width = 562 * k1 + "px"; prav.style.width = 575 * k1 + "px";
     const kroky = o.kroky || [], rnd = MK.rng(o.seed ?? 3);
-    const doky = [null, ...kroky].map(() => {
+    const doky = kroky.map(() => {
       const d = MK.div(lev, "sw-dok"); d.style.visibility = "hidden";
       d.innerHTML = `<b class="h"></b>` + Array.from({ length: 11 }, () => `<b class="${rnd() < 0.18 ? "a" : ""}" style="width:${Math.round(55 + rnd() * 45)}%"></b>`).join("");
       return d;
     });
-    const nad = (s) => { const n = MK.div(el, "sw-nadpis"); n.style.fontSize = H * 0.085 + "px"; n.style.top = H * 0.11 + "px"; n.style.transform = "translateY(-50%)"; n.textContent = s; return n; };
-    const nadpisy = [nad(o.nadpis || ""), ...kroky.map((s) => nad(s.nadpis || o.nadpis || ""))];
-    nadpisy.slice(1).forEach((n) => (n.style.opacity = 0));
-    // kolejnice y 82,6 %, x 23,1 až 76,9 %, uzly 6,4 % výšky
-    const kol = MK.div(el, "sw-kolej"), x0 = W * 0.231, x1 = W * 0.769, ky2 = H * 0.826, d = H * 0.064;
-    Object.assign(kol.style, { left: x0 + "px", width: x1 - x0 + "px", top: ky2 + "px" }); MK.div(kol, "cara");
+    const nad = (s) => { const n = MK.div(sk, "sw-nadpis"); Object.assign(n.style, { fontSize: 82 * k1 + "px", top: 76 * k1 + "px" }); n.textContent = s; return n; };
+    const nadpisy = kroky.map((s) => nad(s.nadpis || o.nadpis || ""));
+    // kolejnice y 893, x 444 až 1475, uzly 70 px s obrysem 3,5 px, středy rovnoměrně mezi 532,5 a 1386,5
+    const kol = MK.div(sk, "sw-kolej"), x0 = 444 * k1, x1 = 1475 * k1, d = 70 * k1;
+    Object.assign(kol.style, { left: x0 + "px", width: x1 - x0 + "px", top: 893 * k1 + "px" }); MK.div(kol, "cara");
     const uzly = kroky.map((s, i) => {
-      const x = kroky.length > 1 ? ((x1 - x0) * i) / (kroky.length - 1) : (x1 - x0) / 2;
+      const x = (kroky.length > 1 ? 532.5 + ((1386.5 - 532.5) * i) / (kroky.length - 1) : 960) * k1 - x0;
       const u = MK.div(kol, "sw-uzel"); Object.assign(u.style, { left: x + "px", width: d + "px", height: d + "px" }); MK.div(u, "tecka");
-      const p = MK.div(kol, "sw-uzel-pop"); Object.assign(p.style, { left: x + "px", top: d * 0.75 + "px", fontSize: H * 0.045 + "px" });
+      const p = MK.div(kol, "sw-uzel-pop"); Object.assign(p.style, { left: x + "px", top: 49 * k1 + "px", fontSize: 38 * k1 + "px", lineHeight: 31 * k1 + "px" });
       const sl = slovaDo(p, s.text.split(" ").map((w) => ({ w })));
-      return { u, sl };
+      return { u, sl, t: s.t };
     });
     MK.ukaz(tl, el, t);
-    MK.nastav(tl, doky[0], { visibility: "visible" }, t);
-    // vstup: karta 1,67 vyplní obraz (střed karty posunutý o 36 px nad středem snímku), rohy 0 > 52 px
-    gsap.set(k, { transformOrigin: "50% 50%" });
-    MK.tw(tl, k, { scale: 1.67, y: H * 0.5 - (ky + kh / 2), borderRadius: 0 }, { scale: 1, y: 0, borderRadius: 52 }, t, R(24), { ease: p3out });
-    MK.tw(tl, nadpisy[0], { y: -110 }, { y: 0 }, t + F(R(5)), R(12), { ease: p2out });
-    MK.tw(tl, kol, { y: 110 }, { y: 0 }, t + F(R(8)), R(9), { ease: p2out });
-    uzly.forEach(({ sl }) => sl.forEach((s) => MK.nastav(tl, s, { opacity: 1 }, t)));
+    const t0 = t - F(R(1.5));   // zoom začíná před střihem, v prvním snímku je hotový z 5 %
+    MK.tw(tl, sk, { scale: 1.675 }, { scale: 1 }, t0, R(29.7), { ease: BZOOM });
+    MK.tw(tl, sk, { filter: "blur(2.2px)" }, { filter: "blur(0px)" }, t0, R(29.7), { ease: (p) => 1 - Math.pow(Math.max(0, 1 - BZOOM(p)), 0.45) });
     kroky.forEach((s, i) => {
-      if (s.t == null) return;
-      const st = nadpisy[i], nv = nadpisy[i + 1];
-      MK.tw(tl, st, { opacity: 1 }, { opacity: 0 }, s.t, 2.4, { ease: "cruise" });
-      MK.tw(tl, nv, { opacity: 0.2, filter: "blur(4px)" }, { opacity: 1, filter: "blur(0px)" }, s.t + F(3.6), 12, { ease: "cruise" });
-      MK.nastav(tl, doky[i], { visibility: "hidden" }, s.t); MK.nastav(tl, doky[i + 1], { visibility: "visible" }, s.t);
-      MK.tw(tl, uzly[i].u.firstChild, { opacity: 0 }, { opacity: 1 }, s.t + F(R(2)), 6, { ease: "softInOut" });
-      if (i > 0) MK.tw(tl, uzly[i - 1].u.firstChild, { opacity: 1 }, { opacity: 0 }, s.t + F(R(2)), 6, { ease: "softInOut" });
+      const u = uzly[i], tk = s.t ?? t;
+      if (s.t == null) {   // aktivní od začátku
+        MK.nastav(tl, doky[i], { visibility: "visible" }, t); MK.nastav(tl, nadpisy[i], { opacity: 1 }, t);
+        MK.nastav(tl, u.u.firstChild, { opacity: 1 }, t); u.sl.forEach((x) => MK.nastav(tl, x, { opacity: 1 }, t));
+        return;
+      }
+      const j = i - 1;
+      MK.nastav(tl, doky[i], { visibility: "visible" }, j >= 0 ? tk : t); if (j >= 0) MK.nastav(tl, doky[j], { visibility: "hidden" }, tk);
+      if (j >= 0 && nadpisy[j].textContent !== nadpisy[i].textContent) {
+        MK.tw(tl, nadpisy[j], { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(4px)" }, tk + F(R(0.5)), R(2.5), { ease: "cruise" });
+        vyjed(tl, nadpisy[i], tk + F(R(3)), { em: 0.29, blur: 6, n: 13.5 });   // S8 urgency & speed: 24 px, 0,45 s
+      } else if (j >= 0) { MK.nastav(tl, nadpisy[j], { opacity: 0 }, tk); MK.nastav(tl, nadpisy[i], { opacity: 1 }, tk); }
+      else MK.nastav(tl, nadpisy[i], { opacity: 1 }, t);   // první krok s časem: nadpis a dokument jsou vidět od střihu, uzel a popisek až v s.t
+      if (j >= 0) MK.tw(tl, uzly[j].u.firstChild, { opacity: 1 }, { opacity: 0 }, tk + F(R(1)), R(7), { ease: "cruise" });
+      const dalsi = kroky[i + 1]?.t, nPln = Math.min(R(22), dalsi != null ? (dalsi - tk) * 30 - R(2) : R(14));
+      MK.tw(tl, u.u.firstChild, { opacity: 0 }, { opacity: 1 }, tk + F(R(2)), Math.max(R(7), nPln), { ease: "cruise" });
+      u.sl.forEach((x, m) => vyjed(tl, x, s.slova?.[m] ?? tk + F(R(3.4)) + m * 0.12, { em: 1, blur: 5.5, n: 7.5, nOp: 3.6, nBl: 6 }));   // štítky: 32 až 45 px, rychlejší dojezd než slova textu
     });
     if (t1 != null) pryc(tl, el, t1);
     return el;
@@ -384,5 +409,5 @@
     return d;
   }
 
-  window.SW = { F, R, ZOOMY, zaber, zoomVen, klouzani, jmeno, podtitul, titulek, fraze, pocitadlo, triptych, kalendar, karta, papir, podtrzeni, doostri, popisek };
+  window.SW = { F, R, ZOOMY, zaber, zoomVen, klouzani, jmeno, podtitul, titulek, fraze, pocitadlo, triptych, kalendar, karta, papir, podtrzeni, doostri, vyjed, bezier, popisek };
 })();

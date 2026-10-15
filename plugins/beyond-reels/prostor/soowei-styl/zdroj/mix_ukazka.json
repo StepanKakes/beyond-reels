@@ -65,7 +65,7 @@
   [
    3.28,
    "zdroj/sfx/pocitani.wav",
-   -35
+   -38
   ],
   [
    4.716,
@@ -206,6 +206,21 @@
    14.83,
    "zdroj/sfx/zaverka.wav",
    -28
+  ],
+  [
+   15.486,
+   "zdroj/sfx/klik1.wav",
+   -30
+  ],
+  [
+   15.836,
+   "zdroj/sfx/klik1.wav",
+   -30
+  ],
+  [
+   16.186,
+   "zdroj/sfx/klik1.wav",
+   -30
   ],
   [
    16.7,

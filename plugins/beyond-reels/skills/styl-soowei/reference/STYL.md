@@ -8,7 +8,7 @@ Měření po snímcích: `GR2vYzl5n34/SHOTLOG.md` a `ROZBOR.md` (zařízení SW1
 - Každý střih tvrdý. Plynulost dělá zoom out, který přetéká přes střih (rychlost nejvyšší hned po střihu), a střih v pauze řeči.
 - Text je součást záběru: titulek leží v kontejneru s klipem a zmenšuje se s ním.
 - Text vždy na středu x 50 %, bez podkladu a obrysu, jen měkký stín. Důraz velikostí, váhou a červeným boxem, ne animací.
-- Nástup textu: průhlednost a doostření (blur 14 > 0 px) za 3 až 7 snímků, bez posunu, slova v pevném rozložení (nic se nepřeskupuje).
+- Nástup textu (přeměřeno 15. 10. po snímcích, rozbor TEXT_VSTUP.md): titulky na B-rollu v místě průhledností a doostřením; podtitul, důrazová slova, nadpis karty a štítky vyjedou odspodu o 0,43 em (4 % výšky) expo.out se zbytkem 0,6 až 0,7 na snímek, gaussovský blur (ne pohybový) 13 px ve 4K doostří za 5 sn., posun dosedne za 8 až 10 sn. Slova v pevném rozložení (nic se nepřeskupuje).
 - Dvě fáze intra: rychlé B-rolly 1,3 až 2,4 s (jeden záběr = jedna myšlenka = jeden titulek), pak pomalé záběry 4,5 až 5,8 s, kde pohyb dělá zoom.
 - Ticho: jen hlas, žádná hudba ani SFX, hlas sestříhaný do pauz 0,2 až 0,3 s.
 

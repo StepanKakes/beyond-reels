@@ -17,7 +17,7 @@ a na začátky kapitol (papír s nadpisem). Zatím rozebrané jen intro jednoho 
 
 - Každý střih tvrdý, žádný švih, prolnutí ani záblesk. Plynulost dělá zoom out záběru, který začíná hned po střihu (SW1), a střih v pauze řeči.
 - Text je součást záběru: komponenty kreslí do kontejneru záběru (`SW.zaber`), takže se zmenšuje se zoomem.
-- Text vždy na středu x, bez podkladu, obrysu i stínu, o 25 až 30 % větší než originál (Štěpán 15. 10.). Nástup průhledností s doostřením z blur 14 px, bez posunu (schváleno 1:1).
+- Text vždy na středu x, bez podkladu, obrysu i stínu, o 25 až 30 % větší než originál (Štěpán 15. 10.). Dva nástupy změřené po snímcích: titulky na B-rollu v místě průhledností s doostřením z blur 14 px; podtitul, důrazová slova, nadpis a štítky karty vyjedou odspodu `SW.vyjed` (0,43 em expo.out 0,7 s, gaussovský blur 8 px doostří dřív, než slovo dosedne). Fráze bez důrazu naskočí tvrdě.
 - Dvě fáze intra: rychlé B-rolly 1,3 až 2,4 s (záběr = myšlenka = titulek), pak delší záběry 4,5 až 6 s s pomalým zoomem.
 - Důraz velikostí (Medium 6,9 % > Bold 9,1 %), váhou a červeným boxem, ne animací.
 - Zvuk: hlas (studio_hlas) a SFX podle výběru Štěpána 15. 10. 2026 (originál je bez SFX), mix `tools/mix.py`, -14 LUFS.
@@ -43,7 +43,7 @@ a na začátky kapitol (papír s nadpisem). Zatím rozebrané jen intro jednoho 
 | SW8 | `SW.triptych(tl, rodic, [{media, text}] x2, zaber, t)` | harmonika tří panelů, aktuální záběr je třetí |
 | SW9 | `SW.klouzani(tl, video, t, {zaklad})` | jemný posun B-rollu |
 | SW10 | `SW.kalendar(tl, rodic, t, t1, {karty, tVyber})` | týden, karty naskočí, vybrané zčervenají |
-| SW11 | `SW.karta(tl, rodic, video, t, t1, {nadpis, kroky})` | karta (dokument + záběr) na šedé vinětě, kolejnice kroků |
+| SW11 | `SW.karta(tl, rodic, video, t, t1, {nadpis, kroky})` | karta 1:1 po snímcích (KARTA.md): skupina nadpis + karta + kolejnice se zmenší z 1,675 s doostřením, kroky `{text, nadpis, t}` přepnou dokument, nadpis a uzel, popisky vyjedou odspodu |
 | SW12 SW13 | `SW.papir(tl, rodic, zaber, t, {nadpis, tah1, tah2})` | papír zleva tlačí záběr, nadpis kapitoly, dva tahy fixkou |
 
 Ukázky: `src/ukazka.html` (začátek reelu Heaton jako YouTube intro), `src/komponenty.html` (showcase, úseky v `plany/komponenty.json`).
