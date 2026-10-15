@@ -1,6 +1,6 @@
 ---
 name: styl-soowei
-description: SooWei styl Beyond (podle YouTube intra SooWei Goha) v HyperFrames, formát 16:9 pro YouTube: tvrdé střihy, zoom out záběru i textu přes střih, jméno po písmenech s doostřením, titulky po slovech v pevném rozložení, fráze s tvrdou výměnou a červeným boxem, počítadlo, triptych harmonika, kalendář, karta s kolejnicí kroků, papír zleva s nadpisem kapitoly. Jen hlas, bez SFX. Použij spolu se skillem reel, když někdo chce YouTube edit nebo intro videa, řekne "soowei", "jako SooWei" nebo chce klidný čistý 16:9 edit.
+description: SooWei styl Beyond (podle YouTube intra SooWei Goha) v HyperFrames, formát 16:9 pro YouTube: tvrdé střihy, zoom out záběru i textu přes střih, jméno po písmenech s doostřením, titulky po slovech v pevném rozložení, fráze s tvrdou výměnou a červeným boxem, počítadlo, triptych harmonika, kalendář, karta s kolejnicí kroků, papír zleva s nadpisem kapitoly. Zvuky podle výběru Štěpána. Použij spolu se skillem reel, když někdo chce YouTube edit nebo intro videa, řekne "soowei", "jako SooWei" nebo chce klidný čistý 16:9 edit.
 ---
 
 # Styl SooWei (Beyond, YouTube 16:9)
@@ -17,10 +17,16 @@ a na začátky kapitol (papír s nadpisem). Zatím rozebrané jen intro jednoho 
 
 - Každý střih tvrdý, žádný švih, prolnutí ani záblesk. Plynulost dělá zoom out záběru, který začíná hned po střihu (SW1), a střih v pauze řeči.
 - Text je součást záběru: komponenty kreslí do kontejneru záběru (`SW.zaber`), takže se zmenšuje se zoomem.
-- Text vždy na středu x, bez podkladu a obrysu, měkký stín. Nástup průhledností s doostřením z blur 14 px, bez posunu (schváleno 1:1).
+- Text vždy na středu x, bez podkladu, obrysu i stínu, o 25 až 30 % větší než originál (Štěpán 15. 10.). Nástup průhledností s doostřením z blur 14 px, bez posunu (schváleno 1:1).
 - Dvě fáze intra: rychlé B-rolly 1,3 až 2,4 s (záběr = myšlenka = titulek), pak delší záběry 4,5 až 6 s s pomalým zoomem.
 - Důraz velikostí (Medium 6,9 % > Bold 9,1 %), váhou a červeným boxem, ne animací.
-- Zvuk: jen hlas (studio_hlas, mix `tools/mix.py` bez hudby a SFX, nebo hudba hodně potichu), -14 LUFS. Rozhodnutí Štěpána 15. 10. 2026.
+- Zvuk: hlas (studio_hlas) a SFX podle výběru Štěpána 15. 10. 2026 (originál je bez SFX), mix `tools/mix.py`, -14 LUFS.
+  Upravené zvuky jsou v `prostor/soowei-styl/zdroj/sfx`, časy a hlasitosti v `zdroj/mix_ukazka.json`:
+  boom na první snímek (-25), jméno 5 jemných tiků po 0,1 s (-36), podtitul klik2 (-31), střih na B-roll závěrka s náběhem
+  posunutým na střih (-28), počítadlo tikání jen dokud počítá (-32), triptych riser, který končí s dojezdem panelů, bez cinknutí (-30),
+  klik1 na každé slovo frází u Tima (-30), červený box hluboký whoosh s vrcholem na dojezdu boxu (-27), karta nízký kick (-26),
+  nadpis a kolejnice závěrka (-28), papír hluboký whoosh (-26). Důraz, slovo titulku, jednotka a tah fixkou bez zvuku.
+  Výběr zvuků se dělá na stránce https://claude.ai/artifact/7nNtyN7BVMRSdFk7L17b1D (databáze `prirazeni`).
 - Podíl jako originál: A-roll kolem 35 %, B-roll s titulkem 27 %, grafika 38 %.
 
 ## Komponenty (`window.SW`, `js/soowei-kit.js`)
@@ -55,6 +61,6 @@ Build: `node build.mjs <nazev>` (stejný jako u Caspara: `/*SLOVA*/` a `{{T(i)}}
 
 ## Zákazy (navíc k pravidlům)
 
-- Žádné SFX, švihy, prolínačky ani záblesky. Žádná kurzíva (podtitul je Instrument Serif rovný), žádné ručně psané písmo (nadpis na papíře Helvetica Bold).
+- Žádné švihy, prolínačky ani záblesky, SFX jen podle výběru výše. Žádná kurzíva (podtitul je Instrument Serif rovný), žádné ručně psané písmo (nadpis na papíře Helvetica Bold).
 - Zlato, teal and orange grade originálu nepřebíráme, záběry negradujeme.
 - Bílý titulek ne přes bílé triko ani světlou stěnu, posuň ho nebo `tma`.

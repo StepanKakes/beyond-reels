@@ -43,6 +43,7 @@ Nic neřve: žádné zvuky, žádné švihy, jen čisté střihy a měkký dojez
 
 ## Rozhodnuto (Štěpán 15. 10. 2026)
 - Blur při nástupu textu necháváme 1:1 (jen u nástupu, krátce).
-- Zvuk jako originál: jen hlas, bez SFX, hudba nanejvýš tichý podkres mixem.
+- Zvuk: původně jen hlas, týž den Štěpán vybral SFX ke každé akci (seznam ve skillu).
+- Text o 25 až 30 % větší než originál, bez stínu a aury.
 - Beyond verze barev a písma, řemeslo a časování 1:1.
 - Ukázka na Timově záběru ořezaném na 16:9.
