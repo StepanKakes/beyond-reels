@@ -1,0 +1,39 @@
+/* Elaine kit: béžová deska, tmavě zelená typografie, krémové serifové slovo (DdmDn6_A8wu)
+ * Motiv Beyond: třída .ek-beyond na předkovi (scéna nebo #root), dole. Barvy čte i EK v JS (pulz, karta s číslem, trychtýř) */
+:root {
+  --ek-deska: #EBDFCF; --ek-deska-pulz: #F3F0E1; --ek-ink: #193326; --ek-ink-od: #8D9684; --ek-krem: #EEECB2;
+  --ek-cislo: #193326; --ek-cislo-od: #C0BCA5; --ek-pas1: #6B826E; --ek-pas2: #3C5B46; --ek-pas3: #1C3629; --ek-lide: #FFFFFF; --ek-cara: #111111;
+  --ek-zk-a: #3F815D; --ek-zk-b: #5D9A77; --ek-zk-c: #8FBFA3; --ek-zk-text: #D8D4CC; --ek-zk-ram: #E8E8E8;
+  --ek-sans: inherit; --ek-serif: "Big Caslon", "Baskerville", serif; --ek-kurziva: "Hoefler Text", "Baskerville", serif; --ek-serif-tucne: "Baskerville", "Big Caslon", serif;
+}
+.ek-deska { position: absolute; inset: 0; background: var(--ek-deska); overflow: hidden; }
+.ek-tit { position: absolute; left: 0; right: 0; text-align: center; color: var(--ek-ink); font-family: var(--ek-sans); font-weight: 700; letter-spacing: -0.02em; line-height: 1.04; }
+.ek-tit-radek { display: flex; justify-content: center; gap: 0 0.24em; }
+.ek-tit span { display: inline-block; visibility: hidden; }
+.ek-tit .ek-i { font-family: var(--ek-kurziva); font-style: normal; font-weight: 400; font-size: 1.32em; letter-spacing: -0.01em; }
+.ek-tit .ek-s { font-family: var(--ek-serif); font-weight: 500; font-size: 1.5em; letter-spacing: -0.01em; }
+.ek-tit .ek-v { font-size: 2.1em; }
+.ek-tit .ek-S { font-family: var(--ek-serif-tucne); font-weight: var(--ek-serif-tucne-vaha, 700); font-size: 3.5em; letter-spacing: -0.03em; line-height: 0.9; }
+.ek-tit .ek-V { font-size: 2.5em; letter-spacing: -0.04em; line-height: 0.95; }
+.ek-cislo { position: absolute; left: 0; right: 0; text-align: center; color: var(--ek-ink); font-family: var(--ek-sans); font-weight: 700; letter-spacing: -0.05em; line-height: 1; visibility: hidden; }
+.ek-hrud { position: absolute; left: 0; right: 0; top: 700px; text-align: center; color: #fff; font-family: var(--ek-sans); font-weight: 700; font-size: 62px; letter-spacing: -0.01em; line-height: 1; text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); visibility: hidden; white-space: nowrap; }
+.ek-hrud-serif { position: absolute; left: 0; right: 0; top: 780px; text-align: center; color: var(--ek-krem); font-family: var(--ek-serif); font-weight: 500; font-size: 150px; letter-spacing: -0.02em; line-height: 1; text-shadow: 0 3px 14px rgba(70, 50, 0, 0.45); visibility: hidden; white-space: nowrap; }
+.ek-zk { position: absolute; width: 214px; height: 239px; box-sizing: border-box; border: 3px solid var(--ek-zk-ram); background: linear-gradient(180deg, var(--ek-zk-a) 0%, var(--ek-zk-b) 70%, var(--ek-zk-c) 100%); color: var(--ek-zk-text); font-family: var(--ek-sans); font-weight: 700; font-size: 150px; line-height: 233px; text-align: center; letter-spacing: -0.04em; text-shadow: inset 0 2px 0 rgba(0,0,0,0.3), 0 2px 3px rgba(0,0,0,0.35); visibility: hidden; }
+.ek-tr { position: absolute; visibility: visible; }
+.ek-tr-stitek { position: absolute; font-weight: 700; font-size: 28px; letter-spacing: -0.02em; color: var(--ek-cara); font-family: var(--ek-sans); white-space: nowrap; visibility: hidden; }
+
+/* Motiv Beyond (Tim 4. 10. 2026): papír, černá, jedna červená; Helvetica Neue Bold (HN z beyond-kit.css) a Instrument Serif (IS z mason-kit.css)
+ * místo serifů Elaine. Krémové slovo na hrudi je bílý Instrument Serif, číslo bodu a karty 1 2 3 jsou červené, pulz desky jde do krémového záblesku */
+.ek-beyond {
+  --ek-deska: #FBF9FC; --ek-deska-pulz: #FFF1E6; --ek-ink: #111111; --ek-ink-od: #A9A6AC; --ek-krem: #FFFFFF;
+  --ek-cislo: #FF0E00; --ek-cislo-od: #F4D9D6; --ek-pas1: #FF5A3D; --ek-pas2: #FF0E00; --ek-pas3: #111111; --ek-lide: #FFFFFF; --ek-cara: #111111;
+  --ek-zk-a: #FF0E00; --ek-zk-b: #FF2A12; --ek-zk-c: #FF5A3D; --ek-zk-text: #FFFFFF; --ek-zk-ram: #FFFFFF;
+  --ek-sans: "HN", "Helvetica Neue", Helvetica, sans-serif; --ek-serif: "IS", "Instrument Serif", serif; --ek-kurziva: "IS", "Instrument Serif", serif;
+  --ek-serif-tucne: "IS", "Instrument Serif", serif; --ek-serif-tucne-vaha: 400;
+}
+.ek-beyond .ek-tit { letter-spacing: -0.045em; }
+.ek-beyond .ek-tit .ek-i { font-style: normal; letter-spacing: -0.02em; }
+.ek-beyond .ek-tit .ek-s, .ek-beyond .ek-tit .ek-S { font-weight: 400; letter-spacing: -0.02em; }
+.ek-beyond .ek-hrud { letter-spacing: -0.03em; }
+.ek-beyond .ek-hrud-serif { font-weight: 400; text-shadow: 0 3px 14px rgba(0, 0, 0, 0.35); }
+.ek-beyond .ek-zk { text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25); }

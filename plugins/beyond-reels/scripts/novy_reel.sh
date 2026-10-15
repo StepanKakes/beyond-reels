@@ -1,6 +1,6 @@
 #!/bin/zsh
 # Nový projekt reelu ve sdíleném prostoru.
-#   zsh novy_reel.sh <styl> <nazev>      styl: mason | noske | matt-gray | lumitris | nathan | caspar
+#   zsh novy_reel.sh <styl> <nazev>      styl: mason | noske | matt-gray | lumitris | nathan | caspar | soowei
 # Mason (a obecně Beyond) dostane sdílené jádro kitů a šablonu src/reel.html, ostatní styly kopii svého stylového projektu bez renderů.
 set -e
 source ~/.config/beyond-reels/env.sh 2>/dev/null || { echo "Nejdřív spusť setup.sh pluginu"; exit 1; }

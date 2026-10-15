@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080">
+    <title>SooWei styl: komponenty</title>
+    <script src="vendor/gsap.min.js"></script>
+    <script src="js/mason-kit.js"></script>
+    <script src="js/soowei-kit.js"></script>
+    <link rel="stylesheet" href="soowei-kit.css">
+    <style>
+      body { margin: 0; background: var(--sw-cerna); }
+      #root { position: relative; width: 1920px; height: 1080px; }
+      #grafika { z-index: 5; }
+      #sklad { display: none; }
+    </style>
+  </head>
+  <body>
+    <!-- Showcase: každá komponenta za sebou, popisek vlevo dole (jen pro knihovnu). Úseky jsou i v plany/komponenty.json. -->
+    <div id="root" class="sw-plocha" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-fps="30" data-duration="33">
+      <div id="zabery" class="sw-vrstva"></div>
+      <div id="grafika" class="sw-vrstva"></div>
+      <div id="popisky" class="sw-vrstva" style="z-index: 50"></div>
+      <div id="sklad">
+        <video id="v1" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="0" data-duration="3" data-media-start="0" data-track-index="1"></video>
+        <video id="v2" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="3" data-duration="3" data-media-start="23.5" data-track-index="2"></video>
+        <video id="v3" style="object-position: 50% 100%; transform-origin: 50% 100%" class="clip" src="assets/media/b_miliardy.mp4" muted playsinline data-start="6" data-duration="1.46" data-media-start="0" data-track-index="3"></video>
+        <video id="v3b" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="7.46" data-duration="1.54" data-media-start="1.0" data-track-index="4"></video>
+        <video id="v4" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="9" data-duration="3" data-media-start="6.0" data-track-index="5"></video>
+        <video id="vP1" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="10" data-duration="2" data-media-start="0.3" data-track-index="6"></video>
+        <video id="vP2" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="10" data-duration="2" data-media-start="5.6" data-track-index="7"></video>
+        <video id="v5" class="clip" src="assets/media/tim_telo.mp4" muted playsinline data-start="12" data-duration="5" data-media-start="8.45" data-track-index="8"></video>
+        <video id="vK" class="clip" src="assets/media/tim_telo.mp4" muted playsinline data-start="22" data-duration="6" data-media-start="10.0" data-track-index="9"></video>
+        <video id="v8" class="clip" src="assets/media/tim_telo.mp4" muted playsinline data-start="28" data-duration="5" data-media-start="12.0" data-track-index="10"></video>
+              </div>
+    </div>
+    <script>
+      const root = document.getElementById("root");
+      MK.init(root);
+      const tl = gsap.timeline({ paused: true });
+      const F = SW.F, $ = (id) => document.getElementById(id), Z = $("zabery"), G = $("grafika"), P = $("popisky");
+      const U = (od, do_, text) => SW.popisek(tl, P, text, od, do_);
+      const sl = (t0, slova, krok = 0.3) => slova.split(" ").map((w, i) => ({ w, t: t0 + i * krok }));
+
+      // SW1 + SW2 + SW3: zoom out s doostřením, jméno po písmenech, podtitul
+      U(0, 3, "SW1 SW2 SW3 zoom out, jméno, podtitul");
+      const a = SW.zaber(tl, Z, $("v1"), 0, 3);
+      SW.zoomVen(tl, a, 0);
+      SW.jmeno(tl, a, "George Heaton", 0.07);
+      SW.podtitul(tl, a, "jede bomby", 0.9);
+
+      // SW4 + SW9: titulek po slovech v pevném rozložení, klouzání B-rollu, značka logem
+      U(3, 6, "SW4 SW9 titulek po slovech, klouzání");
+      const b = SW.zaber(tl, Z, $("v2"), 3, 6);
+      SW.klouzani(tl, $("v2"), 3);
+      SW.titulek(tl, b, sl(3.3, "s dalšími zajímavými lidmi", 0.3));
+
+      // SW7: počítadlo s rozmazáním pohybem a jednotkou
+      U(6, 9, "SW7 počítadlo");
+      const c = SW.zaber(tl, Z, $("v3"), 6, 7.46);
+      SW.klouzani(tl, $("v3"), 6, { zaklad: 1.2, dy: 0 });
+      SW.pocitadlo(tl, c, 6.1, { do: 3000000000, za: "Kč ročně", tZa: 7.0, t1: 7.46 });
+      const c2 = SW.zaber(tl, Z, $("v3b"), 7.46, 9);
+      SW.pocitadlo(tl, c2, 7.6, { do: 14, za: "let", tZa: 8.3 });
+
+      // SW8: triptych harmonika
+      U(9, 12, "SW8 triptych");
+      const d = SW.zaber(tl, Z, $("v4"), 9, 12);
+      SW.titulek(tl, d, sl(9.2, "si kupuje v cashi", 0.2), { px: 0.066 });
+      SW.triptych(tl, G, [{ media: $("vP1"), text: "jede\nbomby" }, { media: $("vP2"), text: "vlastní\npenthouse" }], d, 10.2, { t1: 12 });
+
+      // SW1 pomalý + SW5 + SW6: fráze s tvrdou výměnou, důraz, červený box
+      U(12, 17, "SW5 SW6 fráze, důraz, box");
+      const e = SW.zaber(tl, Z, $("v5"), 12, 17);
+      SW.zoomVen(tl, e, 12, { typ: "pomaly" });
+      SW.fraze(tl, e, [
+        { slova: sl(12.05, "a přesto po"), t0: 12 },
+        { slova: sl(12.9, "14 letech", 0.3), duraz: true },
+        { slova: sl(13.8, "udělal z obsahu", 0.25) },
+        { slova: [{ w: "svou", t: 14.7 }, { w: "prioritu", t: 15.0, box: true }] },
+        { slova: sl(16.0, "ale proč") },
+      ], { t1: 17, tma: true, y: 0.75 });
+
+      // SW10: kalendář
+      U(17, 22, "SW10 kalendář");
+      SW.kalendar(tl, G, 17, 22, {
+        tVyber: 19.6, karty: [
+          { den: 0, od: 9, do: 10, text: "hovor s klientem", cas: "9:00", vyber: true }, { den: 0, od: 11, do: 12.5, text: "e-maily", cas: "11:00" },
+          { den: 0, od: 14, do: 15, text: "natáčení", cas: "14:00", vyber: true }, { den: 1, od: 8.5, do: 10, text: "fakturace", cas: "8:30" },
+          { den: 1, od: 13, do: 14, text: "obchodní schůzka", cas: "13:00", vyber: true }, { den: 2, od: 10, do: 11, text: "skupinový hovor", cas: "10:00", vyber: true },
+          { den: 2, od: 15, do: 16.5, text: "web", cas: "15:00" }, { den: 3, od: 9, do: 11, text: "natáčení", cas: "9:00", vyber: true },
+          { den: 3, od: 13, do: 14, text: "e-maily", cas: "13:00" }, { den: 4, od: 10, do: 11, text: "hovor s klientem", cas: "10:00", vyber: true },
+          { den: 4, od: 14, do: 15.5, text: "porada obsahu", cas: "14:00", vyber: true }, { den: 5, od: 11, do: 12, text: "úklid složek", cas: "11:00" },
+          { den: 6, od: 10, do: 11, text: "plán týdne", cas: "10:00" },
+        ],
+      });
+
+      // SW11: karta s kolejnicí, kroky
+      U(22, 28, "SW11 karta s kolejnicí");
+      SW.karta(tl, G, $("vK"), 22, 28, {
+        nadpis: "3 věci, které jinak nezíská",
+        kroky: [{ text: "kontakty", nadpis: "kontakty", t: 23.6 }, { text: "prodej", nadpis: "prodej, který nevypadá jako prodej", t: 24.8 }, { text: "autorita", nadpis: "autorita", t: 26.2 }],
+      });
+
+      // SW12 + SW13: papír tlačí záběr, nadpis kapitoly, podtržení fixkou
+      U(28, 33, "SW12 SW13 papír, podtržení");
+      const h = SW.zaber(tl, Z, $("v8"), 28, 33);
+      SW.papir(tl, G, h, 28.3, { nadpis: "kontakty", t1: 33 });
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

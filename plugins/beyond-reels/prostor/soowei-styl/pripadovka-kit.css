@@ -1,0 +1,44 @@
+/* Případovka kit (PK): vzhled komponent z reelu Vince Nijhof (src/vince.html, 4.10.2026), pro 4:3 1920x1440
+   Pohyby k nim jsou v js/pripadovka-kit.js. Barvy z beyond-kit.css (--o akcent, --cerna, --mk-papir) */
+
+/* scény: kinetický text přes A-roll musí mít pozadí */
+.sc.bila { background: #fff; }
+.sc.pap { background: var(--mk-papir); }
+
+/* kinetický text přes celou obrazovku, slova naskakují přes PK.slova("#x span", časy) */
+.kt { position: absolute; left: 0; right: 0; text-align: center; font-weight: 700; text-transform: uppercase; letter-spacing: -0.045em; line-height: 0.9; white-space: nowrap; }
+.kt span { visibility: hidden; }
+
+/* titulek uvnitř karty s citací: tmavý podklad místo stínu */
+.tit.klip { top: 895px; text-shadow: none; font-size: 86px; }
+.tit.klip span { display: inline-block; background: rgba(17, 17, 17, 0.8); padding: 0.16em 0.42em 0.2em; border-radius: 0.22em; }
+
+/* karta s citací z videa (YouTube klip). Video v ní nesmí skončit dřív než karta: na konec zmrazený snímek (tpad clone) */
+.pk-klip { position: absolute; left: 180px; top: 230px; width: 1560px; height: 878px; border-radius: 26px; overflow: hidden; background: var(--cerna); box-shadow: 0 18px 50px rgba(17, 17, 17, 0.16), 0 2px 6px rgba(17, 17, 17, 0.08); }
+.pk-klip video { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* okno prohlížeče se screenshotem webu; adresa v --url, např. style="--url: 'doreandrose.com'" */
+.pk-web { position: absolute; left: 220px; top: 120px; width: 1280px; height: 800px; border-radius: 18px; overflow: hidden; background: #fff; box-shadow: 0 18px 50px rgba(17, 17, 17, 0.16), 0 2px 6px rgba(17, 17, 17, 0.08); visibility: hidden; }
+.pk-web i { position: absolute; left: 0; right: 0; top: 0; height: 48px; background: #EDEAEF; }
+.pk-web i::before { content: ""; position: absolute; left: 22px; top: 17px; width: 14px; height: 14px; border-radius: 7px; background: #C9C5CC; box-shadow: 22px 0 0 #C9C5CC, 44px 0 0 #C9C5CC; }
+.pk-web i::after { content: var(--url, ""); position: absolute; left: 50%; top: 9px; transform: translateX(-50%); width: 420px; height: 30px; border-radius: 15px; background: #fff; color: #6B6B70; font-size: 17px; font-weight: 500; font-style: normal; line-height: 30px; text-align: center; }
+.pk-web img { position: absolute; left: 0; top: 48px; width: 100%; height: 752px; object-fit: cover; object-position: 50% 0; }
+
+/* bílá vrstva pro záblesk (PK.blik), vkládá se do karty nebo boxu */
+.pk-fl { position: absolute; inset: 0; border-radius: inherit; background: #fff; opacity: 0; }
+
+/* červený box s číslem bodu a popiskem (výzva: tři body pod Timovou kartou) */
+.pk-box { position: absolute; top: 880px; width: 520px; height: 300px; border-radius: 10px; background: var(--o); visibility: hidden; }
+.pk-box b { position: absolute; left: 26px; top: 20px; color: #fff; font-size: 70px; font-weight: 700; line-height: 1; letter-spacing: -0.05em; }
+.pk-box u { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-40%); text-align: center; color: #fff; text-decoration: none; font-weight: 700; font-size: 80px; letter-spacing: -0.045em; text-transform: uppercase; line-height: 1; visibility: hidden; }
+
+/* malé boxy s čísly bodů vlevo přes A-roll a popisky vedle nich (přehled tří bodů) */
+.pk-mbx { position: absolute; left: 70px; width: 170px; height: 200px; border-radius: 8px; background: var(--o); display: grid; place-items: center; visibility: hidden; }
+.pk-mbx b { color: #fff; font-size: 150px; font-weight: 700; letter-spacing: -0.05em; line-height: 1; }
+.pk-mbl { position: absolute; left: 272px; color: #fff; font-weight: 700; font-size: 78px; letter-spacing: -0.045em; text-transform: uppercase; line-height: 1; white-space: nowrap; text-shadow: 0 2px 22px rgba(17, 17, 17, 0.6); visibility: hidden; }
+
+/* značka partnera: čtverec v barvě značky s piktogramem a název vedle (Higgsfield: #D1FE17, jediná povolená cizí barva) */
+.pk-znacka { position: absolute; left: 0; right: 0; top: 720px; display: flex; justify-content: center; align-items: center; gap: 56px; transform: translateY(-50%); }
+.pk-znacka > div { position: relative; width: 300px; height: 300px; border-radius: 68px; background: var(--znacka, #D1FE17); display: grid; place-items: center; }
+.pk-znacka svg { width: 190px; height: 190px; color: #131313; }
+.pk-znacka span { font-variant-ligatures: none; color: var(--cerna); font-weight: 700; font-size: 200px; letter-spacing: -0.05em; line-height: 1; }

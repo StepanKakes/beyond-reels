@@ -1,6 +1,6 @@
 ---
 name: reel
-description: Průvodce výrobou reelu Beyond od surového videa po render na revizní stránce. Použij, když někdo z týmu chce udělat reel, edit, případovku, rozbor podnikatele, klientský příběh nebo motion grafiku do reelu, napíše /reel, "udělej reel", "střihni to", "jako mason / noske / matt gray / lumitris / nathan / caspar", nebo pošle video a chce z něj reel. Zeptá se na styl a brief, navrhne ke každé větě víc směrů z naší knihovny komponent, po schválení postaví kompozici v HyperFrames se sdíleným jádrem, zvukem podle standardu a nahraje render k revizi s komentáři.
+description: Průvodce výrobou reelu Beyond od surového videa po render na revizní stránce. Použij, když někdo z týmu chce udělat reel, edit, případovku, rozbor podnikatele, klientský příběh nebo motion grafiku do reelu, napíše /reel, "udělej reel", "střihni to", "jako mason / noske / matt gray / lumitris / nathan / caspar / soowei", chce YouTube edit nebo intro videa, nebo pošle video a chce z něj reel nebo YouTube video. Zeptá se na styl a brief, navrhne ke každé větě víc směrů z naší knihovny komponent, po schválení postaví kompozici v HyperFrames se sdíleným jádrem, zvukem podle standardu a nahraje render k revizi s komentáři.
 ---
 
 # /reel: od videa k revizi
@@ -11,7 +11,7 @@ Proměnné: `$BR_PROSTOR` (sdílený prostor beo-motion/hyperframes), `$PY` (Pyt
 `$BR_WHISPER` (model přepisů), `$BR_PLUGIN` (plugin).
 
 Než cokoli navrhneš, přečti `$BR_PLUGIN/vkus/pravidla.md` a verdikty týmu (ArtifactData `list` kolekce `verdikty` na revizní stránce, odkaz ve skillu `revize`). Platí bez připomínání.
-Ve zvoleném stylu pak jeho skill (`styl-mason`, `styl-noske`, `styl-matt-gray`, `styl-lumitris`, `styl-nathan`, `styl-caspar`).
+Ve zvoleném stylu pak jeho skill (`styl-mason`, `styl-noske`, `styl-matt-gray`, `styl-lumitris`, `styl-nathan`, `styl-caspar`, `styl-soowei`).
 
 Jak pracovat a dělit práci mezi agenty a modely: `$BR_PLUGIN/vkus/prace.md` (přečti na začátku). Krátce: Mac měří první
 (`souhrn_videa.py`, `kontrola_renderu.py`, whisper, ebur128), oči deleguj agentovi `beyond-reels:overovac` (Sonnet) a rozbory
@@ -23,14 +23,17 @@ Zvuk nikdy nepřehrávej nahlas.
 Jedním voláním AskUserQuestion se zeptej na to, co ze zadání neplyne:
 - **Styl:** Mason (papír, červená, grafika na každou frázi, případovky), Noske (filmový talking head, typografické karty),
   Matt Gray (mřížka s diagramem nahoře, webka dole), Lumitris (rychlý dokumentární edit 4:3), Nathan (klidný, velké slovo za hlavou, B-roll v oknech),
-  Caspar (řečí vedený příběh, důraz typografií, karty a B-rolly lidí z příběhu)
+  Caspar (řečí vedený příběh, důraz typografií, karty a B-rolly lidí z příběhu),
+  SooWei (YouTube 16:9: čisté tvrdé střihy se zoomem, titulky po slovech, počítadlo, karta s kroky, papír s kapitolou, jen hlas)
+- **Formát** (jen když neplyne ze stylu, AskUserQuestion bere nejvýš 4 otázky, jinak volným textem): reel 4:3 1920x1440,
+  nebo YouTube 16:9 1920x1080 (SooWei je vždy 16:9, ostatní styly výchozí 4:3)
 - **Typ:** rozbor cizího byznysu, klientský příběh, vlastní framework, talking head insight
 - **Délka:** do 45 s, 45 až 90 s, delší
 - **Konec:** CTA slovo (“START”, “AUDIT”...), odkaz v bio, bez CTA
 
 Pak volným textem: cesta ke zdrojovému videu (nebo víc pokusů), o kom nebo o čem to je, odkazy na jeho videa a profil
 (citace, komentáře, logo), hook nápad, co určitě ukázat nebo neukazovat. Zapiš `brief.json` do projektu:
-`{styl, typ, delka, cta, zdroje: [...], tema, osoba, odkazy: [...], hook, poznamky}`.
+`{styl, format, typ, delka, cta, zdroje: [...], tema, osoba, odkazy: [...], hook, poznamky}`.
 
 ## 2. Projekt
 
@@ -44,7 +47,7 @@ a sdíleným jádrem kitů, `tools/jadro.sh --stav` ukáže verze). Brief ulož 
 3. Střih: `zdroj/kusy.json` = [{od, do, zdroj}] v sekundách zdroje. Hrany na celé snímky zdroje (25 fps) do nejtiššího místa,
    pak `$PY $BR_PROSTOR/tools/kontrola_strihu.py ZDROJ zdroj/kusy.json`, opakuj, dokud nehlásí 0 podezřelých hran.
    Úseky, kde se Tim nedívá do kamery, si poznač (pokryjí se B-rollem nebo grafikou).
-4. Obraz `assets/media/aroll.mp4` (1920x1440, fps 30 až po spojení) a čistá stopa `zdroj/hlas_raw.wav` (PCM přímo ze zdroje, bez filtrů).
+4. Obraz `assets/media/aroll.mp4` (reel 1920x1440, YouTube 1920x1080 nebo 4:3 zdroj ořezaný v kompozici `object-fit: cover`; fps 30 až po spojení) a čistá stopa `zdroj/hlas_raw.wav` (PCM přímo ze zdroje, bez filtrů).
 5. Hlas: `$PY $BR_PROSTOR/tools/studio-hlas/studio_hlas.py zdroj/hlas_raw.wav zdroj/hlas_studio.wav` (s ozvěnou místnosti `--podcast`).
 6. Časy slov: oprav text (čísla jako číslice) a `$PY $BR_PROSTOR/tools/zarovnej.py zdroj/hlas_studio.wav zdroj/text.txt zdroj/slova.json`,
    pak `assets/media/slova_REEL.json` = `{"slova": [{"w","t","e"}], "delka": D}`. Po přestavbě ověř whisperem, že žádné slovo není useknuté.

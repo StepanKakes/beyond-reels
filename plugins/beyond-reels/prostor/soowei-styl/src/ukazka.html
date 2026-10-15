@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080">
+    <title>SooWei styl: ukázka intra</title>
+    <script src="vendor/gsap.min.js"></script>
+    <script src="js/mason-kit.js"></script>
+    <script src="js/soowei-kit.js"></script>
+    <link rel="stylesheet" href="soowei-kit.css">
+    <style>
+      body { margin: 0; background: var(--sw-cerna); }
+      #root { position: relative; width: 1920px; height: 1080px; }
+      #grafika { z-index: 5; }
+      #sklad { display: none; }
+    </style>
+  </head>
+  <body>
+    <!-- Ukázka: začátek reelu Heaton (hlas těla do "Zaprvé kontakty") postavený jako SooWeiovo YouTube intro 16:9.
+         Záběry jako originál: S1 jméno se zoomem, B-rolly po jedné myšlence (titulek, počítadlo, titulek, triptych),
+         Tim do kamery s frázemi, karta s kolejnicí, papír s nadpisem kapitoly. Jen hlas, bez SFX (rozhodnutí 15. 10.). -->
+    <div id="root" class="sw-plocha" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-fps="30" data-duration="{{D}}">
+      <audio id="mix" src="assets/media/mix_ukazka.wav" data-start="0" data-duration="{{D}}" data-track-index="20" data-volume="1"></audio>
+      <div id="zabery" class="sw-vrstva"></div>
+      <div id="grafika" class="sw-vrstva"></div>
+      <div id="sklad">
+        <!-- b_zac.mp4 = hotová B-rollová stopa reelu Heaton, čas shodný s hlasem; tim_telo.mp4 = Tim, čas shodný s hlasem -->
+        <video id="v1" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="0" data-duration="1.85" data-media-start="0" data-track-index="1"></video>
+        <video id="v2" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="1.85" data-duration="1.4" data-media-start="2.0" data-track-index="2"></video>
+        <video id="v3" style="object-position: 50% 100%; transform-origin: 50% 100%" class="clip" src="assets/media/b_miliardy.mp4" muted playsinline data-start="3.25" data-duration="1.466" data-media-start="0" data-track-index="3"></video>
+        <video id="v4" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="4.716" data-duration="1.284" data-media-start="4.716" data-track-index="4"></video>
+        <video id="v5" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="6.0" data-duration="1.84" data-media-start="6.0" data-track-index="5"></video>
+        <video id="vP1" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="6.8" data-duration="1.04" data-media-start="0.3" data-track-index="6"></video>
+        <video id="vP2" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="6.8" data-duration="1.04" data-media-start="5.6" data-track-index="7"></video>
+        <video id="v6" class="clip" src="assets/media/tim_telo.mp4" muted playsinline data-start="7.84" data-duration="6.76" data-media-start="7.84" data-track-index="8"></video>
+        <video id="vK" class="clip" src="assets/media/tim_telo.mp4" muted playsinline data-start="14.6" data-duration="2.1" data-media-start="14.6" data-track-index="9"></video>
+        <video id="v8" class="clip" src="assets/media/b_zac.mp4" muted playsinline data-start="16.7" data-duration="{{D-16.7}}" data-media-start="19.7" data-track-index="10"></video>
+              </div>
+    </div>
+    <script>
+      const root = document.getElementById("root");
+      MK.init(root);
+      const tl = gsap.timeline({ paused: true });
+      const S = /*SLOVA*/, D = {{D}};
+      const T = (i) => S[i].t, F = SW.F, $ = (id) => document.getElementById(id), Z = $("zabery"), G = $("grafika");
+      // slova z řeči bez interpunkce, titulky bez verzálek kromě jmen
+      const JMENA = ["George", "Heaton", "LA"];
+      const sl = (...ii) => ii.map((i) => { let w = S[i].w.replace(/[.,?!]/g, ""); if (!JMENA.includes(w)) w = w.toLowerCase(); return { w, t: T(i) }; });
+
+      // S1 0 až 1,85: jméno po písmenech (SW2) a podtitul (SW3) uvnitř záběru, zoom out 1,55 s doostřením (SW1)
+      const s1 = SW.zaber(tl, Z, $("v1"), 0, 1.85);
+      SW.zoomVen(tl, s1, 0);
+      SW.jmeno(tl, s1, "George Heaton", 0.07);
+      SW.podtitul(tl, s1, "jede bomby", T(2) - F(1));
+
+      // S2 1,85 až 3,25: titulek po slovech (SW4) před cedulí značky, jemné klouzání (SW9 jako S2)
+      const s2 = SW.zaber(tl, Z, $("v2"), 1.85, 3.25);
+      SW.klouzani(tl, $("v2"), 1.85, { dx: 0.009, dy: 0.004, s: 1, n: 36 });
+      SW.titulek(tl, s2, sl(4, 5, 7), { px: 0.087, y: 0.87, tma: true });   // značku nese cedule v záběru (y 40 až 62 %), titulek pod ní tmavý na světlé stěně
+
+      // S3 3,25 až 4,72: počítadlo (SW7) na B-rollu peněz, klouzání (SW9)
+      const s3 = SW.zaber(tl, Z, $("v3"), 3.25, 4.716);
+      SW.klouzani(tl, $("v3"), 3.25, { zaklad: 1.2, dy: 0 });   // zdroj má nahoře vypálený cizí ticker, výřez ho drží mimo obraz
+      SW.pocitadlo(tl, s3, 3.25, { do: 3000000000, za: "Kč ročně", tZa: T(10) - F(1) });
+
+      // S4 4,72 až 6,0: titulek po slovech (SW4)
+      const s4 = SW.zaber(tl, Z, $("v4"), 4.716, 6.0);
+      SW.titulek(tl, s4, sl(12, 13, 14, 15, 16), { px: 0.076 });
+
+      // S5 6,0 až 7,84: titulek (značka auta jen obrazem) a triptych harmonika (SW8) s předchozími záběry, hotový před Timem
+      const s5 = SW.zaber(tl, Z, $("v5"), 6.0, 7.84);
+      SW.titulek(tl, s5, sl(20, 21, 22, 23), { px: 0.066 });
+      SW.triptych(tl, G, [{ media: $("vP1"), text: "jede\nbomby" }, { media: $("vP2"), text: "vlastní\npenthouse" }], s5, 6.8, { t1: 7.84 });
+
+      // S6 7,84 až 14,6: Tim do kamery, pomalý zoom out (SW1 pomaly), fráze s tvrdou výměnou (SW5) a červeným boxem (SW6).
+      // Tim má světlé triko, fráze jsou tmavé s aurou (pravidla: bílé nikdy přes bílé triko)
+      const s6 = SW.zaber(tl, Z, $("v6"), 7.84, 14.6);
+      SW.zoomVen(tl, s6, 7.84, { typ: "pomaly" });
+      SW.fraze(tl, s6, [
+        { slova: sl(24, 25), t0: 7.84 },
+        { slova: sl(26, 27, 28), duraz: true },
+        { slova: sl(29, 30) },
+        { slova: sl(31, 32, 33) },
+        { slova: [...sl(34), { ...sl(35)[0], box: true }] },
+        { slova: sl(36, 37) },
+        { slova: sl(38, 39, 40) },
+        { slova: sl(41, 42), duraz: true },
+        { slova: sl(43, 44) },
+      ], { t1: 14.6, tma: true, y: 0.75 });   // pod bradou (obličej v 16:9 výřezu kolem y 43 %)
+
+      // S7 14,6 až 16,7: karta s kolejnicí (SW11), vpravo Tim, tři věci na kolejnici
+      SW.karta(tl, G, $("vK"), 14.6, 16.7, { nadpis: "3 věci, které jinak nezíská", kroky: [{ text: "kontakty" }, { text: "prodej" }, { text: "autorita" }] });
+
+      // S8 16,7 až konec: papír zleva tlačí záběr (SW12), nadpis kapitoly a dva tahy fixkou (SW13)
+      const s8 = SW.zaber(tl, Z, $("v8"), 16.7, D);
+      SW.papir(tl, G, s8, 16.7, { nadpis: "kontakty", tah1: 17.95, tah2: 18.3 });
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

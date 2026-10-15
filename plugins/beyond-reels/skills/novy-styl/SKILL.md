@@ -7,12 +7,13 @@ description: Naučí plugin nový styl reelů z odkazů na videa tvůrce (Instag
 
 Každý příkaz v Bash začni `source ~/.config/beyond-reels/env.sh &&` (chybí-li, `zsh <plugin>/scripts/setup.sh`).
 Před návrhy přečti `$BR_PLUGIN/vkus/pravidla.md`: z cizího stylu bereme řemeslo (rytmus, kompozici, pohyb), ne věci, které máme zakázané.
-Vzory hotových stylů: `$BR_PROSTOR/lumitris-styl/v2` (nejnovější postup s plány), `noske-styl`, `matt-gray-styl`, `nathan-styl`, rozbory v `$BR_INSPIRACE/<jmeno>/_rozbor`.
+Vzory hotových stylů: `$BR_PROSTOR/lumitris-styl/v2` (nejnovější postup s plány), `caspar-styl` a `soowei-styl` (kit na jádře, 16:9), `noske-styl`, `matt-gray-styl`, `nathan-styl`, rozbory v `$BR_INSPIRACE/<jmeno>/_rozbor`.
 
 ## 1. Zadání
 
 Zeptej se (AskUserQuestion a volný text): jméno tvůrce a krátký název stylu (bez diakritiky, např. `nathan`), 3 až 6 odkazů na reely,
-co přesně se na nich líbí (střih, typografie, B-rolly, zvuk), na jaký typ našich reelů to má sloužit, formát (výchozí 4:3 1920x1440 30 fps).
+co přesně se na nich líbí (střih, typografie, B-rolly, zvuk), na jaký typ našich reelů to má sloužit, formát (výchozí 4:3 1920x1440 30 fps, YouTube 16:9 1920x1080 podle vzoru `soowei-styl`). Jde naučit i jen úsek videa
+(třeba intro YouTube videa): stáhni jen ten kus `yt-dlp --download-sections "*0-30"` do `_raw/<id>/video.mp4` a pak `stahni.sh`, video už nestahuje znovu.
 
 ## 2. Stáhnout a přepsat
 

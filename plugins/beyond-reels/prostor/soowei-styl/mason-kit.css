@@ -1,0 +1,293 @@
+@font-face { font-family: "IS"; src: url("assets/fonts/InstrumentSerif-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+/* Mason kit: vzhled komponent. Barvy a písma jen přes proměnné tématu
+ * Výchozí téma = Beyond (beyond-kit.css tokeny), replika Jacka = tema-jack.css přepíše proměnné
+ */
+:root {
+  --mk-akcent: var(--cervena, #FF0E00);
+  --mk-papir: var(--papir, #FBF9FC);
+  --mk-cerna: var(--cerna, #111111);
+  --mk-bila: #FFFFFF;
+  --mk-uchyt-tmavy: color-mix(in oklab, var(--mk-akcent) 55%, var(--mk-cerna));
+  --mk-sans: "HN", "Helvetica Neue", Helvetica, sans-serif;
+  --mk-serif: "IS", "Instrument Serif", serif;
+  --mk-proklad: -0.04em;
+  --mk-bublina: var(--mk-cerna);
+}
+
+.mk-scena { position: absolute; inset: 0; overflow: hidden; background: var(--mk-papir); font-family: var(--mk-sans); -webkit-font-smoothing: antialiased; }
+
+/* karta s úchyty */
+.mk-karta { position: absolute; z-index: 3; }
+.mk-karta-obsah { position: absolute; inset: 0; overflow: hidden; background: var(--mk-cerna); }
+.mk-karta-snimek { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.mk-karta-ram { position: absolute; pointer-events: none; }
+.mk-uchyt { position: absolute; background: var(--mk-akcent); }
+.mk-uchyt.lh { left: 0; top: 0; }
+.mk-uchyt.ph { left: 100%; top: 0; }
+.mk-uchyt.ld { left: 0; top: 100%; }
+.mk-uchyt.pd { left: 100%; top: 100%; }
+
+/* psací pole */
+.mk-pole { position: absolute; z-index: 5; background: var(--mk-bila); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.mk-pole.tmave { background: var(--mk-cerna); }
+.mk-pole-text { color: var(--mk-akcent); font-weight: 700; letter-spacing: var(--mk-proklad); text-transform: uppercase; white-space: nowrap; line-height: 1; padding-top: 0.06em; }
+.mk-pole-text.vlevo { position: absolute; left: 0.08em; }
+
+/* štítek */
+.mk-stitek { position: absolute; z-index: 5; background: var(--mk-cerna); color: var(--mk-akcent); display: inline-flex; align-items: center; justify-content: center;
+  padding: 0 0.16em; font-weight: 700; letter-spacing: var(--mk-proklad); text-transform: uppercase; white-space: nowrap; line-height: 1; }
+.mk-stitek.svetly { background: var(--mk-bila); }
+
+/* squash pás */
+.mk-pas { position: absolute; left: 0; right: 0; z-index: 4; overflow: hidden; background: var(--mk-akcent); }
+.mk-pas > img { position: absolute; left: 0; top: 50%; width: 100%; height: 100vh; min-height: 100%; object-fit: cover; transform: translateY(-50%); }
+.mk-pas-logo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); color: var(--mk-bila); font-weight: 700; letter-spacing: -0.03em; white-space: nowrap; line-height: 1; }
+
+/* titulek na hrudi a serif */
+.mk-hrud { position: absolute; left: 0; right: 0; text-align: center; color: var(--mk-bila); font-weight: 700; letter-spacing: var(--mk-proklad); text-transform: uppercase; line-height: 1; white-space: nowrap; }
+.mk-serif { font-synthesis: none; position: absolute; left: 0; right: 0; text-align: center; color: var(--mk-akcent); font-family: var(--mk-serif); font-style: normal; font-weight: 400; text-transform: none; line-height: 1; white-space: nowrap; }
+
+/* obří slovo */
+.mk-hero { position: absolute; left: 0; right: 0; text-align: center; color: var(--mk-akcent); font-weight: 700; letter-spacing: -0.045em; text-transform: uppercase; line-height: 0.8; white-space: nowrap; visibility: hidden; }
+.mk-hero.serif { font-family: var(--mk-serif); font-style: normal; font-weight: 400; text-transform: none; letter-spacing: -0.02em; }
+
+/* bublina */
+.mk-bublina { position: absolute; z-index: 6; isolation: isolate; background: var(--mk-bublina); color: var(--mk-bila); border-radius: 999px; padding: 0.42em 0.9em 0.38em; font-weight: 700; letter-spacing: -0.02em; line-height: 1; white-space: nowrap; visibility: hidden; }
+.mk-bublina::after { content: ""; position: absolute; left: 0.5em; bottom: -0.12em; width: 0.7em; height: 0.7em; background: inherit; border-radius: 0 0 0 0.7em; transform: skewX(20deg); }   /* bez z-index -1, ocas má barvu bubliny */
+
+/* kosočtverec */
+.mk-kosoctverec { position: absolute; z-index: 4; }
+.mk-kosoctverec svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.mk-kosoctverec path { fill: var(--mk-akcent); }
+.mk-kosoctverec span { position: absolute; inset: 0; display: grid; place-items: center; color: var(--mk-bila); font-weight: 700; letter-spacing: -0.04em; line-height: 1; padding-top: 0.04em; }
+
+/* slova z rozmazání (Fred Z2): černá = všichni, akcent kurzíva = on */
+.mk-radek { position: absolute; left: 0; right: 0; display: flex; justify-content: center; align-items: baseline; gap: 0.24em; white-space: nowrap; }
+.mk-rslovo { color: var(--mk-cerna); font-weight: 500; letter-spacing: -0.03em; line-height: 1; transform-origin: 50% 70%; }
+/* Beyond: pointa písmem Instrument Serif v normálním řezu, Helvetica nikdy kurzívou (Tim). Jack: Helvetica Medium Italic (tema-jack.css) */
+.mk-rslovo.akcent { color: var(--mk-akcent); font-family: var(--mk-serif); font-style: normal; font-weight: 400; letter-spacing: -0.01em; font-size: 1.12em; font-synthesis: none; }
+.mk-radek.na-akcentu .mk-rslovo { color: var(--mk-bila); }
+
+/* číslo bodu #N s maskou zdola */
+.mk-cislo { position: absolute; color: var(--mk-akcent); font-weight: 700; letter-spacing: -0.05em; line-height: 0.8; white-space: nowrap; visibility: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 30%, transparent 105%); mask-image: linear-gradient(to bottom, #000 30%, transparent 105%); transform-origin: 70% 40%; }
+.mk-caps { position: absolute; color: var(--mk-akcent); font-weight: 500; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1; white-space: nowrap; visibility: hidden; transform-origin: 0 70%; }
+
+/* pruh z okraje a oblouk */
+.mk-pruh { position: absolute; background: var(--mk-akcent); color: var(--mk-bila); display: flex; align-items: center; font-weight: 500; letter-spacing: -0.01em; text-transform: uppercase; line-height: 1; white-space: nowrap; visibility: hidden; }
+.mk-pruh.vlevo { left: 0; justify-content: flex-end; border-radius: 0 0.3em 0.3em 0; padding-right: 0.42em; }
+.mk-pruh.vpravo { justify-content: flex-start; border-radius: 0.3em 0 0 0.3em; padding-left: 0.42em; }
+.mk-oblouk { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.mk-oblouk path { fill: none; stroke: var(--mk-akcent); stroke-linecap: butt; visibility: hidden; }
+
+/* pilulka (štítek) */
+.mk-pilulka { position: absolute; background: var(--mk-akcent); color: var(--mk-bila); display: inline-flex; align-items: center; justify-content: center; padding: 0 0.5em; border-radius: 0.14em;
+  font-weight: 500; letter-spacing: -0.01em; text-transform: uppercase; line-height: 1; white-space: nowrap; visibility: hidden; }
+
+/* jmenovka */
+.mk-jmeno { position: absolute; left: 0; right: 0; text-align: center; color: var(--mk-akcent); font-weight: 500; letter-spacing: -0.03em; line-height: 1; white-space: nowrap; visibility: hidden; }
+
+/* miniatura ve shluku */
+.mk-mini { position: absolute; overflow: hidden; visibility: hidden; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18); }
+.mk-mini img, .mk-mini video { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* čtverec 1 2 3 s obrysovou číslicí */
+.mk-ctverec { position: absolute; background: var(--mk-akcent); border-radius: 6px; display: grid; place-items: center; visibility: hidden; }
+.mk-ctverec span { color: var(--mk-bila); font-weight: 700; line-height: 1; }   /* obrysová číslice byla nečitelná */
+
+/* viněta typografických scén (Fred Z24: násobek 0,675 v rohu) */
+.mk-vineta { position: absolute; inset: 0; pointer-events: none; z-index: 1; background: radial-gradient(ellipse 75% 75% at 50% 50%, rgba(0,0,0,0) 55%, rgba(60,40,30,0.32) 100%); mix-blend-mode: multiply; }
+
+/* profil jako UI objekt */
+.mk-profil { position: absolute; background: var(--mk-bila); color: var(--mk-cerna); border-radius: 0.6em; padding: 1.1em 1.3em 1em; font-family: -apple-system, "SF Pro Text", var(--mk-sans); font-size: 26px; line-height: 1.25; visibility: hidden; }
+.mk-profil.tmavy { background: #181B20; color: #F2F2F4; }
+.mk-pr-hlava { display: flex; gap: 1.2em; align-items: center; }
+.mk-pr-avatar { flex: none; width: 5.4em; height: 5.4em; border-radius: 50%; padding: 0.22em; background: linear-gradient(45deg, var(--mk-akcent), color-mix(in oklab, var(--mk-akcent) 60%, #fff)); }
+.mk-pr-avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 0.15em solid currentColor; border-color: inherit; display: block; background: #ddd; }
+.mk-profil .mk-pr-avatar img { border-color: var(--mk-bila); }
+.mk-profil.tmavy .mk-pr-avatar img { border-color: #181B20; }
+.mk-pr-jmeno { font-weight: 700; font-size: 1.15em; display: flex; align-items: center; gap: 0.3em; }
+.mk-pr-overeno { width: 0.8em; height: 0.8em; border-radius: 50%; background: #3897F0; display: inline-block; }
+.mk-pr-cisla { display: flex; gap: 1.1em; margin-top: 0.35em; white-space: nowrap; }
+.mk-pr-cisla b { font-weight: 700; }
+.mk-pr-bio { margin-top: 0.35em; opacity: 0.75; font-size: 0.85em; white-space: nowrap; }
+.mk-pr-tlacitka { display: flex; gap: 0.5em; margin-top: 0.9em; }
+.mk-pr-btn { flex: 1; text-align: center; padding: 0.42em 0; border-radius: 0.4em; background: color-mix(in oklab, currentColor 12%, transparent); font-weight: 600; font-size: 0.9em; }
+.mk-pr-btn.hlavni { background: #5C5CE8; color: #fff; }
+
+/* bublina chat pilulka (Georgios Z10) */
+.mk-chat { position: absolute; background: #5C96EE; color: #fff; border-radius: 0.4em; display: flex; align-items: center; justify-content: center; font-weight: 700; letter-spacing: -0.03em; text-transform: uppercase; line-height: 1; visibility: hidden; }
+.mk-chat::after { content: ""; position: absolute; bottom: -0.12em; width: 0.5em; height: 0.5em; background: inherit; border-radius: 0 0 0.5em 0; }
+.mk-chat.ocas-p::after { right: -0.08em; transform: skewX(-25deg); }
+.mk-chat.ocas-l::after { left: -0.08em; transform: skewX(25deg); border-radius: 0 0 0 0.5em; }
+
+/* ===== Beyond nové komponenty (js/beyond-nove.js) ===== */
+/* N1 týdenní pás */
+.bn-tyden { position: absolute; visibility: hidden; font-family: var(--mk-sans); }
+.bn-tyden-hlava, .bn-tyden-radek { display: grid; grid-template-columns: 56px repeat(7, 1fr); gap: 10px; align-items: center; }
+.bn-tyden-hlava { padding-left: 66px; grid-template-columns: repeat(7, 1fr); margin-bottom: 14px; }
+.bn-tyden-den { text-align: center; color: var(--mk-cerna); opacity: 0.45; font-weight: 700; font-size: 36px; letter-spacing: -0.02em; text-transform: uppercase; }
+.bn-tyden-telo { position: relative; }
+.bn-tyden-radek { margin-bottom: 10px; visibility: hidden; }
+.bn-tyden-cislo { color: var(--mk-cerna); font-weight: 700; font-size: 30px; letter-spacing: -0.03em; text-align: right; padding-right: 8px; opacity: 0.45; }
+.bn-tyden-bunka { position: relative; height: 112px; border-radius: 14px; background: color-mix(in oklab, var(--mk-cerna) 6%, var(--mk-papir)); }
+.bn-tyden-znacka { position: absolute; inset: 0; border-radius: 14px; background: var(--mk-akcent); visibility: hidden; }
+.bn-tyden-nahled { position: absolute; inset: 7px; border-radius: 9px; overflow: hidden; visibility: hidden; z-index: 2;
+  box-shadow: 0 10px 26px rgba(17, 17, 17, 0.22); }
+.bn-tyden-nahled img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* N2 popis pod videem */
+.bn-yt { position: absolute; visibility: hidden; width: 900px; font-family: -apple-system, "SF Pro Text", var(--mk-sans); color: var(--mk-cerna); }
+.bn-yt-prehravac { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 22px; overflow: hidden; background: var(--mk-cerna); }
+.bn-yt-prehravac video, .bn-yt-prehravac img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.bn-yt-lista { position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: rgba(255, 255, 255, 0.35); }
+.bn-yt-lista i { position: absolute; left: 0; top: 0; bottom: 0; width: 38%; background: var(--mk-akcent); }
+.bn-yt-nazev { margin-top: 26px; font-weight: 700; font-size: 52px; letter-spacing: -0.02em; line-height: 1.12; }
+.bn-yt-kanal { display: flex; align-items: center; gap: 16px; margin-top: 18px; font-size: 38px; }
+.bn-yt-kanal span:last-child { opacity: 0.55; }
+.bn-yt-av { width: 72px; height: 72px; border-radius: 50%; overflow: hidden; display: inline-block; background: #ddd; }
+.bn-yt-av img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.bn-yt-popis { margin-top: 22px; border-radius: 20px; background: color-mix(in oklab, var(--mk-cerna) 6%, var(--mk-papir)); padding: 22px 26px 26px; }
+.bn-yt-meta { font-weight: 700; font-size: 32px; opacity: 0.6; margin-bottom: 10px; }
+.bn-yt-veta { position: relative; display: inline-block; font-weight: 700; font-size: 62px; letter-spacing: -0.02em; line-height: 1.15; white-space: nowrap; }
+.bn-yt-veta span { position: relative; z-index: 1; }
+.bn-yt-zvyraz { position: absolute; left: -6px; right: -6px; bottom: 2px; height: 42%; background: color-mix(in oklab, var(--mk-akcent) 34%, transparent); transform-origin: 0 50%; visibility: hidden; z-index: 0; }
+.bn-yt-kurzor { display: inline-block; width: 4px; height: 0.95em; margin-left: 4px; vertical-align: -0.12em; background: var(--mk-akcent); visibility: hidden; }
+.bn-yt-odkaz { display: inline-flex; margin-top: 22px; padding: 12px 26px; border-radius: 999px; background: var(--mk-akcent); color: var(--mk-bila); font-weight: 700; font-size: 44px; letter-spacing: -0.02em; visibility: hidden; transform-origin: 0 50%; }
+
+/* N3 tečková mapa */
+.bn-mapa { position: absolute; visibility: hidden; }
+.bn-mapa-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.bn-mapa-tecka { fill: color-mix(in oklab, var(--mk-cerna) 18%, var(--mk-papir)); }
+.bn-mapa-oblouk { fill: none; stroke: var(--mk-akcent); stroke-width: 3.5; stroke-linecap: round; visibility: hidden; }
+.bn-mapa-cil { fill: var(--mk-akcent); }
+.bn-mapa-start { fill: var(--mk-cerna); transform-box: fill-box; transform-origin: 50% 50%; visibility: hidden; }
+
+/* N4 váhy */
+.bn-vahy { position: absolute; width: 860px; height: 620px; visibility: hidden; }
+.bn-vahy-osa { position: absolute; left: 50%; bottom: 0; width: 0; height: 0; margin-left: -70px; border-left: 70px solid transparent; border-right: 70px solid transparent; border-bottom: 150px solid var(--mk-cerna); }
+.bn-vahy-rameno { position: absolute; left: 0; right: 0; bottom: 150px; height: 16px; border-radius: 8px; background: var(--mk-cerna); transform-origin: 50% 50%; }
+.bn-vahy-miska { position: absolute; bottom: 16px; width: 300px; height: 0; transform-origin: 50% 100%; }
+.bn-vahy-miska.l { left: 0; } .bn-vahy-miska.p { right: 0; }
+.bn-vahy-blok { position: absolute; left: 50%; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 18px; visibility: hidden; }
+.bn-vahy-blok b { font-weight: 700; letter-spacing: -0.05em; line-height: 0.9; white-space: nowrap; }
+.bn-vahy-blok span { font-family: var(--mk-serif); font-style: normal; font-weight: 400; line-height: 1; margin-top: 6px; }
+.bn-vahy-blok.velky { width: 300px; height: 300px; background: var(--mk-akcent); color: var(--mk-bila); }
+.bn-vahy-blok.velky b { font-size: 98px; } .bn-vahy-blok.velky span { font-size: 62px; }
+.bn-vahy-blok.maly { width: 150px; height: 150px; background: var(--mk-cerna); color: var(--mk-bila); }
+.bn-vahy-blok.maly b { font-size: 60px; } .bn-vahy-blok.maly span { font-size: 38px; }
+
+/* N5 lavina zpráv */
+.bn-lavina { position: absolute; width: 860px; height: 900px; visibility: hidden; }
+.bn-lavina-stoh { position: absolute; left: 0; right: 0; bottom: 0; height: 0; }
+.bn-zprava { position: absolute; left: 0; right: 0; bottom: 0; height: 156px; box-sizing: border-box; display: flex; align-items: center; gap: 22px; padding: 0 28px; border-radius: 28px; background: var(--mk-bila);
+  box-shadow: 0 10px 30px rgba(17, 17, 17, 0.12), 0 1px 3px rgba(17, 17, 17, 0.08); visibility: hidden; font-family: -apple-system, "SF Pro Text", var(--mk-sans); transform-origin: 50% 0; }
+.bn-zprava-av { flex: none; width: 92px; height: 92px; border-radius: 50%; background: color-mix(in oklab, var(--mk-cerna) 14%, var(--mk-papir)); }
+.bn-zprava div { flex: 1; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.bn-zprava b { font-size: 36px; font-weight: 700; color: var(--mk-cerna); }
+.bn-zprava div span { font-size: 42px; color: var(--mk-cerna); opacity: 0.72; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bn-zprava i { font-style: normal; font-size: 24px; opacity: 0.45; }
+.bn-lavina-pilulka { position: absolute; left: 50%; top: 0; display: inline-flex; align-items: baseline; gap: 16px; padding: 18px 34px 16px; border-radius: 999px; background: var(--mk-akcent);
+  color: var(--mk-bila); visibility: hidden; white-space: nowrap; z-index: 3; }
+.bn-lavina-pilulka b { font-weight: 700; font-size: 92px; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }
+.bn-lavina-pilulka span { font-family: var(--mk-serif); font-style: normal; font-size: 64px; line-height: 1; }
+
+/* BN IG profil 1:1 (Android tmavý), nativně 1080 px, škáluje volající */
+.bn-ig { position: absolute; width: 1080px; height: 1000px; background: #0C0F14; color: #F5F5F5; font-family: Roboto, "Helvetica Neue", -apple-system, sans-serif; transform-origin: 0 0; visibility: hidden; overflow: hidden; }
+.bn-ig.svetly { background: #fff; color: #000; }
+.bn-ig-ik { display: inline-flex; } .bn-ig-ik svg { width: 100%; height: 100%; }
+.bn-ig-lista { position: absolute; left: 0; right: 0; top: 40px; height: 96px; }
+.bn-ig-lista .zpet { position: absolute; left: 34px; top: 12px; width: 80px; height: 72px; }
+.bn-ig-user { position: absolute; left: 193px; top: 8px; font-size: 66px; font-weight: 700; letter-spacing: -0.01em; }
+.bn-ig-lista .zvon { position: absolute; left: 798px; top: 6px; width: 82px; height: 82px; }
+.bn-ig-lista .menu { position: absolute; left: 960px; top: 16px; width: 50px; height: 62px; }
+.bn-ig-kruh { position: absolute; left: 48px; top: 168px; width: 264px; height: 264px; border-radius: 50%; padding: 9px; box-sizing: border-box; background: linear-gradient(315deg, #FFD600 0%, #FF7A00 38%, #FF0069 72%, #D300C5 100%); }
+.bn-ig-mezera { width: 100%; height: 100%; border-radius: 50%; padding: 11px; box-sizing: border-box; background: #0C0F14; }
+.bn-ig.svetly .bn-ig-mezera { background: #fff; }
+.bn-ig-av { width: 100%; height: 100%; border-radius: 50%; overflow: hidden; }
+.bn-ig-av img, .bn-ig-avfill { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 50%; }
+.bn-ig-prava { position: absolute; left: 362px; top: 206px; }
+.bn-ig-jmeno { font-size: 42px; font-weight: 600; }
+.bn-ig-cisla { display: flex; margin-top: 30px; }
+.bn-ig-cisla > div { display: flex; flex-direction: column; line-height: 1.22; }
+.bn-ig-cisla > div:nth-child(1) { width: 266px; } .bn-ig-cisla > div:nth-child(2) { width: 240px; }
+.bn-ig-cisla b { font-size: 45px; font-weight: 700; } .bn-ig-cisla span { font-size: 41px; }
+.bn-ig-bio { position: absolute; left: 48px; top: 446px; font-size: 38px; }
+.bn-ig-preklad { position: absolute; left: 48px; top: 498px; font-size: 38px; font-weight: 600; }
+.bn-ig-odkaz { position: absolute; left: 48px; top: 560px; font-size: 38px; font-weight: 600; color: #8EA6F7; display: flex; align-items: center; gap: 14px; }
+.bn-ig.svetly .bn-ig-odkaz { color: #00376B; }
+.bn-ig-odkaz .bn-ig-ik { width: 46px; height: 46px; }
+.bn-ig-tlacitka { position: absolute; left: 36px; right: 36px; top: 668px; display: flex; gap: 18px; }
+.bn-ig-btn { flex: 1; height: 96px; border-radius: 22px; background: #262A31; display: flex; align-items: center; justify-content: center; font-size: 38px; font-weight: 600; }
+.bn-ig.svetly .bn-ig-btn { background: #EFEFEF; }
+.bn-ig-btn.modre { background: #4A5DF9; color: #fff; }
+.bn-ig-btn.ctverec { flex: none; width: 96px; } .bn-ig-btn.ctverec .bn-ig-ik { width: 52px; height: 52px; }
+
+/* BN LCD obal */
+.bn-lcd { overflow: hidden; }
+.bn-lcd-obsah { position: absolute; inset: -6px; filter: url(#bn-lcd); }
+.bn-lcd-obsah > * { visibility: inherit; }
+.bn-lcd-mrizka { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: multiply; visibility: inherit;
+  background-image: linear-gradient(90deg, rgba(150, 70, 175, 0.22) 0 18%, transparent 18% 100%), linear-gradient(0deg, rgba(70, 130, 100, 0.14) 0 18%, transparent 18% 100%); }
+.bn-lcd-ostrost { position: absolute; inset: 0; pointer-events: none; visibility: inherit; backdrop-filter: blur(var(--lcd-rozmazani, 6px));
+  -webkit-mask-image: radial-gradient(ellipse 62% 58% at 50% 50%, transparent var(--lcd-polomer, 38%), #000 100%); mask-image: radial-gradient(ellipse 62% 58% at 50% 50%, transparent var(--lcd-polomer, 38%), #000 100%); }
+.bn-lcd-svetlo { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: multiply; visibility: inherit; background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(255,255,255,0) 55%, rgba(150,145,160,1) 100%); }
+
+/* BN YouTube karta 1:1 (watch page tmavá), nativně 1550 px */
+.bn-ytk { position: absolute; background: #0F0F0F; color: #F1F1F1; border-radius: 30px; overflow: hidden; font-family: Roboto, "Helvetica Neue", Arial, sans-serif; transform-origin: 0 0; padding-bottom: 10px; visibility: hidden; }
+.bn-ytk * { visibility: inherit; }
+.bn-ytk-video { position: relative; width: 100%; background: #000; overflow: hidden; }
+.bn-ytk-video video, .bn-ytk-video img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.bn-ytk-ikony { display: flex; gap: 31px; padding: 13px 0 0 26px; color: #E8E8E8; }
+.bn-ytk-ikony span { width: 15px; height: 15px; display: inline-flex; } .bn-ytk-ikony svg { width: 100%; height: 100%; }
+.bn-ytk-titulek { padding: 9px 20px 0; font-size: 17px; font-weight: 600; line-height: 1.3; min-height: 22px; white-space: nowrap; }
+.bn-ytk-radek { display: flex; align-items: center; padding: 8px 20px 0; height: 38px; }
+.bn-ytk-av { width: 34px; height: 34px; border-radius: 50%; overflow: hidden; flex: none; background: #333; }
+.bn-ytk-av img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.bn-ytk-kanal { display: flex; flex-direction: column; margin-left: 11px; line-height: 1.25; }
+.bn-ytk-kanal b { font-size: 13px; font-weight: 600; } .bn-ytk-kanal i { font-style: normal; font-size: 10px; color: #AAAAAA; }
+.bn-ytk-sub { margin-left: 22px; background: #F1F1F1; color: #0F0F0F; height: 29px; padding: 0 13px; border-radius: 15px; display: inline-flex; align-items: center; font-size: 11px; font-weight: 600; }
+.bn-ytk-akce { margin-left: auto; display: flex; gap: 8px; }
+.bn-ytk-pil { height: 29px; padding: 0 12px; border-radius: 15px; background: #272727; display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; }
+.bn-ytk-pil svg { width: 14px; height: 14px; } .bn-ytk-pil.kul { width: 29px; padding: 0; justify-content: center; }
+.bn-ytk-pil.dvoj { padding: 0; } .bn-ytk-pil.dvoj > span { display: inline-flex; align-items: center; gap: 6px; padding: 0 12px; height: 100%; }
+.bn-ytk-pil.dvoj > span + span { border-left: 1px solid #3F3F3F; }
+.bn-ytk-popis { margin: 10px 20px 0; background: #272727; border-radius: 10px; padding: 9px 12px 10px; font-size: 11px; line-height: 1.45; }
+.bn-ytk-meta { font-weight: 600; display: block; }
+.bn-ytk-text { white-space: pre-wrap; } .bn-ytk-text a, .bn-ytk-odkaz { color: #3EA6FF; text-decoration: none; }
+.bn-kurzor { display: inline-block; width: 0.09em; height: 1.05em; background: currentColor; vertical-align: -0.15em; margin-left: 0.04em; }
+.bn-vyber { background-image: linear-gradient(rgba(62, 166, 255, 0.35), rgba(62, 166, 255, 0.35)); background-repeat: no-repeat; background-position: 0 50%; background-size: 0% 100%; border-radius: 2px; }   /* výběr jako pozadí slova, žádná vrstva pod papírem */
+
+/* BN IG profil desktop (tmavý web) na 1920 x 1080 */
+.bn-igd { position: absolute; inset: 0; color: #F2F2F4; font-family: -apple-system, "SF Pro Text", Helvetica, sans-serif; visibility: hidden; }
+.bn-igd * { visibility: inherit; }
+.bn-igd > div { position: absolute; white-space: nowrap; }
+.bn-igd-kruh { width: 320px; height: 320px; border-radius: 50%; padding: 8px; box-sizing: border-box; background: linear-gradient(225deg, #D300C5 0%, #FF0069 35%, #FF7A00 70%, #FFD600 100%); }
+.bn-igd-kruh > div { width: 100%; height: 100%; border-radius: 50%; padding: 8px; box-sizing: border-box; background: #17181F; }
+.bn-igd-kruh img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block; }
+.bn-igd-jm { font-size: 43px; font-weight: 700; display: flex; align-items: center; gap: 14px; }
+.bn-igd-ov { width: 34px; height: 34px; border-radius: 50%; background: #2D9BF0; display: inline-block; }
+.bn-igd-tri { color: #8A8A92; font-size: 26px; }
+.bn-igd-real { font-size: 28px; color: #DADADE; }
+.bn-igd-cisla { font-size: 28px; display: flex; gap: 46px; } .bn-igd-cisla b { font-weight: 700; }
+.bn-igd-bio { font-size: 27px; line-height: 37px; color: #A7AEFA; }
+.bn-igd-odkaz { color: #B9C1FF; font-weight: 700; }
+.bn-igd-btn { display: flex; gap: 18px; height: 87px; } .bn-igd-btn span { width: 566px; border-radius: 20px; background: #2E3036; display: flex; align-items: center; justify-content: center; font-size: 30px; font-weight: 700; }
+.bn-igd-btn span.modre { background: #5B5BF5; } .bn-igd-btn span.mal { width: 86px; }
+
+/* Komponenty z reelu Dalen (4. 10. 2026): iMessage bubliny, IG profil s mřížkou reels, titulky jako Vince */
+.bn-imb { position: absolute; white-space: nowrap; background: #1D8BFF; color: #fff; font-weight: 500; font-size: 46px; letter-spacing: -0.015em; line-height: 1.18; padding: 0.42em 0.72em 0.46em; border-radius: 1.05em; border-bottom-left-radius: 0.28em; transform-origin: 0 100%; visibility: hidden; z-index: 2; }
+.bn-imb.l { border-bottom-left-radius: 1.05em; border-bottom-right-radius: 0.28em; transform-origin: 100% 100%; }
+.bn-igm { position: absolute; background: #fff; border-radius: 30px; box-shadow: 0 18px 50px rgba(17, 17, 17, 0.12); overflow: hidden; visibility: hidden; font-family: "Helvetica Neue", Arial, sans-serif; }
+.bn-igm-h { display: flex; align-items: center; gap: 34px; padding: 40px 44px 34px; }
+.bn-igm-h img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 5px #fff, 0 0 0 9px #E1306C; }
+.bn-igm-h b { display: block; font-size: 48px; font-weight: 700; letter-spacing: -0.01em; color: #111; }
+.bn-igm-h span { display: block; margin-top: 10px; font-size: 30px; color: #555; }
+.bn-igm-h i { font-style: normal; font-weight: 700; color: #111; }
+.bn-igm-g { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+.bn-igm-t { position: relative; aspect-ratio: 9 / 14; overflow: hidden; background: #ddd; visibility: hidden; }
+.bn-igm-t img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.bn-igm-t span { position: absolute; left: 16px; bottom: 14px; color: #fff; font-weight: 700; font-size: 30px; text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5); }
+/* titulek jako Vince Nijhof: bílé tučné 96 px se stínem, bez podkladu; na papíře .tma */
+.bn-tit { position: absolute; left: 50%; top: 1080px; transform: translateX(-50%); color: #fff; font-weight: 700; font-size: 96px; letter-spacing: -0.035em; line-height: 1; visibility: hidden; white-space: nowrap; text-shadow: 0 2px 22px rgba(17, 17, 17, 0.75), 0 0 4px rgba(17, 17, 17, 0.6); }
+.bn-tit.tma { color: #111; text-shadow: none; }

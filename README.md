@@ -87,6 +87,7 @@ Každý styl má vlastní skill a kit. Komponenty z hotových reelů jsou inspir
     <td valign="top"><img src="docs/obr/st_caspar.jpg" alt="Caspar"><br><b>Caspar</b><br><sub>Důraz typografií, karty, B-rolly lidí z příběhu</sub></td>
   </tr>
   <tr>
+    <td valign="top"><img src="docs/obr/st_soowei.jpg" alt="SooWei"><br><b>SooWei</b><br><sub>YouTube 16:9, čisté střihy se zoomem, karta s kroky</sub></td>
     <td valign="top"><br><b>Tvůj styl</b><br><sub><code>/beyond-reels:novy-styl</code> se ho naučí z odkazů na reely tvůrce</sub></td>
   </tr>
 </table>

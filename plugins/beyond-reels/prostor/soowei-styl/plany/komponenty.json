@@ -1,0 +1,10 @@
+{"fps": 30, "sirka": 720, "polozky": [
+ {"id": "soowei-jmeno", "od": 0, "do": 90},
+ {"id": "soowei-titulek", "od": 90, "do": 180},
+ {"id": "soowei-pocitadlo", "od": 180, "do": 270},
+ {"id": "soowei-triptych", "od": 270, "do": 360},
+ {"id": "soowei-fraze", "od": 360, "do": 510},
+ {"id": "soowei-kalendar", "od": 510, "do": 660},
+ {"id": "soowei-karta", "od": 660, "do": 840},
+ {"id": "soowei-papir", "od": 840, "do": 990}
+]}

@@ -1,0 +1,91 @@
+/* SooWei kit: téma Beyond pro YouTube intro 16:9 podle SooWei Goha (rozbor ~/Documents/inspirace-reels/soowei/_rozbor/STYL.md)
+ * Barvy a písma jen odsud, komponenty v js/soowei-kit.js čtou proměnné, žádné inline hex v reelu */
+@font-face { font-family: "HN"; src: url("assets/fonts/HN-Medium.ttf") format("truetype"); font-weight: 500; }
+@font-face { font-family: "HN"; src: url("assets/fonts/HN-Bold.ttf") format("truetype"); font-weight: 700; }
+@font-face { font-family: "IS"; src: url("assets/fonts/InstrumentSerif-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+
+:root {
+  --sw-papir: #F4F2EE;
+  --sw-cerna: #111111;
+  --sw-bila: #FFFFFF;
+  --sw-akcent: #FF0E00;            /* místo SooWeiovy #E23030, #CB0000 i zlata kalendáře #E0C174 */
+  --sw-karta: #2A2724;             /* neaktivní karta kalendáře, místo #2F2C23 */
+  --sw-karta-text: #8C8780;
+  --sw-sedy-stred: #CFCFCF;        /* vinětované pozadí karty s kolejnicí (SW11), změřeno */
+  --sw-sedy-kraj: #979797;
+  --sw-sedy-roh: #4C4C4C;
+  --sw-uzel: #D9D7D8;
+  --sw-sans: "HN", "Helvetica Neue", Helvetica, sans-serif;
+  --sw-serif: "IS", serif;         /* místo kurzívy originálu, vždy rovný řez */
+  --sw-proklad: -0.025em;          /* originál -0,02 až -0,035 em */
+  --sw-aura: 0 0 0.3em rgba(244, 242, 238, 0.9);    /* tmavý text přes světlé triko nebo papír */
+  --sw-stin: 0 0.04em 0.09em rgba(0, 0, 0, 0.35);   /* měkký stín z rozboru (posun 4 px, rozmazání 8 px při 94 px) */
+}
+
+.sw-plocha { position: absolute; inset: 0; overflow: hidden; background: var(--sw-cerna); font-family: var(--sw-sans); font-weight: 500;
+  -webkit-font-smoothing: antialiased; font-synthesis: none; }
+.sw-vrstva { position: absolute; inset: 0; pointer-events: none; }
+/* záběr = klip i jeho texty v jednom kontejneru, zoom (SW1) je zmenšuje spolu */
+.sw-zaber { position: absolute; inset: 0; overflow: hidden; visibility: hidden; transform-origin: 50% 50%; }
+.sw-zaber > video, .sw-zaber > img, .sw-klip { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* texty přes záběr: vždy na středu x, bílé, měkký stín, bez obrysu a podkladu */
+.sw-text { position: absolute; left: 0; right: 0; text-align: center; color: var(--sw-bila); text-shadow: var(--sw-stin);
+  letter-spacing: var(--sw-proklad); line-height: 1; white-space: nowrap; visibility: hidden; }
+.sw-text .sl, .sw-text .pi { display: inline-block; opacity: 0; }
+.sw-text .mez { display: inline-block; width: 0.26em; }
+.sw-text.serif { font-family: var(--sw-serif); font-weight: 400; letter-spacing: 0; }
+.sw-text.tucne { font-weight: 700; }
+.sw-text.tma { color: var(--sw-cerna); text-shadow: var(--sw-aura); }
+.sw-text .akc { color: var(--sw-akcent); }
+.sw-box { position: relative; display: inline-block; isolation: isolate; }
+.sw-box > .pod { position: absolute; left: -0.08em; right: -0.08em; top: -0.04em; bottom: -0.1em; background: var(--sw-akcent); transform-origin: 0 50%; transform: scaleX(0); z-index: -1; }
+.sw-box > .na { position: relative; }
+
+/* SW7 počítadlo */
+.sw-cislo { font-weight: 700; font-variant-numeric: normal; }
+.sw-cislo .jed { font-family: var(--sw-serif); font-weight: 400; letter-spacing: 0; display: inline-block; opacity: 0; }
+
+/* SW8 triptych */
+.sw-panel { position: absolute; top: 0; bottom: 0; overflow: hidden; visibility: hidden; }
+.sw-panel > video, .sw-panel > img { position: absolute; top: 0; height: 100%; object-fit: cover; }
+.sw-panel .sw-text { visibility: inherit; }
+
+/* SW10 kalendář */
+.sw-kal { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, #0b0b0a 0%, var(--sw-cerna) 60%, #050505 100%); visibility: hidden; transform-origin: 50% 50%; }
+.sw-kal-ram { position: absolute; left: 13.5%; top: 12%; width: 72.5%; height: 75%; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; }
+.sw-kal-hlava { position: absolute; top: 0; height: 9%; display: flex; align-items: center; justify-content: center; gap: 0.35em; color: #77736c; font-size: 22px; }
+.sw-kal-hlava b { font-weight: 700; color: #bdb8af; }
+.sw-kal-hlava b.dnes { background: var(--sw-akcent); color: var(--sw-bila); border-radius: 50%; width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+.sw-kal-hod { position: absolute; left: -7%; width: 6%; text-align: right; color: #5c5952; font-size: 16px; }
+.sw-kal-cara { position: absolute; left: 0; right: 0; height: 1px; background: rgba(255,255,255,0.06); }
+.sw-kal-karta { position: absolute; border-radius: 8px; background: var(--sw-karta); border: 1px solid rgba(255,255,255,0.07); color: var(--sw-karta-text);
+  font-weight: 700; font-size: 17px; line-height: 1.15; padding: 8px 10px; box-sizing: border-box; overflow: hidden; opacity: 0; }
+.sw-kal-karta i { display: block; font-style: normal; font-weight: 500; font-size: 14px; opacity: 0.8; margin-top: 3px; }
+
+/* SW11 karta s kolejnicí */
+.sw-sede { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, var(--sw-sedy-stred) 0%, var(--sw-sedy-kraj) 55%, var(--sw-sedy-roh) 100%); visibility: hidden; }
+.sw-karta { position: absolute; overflow: hidden; background: var(--sw-papir); box-shadow: 0 10px 40px rgba(0,0,0,0.18); }
+.sw-karta > .pul { position: absolute; top: 0; bottom: 0; width: 50%; overflow: hidden; }
+.sw-karta > .pul.p { right: 0; border-left: 8px solid #919191; box-sizing: border-box; }
+.sw-karta > .pul > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.sw-dok { position: absolute; inset: 9% 10%; }
+.sw-dok b { display: block; height: 14px; margin: 0 0 16px; background: #c9c6c0; border-radius: 3px; filter: blur(2px); }
+.sw-dok b.h { height: 22px; width: 70%; background: #8f8b84; margin-bottom: 26px; }
+.sw-dok b.a { background: color-mix(in srgb, var(--sw-akcent) 45%, #c9c6c0); }
+.sw-nadpis { position: absolute; left: 0; right: 0; text-align: center; font-weight: 700; color: var(--sw-cerna); letter-spacing: -0.03em; white-space: nowrap; line-height: 1; }
+.sw-kolej { position: absolute; }
+.sw-kolej .cara { position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--sw-cerna); transform: translateY(-1px); }
+.sw-uzel { position: absolute; top: 0; border-radius: 50%; border: 2px solid var(--sw-cerna); background: var(--sw-uzel); transform: translate(-50%, -50%); box-sizing: border-box; }
+.sw-uzel .tecka { position: absolute; inset: 0; border-radius: 50%; background: var(--sw-akcent); opacity: 0; }
+.sw-uzel-pop { position: absolute; transform: translateX(-50%); text-align: center; font-weight: 500; color: #2b2b2b; white-space: nowrap; line-height: 1.15; }
+.sw-uzel-pop .sl { display: inline-block; opacity: 0; }
+
+/* SW12 papír a SW13 podtržení */
+.sw-papir { position: absolute; left: 0; top: 0; bottom: 0; width: 0; overflow: hidden; background: var(--sw-papir); visibility: hidden; }
+.sw-papir .sw-ruka { position: absolute; font-weight: 700; color: var(--sw-cerna); letter-spacing: -0.02em; white-space: nowrap; line-height: 1; text-transform: uppercase; }
+.sw-papir svg { position: absolute; overflow: visible; }
+.sw-papir svg path { fill: none; stroke: var(--sw-akcent); stroke-linecap: round; stroke-linejoin: round; }
+
+/* popisek komponenty v showcase (jen knihovna, v reelu nikdy) */
+.sw-popisek { position: absolute; left: 30px; bottom: 26px; font: 700 24px var(--sw-sans); color: var(--sw-bila); background: rgba(17, 17, 17, 0.72); padding: 8px 14px; letter-spacing: -0.01em; visibility: hidden; z-index: 50; }
