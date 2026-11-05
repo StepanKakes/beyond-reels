@@ -1,13 +1,13 @@
-# Vkus Beyond: pravidla pro každý reel v každém stylu
+# Výchozí vkus: pravidla pro každý reel v každém stylu
 
-Sepsáno z připomínek Tima a Štěpána k reelům Dalen, Heaton, Steven, Vince, Noske, Nathan a Lumitris (září až říjen 2026).
-Platí bez připomínání. Co se naučíme z revizí, přibývá do kolekce `verdikty` v databázi revizní stránky (sdílí ji celý tým, čte se přes ArtifactData `list`), ta má přednost, když si odporují.
+Sepsáno z desítek revizí reelů u Beyond. Platí bez připomínání.
+Přednost mají vlastní pravidla v `$BR_MOJE/vkus.md` a verdikty z revizí (`revize list verdikty`), když si odporují. Slovo mluvčí znamená člověka, který ve videu mluví.
 
 ## Originalita a knihovna
 - Naše komponenty v knihovně jsou inspirace, ne stavebnice. Schválená = připravená k použití, ne povinná. Neschválené nejsou zakázané.
 - Každé video je originál: ke každé důležité větě nabídni víc směrů (obměna komponenty z knihovny, nová varianta inspirovaná knihovnou, vlastní nápad v našem jazyce).
 - Žádné vymyšlené koncepty, které přebalí celou pasáž do jedné metafory (story karty jako nit, telefon fanouška, nuly jako okna, účtenka). Originalita = nové obměny a kombinace našeho slovníku, ne koncepty zvenku.
-- Když Tim vybere variantu z hotové ukázky, kopíruje se přesně (rozložení, pozadí, rytmus) a mění se jen obsah.
+- Když uživatel vybere variantu z hotové ukázky, kopíruje se přesně (rozložení, pozadí, rytmus) a mění se jen obsah.
 
 ## Obsah obrazu
 - Ilustrace je doslovná, nikdy metafora k luštění. Co je trychtýř, kresli jako trychtýř.
@@ -16,7 +16,7 @@ Platí bez připomínání. Co se naučíme z revizí, přibývá do kolekce `ve
 - Žádné vymyšlené čísla, komentáře, profily ani fakta. Komentáře skutečné (yt-dlp --write-comments) se skutečnými avatary.
 - Žádné prvky, které vyskočí a už se s nimi nepracuje. Prvek zůstává a rozvíjí se.
 - Hustota až do konce, tělo nesmí polevit.
-- Tim jen v úsecích, kdy kouká do kamery. Čtení z telefonu nebo uhnutí pohledem zakrýt B-rollem nebo grafikou, ani na pár snímků.
+- Mluvčí jen v úsecích, kdy kouká do kamery. Čtení z telefonu nebo uhnutí pohledem zakrýt B-rollem nebo grafikou, ani na pár snímků.
 - Webka nikdy vystřižená z pozadí. Výstřižky jen u AI fotek a cizích lidí z jejich videí.
 - Šipka ke jménu vždy zleva, hrot vedle obličeje, nikdy přes něj (obličej měř po snímcích).
 - B-rolly z `$BR_BROLLS` (KATALOG.md), čitelné, bez skoku na jiný záběr uvnitř (scdet). Grade neměnit.
@@ -29,8 +29,8 @@ Platí bez připomínání. Co se naučíme z revizí, přibývá do kolekce `ve
 - Emoji, pomlčky, tečky na konci řádků, anglické texty v obraze (kromě citací v originále).
 
 ## Písmo a barvy
-- Helvetica Neue Bold vede, nikdy kurzívou. Instrument Serif jen jako druhý hlas nebo pointa, vždy rovný řez 400 (`font-synthesis: none`), nikdy kurzíva ani umělé ztučnění.
-- Papír #F4F2EE, černá #111, bílá, jedna akcentní červená #FF0E00 na věc, která v záběru znamená nejvíc. Jen tokeny z kitu, žádné inline hex.
+- Hlavní písmo (výchozí Helvetica Neue Bold) vede, nikdy kurzívou. Druhé písmo (výchozí Instrument Serif) jen jako druhý hlas nebo pointa, vždy rovný řez 400 (`font-synthesis: none`), nikdy kurzíva ani umělé ztučnění.
+- Papír, tmavá, bílá a jeden akcent na věc, která v záběru znamená nejvíc. Hodnoty dává `$BR_MOJE/znacka.json` (výchozí #F4F2EE, #111, #FF0E00). Jen tokeny z kitu, žádné inline hex.
 - Obří slovo verzálkami přes skoro celou šířku, roztažené na výšku, na střed nebo za osobou.
 - CTA slovo vždy v uvozovkách obou nahoře: “START”.
 

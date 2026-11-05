@@ -1,7 +1,7 @@
 """Hlas, hudba a SFX pro ukázku A -> assets/media/hlas_A.wav, hudba_A.wav, sfx_A.wav a finální mix_A.wav (48 kHz)
 Stejný řetězec jako Noske reel (noske-styl/nastroje/zvuk_try.py): studiový hlas o 5,5 dB pod masterem,
 hudba Timeless -24 dB se sidechainem -6 dB s podržením 0,8 s, řídké SFX, master -14 LUFS / -1 dBTP.
-SFX podle Tima (2.10.2026): titulky bez zvuku, mouse hard click (klik1/klik2) na slova víceslovných nápisů,
+SFX podle mluvčího (2.10.2026): titulky bez zvuku, mouse hard click (klik1/klik2) na slova víceslovných nápisů,
 mouse clicks (klik4) na nástupy prvků, závěrka na B-roll, nikdy classic click (klik3) ani dřevěný ťuk. Kliky o 3 dB výš.
 Hlas předem: ../tools/studio-hlas/studio_hlas.py assets/media/hlas_raw.wav assets/media/hlas_studio.wav
 Spouštět: $PY nastroje/zvuk_a.py   (z kořene matt-gray-styl)"""
@@ -26,7 +26,7 @@ E+=[(T(41)+M(3),'klik4',-30)]                                                   
 
 sfx=np.zeros(N)
 for t,n,g in E:
-    if n.startswith('klik'): g+=3                                               # Tim 2.10.: kliky lehce víc nahlas
+    if n.startswith('klik'): g+=3                                               # kliky lehce víc nahlas
     x=load(f'assets/sfx/{n}.wav'); x=x/np.abs(x).max()*db(-1+g+6); i=int(t*SR); x=x[:N-i]; sfx[i:i+len(x)]+=x
 v=load('assets/media/hlas_studio.wav')
 v=np.pad(v,(0,max(0,N-len(v))))[:N]*db(-5.5)

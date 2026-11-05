@@ -1,9 +1,9 @@
 /* SooWei kit (SW): YouTube intro 16:9 podle SooWei Goha (@sooweigoh) v jazyce Beyond
  *
  * Rozbor: ~/Documents/inspirace-reels/soowei/_rozbor/STYL.md, po snímcích GR2vYzl5n34/SHOTLOG.md a ROZBOR.md (recepty SW1 až SW14).
- * Velikosti textu o 25 až 30 % větší než originál a bez stínu (Štěpán 15. 10. 2026).
+ * Velikosti textu o 25 až 30 % větší než originál a bez stínu.
  * Originál běží na 25 fps, tady 30 fps: snímky originálu x 1,2. Výchozí hodnoty = změřený originál při 1920x1080,
- * barvy a písma Beyond (soowei-kit.css), rozhodnutí Štěpána 15. 10. 2026: blur při nástupu 1:1, bez SFX.
+ * barvy a písma Beyond (soowei-kit.css), rozhodnutí: blur při nástupu 1:1, bez SFX.
  *
  * Stojí na sdíleném jádře: MK (js/mason-kit.js) načtené a MK.init(root) zavolané před první komponentou.
  * Pohyb přes MK.tw (pojmenované křivky MK.KRIVKY nebo GSAP ease), změřené průběhy přes MK.tabulka.

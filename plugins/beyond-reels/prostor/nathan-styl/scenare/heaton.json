@@ -1,14 +1,14 @@
 {
  "nazev": "heaton",
  "seed": 1,
- "hlas": "/Users/stepankakes/Documents/GitHub/beo-motion/hyperframes/lumitris-styl/zdroj/heaton/hlas_telo_studio.wav",
- "slova": "/Users/stepankakes/Documents/GitHub/beo-motion/hyperframes/lumitris-styl/zdroj/heaton/slova_TELO.json",
+ "hlas": "lumitris-styl/zdroj/heaton/hlas_telo_studio.wav",
+ "slova": "lumitris-styl/zdroj/heaton/slova_TELO.json",
  "zdroje": {
-  "klip": "/Users/stepankakes/Documents/GitHub/beo-motion/hyperframes/reels/podnikatele/heaton/zdroj/klipy/{}.mp4",
-  "img": "/Users/stepankakes/Documents/GitHub/beo-motion/hyperframes/reels/podnikatele/heaton/zdroj/nalez/{}.jpg",
-  "kv": "/Users/stepankakes/Documents/GitHub/beo-motion/hyperframes/reels/podnikatele/heaton/assets/media/kv/{}.mp4",
-  "igr": "/Users/stepankakes/Documents/GitHub/beo-motion/hyperframes/reels/podnikatele/heaton/assets/media/igr/{}.jpg",
-  "media": "/Users/stepankakes/Documents/GitHub/beo-motion/hyperframes/reels/podnikatele/heaton/assets/media/{}.mp4",
+  "klip": "reels/podnikatele/heaton/zdroj/klipy/{}.mp4",
+  "img": "reels/podnikatele/heaton/zdroj/nalez/{}.jpg",
+  "kv": "reels/podnikatele/heaton/assets/media/kv/{}.mp4",
+  "igr": "reels/podnikatele/heaton/assets/media/igr/{}.jpg",
+  "media": "reels/podnikatele/heaton/assets/media/{}.mp4",
   "th": "assets/media/tim_telo_169.mp4"
  },
  "citace": [

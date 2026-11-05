@@ -1,6 +1,6 @@
 ---
 name: styl-lumitris
-description: Edit reelů ve stylu agentury Lumitris (@content.lumitris) v barvách Beyond, v HyperFrames, formát 4:3. Použij, když Štěpán nebo Tim řekne "lumitris", "lumi", "Lumitris styl", "jako content.lumitris", nebo chce rychlý dokumentární edit s vyprávěním, slovy po jednom rozloženými přes obraz, koláží fotek bez rámečků, glitch obdélníky v negativu, archivem, filmovými metaforami, AI koláží a trhaným taktem 12 fps. Platí i s A-rollem (mluvící hlava do kamery). Obsahuje DNA stylu změřenou po snímcích ze 4 reelů, katalog komponent, pravidla obměn (žádné dva reely stejné), zapojení mluvící hlavy, zvuk a výrobní postup. Pro Jacka Masona je styl-mason, Noske styl-noske, Matt Gray styl-matt-gray, postup výroby ve skillu reel.
+description: Edit reelů ve stylu agentury Lumitris (@content.lumitris) v barvách Beyond, v HyperFrames, formát 4:3. Použij, když někdo řekne "lumitris", "lumi", "Lumitris styl", "jako content.lumitris", nebo chce rychlý dokumentární edit s vyprávěním, slovy po jednom rozloženými přes obraz, koláží fotek bez rámečků, glitch obdélníky v negativu, archivem, filmovými metaforami, AI koláží a trhaným taktem 12 fps. Platí i s A-rollem (mluvící hlava do kamery). Obsahuje DNA stylu změřenou po snímcích ze 4 reelů, katalog komponent, pravidla obměn (žádné dva reely stejné), zapojení mluvící hlavy, zvuk a výrobní postup. Pro Jacka Masona je styl-mason, Noske styl-noske, Matt Gray styl-matt-gray, postup výroby ve skillu reel.
 ---
 
 # Lumitris styl (Beyond verze)
@@ -17,7 +17,7 @@ Rozbory po snímcích (zdroj pravdy pro čísla, při stavbě komponenty si pře
 | 5 videí hrubě | souhrn struktur a os | `_rozbor/VARIANTY.md` (pozor, místy se mýlí, hloubkové rozbory mají přednost) |
 | náš první pokus | proč heaton nevypadal jako Lumitris | `_rozbor/AUDIT_NASE.md` |
 
-Rozhodnutí Štěpána 12. 10. 2026: **formát 4:3** (1440x1080), **akcenty červená #FF0E00 s bílým textem** (místo kobaltu) a **krémová #EDE6DC s černým textem** (místo limetky), písma **Helvetica Neue** (grotesk) a **Instrument Serif Italic** (serif). Do stylu patří i náš **A-roll**. Každý reel je jiný: stejný jazyk, nikdy stejné komponenty, struktura ani scénář.
+Rozhodnutí: **formát 4:3** (1440x1080), **akcenty červená #FF0E00 s bílým textem** (místo kobaltu) a **krémová #EDE6DC s černým textem** (místo limetky), písma **Helvetica Neue** (grotesk) a **Instrument Serif Italic** (serif). Do stylu patří i náš **A-roll**. Každý reel je jiný: stejný jazyk, nikdy stejné komponenty, struktura ani scénář.
 
 ## 1. Jak editor přemýšlí
 
@@ -42,7 +42,7 @@ Naivní verze dělá pravý opak a proto heaton neprošel: plynulých 30 fps, po
 4. **Slovo naskočí celé za 1 snímek**, bez fade, posunu a měřítka. Je 0,5 až 3,5 snímku za hlasem. Žádné titulky v klasickém smyslu, jen 1 až 5 slov.
 5. **Řádek ve slotech přes šířku na y 44 až 53 %.** Ve 4:3 nejvýš 3 až 4 sloty: středy 18 / 50 / 82 % pro 3 slova, 15 / 38 / 61 / 85 % pro 4. Řádek drží přes střihy, dokud neskončí fráze, pak se celý vymění nebo rozostří (gauss 0 na 6 px za 1 snímek, drží 3). Krajní sloty smějí být lehce rozostřené.
 6. Velikost: běžné slovo 7 až 9 % výšky (em), výška verzálky 4,5 až 6 %. Barva #FCFAFC, kolem slov jemná bílá záře (sigma 9 px, 30 až 40 px dosah), ne stín. Na světlém pozadí tmavě šedá. Ve druhé půlce smí text zešednout na #A0A0A0.
-7. **Vede Helvetica Neue Bold** (Štěpán 12. 10. 2026: „víc Helvetica Bold, top“). Vyprávění v řádcích je grotesk Bold, velikost 74 až 92 px; serif jen jako akcent (jedna fráze za scénu nanejvýš, jméno ve štítku, číslo v čítači). Grotesk Helvetica Neue Medium až Bold s prostrkáním -3 až -4 %. Serif Instrument Serif Italic, nikdy uměle ztučnit (`font-synthesis: none`). Helvetica nikdy kurzívou. Výměna řezu na pointovém slově: grotesk na serif o 20 až 25 % větší, tvrdě po 3 snímcích.
+7. **Vede Helvetica Neue Bold** („víc Helvetica Bold, top“). Vyprávění v řádcích je grotesk Bold, velikost 74 až 92 px; serif jen jako akcent (jedna fráze za scénu nanejvýš, jméno ve štítku, číslo v čítači). Grotesk Helvetica Neue Medium až Bold s prostrkáním -3 až -4 %. Serif Instrument Serif Italic, nikdy uměle ztučnit (`font-synthesis: none`). Helvetica nikdy kurzívou. Výměna řezu na pointovém slově: grotesk na serif o 20 až 25 % větší, tvrdě po 3 snímcích.
 8. **Obří slovo** jen 1 až 2 snímky: svisle natažené (scaleY 3 až 4x) na 70 až 100 % výšky, výplň bílá se září, nebo okno do invertovaného či příštího obrazu, pak skok na malé nebo pryč. Jen obsahová slova, aspoň 3 písmena.
 9. **Psaní po písmenech** jen pro bloky (ne pro vyprávění): v 12 fps krocích, první krok 5 až 10 znaků, pak 1 až 2 znaky na krok, nejnovější znak tlumený.
 
@@ -51,20 +51,20 @@ Naivní verze dělá pravý opak a proto heaton neprošel: plynulých 30 fps, po
 11. **Výřezy postav** (fotky a AI fotky bez pozadí) mají dvě podoby, nikdy hladký bílý offset obrys:
     - nálepka: hranatý polygonový obrys jako stříhaný papír, 1 až 5 % výšky, tmavý #2D2C34 nebo v barvě akcentu, na světle šedé #E0DEE1, 3D let s rozostřením
     - výřez na barvě: postava ČB s jemným rastrem 6 px, za ní sytá barva (u nás červená nebo krémová) s hrubým rastrem 21 px nebo mřížkou, svislý pruh doplňkové barvy u okraje, za postavou smí být šedá posunutá kopie siluety
-    - **naše a klientovy předměty a lidi** (Štěpán 12. 10. 2026 u Rolls Royce): původní barvy s tiskovým rastrem přes ně (`<jmeno>_tisk.png` z `priprav.py`), pozadí světle šedé studio s mřížkou (`pozadi: "svetla"`, bez pruhu), ne červené. Texty ve scéně tmavé
+    - **naše a klientovy předměty a lidi** (u Rolls Royce): původní barvy s tiskovým rastrem přes ně (`<jmeno>_tisk.png` z `priprav.py`), pozadí světle šedé studio s mřížkou (`pozadi: "svetla"`, bez pruhu), ne červené. Texty ve scéně tmavé
 12. Portréty v sérii: jedna karta uprostřed, nový obraz každé 2 až 3 snímky, karta roste (výška 44 na 87 %). Jen portréty v rohových závorkách smějí mít bílý okraj 3 až 5 px a tiskový rastr.
 13. Archivní fotky v druhé půlce klidně úplně stojí (freeze), ČB.
 
 ### Obraz a přechody
 14. **Grade:** tlumený, sytost barevných záběrů nízká, 25 až 37 % snímků ČB, černá zvednutá na 13/255, světla stlačená k 185 až 230. Viněta (rohy ku středu 0,6 až 0,8). Obraz měkčí než digitální 4K (lehké změkčení). Pozadí grafických scén tmavý grafit s radiálním kuželem (střed #2F2F2F, rohy #0D0D0D), občas světlé studio s vinětou na 6 až 12 % času. Zrno skoro žádné.
 15. **Glitch blok** je hlavní přechod, 20 až 45 za minutu: ostrý obdélník 2 až 35 % plochy, 1 až 4 snímky, nejčastěji začíná 2 snímky před střihem. Rodiny: (a) negativ příštího záběru, (b) šedé desky #8F8F93 a #DDDDE2, (c) bílý blok invertující text pod sebou, (d) černý, (e) vložená karta jiného obrazu. **V jednom reelu převládá jedna rodina.** Chromatická aberace a RGB posun nejsou.
-16. **Žádný vodoznak ani "Produced by"** (Štěpán 12. 10. 2026). Outro karta jen se slovním znakem, nebo tvrdý střih.
+16. **Žádný vodoznak ani "Produced by"**. Outro karta jen se slovním znakem, nebo tvrdý střih.
 17. Outro karta: černá, logo 27 % šířky uprostřed, 3x blikne po 1 snímku, zmenší se 1,19 na 1,00 expo.out 30 až 32 snímků, sub úder na střihu, 2,3 až 2,8 s. Nebo tvrdý střih na pointě bez outra.
 
 ### Zvuk (standard Beyond, od 13. 10. 2026)
 18. Hlas jako vždy přes `studio_hlas.py` (čistá stopa z kamery, standard Beyond).
-19. **Mix je standard Beyond** (Štěpán 13. 10. 2026: srovnat se standardem): hlas ze `studio_hlas.py` -5,5 dB, hudba -24 dB RMS se sidechainem -6 dB a podržením 0,8 s, pod citacemi -10 dB, celek -14 LUFS / -1,5 dBTP. `nastroje/zvuk.py` to dělá ve výchozím režimu, cesta k hlasu v plánu `zvuk.hlasSoubor`. Původní Lumitris mix (hudba 7 LU pod hlasem bez duckingu) jen na výslovné přání přes `"mix": "lumitris"` v `zvuk`. Hudba může během příběhu růst přes `ztlum` s kladnými i zápornými dB.
-20. **SFX z knihovny `hyperframes/sfx/zaklad` na každou změnu stavu** (Štěpán 12. 10. 2026, Lumitris to má tišší, my ne): slova v řádku klik1 a klik2 střídavě, prvky a štítky klik4, fotka nebo karta naskočí a každá výměna v sérii závěrka (střídat s klik4 při rychlých výměnách), obří slovo pop, dosednutí výřezu kick, přesun výřezu svih_vitr tiše, čítač cisla. **Roztahování** (závorky, skok okna, růst boxu) má mechanické cvakání kolečka: `zvuk.roztah` v plánu = `cog` (deith/cog-wheel), `gears` (deith/Gears), `tik` (řehtačka z tiknutí hodin po 2 snímcích, výš a výš), `klik` (řehtačka z klik2); Štěpán vybírá z `renders/vyber_roztah.mp4`. Časy srovnat na mřížku taktu, ve stejném snímku jen jeden zvuk. Dělá to `nastroje/zvuk.py` automaticky z plánu. K tomu z Lumitris:
+19. **Mix je standard Beyond** (srovnat se standardem): hlas ze `studio_hlas.py` -5,5 dB, hudba -24 dB RMS se sidechainem -6 dB a podržením 0,8 s, pod citacemi -10 dB, celek -14 LUFS / -1,5 dBTP. `nastroje/zvuk.py` to dělá ve výchozím režimu, cesta k hlasu v plánu `zvuk.hlasSoubor`. Původní Lumitris mix (hudba 7 LU pod hlasem bez duckingu) jen na výslovné přání přes `"mix": "lumitris"` v `zvuk`. Hudba může během příběhu růst přes `ztlum` s kladnými i zápornými dB.
+20. **SFX z knihovny `hyperframes/sfx/zaklad` na každou změnu stavu** (Lumitris to má tišší, my ne): slova v řádku klik1 a klik2 střídavě, prvky a štítky klik4, fotka nebo karta naskočí a každá výměna v sérii závěrka (střídat s klik4 při rychlých výměnách), obří slovo pop, dosednutí výřezu kick, přesun výřezu svih_vitr tiše, čítač cisla. **Roztahování** (závorky, skok okna, růst boxu) má mechanické cvakání kolečka: `zvuk.roztah` v plánu = `cog` (deith/cog-wheel), `gears` (deith/Gears), `tik` (řehtačka z tiknutí hodin po 2 snímcích, výš a výš), `klik` (řehtačka z klik2); Beyond vybírá z `renders/vyber_roztah.mp4`. Časy srovnat na mřížku taktu, ve stejném snímku jen jeden zvuk. Dělá to `nastroje/zvuk.py` automaticky z plánu. K tomu z Lumitris:
     - sub odhalení: nabíhá 7 až 10 snímků před velkým střihem, vrchol na střihu, dozvuk 1,5 až 3,5 s (110 na 55 až 60 Hz), 3 až 4x za reel; pod větou před tím basy stoupají
     - boom 2 až 4 snímky před bílou kartou nebo zábleskem
     - glitch: krátké digitální praskání jen nad 1,5 kHz (10 až 16 kHz), 3 snímky, 21 dB pod hlasem
@@ -75,7 +75,7 @@ Naivní verze dělá pravý opak a proto heaton neprošel: plynulých 30 fps, po
 
 ## 3. Mluvící hlava (A-roll)
 
-**Naše záběry (A-roll) a předměty klienta se nikdy nepřebarvují** (Štěpán 12. 10. 2026): žádné ČB, rastr ani tlumení, v plánu `grade: "puvodni"` a `bezGrade: true` (vypne celkový grade). ČB a rastr jen pro cizí archiv, stock a film.
+**Naše záběry (A-roll) a předměty klienta se nikdy nepřebarvují**: žádné ČB, rastr ani tlumení, v plánu `grade: "puvodni"` a `bezGrade: true` (vypne celkový grade). ČB a rastr jen pro cizí archiv, stock a film.
 
 Originály mají tváře v 17 % času a vždy zpracované, nikdy obyčejný talking head přes celý obraz se slovy pod bradou. Pro nás A-roll **25 až 35 % času**, kusy **0,4 až 1,3 s** (výjimka pointa 5 až 8 s), mezi kusy aspoň 2 až 3 záběry doplňkového obrazu, dovnitř a ven tvrdý střih nebo glitch (nikdy prolínačka), hlas souvislý přes všechny střihy. V jednom reelu použij 2 až 3 způsoby, ne všechny:
 
@@ -168,7 +168,7 @@ Pasti: scény se skrývají přes `display` (dítě s `visibility: visible` by p
 3. Beat mapa: fráze, slova s časy, ke každé frázi obraz (doslovně, archiv, metafora, film, AI, A-roll) a událost.
 4. Banka obrazů a výřezů (`nastroje/banka.py`), AI fotky, dokumenty a okna.
 5. Plán (`nastroje/generator.py`), render 1440x1080 24 fps s posterizací, zvuk standardem Beyond (`nastroje/zvuk.py`).
-6. Revizní stránka (Artifact NCnPwTFvfcjDD8PfuyNQH2), storyboard před finálním renderem, kontrola proti tomuto skillu bod po bodu.
+6. Revizní stránka (skill `revize`), storyboard před finálním renderem, kontrola proti tomuto skillu bod po bodu.
 
 ## 8. Starý kit: co bylo špatně (AUDIT_NASE.md, v2 to řeší)
 

@@ -15,7 +15,7 @@ Rozbor originálu po snímcích: `$BR_INSPIRACE/caspar/_rozbor/DebbKfoAPPe/SHOTL
 ## Gramatika v kostce
 
 - Řeč vede. Střih padá těsně před první slovo věty (hrana do ticha podle hlasitosti), každá věta začíná novým obrazem.
-- Podíl jako originál: A-roll kolem 20 až 30 % (jen když Tim kouká do kamery), zbytek B-roll lidí z příběhu a karty se slovem.
+- Podíl jako originál: A-roll kolem 20 až 30 % (jen když mluvčí kouká do kamery), zbytek B-roll lidí z příběhu a karty se slovem.
 - Důraz nese typografie, ne efekt: 4 úrovně velikosti (drobná 4 %, základní 5,6 %, velká 9 %, obří 14,5 % výšky jako výška verzálek),
   Helvetica Neue Bold verzálkami, Casparovy minusky = Instrument Serif rovný (osobní, tišší hlas), jedno červené slovo na záběr.
 - Rytmus vlnou: držák, zrychlení, držák. Energii dělají výměny slov uvnitř záběru po 4 až 12 snímcích, ne krátké záběry (záběr aspoň 1,7 s).
@@ -24,7 +24,7 @@ Rozbor originálu po snímcích: `$BR_INSPIRACE/caspar/_rozbor/DebbKfoAPPe/SHOTL
 
 ## Hook
 
-Hook dělej 1:1 podle originálu (Štěpán 15. 10. 2026), postup a čísla v `reference/STYL.md` (sekce Hook 1:1), hotový vzor
+Hook dělej 1:1 podle originálu, postup a čísla v `reference/STYL.md` (sekce Hook 1:1), hotový vzor
 `src/ukazka.html` 0 až 4,73 s: postava s kolaží reelů za hlavou, malý řádek a obří červené slovo, šedý nástup velkého prvku,
 bílá karta s jedním slovem, úzké slovo na červené kartě. Záběr postavy statický, hlava 20 až 30 % výšky, titulky na hrudi.
 
@@ -57,7 +57,7 @@ Build: `node build.mjs <nazev>` (src/<nazev>.html > index.html, `/*SLOVA*/` a `{
 ## Postup
 
 1. Brief a scénář podle skillu `reel`. Ke každé větě rozhodni: A-roll s titulky, A-roll se sestavou (C4, C17, C18, C7), karta (C2, C3), B-roll (okno C1, rámeček C8, plný záběr).
-2. Polohu obličeje změř po snímcích (Vision) dřív, než rozmístíš sestavy. Tim má obličej kolem x 50 %, y 41 až 48 %, výška hlavy 30 až 36 %:
+2. Polohu obličeje změř po snímcích (Vision) dřív, než rozmístíš sestavy. mluvčí má obličej kolem x 50 %, y 41 až 48 %, výška hlavy 30 až 36 %:
    sestavy pod bradou od y 0,78, slova kolem hlavy v pásech do x 0,33 a od 0,66, schody od x 0,02 velikostí 0,04.
 3. Slovo za hlavou: masky `$PY $BR_PROSTOR/tools/maska_za_osobou.py`, slovo vysoko (y 0,15, výška 0,2), ať prostřední písmena nezmizí za hlavou.
 4. Zvuk `tools/mix.py`: klik na slova vypisovaná po jednom, sub na červenou kartu a obří slovo, závěrka na okno, švih na přesun.

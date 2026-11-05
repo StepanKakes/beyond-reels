@@ -1,6 +1,6 @@
 """Hlas, hudba a SFX pro reel ClaudeTry -> assets/media/hlas_TRY.wav, hudba_TRY.wav, sfx_TRY.wav (48 kHz stereo)
-Noske sám má jen hlas a tichý podkres, Tim chce vždy hudbu a SFX: hudba nízko pod hlasem, SFX řídké a tlumené.
-SFX podle Tima (2.10.2026): jednotlivá slova titulků bez zvuku. Mouse hard click (klik1/klik2) na slova víceslovných nápisů,
+Noske sám má jen hlas a tichý podkres, my chceme vždy hudbu a SFX: hudba nízko pod hlasem, SFX řídké a tlumené.
+SFX podle mluvčího (2.10.2026): jednotlivá slova titulků bez zvuku. Mouse hard click (klik1/klik2) na slova víceslovných nápisů,
 mouse clicks (klik4) na nástupy prvků, závěrka na záběry (B-roll, karta). Nikdy classic click (klik3) ani dřevěný ťuk.
 Spouštět: $PY nastroje/zvuk_try.py   (z kořene noske-styl)"""
 import json,subprocess,sys,numpy as np,soundfile as sf
@@ -27,19 +27,19 @@ for k,t in enumerate([U(27),T(238)-F(1),T(239)-F(1),T(240)-F(1)]): E.append((t,'
 for k,t in enumerate([T(59)-F(1),T(270)-F(1)]): E.append((t,'klik2',-30))      # výměna slova pod kotvou
 E+=[(T(295)-F(1),'klik1',-28),(T(299)-F(1),'klik2',-28)]                        # výzva
 # vrstvené sestavy: víceslovný kicker a řádky schodů = mouse hard click na slova, velké slovo samo bez zvuku
-# Tim 3.10.: zvuk vždy u grafik a u každého nápisu s víc slovy naráz, včetně velkého slova sestavy
+# zvuk vždy u grafik a u každého nápisu s víc slovy naráz, včetně velkého slova sestavy
 KICK=[(0,2),(19,23),(36,39),(40,44),(82,87),(191,195),(244,245)]; SCH=[3,6,259,261,262]
 k=0
 for a,b in KICK:
     for i in range(a,b+1): E.append((T(i)-F(1),'klik1' if k%2==0 else 'klik2',-30)); k+=1
 for i in SCH: E.append((T(i)-F(1),'klik1' if k%2==0 else 'klik2',-30)); k+=1
 E+=[(T(57)-F(1),'klik1',-30),(T(269)-F(1),'klik1',-30),(U(35),'klik2',-30)]     # první slovo pod kotvou, řádek výzvy
-# dvojslovné titulky ("a oni", "to zaprvé") naskočí najednou = bez zvuku. Klik jen když se nápis vypisuje slovo po slově (Tim 3.10.)
+# dvojslovné titulky ("a oni", "to zaprvé") naskočí najednou = bez zvuku. Klik jen když se nápis vypisuje slovo po slově
 
 sfx=np.zeros(N)
 for t,n,g in E:
-    g+=5                                                                        # Tim 3.10.: SFX víc nahlas
-    if n.startswith('klik'): g+=3                                               # Tim 2.10.: kliky lehce víc nahlas
+    g+=5                                                                        # SFX víc nahlas
+    if n.startswith('klik'): g+=3                                               # kliky lehce víc nahlas
     x=load(f'assets/sfx/{n}.wav'); x=x/np.abs(x).max()*db(-1+g+6); i=int(t*SR); x=x[:N-i]; sfx[i:i+len(x)]+=x
 # hlas: studiový řetězec (tools/studio-hlas: odšumění, EQ podle Matta Graye, vyrovnání, komprese), už na -14 LUFS
 v=load('assets/media/hlas_studio.wav')

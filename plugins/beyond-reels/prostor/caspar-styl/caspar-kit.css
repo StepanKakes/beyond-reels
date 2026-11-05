@@ -14,7 +14,7 @@
   --ck-proklad: -0.035em;
   --ck-stin: 0 0.04em 0.35em rgba(0, 0, 0, 0.35);   /* jemný stín přes záběr, žádná záře */
   --ck-aura: 0 0 0.3em rgba(244, 242, 238, 0.9);     /* tmavý text na papíře */
-  --ck-titulky-y: 70%;           /* u Tima pod bradou (obličej y 41 až 48 %, výška 29 až 36 %) */
+  --ck-titulky-y: 70%;           /* u mluvčího pod bradou (obličej y 41 až 48 %, výška 29 až 36 %) */
 }
 
 .ck-plocha { position: absolute; inset: 0; overflow: hidden; background: var(--ck-cerna); font-family: var(--ck-sans); font-weight: 700; -webkit-font-smoothing: antialiased; font-synthesis: none; }

@@ -1,6 +1,6 @@
 # Příprava médií z návrhu generátoru -> plany/<nazev>.json pro build.mjs
 # python3 nastroje/priprav.py scenare/heaton.json
-# Všechny záběry (Tim, B-roll, citace) do jednoho videa assets/media/<nazev>_podklad.mp4 (1920x1080, 30 fps).
+# Všechny záběry (mluvčí, B-roll, citace) do jednoho videa assets/media/<nazev>_podklad.mp4 (1920x1080, 30 fps).
 # Typografické karty kreslí kit jako CSS přechody nad podkladem (plochy), podklad je pod nimi černý.
 import json, math, os, subprocess, sys
 KOREN = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -14,7 +14,7 @@ cit = sorted(navrh.get("citace", []), key=lambda c: c["t"])
 
 
 def telo(t):
-    """čas kompozice -> čas Timova záznamu těla (citace v záznamu nejsou)"""
+    """čas kompozice -> čas mluvčího záznamu těla (citace v záznamu nejsou)"""
     for c in reversed(cit):
         konec = c["t"] + sum(x["do"] - x["od"] for x in cit if x["t"] <= c["t"])
         if t >= konec:
@@ -204,7 +204,7 @@ for tv in kandidati:
             break
 print("text mimo obličej:", posunuto, file=sys.stderr)
 
-# překryvy textu (Štěpán 12. 10.: "fonty, co se překrývají"): malý řádek nebo schody odsunout od velkého slova o 24 px
+# překryvy textu ("fonty, co se překrývají"): malý řádek nebo schody odsunout od velkého slova o 24 px
 def kusy_boxu(t):
     if t["typ"] == "schody":
         return [(x, y, x + inkoust(w["text"], "male", t["s"])[4], y + t["s"]) for w, (x, y) in zip(t["slova"], t["pozice"])]

@@ -1,4 +1,4 @@
-"""Skutečné nástupy slov z průběhu hlasitosti hlasu (Štěpán 12. 10.: titulky nesedí přesně na to, kdy to řeknu).
+"""Skutečné nástupy slov z průběhu hlasitosti hlasu (titulky nesedí přesně na to, kdy to řeknu).
 Přepis má začátky slov u pětiny slov o 80 až 145 ms pozdě. Nástup = první místo 12 dB nad dolíkem před slovem,
 hledá se 150 ms před až 150 ms po čase z přepisu; jinde zůstane čas přepisu. -> plany/<nazev>_nastupy.json
 python nastroje/nastupy.py scenare/heaton.json"""

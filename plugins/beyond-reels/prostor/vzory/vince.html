@@ -97,7 +97,7 @@
       <div id="s4" class="sc"><div id="igF" class="abs" style="left:960px; top:307px; width:806px; height:826px; transform-origin:50% 60%"><img class="abs" src="assets/media/vince/ig_vince.jpg" alt="" style="inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 40%"><img id="igCut" class="abs" src="assets/media/vince/ig_vince_cut.png" alt="" style="inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 40%; filter: brightness(0) invert(1); opacity:0"></div>
         <div id="c430" class="caps o" style="left:140px; width:948px; top:517px; text-align:center; font-size:210px; z-index:2; transform: translateY(-50%); line-height:0.9"><span id="hl430" class="hl"></span></div>
         <div id="kor" class="caps o" style="left:164px; width:900px; top:650px; text-align:center; font-size:51px; z-index:2; visibility:hidden">korun za minulý měsíc</div></div>
-      <!-- B Timův A-roll přes celý snímek s titulky -->
+      <!-- B mluvčího A-roll přes celý snímek s titulky -->
       <div id="s6" class="sc tma"><video id="vG" class="vid clip" src="assets/media/vince/tim_karta.mp4" muted playsinline data-start="{{T(14)}}" data-duration="{{T(22)-T(14)}}" data-track-index="1"></video></div>
       <!-- B Georgios s8 -->
       <div id="s8" class="sc"><div id="w8" class="caps o" style="left:0; right:0; top:720px; text-align:center; font-size:300px; letter-spacing:-0.06em; transform: translateY(-50%) scaleY(2.6); transform-origin: 50% 50%"></div></div>
@@ -119,7 +119,7 @@
       <!-- G PTÁŠ SE PROČ -->
       <div id="s14" class="sc"><div id="pse" class="caps c" style="left:0; right:0; top:200px; text-align:center; font-size:96px; visibility:hidden">ptáš se</div>
         <div id="proc" class="caps o" style="left:0; right:0; top:840px; text-align:center; font-size:330px; letter-spacing:-0.06em; transform: translateY(-50%) scaleY(2.2); transform-origin: 50% 50%; visibility:hidden">proč?</div></div>
-      <!-- H Tim přes celý obraz: tři věci -->
+      <!-- H mluvčí přes celý obraz: tři věci -->
       <div id="s15" class="sc tma"><video id="vT3" class="vid clip" src="assets/media/vince/tim_tri.mp4" muted playsinline data-start="23.58" data-duration="2.83" data-track-index="1"></video>
         <video id="vZ1" class="vid clip" src="assets/media/vince/tim_z1.mp4" muted playsinline data-start="26.41" data-duration="4.41" data-track-index="3" style="visibility:hidden"></video></div>
       <!-- J bod 1: velký text přes obraz, slova naskakují na hlas -->
@@ -139,7 +139,7 @@
       <!-- M klip 2 v kartě -->
       <div id="s21" class="sc"><div id="jmK2" class="jm2" style="left:180px; top:150px; font-size:44px">Vince Nijhof</div>
         <div id="kKlip2"><video id="vK2" class="clip" src="assets/media/vince/klip2v.mp4" muted playsinline data-start="38.54" data-duration="1.975" data-track-index="2"></video></div></div>
-      <!-- N bod 2 status: Timův A-roll (pod ostatními scénami bodu 2) -->
+      <!-- N bod 2 status: mluvčího A-roll (pod ostatními scénami bodu 2) -->
       <div id="s23" class="sc tma">
         <video id="vS1" class="vid clip" src="assets/media/vince/tim_s1.mp4" muted playsinline data-start="40.515" data-duration="1.22" data-track-index="1"></video>
         <video id="vS2" class="vid clip" src="assets/media/vince/tim_s2.mp4" muted playsinline data-start="41.735" data-duration="4.05" data-track-index="3" style="visibility:hidden"></video>
@@ -184,7 +184,7 @@
         <div id="kG3" class="abs" style="inset:0"><div class="kt c" style="top:850px; font-size:90px"><span>napiš</span> <span>do</span> <span>komentáře</span></div>
           <div class="kt o" style="top:950px; font-size:220px"><span>„vince“</span></div>
           <div class="kt c" style="top:1260px; font-size:72px"><span>a</span> <span>já</span> <span>ti</span> <span>pošlu</span> <span>můj</span> <span>návod</span></div></div></div>
-      <!-- malé boxy 1 2 3 přes Timův A-roll vlevo, popisek bodu vedle -->
+      <!-- malé boxy 1 2 3 přes mluvčího A-roll vlevo, popisek bodu vedle -->
       <div id="mb" class="abs" style="inset:0; z-index:40; visibility:hidden">
         <div class="mbx" id="mb1" style="top:340px"><b>1</b><div class="fl" id="fl1"></div></div><div class="mbl" id="lb1" style="top:401px">známosti</div>
         <div class="mbx" id="mb2" style="top:570px"><b>2</b><div class="fl" id="fl2"></div></div><div class="mbl" id="lb2" style="top:631px">status</div>
@@ -229,7 +229,7 @@
       MK.tw(tl, $("igF"), { scale: 1.04 }, { scale: 1 }, W(9), 6, { k: 0.7, krok: 2 });
       vis($("kor"), L + F(9));
 
-      /* B: Timův A-roll přes celý snímek, s8 ANI SLOVO */
+      /* B: mluvčího A-roll přes celý snímek, s8 ANI SLOVO */
       MK.tw(tl, $("vG"), { scale: 1.04 }, { scale: 1 }, B, 12, { k: 0.8 });
       [["ani", W(22), 300], ["slovo", W(23), 290]].forEach(([s, t, fs]) => tl.set($("w8"), { textContent: s, fontSize: fs }, t));
 
@@ -297,7 +297,7 @@
       vis($("pse"), PR + 0.07); MK.tw(tl, $("pse"), { opacity: 0.4 }, { opacity: 1 }, PR + 0.07, 3, { k: 0.6 });
       vis($("proc"), PR + 0.25);
 
-      /* H: Tim přes celý obraz (tři věci, pak za prvé), přes něj vlevo malé boxy 1 2 3 */
+      /* H: mluvčí přes celý obraz (tři věci, pak za prvé), přes něj vlevo malé boxy 1 2 3 */
       const T3 = TR + 0.45;
       sc("s15", TR, MM);
       MK.tw(tl, $("vT3"), { scale: 1.04 }, { scale: 1 }, TR, 12, { k: 0.8 });
@@ -370,7 +370,7 @@
        ["roky budoval firmy", 50.75, 51.92], ["a dnes ukazuje jeho příběh", 51.92, 53.6], ["zkušenosti", 53.87, 54.42], ["a jak přemýšlí", 54.42, 55.45], ["a díky tomu přitahuje", 55.52, 56.74]]
         .forEach(([txt, t0, t1, druh]) => { if (druh === 9) return; const e = MK.div($("tits"), "tit" + (druh === 1 ? " papir" : druh === 2 ? " klip" : ""), druh === 2 ? `<span>${kw(txt)}</span>` : kw(txt)); vis(e, t0); hid(e, t1); });
 
-      /* pauzy pryč (Tim 4.10.2026): časy výše jsou ve stopě v14, převedou se mapou na novou stopu bez pauz (zdroj/vince/mapa.json).
+      /* pauzy pryč: časy výše jsou ve stopě v14, převedou se mapou na novou stopu bez pauz (zdroj/vince/mapa.json).
          Všechno, co přibude pod tímto blokem, piš rovnou v nových časech (pozice v zdroj/vince/pozice3.json). */
       const MAPA = [[0.0, 0.0], [12.29, 12.29], [12.63, 12.29], [15.73, 15.39], [16.0, 15.39], [18.3, 17.69], [18.5, 18.08], [22.98, 22.56], [23.5, 22.7], [24.15, 23.35], [24.42, 23.45], [27.12, 26.15], [27.55, 26.25], [31.86, 30.56], [32.33, 30.66], [38.47, 36.8], [39.23, 36.9], [40.57, 38.24], [40.91, 38.38], [42.745, 40.215], [43.125, 40.355], [44.245, 41.475], [45.095, 41.575], [49.045, 45.525], [50.125, 45.625], [53.625, 49.125], [53.795, 49.225], [58.965, 54.395], [59.215, 54.535], [63.012, 58.332], [63.612, 58.832]];
       const M = (t) => { if (t <= MAPA[0][0]) return t; for (let i = 1; i < MAPA.length; i++) { const [a, x] = MAPA[i - 1], [b, y] = MAPA[i]; if (t <= b) return b > a ? x + (t - a) * (y - x) / (b - a) : y; } return t + MAPA[MAPA.length - 1][1] - MAPA[MAPA.length - 1][0]; };
@@ -407,7 +407,7 @@
       /* v17: posuny po delším "proč" a doznění klipu 4 (zdroj/vince/posuny.json). Nové věci piš pod tento blok v konečných časech. */
       const POSUNY = [[23.35, 0.16], [66.29, 0.14], [68.43, 0.107]];   // v23: klip 4 o 5 snímků kratší (pauza po citaci)
       tl.getChildren(false, true, true).forEach((c) => { const t = c.startTime(); c.startTime(t + POSUNY.reduce((a, [h, d]) => a + (t >= h ? d : 0), 0)); });
-      /* ===== výzva v konečných časech (Tim do kamery, záběr 267,4 až 275,3, tři kusy se skokovým střihem) ===== */
+      /* ===== výzva v konečných časech (mluvčí do kamery, záběr 267,4 až 275,3, tři kusy se skokovým střihem) ===== */
       const VC = 70.847, VC2 = 74.827, VC3 = 77.637, KONF = 79.097;
       tl.set($("s36"), { display: "none" }, 0); tl.set($("s36"), { display: "block" }, VC);
       tl.set($("s30"), { display: "block" }, 70.651); tl.set($("s30"), { display: "none" }, VC); tl.set($("vSo"), { visibility: "visible" }, 70.651);

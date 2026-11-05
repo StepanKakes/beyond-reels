@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="cs">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Revize reelů</title>
+<style>
+  /* Střižna na revize: video je hlavní, poznámky vedle. Táhnutím ve videu označíš oblast a píšeš rovnou k ní. Tlumené neutrály, červená jen na poznámky a hlavní akci. */
+  :root {
+    --bg: #FAF9FB; --surface: #FFFFFF; --ink: #161517; --ink-2: #57535B; --ink-3: #8E8993; --line: #E9E6EB; --hover: #F3F1F4;
+    --accent: #FF0E00; --accent-soft: rgba(255, 14, 0, .08); --ok: #1E7A4B; --ok-soft: rgba(30, 122, 75, .10);
+    --pop: 0 10px 30px rgba(22, 21, 23, .14), 0 1px 3px rgba(22, 21, 23, .08);
+    --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+    --bg: #111012; --surface: #19181B; --ink: #F2F0F3; --ink-2: #B6B1BB; --ink-3: #7F7A84; --line: #2A282D; --hover: #222024;
+    --accent: #FF3B2F; --accent-soft: rgba(255, 59, 47, .14); --ok: #5BC48A; --ok-soft: rgba(91, 196, 138, .14);
+    --pop: 0 10px 30px rgba(0, 0, 0, .5); color-scheme: dark; } }
+  :root[data-theme="dark"] {
+    --bg: #111012; --surface: #19181B; --ink: #F2F0F3; --ink-2: #B6B1BB; --ink-3: #7F7A84; --line: #2A282D; --hover: #222024;
+    --accent: #FF3B2F; --accent-soft: rgba(255, 59, 47, .14); --ok: #5BC48A; --ok-soft: rgba(91, 196, 138, .14);
+    --pop: 0 10px 30px rgba(0, 0, 0, .5); color-scheme: dark; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 14px; line-height: 1.45; -webkit-font-smoothing: antialiased; }
+  button, input, textarea, select { font: inherit; color: inherit; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+  .wrap { max-width: 1440px; margin: 0 auto; padding-inline: 24px; padding-block: 16px 48px; }
+  @media (max-width: 600px) { .wrap { padding-inline: 16px; } }
+  .mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+  /* hlavička: název reelu je hlavní informace, záložky tiše vedle */
+  .top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 28px; padding-bottom: 14px; border-bottom: 1px solid var(--line); margin-bottom: 20px; }
+  .reelSel { position: relative; display: flex; align-items: center; gap: 6px; }
+  .reelSel select { appearance: none; -webkit-appearance: none; border: 0; background: none; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; padding: 2px 22px 2px 0; cursor: pointer; max-width: 70vw; text-overflow: ellipsis; }
+  .reelSel::after { content: ""; position: absolute; right: 4px; top: 50%; width: 7px; height: 7px; border-right: 2px solid var(--ink-3); border-bottom: 2px solid var(--ink-3); transform: translateY(-70%) rotate(45deg); pointer-events: none; }
+  nav.tabs { display: flex; gap: 22px; }
+  nav.tabs button { border: 0; background: none; padding: 6px 0; color: var(--ink-3); font-weight: 600; cursor: pointer; border-bottom: 2px solid transparent; }
+  nav.tabs button[aria-selected=true] { color: var(--ink); border-bottom-color: var(--ink); }
+  nav.tabs button:hover { color: var(--ink); }
+  .stavRadek { margin-left: auto; color: var(--ink-3); font-size: 13px; }
+
+  /* tlačítka */
+  .btn { border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 6px 12px; cursor: pointer; font-weight: 600; white-space: nowrap; }
+  .btn:hover { background: var(--hover); }
+  .btn.pri { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .btn.pri:hover { opacity: .88; }
+  .btn.ghost { border-color: transparent; background: none; color: var(--ink-2); }
+  .btn.ghost:hover { background: var(--hover); color: var(--ink); }
+  .btn:disabled { opacity: .4; cursor: default; }
+  .ikon { width: 34px; height: 34px; padding: 0; display: inline-grid; place-items: center; border-radius: 8px; border: 0; background: none; cursor: pointer; color: var(--ink); }
+  .ikon:hover { background: var(--hover); }
+  .ikon svg { width: 18px; height: 18px; }
+  .ikon[aria-pressed=true] { background: var(--ink); color: var(--bg); }
+
+  /* stůl */
+  .stul { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 28px; align-items: start; }
+  @media (max-width: 1020px) { .stul { grid-template-columns: minmax(0, 1fr); } }
+  .obraz { position: relative; width: 100%; max-width: 100%; aspect-ratio: 4 / 3; background: #0B0B0C; border-radius: 12px; overflow: hidden; user-select: none; -webkit-user-select: none; }
+  .obraz video, .obraz canvas, .vrstva { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .obraz video { object-fit: contain; }
+  .vrstva { touch-action: none; cursor: crosshair; }
+  .vrstva.pero { cursor: cell; }
+  .scena { position: absolute; left: 12px; top: 12px; background: rgba(11, 11, 12, .72); color: #fff; border-radius: 6px; padding: 4px 9px; font-size: 12.5px; font-weight: 600; pointer-events: none; display: flex; gap: 8px; }
+  .scena span:last-child { opacity: .7; font-weight: 500; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+  .box { position: absolute; border: 2px solid #FF0E00; border-radius: 4px; background: rgba(255, 14, 0, .08); pointer-events: none; }
+  .box.ulozeny { pointer-events: auto; cursor: pointer; }
+  .box.ulozeny.hotovo { border-color: #5BC48A; background: rgba(91, 196, 138, .10); }
+  .box .cis { position: absolute; left: -2px; top: -24px; background: #FF0E00; color: #fff; font-size: 12px; font-weight: 700; border-radius: 5px 5px 5px 0; padding: 2px 7px; font-family: var(--mono); }
+  .box.hotovo .cis { background: #1E7A4B; }
+  .prazdne { position: absolute; inset: 0; display: grid; place-items: center; color: #9b97a0; text-align: center; padding: 24px; font-size: 15px; }
+  .napoveda { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); background: rgba(11, 11, 12, .72); color: #fff; border-radius: 20px; padding: 6px 14px; font-size: 12.5px; pointer-events: none; white-space: nowrap; transition: opacity .3s; }
+  .napoveda.pryc { opacity: 0; }
+
+  /* poznámka u výběru */
+  .pop { position: absolute; z-index: 5; width: min(320px, calc(100% - 16px)); background: var(--surface); color: var(--ink); border-radius: 12px; box-shadow: var(--pop); padding: 10px; display: grid; gap: 8px; }
+  .pop textarea { width: 100%; box-sizing: border-box; border: 0; resize: none; min-height: 64px; background: none; padding: 4px 4px; }
+  .pop textarea:focus-visible { outline: none; }
+  .pop .rad { display: flex; align-items: center; gap: 6px; }
+  .pop .rad .mono { color: var(--ink-3); font-size: 12px; margin-right: auto; padding-left: 4px; }
+
+  /* ovládání a osa */
+  .ovl { display: flex; align-items: center; gap: 4px; margin-top: 10px; flex-wrap: wrap; }
+  .cas { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 13px; color: var(--ink-2); padding: 0 10px; }
+  .rychl { border: 0; background: none; color: var(--ink-2); font-weight: 600; cursor: pointer; padding: 6px 8px; border-radius: 8px; }
+  .rychl:hover { background: var(--hover); }
+  .ovl .vpravo { margin-left: auto; display: flex; gap: 4px; align-items: center; }
+  .osa { position: relative; height: 40px; margin-top: 8px; cursor: pointer; touch-action: none; }
+  .osa .drah { position: absolute; left: 0; right: 0; top: 10px; height: 20px; border-radius: 5px; background: var(--hover); overflow: hidden; display: flex; }
+  .osa .sc { height: 100%; border-right: 1px solid var(--bg); font-size: 10.5px; color: var(--ink-3); padding: 3px 5px; box-sizing: border-box; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .osa .sc.ted { background: var(--line); color: var(--ink); }
+  .osa .km { position: absolute; top: 0; width: 8px; height: 8px; margin-left: -4px; border-radius: 50%; background: var(--accent); }
+  .osa .km.hotovo { background: var(--ok); }
+  .osa .hlava { position: absolute; top: 4px; bottom: 4px; width: 2px; margin-left: -1px; background: var(--ink); border-radius: 1px; pointer-events: none; }
+
+  /* poznámky */
+  .bok { min-width: 0; }
+  .bokHl { display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px; }
+  .bokHl h2 { font-size: 15px; margin: 0; }
+  .bokHl .pocet { color: var(--ink-3); font-size: 13px; }
+  .segm { display: inline-flex; margin-left: auto; background: var(--hover); border-radius: 8px; padding: 2px; }
+  .segm button { border: 0; background: none; padding: 4px 10px; border-radius: 6px; font-size: 12.5px; font-weight: 600; color: var(--ink-3); cursor: pointer; }
+  .segm button[aria-pressed=true] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+  .seznam { display: grid; gap: 2px; max-height: calc(100vh - 330px); min-height: 120px; overflow: auto; margin: 0 -8px; padding: 0 8px; }
+  .kom { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 2px 8px; padding: 10px 8px; border-radius: 10px; cursor: pointer; }
+  .kom:hover, .kom.aktiv { background: var(--hover); }
+  .kom .cis { grid-row: span 3; width: 22px; height: 22px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-size: 11.5px; font-weight: 700; display: grid; place-items: center; font-family: var(--mono); }
+  .kom.hotovo .cis { background: var(--ok-soft); color: var(--ok); }
+  .kom .meta { display: flex; gap: 8px; align-items: baseline; font-size: 12.5px; color: var(--ink-3); min-width: 0; }
+  .kom .meta .mono { color: var(--ink-2); }
+  .kom .meta .scn { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .kom .tx { white-space: pre-wrap; overflow-wrap: anywhere; }
+  .kom.hotovo .tx { color: var(--ink-3); }
+  .kom .zmena { font-size: 13px; display: grid; gap: 1px; }
+  .kom .zmena s { color: var(--ink-3); }
+  .kom .odp { font-size: 13px; color: var(--ink-2); border-left: 2px solid var(--line); padding-left: 8px; margin-top: 2px; }
+  .kom .akce { display: flex; gap: 2px; margin-top: 4px; opacity: 0; transition: opacity .15s; }
+  .kom:hover .akce, .kom.aktiv .akce, .kom:focus-within .akce { opacity: 1; }
+  @media (hover: none) { .kom .akce { opacity: 1; } }
+  .kom .akce button { font-size: 12.5px; padding: 3px 8px; }
+  .prazdnySeznam { color: var(--ink-3); padding: 18px 8px; }
+  .novy { margin-top: 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); padding: 8px; display: grid; gap: 6px; }
+  .novy textarea { border: 0; background: none; resize: none; min-height: 44px; padding: 4px; width: 100%; box-sizing: border-box; }
+  .novy textarea:focus-visible { outline: none; }
+  .novy:focus-within { border-color: var(--ink-3); }
+  .novy .rad { display: flex; align-items: center; gap: 6px; }
+  .novy .rad .mono { color: var(--ink-3); font-size: 12px; margin-right: auto; padding-left: 4px; }
+  .titRad { display: grid; gap: 4px; padding: 0 4px; }
+  .titRad label { font-size: 12px; color: var(--ink-3); }
+  .titRad input { border: 1px solid var(--line); border-radius: 8px; background: var(--bg); padding: 6px 8px; min-width: 0; }
+  .klavesy { margin-top: 12px; color: var(--ink-3); font-size: 12px; }
+  kbd { font-family: var(--mono); font-size: 11px; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 0 4px; color: var(--ink-2); background: var(--surface); }
+
+  /* storyboard a efekty */
+  .uvod { color: var(--ink-2); max-width: 64ch; margin: 0 0 18px; }
+  .mriz { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 24px; }
+  .karta { display: grid; gap: 10px; align-content: start; min-width: 0; }
+  .karta .nahled { width: 100%; aspect-ratio: 4 / 3; border-radius: 10px; object-fit: cover; background: var(--hover); display: block; }
+  .karta .rad { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .stitek { font-size: 12px; font-weight: 600; color: var(--ink-3); }
+  .stav { font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 20px; }
+  .stav.ok { background: var(--ok-soft); color: var(--ok); }
+  .stav.zm { background: var(--accent-soft); color: var(--accent); }
+  .karta .veta { font-weight: 700; font-size: 15px; letter-spacing: -0.01em; }
+  .karta .popis { color: var(--ink-2); white-space: pre-wrap; }
+  .karta .hist { font-size: 13px; color: var(--ink-2); border-left: 2px solid var(--line); padding-left: 8px; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .karta textarea { border: 1px solid var(--line); border-radius: 8px; background: var(--surface); resize: vertical; min-height: 40px; padding: 6px 8px; width: 100%; box-sizing: border-box; }
+  .karta video { width: 100%; aspect-ratio: 4 / 3; border-radius: 10px; background: #0B0B0C; object-fit: contain; display: block; }
+  .karta h3 { margin: 0; font-size: 15px; }
+  .zdroj { font-size: 12.5px; color: var(--ink-3); }
+
+  /* knihovna */
+  .filtry { display: flex; flex-wrap: wrap; gap: 10px 16px; margin-bottom: 22px; }
+  .filtry .segm { margin-left: 0; max-width: 100%; overflow-x: auto; }
+  .filtry .segm button { white-space: nowrap; }
+  .segm button .n { font-family: var(--mono); font-weight: 500; opacity: .6; margin-left: 5px; }
+  .knih { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 28px 24px; }
+  .knih .karta video, .knih .bezVidea { width: 100%; aspect-ratio: var(--pomer, 4 / 3); border-radius: 10px; background: #0B0B0C; object-fit: contain; display: block; cursor: pointer; }
+  .knih .bezVidea { display: grid; place-items: center; color: #8E8993; font-size: 13px; cursor: default; background: var(--hover); }
+  .knih .karta h3 { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .knih .hlav { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .knih .hlav h3 { flex: 1; }
+  .knih .kod { font-family: var(--mono); font-size: 12px; color: var(--ink-3); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .knih .ver { font-family: var(--mono); font-size: 12px; color: var(--ink-3); }
+  .knih .segm.var { margin-left: 0; justify-self: start; max-width: 100%; overflow-x: auto; }
+  .knih .segm.var button { white-space: nowrap; }
+  .stav.ce { background: var(--hover); color: var(--ink-2); }
+  .stav.zk { background: var(--hover); color: var(--ink-3); text-decoration: line-through; }
+  .knih .hist .kdo { font-size: 12px; color: var(--ink-3); display: block; }
+  .knih .hist.odpo { border-left-color: var(--ok); }
+  .toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 8px); background: var(--ink); color: var(--bg); padding: 8px 14px; border-radius: 8px; font-weight: 600; font-size: 13px; opacity: 0; transition: opacity .2s, transform .2s; pointer-events: none; }
+  .toast.ukaz { opacity: 1; transform: translate(-50%, 0); }
+  @media (prefers-reduced-motion: reduce) { .toast, .napoveda, .kom .akce { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="reelSel"><select id="vyber" aria-label="Reel a verze"><option>Načítám</option></select></div>
+    <nav class="tabs" role="tablist" aria-label="Části revize">
+      <button role="tab" id="tVideo" aria-selected="true" aria-controls="pVideo">Video</button>
+      <button role="tab" id="tSb" aria-selected="false" aria-controls="pSb">Storyboard</button>
+      <button role="tab" id="tKat" aria-selected="false" aria-controls="pKat">Knihovna</button>
+    </nav>
+    <span class="stavRadek" id="stavRadek"></span>
+  </header>
+
+  <section id="pVideo" role="tabpanel">
+    <div class="stul">
+      <div style="min-width:0">
+        <div class="obraz" id="obraz">
+          <video id="vid" playsinline preload="auto"></video>
+          <canvas id="platno"></canvas>
+          <div class="vrstva" id="vrstva" aria-label="Video. Táhnutím označíš oblast a přidáš poznámku, kliknutím přehraješ nebo zastavíš."></div>
+          <div class="scena" id="scena" hidden><span id="scN"></span><span id="scT"></span></div>
+          <div class="napoveda" id="napoveda">Táhni přes video a napiš poznámku k označenému místu</div>
+          <div class="prazdne" id="prazdne">Video se tu objeví, jakmile Claude nahraje render.</div>
+        </div>
+
+        <div class="ovl">
+          <button class="ikon" id="bPlay" aria-label="Přehrát"><svg viewBox="0 0 24 24" fill="currentColor" id="icPlay"><path d="M7 4.5v15l13-7.5z"/></svg></button>
+          <button class="ikon" id="bZpet" aria-label="O snímek zpět"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <button class="ikon" id="bVpred" aria-label="O snímek vpřed"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+          <span class="cas" id="cas">0:00,00 / 0:00</span>
+          <div class="vpravo">
+            <button class="rychl" id="bRychl" aria-label="Rychlost přehrávání">1×</button>
+            <button class="ikon" id="bPero" aria-pressed="false" aria-label="Kreslit rukou" title="Kreslit rukou (P)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4-1L19 8a2.1 2.1 0 0 0-3-3L5 16z"/></svg></button>
+          </div>
+        </div>
+        <div class="osa" id="osa" aria-label="Časová osa se scénami a poznámkami"><div class="drah" id="drah"></div><div class="hlava" id="hlava"></div></div>
+      </div>
+
+      <aside class="bok">
+        <div class="bokHl">
+          <h2>Poznámky</h2><span class="pocet" id="pocet"></span>
+          <div class="segm" role="group" aria-label="Zobrazit">
+            <button data-f="otevrene" aria-pressed="true">Otevřené</button>
+            <button data-f="hotovo" aria-pressed="false">Hotové</button>
+          </div>
+        </div>
+        <div class="seznam" id="seznam"></div>
+        <div class="novy">
+          <textarea id="text" rows="2" placeholder="Poznámka k celému snímku"></textarea>
+          <div class="titRad" id="titBox" hidden>
+            <label for="titNovy" id="titPuv">Titulek</label>
+            <input type="text" id="titNovy" placeholder="Nový text titulku">
+          </div>
+          <div class="rad">
+            <span class="mono" id="kCas">0:00,00</span>
+            <button class="btn ghost" id="bTitul">Upravit titulek</button>
+            <button class="btn pri" id="bUloz">Přidat</button>
+          </div>
+        </div>
+        <p class="klavesy"><kbd>Mezerník</kbd> přehrát &nbsp; <kbd>←</kbd> <kbd>→</kbd> po snímcích &nbsp; <kbd>N</kbd> poznámka &nbsp; <kbd>P</kbd> kreslení</p>
+      </aside>
+    </div>
+  </section>
+
+  <section id="pSb" role="tabpanel" hidden>
+    <p class="uvod">Než se reel vyrenderuje, uvidíš tady každou scénu jako náhled s popisem. Schval ji, nebo napiš, co změnit.</p>
+    <div class="mriz" id="sb"></div>
+  </section>
+
+  <section id="pKat" role="tabpanel" hidden>
+    <p class="uvod">Všechno, z čeho skládáme reely, po stylech. U každé komponenty napiš, co změnit, nebo ji schval. Claude opravené verze nahraje sem a vrátí je k revizi.</p>
+    <div class="filtry">
+      <div class="segm" role="group" aria-label="Styl" id="fStyl"></div>
+      <div class="segm" role="group" aria-label="Stav" id="fStav"></div>
+    </div>
+    <div class="mriz knih" id="kat"></div>
+  </section>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const FPS = 30;
+  let db = null, mojeId = null, reely = [], reel = null, koment = [], filtr = "otevrene", aktivni = null, unsubK = null;
+  const tahy = []; let pero = false, tah = null, vyber = null, pop = null;
+
+  const fmt = (t) => { t = Math.max(0, t || 0); const m = Math.floor(t / 60), s = t - m * 60; return m + ":" + s.toFixed(2).padStart(5, "0").replace(".", ","); };
+  const fmtK = (t) => { t = Math.max(0, t || 0); return Math.floor(t / 60) + ":" + String(Math.floor(t % 60)).padStart(2, "0"); };
+  const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+  const toast = (t) => { const e = $("toast"); e.textContent = t; e.classList.add("ukaz"); clearTimeout(toast.h); toast.h = setTimeout(() => e.classList.remove("ukaz"), 1800); };
+  const lok = { get: (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} } };
+  const json = (s) => { try { return s ? JSON.parse(s) : null; } catch (e) { return null; } };
+
+  /* záložky */
+  const TABY = { tVideo: "pVideo", tSb: "pSb", tKat: "pKat" };
+  const prepni = (id) => { Object.entries(TABY).forEach(([t, p]) => { $(t).setAttribute("aria-selected", t === id); $(p).hidden = t !== id; }); lok.set("revize_tab", id); if (id === "tVideo") velikost(); };
+  Object.keys(TABY).forEach((t) => $(t).addEventListener("click", () => prepni(t)));
+
+  /* video a čas */
+  const vid = $("vid");
+  const scenaV = (t) => (reel && reel.sceny || []).find((s) => t >= s.od && t < s.do);
+  const titulekV = (t) => (reel && reel.titulky || []).find((s) => t >= s.od && t < s.do);
+  const delka = () => (reel && reel.delka) || vid.duration || 0;
+  const tCas = () => Math.round(vid.currentTime * FPS) / FPS;
+  const poradi = () => koment.filter((k) => !k.polozka).sort((a, b) => a.t - b.t || a.vytvoreno - b.vytvoreno);
+  const cislo = (k) => poradi().indexOf(k) + 1;
+  let posledniSc = null;
+  const tik = () => {
+    const t = vid.currentTime, d = delka();
+    $("cas").textContent = fmt(t) + " / " + fmtK(d);
+    $("kCas").textContent = fmt(t);
+    const s = scenaV(t);
+    $("scena").hidden = !s; if (s) { $("scN").textContent = s.nazev; $("scT").textContent = fmt(t); }
+    if (s !== posledniSc) { posledniSc = s; [...$("drah").children].forEach((e, i) => e.classList.toggle("ted", (reel.sceny || [])[i] === s)); }
+    $("hlava").style.left = (d ? (t / d) * 100 : 0) + "%";
+    if (!$("titBox").hidden) { const ti = titulekV(t); $("titPuv").textContent = ti ? "Titulek teď: „" + ti.text + "“" : "V tomhle místě není titulek"; }
+    boxy();
+  };
+  const smycka = () => { if (!vid.paused) tik(); requestAnimationFrame(smycka); }; requestAnimationFrame(smycka);
+  vid.addEventListener("seeked", tik); vid.addEventListener("loadedmetadata", () => { tik(); kresliOsu(); });
+  const ikonaPlay = () => { const p = vid.paused; $("bPlay").setAttribute("aria-label", p ? "Přehrát" : "Zastavit"); $("icPlay").innerHTML = p ? '<path d="M7 4.5v15l13-7.5z"/>' : '<path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"/>'; };
+  vid.addEventListener("play", () => { ikonaPlay(); zavriPop(); tahy.length = 0; prekresli(); }); vid.addEventListener("pause", () => { ikonaPlay(); tik(); });
+  const prepPlay = () => { if (!reel || !reel.video) return; vid.paused ? vid.play() : vid.pause(); };
+  $("bPlay").addEventListener("click", prepPlay);
+  const krok = (n) => { vid.pause(); vid.currentTime = Math.max(0, Math.min(delka(), (Math.round(vid.currentTime * FPS) + n) / FPS)); };
+  $("bZpet").addEventListener("click", () => krok(-1)); $("bVpred").addEventListener("click", () => krok(1));
+  const RYCHL = [1, 0.5, 0.25];
+  $("bRychl").addEventListener("click", () => { const i = (RYCHL.indexOf(vid.playbackRate) + 1) % RYCHL.length; vid.playbackRate = RYCHL[i]; $("bRychl").textContent = String(RYCHL[i]).replace(".", ",") + "×"; });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") { zavriPop(); return; }
+    if (/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) || $("pVideo").hidden) return;
+    if (e.code === "Space") { e.preventDefault(); prepPlay(); }
+    else if (e.key === "ArrowLeft") { e.preventDefault(); krok(e.shiftKey ? -10 : -1); }
+    else if (e.key === "ArrowRight") { e.preventDefault(); krok(e.shiftKey ? 10 : 1); }
+    else if (e.key === "n" || e.key === "N") { e.preventDefault(); vid.pause(); $("text").focus(); }
+    else if (e.key === "p" || e.key === "P") { e.preventDefault(); prepniPero(!pero); }
+  });
+
+  /* časová osa */
+  const osa = $("osa");
+  const kresliOsu = () => {
+    $("drah").replaceChildren(); [...osa.querySelectorAll(".km")].forEach((x) => x.remove());
+    const d = delka(); if (!d || !reel) return;
+    (reel.sceny || []).forEach((s) => { const e = el("div", "sc", s.nazev); e.style.width = ((s.do - s.od) / d) * 100 + "%"; e.title = s.nazev; $("drah").appendChild(e); });
+    poradi().forEach((k) => { const e = el("div", "km" + (k.stav === "hotovo" ? " hotovo" : "")); e.style.left = (k.t / d) * 100 + "%"; e.title = cislo(k) + ". " + (k.text || ""); osa.appendChild(e); });
+    posledniSc = undefined; tik();
+  };
+  const naOsu = (ev) => { const r = osa.getBoundingClientRect(); vid.currentTime = Math.min(1, Math.max(0, (ev.clientX - r.left) / r.width)) * delka(); };
+  let tOsa = false;
+  osa.addEventListener("pointerdown", (e) => { if (!reel || !reel.video) return; tOsa = true; osa.setPointerCapture(e.pointerId); vid.pause(); zavriPop(); naOsu(e); });
+  osa.addEventListener("pointermove", (e) => { if (tOsa) naOsu(e); });
+  osa.addEventListener("pointerup", () => { tOsa = false; });
+
+  /* vrstva přes video: klik přehraje, tažení označí oblast, s perem kreslí */
+  const obraz = $("obraz"), vrstva = $("vrstva"), platno = $("platno"), ctx = platno.getContext("2d");
+  function velikost() { const r = platno.getBoundingClientRect(), dpr = window.devicePixelRatio || 1; if (!r.width) return; platno.width = Math.round(r.width * dpr); platno.height = Math.round(r.height * dpr); prekresli(); boxy(); }
+  new ResizeObserver(velikost).observe(obraz);
+  const bod = (e) => { const r = vrstva.getBoundingClientRect(); return [Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)), Math.min(1, Math.max(0, (e.clientY - r.top) / r.height))]; };
+  const kresliTahy = (seznam) => { const w = platno.width, h = platno.height; ctx.lineCap = "round"; ctx.lineJoin = "round"; ctx.strokeStyle = "#FF0E00"; ctx.lineWidth = Math.max(3, w / 240);
+    seznam.forEach((s) => { if (!s.length) return; ctx.beginPath(); ctx.moveTo(s[0][0] * w, s[0][1] * h); s.forEach(([x, y]) => ctx.lineTo(x * w, y * h)); ctx.stroke(); }); };
+  let ukazTahy = null;
+  function prekresli() { ctx.clearRect(0, 0, platno.width, platno.height); kresliTahy(tahy); if (ukazTahy) kresliTahy(ukazTahy); }
+  function prepniPero(on) { pero = on; vrstva.classList.toggle("pero", on); $("bPero").setAttribute("aria-pressed", on); if (on) { vid.pause(); toast("Kresli rukou po videu, pak napiš poznámku"); } }
+  $("bPero").addEventListener("click", () => prepniPero(!pero));
+  let start = null, tazeno = false, boxEl = null;
+  vrstva.addEventListener("pointerdown", (e) => {
+    if (!reel || !reel.video) return;
+    vrstva.setPointerCapture(e.pointerId); start = bod(e); tazeno = false;
+    if (pero) { if (!pop) tahy.length = 0; zavriPop(true); vid.pause(); tah = [start]; tahy.push(tah); prekresli(); }
+  });
+  vrstva.addEventListener("pointermove", (e) => {
+    if (!start) return; const p = bod(e), r = vrstva.getBoundingClientRect();
+    if (pero && tah) { tah.push(p); prekresli(); return; }
+    if (!tazeno && Math.hypot((p[0] - start[0]) * r.width, (p[1] - start[1]) * r.height) > 6) { tazeno = true; vid.pause(); zavriPop(); boxEl = el("div", "box"); obraz.appendChild(boxEl); $("napoveda").classList.add("pryc"); }
+    if (tazeno) { vyber = { x: Math.min(start[0], p[0]), y: Math.min(start[1], p[1]), w: Math.abs(p[0] - start[0]), h: Math.abs(p[1] - start[1]) }; poloz(boxEl, vyber); }
+  });
+  vrstva.addEventListener("pointerup", () => {
+    if (!start) return; start = null;
+    if (pero) { tah = null; otevriPop(oblastTahu()); return; }
+    if (tazeno) { otevriPop(vyber); return; }
+    if (pop) { zavriPop(); return; }
+    prepPlay();
+  });
+  const oblastTahu = () => { const b = tahy.flat(); if (!b.length) return null; const xs = b.map((p) => p[0]), ys = b.map((p) => p[1]); return { x: Math.min(...xs), y: Math.min(...ys), w: Math.max(...xs) - Math.min(...xs), h: Math.max(...ys) - Math.min(...ys) }; };
+  const poloz = (e, o) => Object.assign(e.style, { left: o.x * 100 + "%", top: o.y * 100 + "%", width: o.w * 100 + "%", height: o.h * 100 + "%" });
+
+  function otevriPop(o) {
+    zavriPop(true);
+    const r = obraz.getBoundingClientRect(); pop = el("div", "pop"); pop.setAttribute("role", "dialog"); pop.setAttribute("aria-label", "Poznámka k označenému místu");
+    const ta = el("textarea"); ta.rows = 3; ta.placeholder = "Co tady změnit"; ta.id = "popText";
+    const rad = el("div", "rad"); const cas = el("span", "mono", fmt(tCas()) + (scenaV(vid.currentTime) ? "  " + scenaV(vid.currentTime).nazev : ""));
+    const zr = el("button", "btn ghost", "Zrušit"), ok = el("button", "btn pri", "Přidat");
+    zr.addEventListener("click", () => zavriPop()); ok.addEventListener("click", () => uloz({ text: ta.value.trim(), oblast: o }));
+    ta.addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); ok.click(); } });
+    rad.append(cas, zr, ok); pop.append(ta, rad); obraz.appendChild(pop);
+    const pw = pop.offsetWidth, ph = pop.offsetHeight, bx = o ? o.x * r.width : r.width / 2 - pw / 2, by = o ? (o.y + o.h) * r.height + 8 : 20;
+    let left = Math.min(Math.max(8, bx), r.width - pw - 8), top = by + ph > r.height - 8 ? Math.max(8, (o ? o.y * r.height : 0) - ph - 8) : by;
+    pop.style.left = left + "px"; pop.style.top = top + "px"; setTimeout(() => ta.focus(), 0);
+  }
+  function zavriPop(ponechTahy) { if (pop) { pop.remove(); pop = null; } if (boxEl) { boxEl.remove(); boxEl = null; } vyber = null; if (!ponechTahy) { tahy.length = 0; prekresli(); } }
+
+  /* uložené oblasti na aktuálním snímku */
+  let boxyEl = [];
+  function boxy() {
+    boxyEl.forEach((b) => b.remove()); boxyEl = []; ukazTahy = null;
+    if (!vid.paused || !reel) { prekresli(); return; }
+    const t = vid.currentTime;
+    poradi().filter((k) => Math.abs(k.t - t) < 0.5 / FPS + 0.001 && (filtr === "hotovo" ? k.stav === "hotovo" : k.stav !== "hotovo")).forEach((k) => {
+      const o = json(k.oblast); const th = json(k.tahy); if (th) ukazTahy = (ukazTahy || []).concat(th);
+      if (!o) return; const b = el("div", "box ulozeny" + (k.stav === "hotovo" ? " hotovo" : "")); poloz(b, o); b.appendChild(el("span", "cis", String(cislo(k))));
+      b.title = k.text || ""; b.addEventListener("pointerdown", (e) => { e.stopPropagation(); aktivni = k.id; vykresliSeznam(); const c = document.querySelector('[data-id="' + k.id + '"]'); if (c) c.scrollIntoView({ block: "nearest" }); });
+      obraz.insertBefore(b, $("scena")); boxyEl.push(b);
+    });
+    prekresli();
+  }
+
+  /* ukládání */
+  async function uloz({ text, oblast, titulek }) {
+    if (!db || !reel) { toast("Bez připojení se poznámka neuloží"); return false; }
+    if (!text && !titulek && !tahy.length) { toast("Napiš, co změnit"); return false; }
+    const t = tCas(), s = scenaV(t), d = { reel: reel.id, projekt: reel.projekt || "", verze: reel.verze || "", t, scena: s ? s.nazev : "", text, stav: "otevrene", vytvoreno: Date.now(), autor: mojeId || "",
+      typ: titulek ? "titulek" : tahy.length ? "kresba" : oblast ? "oblast" : "poznamka" };
+    if (oblast) d.oblast = JSON.stringify(Object.fromEntries(Object.entries(oblast).map(([k, v]) => [k, +v.toFixed(4)])));
+    if (tahy.length) d.tahy = JSON.stringify(tahy.map((s) => s.map(([x, y]) => [+x.toFixed(4), +y.toFixed(4)])));
+    if (titulek) Object.assign(d, titulek);
+    try { await db.collection("komentare").add(d); zavriPop(); prepniPero(false); toast("Poznámka přidaná"); return true; }
+    catch (e) { toast(e && e.code === "not_granted" ? "Nemáš oprávnění přidávat poznámky" : "Nepovedlo se uložit, zkus to znovu"); return false; }
+  }
+  $("bTitul").addEventListener("click", () => { const b = $("titBox"); b.hidden = !b.hidden; $("bTitul").textContent = b.hidden ? "Upravit titulek" : "Bez titulku"; vid.pause(); tik(); if (!b.hidden) { const ti = titulekV(vid.currentTime); $("titNovy").value = ti ? ti.text : ""; $("titNovy").focus(); } });
+  $("bUloz").addEventListener("click", async () => {
+    const titOn = !$("titBox").hidden, novy = $("titNovy").value.trim(), ti = titulekV(vid.currentTime);
+    const ok = await uloz({ text: $("text").value.trim(), titulek: titOn && novy ? { titulek_puvodni: ti ? ti.text : "", titulek_novy: novy } : null });
+    if (ok) { $("text").value = ""; $("titNovy").value = ""; $("titBox").hidden = true; $("bTitul").textContent = "Upravit titulek"; }
+  });
+  $("text").addEventListener("focus", () => vid.pause());
+  $("text").addEventListener("keydown", (e) => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) $("bUloz").click(); });
+
+  /* seznam poznámek */
+  document.querySelectorAll("[data-f]").forEach((b) => b.addEventListener("click", () => { filtr = b.dataset.f; document.querySelectorAll("[data-f]").forEach((x) => x.setAttribute("aria-pressed", x === b)); vykresliSeznam(); boxy(); }));
+  function vykresliSeznam() {
+    const box = $("seznam"); box.replaceChildren();
+    const vse = poradi(), otev = vse.filter((k) => k.stav !== "hotovo").length;
+    $("pocet").textContent = vse.length ? otev + " otevřených z " + vse.length : "";
+    const k = vse.filter((x) => (filtr === "hotovo" ? x.stav === "hotovo" : x.stav !== "hotovo"));
+    if (!k.length) { box.appendChild(el("p", "prazdnySeznam", filtr === "hotovo" ? "Zatím nic hotového." : reel && reel.video ? "Žádné otevřené poznámky. Zastav video a táhni přes místo, které chceš změnit." : "Poznámky se objeví u nahraného videa.")); return; }
+    k.forEach((x) => {
+      const c = el("div", "kom" + (x.stav === "hotovo" ? " hotovo" : "") + (aktivni === x.id ? " aktiv" : "")); c.dataset.id = x.id; c.tabIndex = 0;
+      c.appendChild(el("span", "cis", String(cislo(x))));
+      const meta = el("div", "meta"); meta.append(el("span", "mono", fmt(x.t)), el("span", "scn", x.scena || "")); c.appendChild(meta);
+      const telo = el("div", ""); if (x.text) telo.appendChild(el("div", "tx", x.text));
+      if (x.typ === "titulek") { const z = el("div", "zmena"); z.append(el("s", "", x.titulek_puvodni || "bez titulku"), el("span", "", x.titulek_novy)); telo.appendChild(z); }
+      if (!x.text && x.typ === "kresba") telo.appendChild(el("div", "tx", "Kresba v obraze"));
+      if (x.odpoved) telo.appendChild(el("div", "odp", x.odpoved));
+      const ak = el("div", "akce"); const bh = el("button", "btn ghost", x.stav === "hotovo" ? "Znovu otevřít" : "Hotovo"), bs = el("button", "btn ghost", "Smazat");
+      bh.addEventListener("click", async (e) => { e.stopPropagation(); try { await db.collection("komentare").doc(x.id).update({ stav: x.stav === "hotovo" ? "otevrene" : "hotovo" }); } catch (er) { toast("Změna se nepovedla"); } });
+      bs.addEventListener("click", async (e) => { e.stopPropagation(); if (bs.dataset.ok !== "1") { bs.dataset.ok = "1"; bs.textContent = "Opravdu smazat"; return; } try { await db.collection("komentare").doc(x.id).delete(); toast("Smazáno"); } catch (er) { toast("Smazání se nepovedlo"); } });
+      ak.append(bh, bs); telo.appendChild(ak); c.appendChild(telo);
+      const jdi = () => { aktivni = x.id; zavriPop(); vid.pause(); vid.currentTime = x.t; vykresliSeznam(); };
+      c.addEventListener("click", jdi); c.addEventListener("keydown", (e) => { if (e.key === "Enter" && e.target === c) jdi(); });
+      box.appendChild(c);
+    });
+  }
+
+  /* storyboard */
+  function vykresliSb() {
+    const box = $("sb"); box.replaceChildren(); const pol = (reel && reel.storyboard) || [];
+    if (!pol.length) { box.appendChild(el("p", "prazdnySeznam", "K téhle verzi storyboard není. Claude ho nahraje před dalším renderem.")); return; }
+    pol.forEach((p) => {
+      const kk = koment.filter((x) => x.polozka === p.id).sort((a, b) => a.vytvoreno - b.vytvoreno), posl = kk[kk.length - 1];
+      const c = el("article", "karta");
+      if (p.obrazek) { const im = el("img", "nahled"); im.src = p.obrazek; im.alt = p.scena || ""; im.loading = "lazy"; c.appendChild(im); }
+      const r = el("div", "rad"); r.append(el("span", "stitek", p.scena || "Scéna")); if (posl) r.append(el("span", "stav " + (posl.typ === "schvaleno" ? "ok" : "zm"), posl.typ === "schvaleno" ? "Schváleno" : "Ke změně")); c.appendChild(r);
+      if (p.veta) c.appendChild(el("div", "veta", "„" + p.veta + "“")); if (p.popis) c.appendChild(el("div", "popis", p.popis));
+      kk.filter((x) => x.text).forEach((x) => c.appendChild(el("div", "hist", x.text)));
+      const ta = el("textarea"); ta.id = "sb_" + p.id; ta.rows = 1; ta.placeholder = "Co změnit"; c.appendChild(ta);
+      const r2 = el("div", "rad"); const bs = el("button", "btn", "Schválit"), bz = el("button", "btn pri", "Poslat změnu");
+      const ul = async (typ) => { if (!db || !reel) return; const text = ta.value.trim(); if (typ === "zmena" && !text) { ta.focus(); toast("Napiš, co změnit"); return; }
+        try { await db.collection("komentare").add({ reel: reel.id, projekt: reel.projekt || "", verze: reel.verze || "", polozka: p.id, scena: p.scena || "", text, typ: typ === "zmena" ? "poznamka" : "schvaleno", stav: typ === "zmena" ? "otevrene" : "hotovo", vytvoreno: Date.now(), autor: mojeId || "" }); ta.value = ""; toast(typ === "zmena" ? "Změna odeslaná" : "Schváleno"); }
+        catch (e) { toast("Nepovedlo se uložit"); } };
+      bs.addEventListener("click", () => ul("schvaleno")); bz.addEventListener("click", () => ul("zmena")); r2.append(bs, bz); c.appendChild(r2); box.appendChild(c);
+    });
+  }
+
+  /* knihovna komponent: stav k_revizi, ke_zmene, schvaleno, zakazano; feedback jde do komentare s reel "knihovna" */
+  const STYLY = { vsechny: "Všechny styly", mason: "Mason", lumitris: "Lumitris", noske: "Noske", "matt-gray": "Matt Gray", nathan: "Nathan" };
+  const STAVY = [["k_revizi", "K revizi", "ce"], ["ke_zmene", "Ke změně", "zm"], ["schvaleno", "Schváleno", "ok"], ["zakazano", "Zakázáno", "zk"]];
+  const stavK = (x) => x.stav || "k_revizi";
+  let komp = [], kKom = [], fStyl = lok.get("knih_styl") || "vse", fStav = lok.get("knih_stav") || "k_revizi";
+  const koncepty = {}, karty = new Map();
+  const hrac = "IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches
+    ? new IntersectionObserver((es) => es.forEach((e) => (e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause())), { rootMargin: "100px" }) : null;
+  function segm(box, pol, akt, klik) {
+    box.replaceChildren(...pol.map(([k, t, n]) => { const b = el("button", "", t); if (n != null) b.appendChild(el("span", "n", String(n))); b.setAttribute("aria-pressed", k === akt); b.addEventListener("click", () => klik(k)); return b; }));
+  }
+  function kartaKomp(x) {
+    const kk = kKom.filter((k) => k.komponenta === x.id).sort((a, b) => a.vytvoreno - b.vytvoreno);
+    const sig = JSON.stringify([x, kk.map((k) => [k.id, k.stav, k.odpoved, k.text])]);
+    const old = karty.get(x.id); if (old && old.sig === sig) return old.node;
+    const c = el("article", "karta"); c.style.setProperty("--pomer", (x.pomer || "4/3").replace("/", " / "));
+    const varianty = (x.varianty && x.varianty.length) ? x.varianty : x.ukazka ? [{ reel: "", ukazka: x.ukazka, nahled: x.nahled }] : [];
+    if (varianty.length) {
+      const v = el("video"); v.muted = true; v.loop = true; v.playsInline = true; v.preload = "metadata"; v.setAttribute("aria-label", "Ukázka " + (x.nazev || ""));
+      const nastav = (va) => { v.src = va.ukazka; if (va.nahled) v.poster = va.nahled; v.play().catch(() => {}); };
+      v.src = varianty[0].ukazka; if (varianty[0].nahled) v.poster = varianty[0].nahled;
+      v.addEventListener("click", () => (v.paused ? v.play().catch(() => {}) : v.pause())); if (hrac) hrac.observe(v); c.appendChild(v);
+      if (varianty.length > 1) {
+        const sg = el("div", "segm var"); sg.setAttribute("role", "group"); sg.setAttribute("aria-label", "Reel");
+        varianty.forEach((va, i) => { const b = el("button", "", va.reel || String(i + 1)); b.setAttribute("aria-pressed", i === 0); b.addEventListener("click", () => { sg.querySelectorAll("button").forEach((y) => y.setAttribute("aria-pressed", y === b)); nastav(va); }); sg.appendChild(b); });
+        c.appendChild(sg);
+      }
+    }
+    else c.appendChild(el("div", "bezVidea", x.typ === "pravidlo" ? "Pravidlo bez ukázky" : "Ukázka se renderuje"));
+    const st = STAVY.find((s) => s[0] === stavK(x)) || STAVY[0];
+    const h = el("div", "hlav"), h3 = el("h3", "", x.nazev || x.id); h3.title = x.nazev || x.id; h.append(h3, el("span", "stav " + st[2], st[1])); c.appendChild(h);
+    const kod = [STYLY[x.styl] || x.styl, x.funkce].filter(Boolean).join(" · "); if (kod) { const k = el("div", "kod", kod + (x.verze > 1 ? "  v" + x.verze : "")); k.title = kod; c.appendChild(k); }
+    if (x.popis) c.appendChild(el("div", "popis", x.popis));
+    if (x.zdroj) c.appendChild(el("div", "zdroj", x.zdroj));
+    kk.filter((k) => k.text || k.odpoved).forEach((k) => {
+      if (k.text) { const d = el("div", "hist"); d.appendChild(el("span", "kdo", k.typ === "schvaleno" ? "Schváleno" : k.stav === "hotovo" ? "Opraveno" : "Ke změně")); d.appendChild(document.createTextNode(k.text)); c.appendChild(d); }
+      if (k.odpoved) { const d = el("div", "hist odpo"); d.appendChild(el("span", "kdo", "Claude")); d.appendChild(document.createTextNode(k.odpoved)); c.appendChild(d); }
+    });
+    const ta = el("textarea"); ta.rows = 1; ta.placeholder = "Co změnit"; ta.value = koncepty[x.id] || ""; ta.setAttribute("aria-label", "Co změnit na " + (x.nazev || ""));
+    ta.addEventListener("input", () => { koncepty[x.id] = ta.value; }); c.appendChild(ta);
+    const r = el("div", "rad"), bs = el("button", "btn", "Schválit"), bz = el("button", "btn pri", "Poslat změnu"), bx = el("button", "btn ghost", stavK(x) === "zakazano" ? "Vrátit" : "Zakázat");
+    const ul = async (typ) => {
+      if (!db) return; const text = ta.value.trim();
+      if (typ === "zmena" && !text) { ta.focus(); toast("Napiš, co změnit"); return; }
+      const novy = typ === "zmena" ? "ke_zmene" : typ === "schvaleno" ? "schvaleno" : stavK(x) === "zakazano" ? "k_revizi" : "zakazano";
+      try {
+        await db.collection("komponenty").doc(x.id).update({ stav: novy, zmeneno: Date.now() });
+        if (text || typ !== "zakaz") await db.collection("komentare").add({ reel: "knihovna", komponenta: x.id, styl: x.styl || "", verze: x.verze || 1, text, typ: typ === "zmena" ? "poznamka" : typ === "schvaleno" ? "schvaleno" : "zakaz", stav: typ === "zmena" ? "otevrene" : "hotovo", vytvoreno: Date.now(), autor: mojeId || "" });
+        delete koncepty[x.id]; toast(typ === "zmena" ? "Změna odeslaná" : typ === "schvaleno" ? "Schváleno" : novy === "zakazano" ? "Zakázáno" : "Vráceno k revizi");
+      } catch (e) { toast("Nepovedlo se uložit"); }
+    };
+    bs.addEventListener("click", () => ul("schvaleno")); bz.addEventListener("click", () => ul("zmena")); bx.addEventListener("click", () => ul("zakaz"));
+    ta.addEventListener("keydown", (e) => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) bz.click(); });
+    r.append(bs, bz, bx); c.appendChild(r);
+    karty.set(x.id, { sig, node: c }); return c;
+  }
+  function vykresliKat() {
+    const styly = [...new Set(komp.map((x) => x.styl || "vsechny"))].sort((a, b) => Object.keys(STYLY).indexOf(a) - Object.keys(STYLY).indexOf(b));
+    if (fStyl !== "vse" && !styly.includes(fStyl)) fStyl = "vse";
+    const veStylu = komp.filter((x) => fStyl === "vse" || (x.styl || "vsechny") === fStyl);
+    segm($("fStyl"), [["vse", "Vše", komp.length], ...styly.map((s) => [s, STYLY[s] || s, komp.filter((x) => (x.styl || "vsechny") === s).length])], fStyl, (k) => { fStyl = k; lok.set("knih_styl", k); vykresliKat(); });
+    segm($("fStav"), [...STAVY.map(([k, t]) => [k, t, veStylu.filter((x) => stavK(x) === k).length]), ["vse", "Vše", veStylu.length]], fStav, (k) => { fStav = k; lok.set("knih_stav", k); vykresliKat(); });
+    const box = $("kat");
+    const e = veStylu.filter((x) => fStav === "vse" || stavK(x) === fStav).sort((a, b) => (a.poradi ?? 999) - (b.poradi ?? 999) || (a.nazev || "").localeCompare(b.nazev || "", "cs"));
+    if (hrac) box.querySelectorAll("video").forEach((v) => hrac.unobserve(v));
+    if (!e.length) { box.replaceChildren(el("p", "prazdnySeznam", komp.length ? "V tomhle výběru nic není." : "Knihovna je zatím prázdná. Claude do ní nahraje komponenty po stylech.")); return; }
+    box.replaceChildren(...e.map(kartaKomp));
+    if (hrac) box.querySelectorAll("video").forEach((v) => hrac.observe(v));
+  }
+
+  /* výběr reelu */
+  function nastavReel(id) {
+    reel = reely.find((r) => r.id === id) || null; lok.set("revize_reel", id || ""); zavriPop(); aktivni = null;
+    $("prazdne").hidden = !!(reel && reel.video); $("napoveda").hidden = !(reel && reel.video);
+    if (reel && reel.video && vid.getAttribute("src") !== reel.video) vid.src = reel.video;
+    $("stavRadek").textContent = reel && reel.delka ? "Délka " + fmtK(reel.delka) : "";
+    if (unsubK) unsubK(); koment = []; vykresliSeznam(); vykresliSb(); kresliOsu();
+    if (db && reel) unsubK = db.collection("komentare").where("reel", "==", reel.id).onSnapshot((s) => { koment = s.docs.map((d) => ({ id: d.id, ...d.data() })); vykresliSeznam(); vykresliSb(); kresliOsu(); }, () => toast("Poznámky se nepodařilo načíst"));
+  }
+  $("vyber").addEventListener("change", (e) => nastavReel(e.target.value));
+  function vykresliVyber() {
+    const s = $("vyber"), chci = reel ? reel.id : lok.get("revize_reel"); s.replaceChildren();
+    if (!reely.length) { s.appendChild(el("option", "", "Zatím žádný reel")); return; }
+    reely.forEach((r) => { const o = el("option", "", [r.projekt, r.verze].filter(Boolean).join(" ")); o.value = r.id; s.appendChild(o); });
+    const id = reely.some((r) => r.id === chci) ? chci : reely[0].id; s.value = id;
+    if (!reel || reel.id !== id) nastavReel(id); else { reel = reely.find((r) => r.id === id); kresliOsu(); vykresliSb(); }
+  }
+
+  /* Lokální databáze: stejné volání jako dřív, data leží v JSON souborech u serveru */
+  function mistniDb() {
+    const odbery = new Set();
+    const zdroj = new EventSource("/api/zmeny");
+    zdroj.addEventListener("zmena", (e) => { const k = JSON.parse(e.data); odbery.forEach((o) => { if (o.kolekce === k) o.nacti(); }); });
+    zdroj.onopen = () => odbery.forEach((o) => o.nacti());
+    const volej = async (url, metoda, telo) => {
+      const r = await fetch(url, { method: metoda || "GET", headers: telo ? { "Content-Type": "application/json" } : {}, body: telo ? JSON.stringify(telo) : undefined });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    };
+    const kolekce = (nazev, filtr) => {
+      const u = "/api/db/" + encodeURIComponent(nazev);
+      return {
+        where: (pole, op, hodnota) => kolekce(nazev, { ...filtr, [pole]: hodnota }),
+        add: (d) => volej(u, "POST", d),
+        doc: (id) => { const c = u + "/" + encodeURIComponent(id); return { update: (d) => volej(c, "PATCH", d), set: (d) => volej(c, "PUT", d), delete: () => volej(c, "DELETE") }; },
+        onSnapshot: (ok, chyba) => {
+          const q = new URLSearchParams(filtr || {}).toString();
+          const o = { kolekce: nazev, nacti: async () => {
+            try { const v = await volej(u + (q ? "?" + q : "")); if (odbery.has(o)) ok({ docs: v.map(({ id, ...d }) => ({ id, data: () => d })) }); }
+            catch (e) { if (chyba) chyba(e); }
+          } };
+          odbery.add(o); o.nacti();
+          return () => odbery.delete(o);
+        },
+      };
+    };
+    return { collection: (n) => kolekce(n) };
+  }
+
+  prepni({ storyboard: "tSb", efekty: "tKat", knihovna: "tKat" }[(location.hash || "").slice(1)] || lok.get("revize_tab") || "tVideo");
+  vykresliSeznam(); vykresliSb(); vykresliKat();
+  (async () => {
+    db = mistniDb(); try { mojeId = (await (await fetch("/api/kdo")).json()).id; } catch (e) {}
+    db.collection("reely").onSnapshot((s) => { reely = s.docs.map((d) => ({ id: d.id, ...d.data() })).sort((a, b) => (b.vytvoreno || 0) - (a.vytvoreno || 0)); vykresliVyber(); }, () => toast("Reely se nepodařilo načíst"));
+    db.collection("komponenty").onSnapshot((s) => { komp = s.docs.map((d) => ({ id: d.id, ...d.data() })); vykresliKat(); }, () => toast("Knihovnu se nepodařilo načíst"));
+    db.collection("komentare").where("reel", "==", "knihovna").onSnapshot((s) => { kKom = s.docs.map((d) => ({ id: d.id, ...d.data() })); vykresliKat(); }, () => {});
+  })();
+})();
+</script>

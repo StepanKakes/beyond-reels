@@ -89,9 +89,9 @@
    "od": 395,
    "do": 448,
    "nazev": "Plynulý nájezd na A-roll",
-   "popis": "Pomalý nájezd po křivce sine in out přes celý úsek Tima (1,2 % za sekundu, max 6 %), sousední úseky jako jeden, nikdy rychlé odzoomování",
+   "popis": "Pomalý nájezd po křivce sine in out přes celý úsek mluvčího (1,2 % za sekundu, max 6 %), sousední úseky jako jeden, nikdy rychlé odzoomování",
    "kod": "src/zac.html:153 až 158 (TIMU, #brW)",
-   "vyskyty": "všechny úseky Tima",
+   "vyskyty": "všechny úseky mluvčího",
    "kvalita": 3
   },
   {
@@ -210,7 +210,7 @@
    "od": 1596,
    "do": 1724,
    "nazev": "Titulky",
-   "popis": "Kousky po 1 až 3 slovech přesně na hlas, 13 snímků minimum, bílé se stínem uprostřed na B-rollu, tmavé na papíře, u Tima kolem hlavy vlevo a vpravo, nikdy přes obličej; slovo velké v obraze se v titulku vynechá",
+   "popis": "Kousky po 1 až 3 slovech přesně na hlas, 13 snímků minimum, bílé se stínem uprostřed na B-rollu, tmavé na papíře, u mluvčího kolem hlavy vlevo a vpravo, nikdy přes obličej; slovo velké v obraze se v titulku vynechá",
    "kod": "src/zac.html:95 až 101, 298 až 360 (.hrud, bL, bR, BOKY)",
    "vyskyty": "celý reel",
    "kvalita": 1
@@ -232,7 +232,7 @@
    "od": 2490,
    "do": 2566,
    "nazev": "Slova za osobou",
-   "popis": "Červené roztažené verzálky po slovech za člověkem (maska MatAnyone), každé slovo klik, poslední dopad a kick; zvýraznit klíčovou frázi na B-rollu i na Timovi",
+   "popis": "Červené roztažené verzálky po slovech za člověkem (maska MatAnyone), každé slovo klik, poslední dopad a kick; zvýraznit klíčovou frázi na B-rollu i na mluvčímu",
    "kod": "nastroje/za_osobou.py + za_markup.py (za_profil.mp4), src/zac.html:107, 162, 173",
    "vyskyty": "0:17 (ALE PROČ, nastroje/proc_za.py), 1:05 (OSOBNOST PRODÁVÁ SAMA), 1:10 (VŠECHNO NATÁČÍ DIY)",
    "kvalita": 1
@@ -254,7 +254,7 @@
    "od": 3005,
    "do": 3095,
    "nazev": "Body 1 2 3 v CTA",
-   "popis": "Malé červené karty s čísly se vrátí přes Tima pod bradou, každá na své slovo, pod ní bílý název, na konci zhasnou na dvojky; rekapitulace slibu v CTA",
+   "popis": "Malé červené karty s čísly se vrátí přes mluvčího pod bradou, každá na své slovo, pod ní bílý název, na konci zhasnou na dvojky; rekapitulace slibu v CTA",
    "kod": "src/zac.html:59, 62, 287 až 294 (.velkM, .triPod)",
    "vyskyty": "",
    "kvalita": 2

@@ -41,9 +41,9 @@ Nic neřve: žádné zvuky, žádné švihy, jen čisté střihy a měkký dojez
 - Texty česky. Grade záběrů neměníme (pravidla), teal a orange nepřebíráme.
 - Ručně psaný nadpis na papíře (SW12) nemáme písmo: Instrument Serif nebo Helvetica Bold, podtržení fixkou ponecháno.
 
-## Rozhodnuto (Štěpán 15. 10. 2026)
+## Rozhodnuto
 - Blur při nástupu textu necháváme 1:1 (jen u nástupu, krátce).
-- Zvuk: původně jen hlas, týž den Štěpán vybral SFX ke každé akci (seznam ve skillu).
+- Zvuk: původně jen hlas, později vybrané SFX ke každé akci (seznam ve skillu).
 - Text o 25 až 30 % větší než originál, bez stínu a aury.
 - Beyond verze barev a písma, řemeslo a časování 1:1.
 - Ukázka na Timově záběru ořezaném na 16:9.

@@ -5,7 +5,7 @@
 @font-face { font-family: "HN"; src: url("assets/fonts/HN-Medium.ttf") format("truetype"); font-weight: 500; }
 @font-face { font-family: "HN"; src: url("assets/fonts/HN-Bold.ttf") format("truetype"); font-weight: 700; }
 @font-face { font-family: "IS"; src: url("assets/fonts/InstrumentSerif-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; }
-/* Helvetica nikdy kurzívou (Tim 2.10.), pointa je vždy Instrument Serif Italic */
+/* Helvetica nikdy kurzívou, pointa je vždy Instrument Serif Italic */
 
 :root {
   --tma: #111111;          /* grafické karty, místo jeho #101A1A */
@@ -19,8 +19,8 @@
 
 .nk-plocha { position: absolute; inset: 0; overflow: hidden; background: var(--tma); font-family: "HN", "Helvetica Neue", Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
 
-/* VIDEO: celý záběr, nikdy vyříznutá postava. Původní grade se nemění, .nk-grade jen když Tim chce tmavší Noske look */
-.nk-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 0%; }  /* zoom od horního okraje, ať neusekne vlasy (Tim 2.10.) */
+/* VIDEO: celý záběr, nikdy vyříznutá postava. Původní grade se nemění, .nk-grade jen když někdo chce tmavší Noske look */
+.nk-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 0%; }  /* zoom od horního okraje, ať neusekne vlasy */
 .nk-video.nk-grade { filter: contrast(1.1) saturate(0.82) brightness(0.9); }
 .nk-vineta { position: absolute; inset: 0; z-index: 2; pointer-events: none;
   background: radial-gradient(ellipse 78% 62% at 50% 42%, rgba(17,17,17,0) 45%, rgba(17,17,17,0.55) 100%); }
@@ -44,11 +44,11 @@
 .nk-slovo.xl { font-size: 132px; text-transform: uppercase; letter-spacing: var(--proklad-velke); }
 .nk-slovo .nad { display: block; font-size: 34px; letter-spacing: -0.02em; text-transform: none; margin-bottom: 10px; font-weight: 700; }
 /* pointa: Instrument Serif Italic jako jeho serif, o 12 % větší, ať drží výšku písmen vedle Helveticy */
-.nk-kurziva { font-family: "IS", serif; font-style: italic; font-weight: 400 !important; font-synthesis: none;   /* IS nemá tučný řez, prohlížeč by ho uměle ztučnil (Tim 2.10.: moc tlustý) */
+.nk-kurziva { font-family: "IS", serif; font-style: italic; font-weight: 400 !important; font-synthesis: none;   /* IS nemá tučný řez, prohlížeč by ho uměle ztučnil (moc tlustý) */
   text-transform: none; letter-spacing: -0.01em; font-size: 1.12em; }
 .nk-titulky.na-papire .nk-slovo { color: var(--tma); }
-/* přes B-roll zůstává krémová, jen s měkkým stínem pod písmem. Tmavé titulky na fotce nikdy (Tim 2.10.: nečitelné) */
-/* jemný stín pod písmem na každém videu (Tim 2.10.: kontrast vždy, ale ne těžký), na B-rollu o kousek silnější */
+/* přes B-roll zůstává krémová, jen s měkkým stínem pod písmem. Tmavé titulky na fotce nikdy (nečitelné) */
+/* jemný stín pod písmem na každém videu (kontrast vždy, ale ne těžký), na B-rollu o kousek silnější */
 .nk-titulky .nk-slovo, .nk-titulky .nk-sestava { text-shadow: 0 1px 12px rgba(17, 17, 17, 0.32), 0 0 2px rgba(17, 17, 17, 0.22); }
 .nk-titulky.na-brollu .nk-slovo { text-shadow: 0 1px 14px rgba(17, 17, 17, 0.42), 0 0 2px rgba(17, 17, 17, 0.3); }
 
@@ -98,7 +98,7 @@
 .nk-postava::before { content: ""; position: absolute; left: 41px; top: 0; width: 68px; height: 68px; border-radius: 50%; background: currentColor; }
 .nk-postava::after { content: ""; position: absolute; left: 0; top: 82px; width: 150px; height: 108px; border-radius: 75px 75px 18px 18px; background: currentColor; }
 
-/* CITACE: profilovka a věta v uvozovkách, žádné bubliny zpráv (Tim, 2.10.2026) */
+/* CITACE: profilovka a věta v uvozovkách, žádné bubliny zpráv */
 .nk-citace .avatar { width: 132px; height: 132px; border-radius: 50%; margin: 0 auto; background: var(--tma); position: relative; overflow: hidden; }
 .nk-citace .avatar::before { content: ""; position: absolute; left: 44px; top: 26px; width: 44px; height: 44px; border-radius: 50%; background: var(--papir); }
 .nk-citace .avatar::after { content: ""; position: absolute; left: 22px; top: 80px; width: 88px; height: 70px; border-radius: 44px 44px 0 0; background: var(--papir); }

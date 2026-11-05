@@ -1,4 +1,4 @@
-"""Masky lidí po snímcích pro text ZA osobou (obří slovo za běžci, za Timem, za Georgem).
+"""Masky lidí po snímcích pro text ZA osobou (obří slovo za běžci, za mluvčím, za Georgem).
 První snímek: Apple Vision (maska_osoby.swift, bez klíče), pak MatAnyone2 přes celý záběr na polovičním rozlišení,
 alfa se zvětší na plné. Výstup: <slozka>/000.webp ... RGBA (záběr + alfa), v kompozici se kladou nad text
 (BN.maskaZaPostavou nebo smyčka jako ve vzory/dalen-telo.html). Text skrýt, jakmile masky dojdou.

@@ -13,7 +13,7 @@
   "klik3": {
    "soubor": "zaklad/klik3.wav",
    "d": 0.2,
-   "pouziti": "classic click, NEPOUŽÍVAT (Tim 2.10.)"
+   "pouziti": "classic click, NEPOUŽÍVAT"
   },
   "klik4": {
    "soubor": "zaklad/klik4.wav",
@@ -73,7 +73,7 @@
   "svih_hluboky": {
    "soubor": "zaklad/svih_hluboky.wav",
    "d": 1.6,
-   "pouziti": "Deep Whoosh (Nikko Hunt, DEITH_SFX), hlavní švih od 4.10.2026, vrchol 0,5 s po začátku, pouštět 0,45 s před střihem; Tim 12. 10.: spolu se svih_vitr jediné švihy, ztlumené, ať nejsou výrazné"
+   "pouziti": "Deep Whoosh (Nikko Hunt, DEITH_SFX), hlavní švih od 4.10.2026, vrchol 0,5 s po začátku, pouštět 0,45 s před střihem; spolu se svih_vitr jediné švihy, ztlumené, ať nejsou výrazné"
   },
   "svih_rychly": {
    "soubor": "zaklad/svih_rychly.wav",
@@ -88,7 +88,7 @@
   "svih_vitr": {
    "soubor": "zaklad/svih_vitr.wav",
    "d": 1.45,
-   "pouziti": "mixkit cinematic wind swoosh (DEITH_SFX), vzdušný filmový švih na přílet karet a přesuny, vrchol 0,4 s po začátku; Tim 12. 10. vybral spolu se svih_hluboky, oba tiše (kolem -32 dB)"
+   "pouziti": "mixkit cinematic wind swoosh (DEITH_SFX), vzdušný filmový švih na přílet karet a přesuny, vrchol 0,4 s po začátku; vybral spolu se svih_hluboky, oba tiše (kolem -32 dB)"
   }
  },
  "shelby": {

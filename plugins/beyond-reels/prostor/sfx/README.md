@@ -5,7 +5,7 @@ Seznam zvuků, délky a k čemu slouží je v `katalog.json`. Nový zvuk = soubo
 Použití v projektu: zkopíruj do `assets/sfx/` projektu (render bere soubory z projektu) a míchej skriptem (`jack-styl/nastroje/zvuk_c.py`, `zvuk_shelby.py`).
 
 ## zaklad/
-Timem schválená sada (2.10.2026): klik1 a klik2 střídat na slova víceslovných vět (-30 dB), klik4 na nástupy prvků,
+Schválená sada (2.10.2026): klik1 a klik2 střídat na slova víceslovných vět (-30 dB), klik4 na nástupy prvků,
 závěrka na obrázky a záběry, sub na velký moment. Nikdy klik3 (classic click) ani tuk (dřevěný ťuk).
 
 ## shelby/
@@ -27,7 +27,7 @@ Jak Shelby střihač zvuky používá (medián hlasitosti vůči RMS hlasu):
 
 Rytmus: 116 zvuků za 97 s, tedy zhruba jeden každých 0,8 s
 
-Tim 4.10.2026: jemné kliky a krátké shutter švihy dávat na texty a prvky hojně, ale vždy na změnu stavu prvku (naskočí, dosedne, změní se, přesune). U Shelby jsou, jen v extrakci byly moc tiché a odfiltrovaly se
+jemné kliky a krátké shutter švihy dávat na texty a prvky hojně, ale vždy na změnu stavu prvku (naskočí, dosedne, změní se, přesune). U Shelby jsou, jen v extrakci byly moc tiché a odfiltrovaly se
 
 ## deith/
-DEITH_SFX z Timovy hudby (5.10.2026, soubory pod 5 MB; ohnivý zvuk 57 MB, ptáci, noční ambient a jezero vynechány). Na načítání čísel Tim vybral `Display Digits 3.wav` (3,5 s, v Steven reelu jako assets/sfx/digits.wav, ořezaný na délku počítadla).
+DEITH_SFX z Timovy hudby (5.10.2026, soubory pod 5 MB; ohnivý zvuk 57 MB, ptáci, noční ambient a jezero vynechány). Na načítání čísel vybraný `Display Digits 3.wav` (3,5 s, v Steven reelu jako assets/sfx/digits.wav, ořezaný na délku počítadla).

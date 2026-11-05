@@ -1,4 +1,4 @@
-"""Kontrola hran střihu hlasu podle průběhu hlasitosti (Tim 12. 10. 2026: whisper nikdy není na 100 %, slova se nesmí usekávat).
+"""Kontrola hran střihu hlasu podle průběhu hlasitosti (whisper nikdy není na 100 %, slova se nesmí usekávat).
 Pro každou hranu kusu změří hlasitost 30 ms na hraně proti hlasitosti řeči okolo. Hrana v řeči = slovo je useknuté.
 U podezřelé hrany najde nejtišší místo do 0,15 s a navrhne posun.
 

@@ -1,18 +1,19 @@
 ---
 name: novy-styl
-description: Naučí plugin nový styl reelů z odkazů na videa tvůrce (Instagram, YouTube, TikTok). Stáhne a přepíše reely, rozebere je snímek po snímku, sepíše gramatiku stylu, postaví kit komponent na sdíleném jádře, ukázku na našem záběru k revizi a nový skill styl-<jmeno>. Použij, když někdo napíše /novy-styl, "nauč se styl", "chci reely jako <tvůrce>", "přidej styl", nebo pošle několik odkazů na reely jednoho tvůrce.
+description: Naučí tě vlastní styl reelů z odkazů na videa tvůrce (Instagram, YouTube, TikTok). Stáhne a přepíše reely, rozebere je snímek po snímku, sepíše gramatiku stylu, postaví kit komponent na sdíleném jádře, ukázku na tvém záběru k revizi a nový skill styl-<jmeno>, který přežije aktualizaci pluginu. Použij, když někdo napíše /novy-styl, "nauč se styl", "chci reely jako <tvůrce>", "přidej styl", nebo pošle několik odkazů na reely jednoho tvůrce.
 ---
 
 # /novy-styl: z odkazů na reely k novému stylu
 
-Každý příkaz v Bash začni `source ~/.config/beyond-reels/env.sh &&` (chybí-li, `zsh <plugin>/scripts/setup.sh`).
-Před návrhy přečti `$BR_PLUGIN/vkus/pravidla.md`: z cizího stylu bereme řemeslo (rytmus, kompozici, pohyb), ne věci, které máme zakázané.
+Každý příkaz v Bash začni `source ~/.config/beyond-reels/env.sh &&` (chybí-li nebo v něm není `BR_STYLY`, `zsh <plugin>/scripts/setup.sh`).
+Před návrhy přečti `$BR_PLUGIN/vkus/pravidla.md`, `$BR_MOJE/vkus.md` a `$BR_MOJE/znacka.json`: z cizího stylu bereme řemeslo (rytmus, kompozici, pohyb), ne věci, které máme zakázané, a nikdy cizí obsah, záběry ani logo. Styl musí zůstat vlastní verzí, ne kopií konkrétního videa.
+Vlastní styl patří do `$BR_STYLY/<jmeno>-styl` a `~/.claude/skills/styl-<jmeno>`, nikdy do složky pluginu: ta se při aktualizaci přepíše.
 Vzory hotových stylů: `$BR_PROSTOR/lumitris-styl/v2` (nejnovější postup s plány), `caspar-styl` a `soowei-styl` (kit na jádře, 16:9), `noske-styl`, `matt-gray-styl`, `nathan-styl`, rozbory v `$BR_INSPIRACE/<jmeno>/_rozbor`.
 
 ## 1. Zadání
 
 Zeptej se (AskUserQuestion a volný text): jméno tvůrce a krátký název stylu (bez diakritiky, např. `nathan`), 3 až 6 odkazů na reely,
-co přesně se na nich líbí (střih, typografie, B-rolly, zvuk), na jaký typ našich reelů to má sloužit, formát (výchozí 4:3 1920x1440 30 fps, YouTube 16:9 1920x1080 podle vzoru `soowei-styl`). Jde naučit i jen úsek videa
+co přesně se na nich líbí (střih, typografie, B-rolly, zvuk), na jaký typ reelů to má sloužit, formát (výchozí 4:3 1920x1440 30 fps, YouTube 16:9 1920x1080 podle vzoru `soowei-styl`). Jde naučit i jen úsek videa
 (třeba intro YouTube videa): stáhni jen ten kus `yt-dlp --download-sections "*0-30"` do `_raw/<id>/video.mp4` a pak `stahni.sh`, video už nestahuje znovu.
 
 ## 2. Stáhnout a přepsat
@@ -35,28 +36,26 @@ Snímky vybírat ffmpegem (`select` po snímcích), měřit čísla, ne odhadova
 ## 4. Gramatika stylu
 
 `$BR_INSPIRACE/<jmeno>/_rozbor/STYL.md`: konstanty (co je v každém videu stejné) a variace, slovník zařízení s ID, měřené hodnoty,
-jak editor přemýšlí (proč tam co je), a **Beyond verze**: naše barvy (#F4F2EE, #111, #FF0E00), naše písma (Helvetica Neue Bold,
-Instrument Serif rovný), naše pravidla z `pravidla.md`. Co ze stylu nepřebíráme a proč. Ukaž shrnutí a nech schválit.
+jak editor přemýšlí (proč tam co je), a **naši verzi**: barvy a písma ze `$BR_MOJE/znacka.json` (když není, výchozí #F4F2EE, #111, #FF0E00, Helvetica Neue Bold,
+Instrument Serif rovný), pravidla z `pravidla.md` a `vkus.md`. Co ze stylu nepřebíráme a proč. Ukaž shrnutí a nech schválit.
 
 ## 5. Kit na sdíleném jádře
 
-Projekt `$BR_PROSTOR/<jmeno>-styl/` (struktura jako `nathan-styl`: `js/<jmeno>-kit.js`, `<jmeno>-kit.css`, `src/`, `build.mjs`, `vendor/`):
-- jádro přes `zsh $BR_PROSTOR/tools/jadro.sh $BR_PROSTOR/<jmeno>-styl` a kit nad ním (`window.<ZKRATKA>`), pohyb přes `MK.tw` a `MK.KRIVKY`,
-  výchozí hodnoty komponent = změřený originál, téma Beyond přes CSS proměnné
+Projekt `$BR_STYLY/<jmeno>-styl/` (struktura jako `$BR_PROSTOR/nathan-styl`: `js/<jmeno>-kit.js`, `<jmeno>-kit.css`, `src/`, `build.mjs`, `vendor/`):
+- jádro přes `zsh $BR_PROSTOR/tools/jadro.sh $BR_STYLY/<jmeno>-styl` a kit nad ním (`window.<ZKRATKA>`), pohyb přes `MK.tw` a `MK.KRIVKY`,
+  výchozí hodnoty komponent = změřený originál, téma přes CSS proměnné
 - každá komponenta s komentářem: co dělá, odkud je (ID zařízení, snímky), parametry, pasti
 - ukázkový showcase `src/komponenty.html` se všemi komponentami za sebou ve 4:3 (pro knihovnu)
 
 ## 6. Ukázka a revize
 
-1. Ukázkový reel 15 až 30 s na našem záběru (brief jako u `/reel`, zvuk standardem `tools/mix.py`), storyboard, render.
+1. Ukázkový reel 15 až 30 s na záběru uživatele (zeptej se na video) (brief jako u `/reel`, zvuk standardem `tools/mix.py`), storyboard, render.
 2. Nahrát na revizní stránku (skill `revize`) ukázku i showcase. Komponenty vyříznout do knihovny (`tools/knihovna/klipy.py`,
-   kolekce `komponenty` se stylem `<jmeno>`, stav `k_revizi`), aby je tým mohl schvalovat a komentovat.
-3. Opravy podle komentářů, verdikty do kolekce `verdikty` na revizní stránce.
+   kolekce `komponenty` se stylem `<jmeno>`, stav `k_revizi`), aby šly schvalovat a komentovat.
+3. Opravy podle komentářů, verdikty přes `revize set verdikty/...`.
 
-## 7. Nový skill a zapojení do pluginu
+## 7. Nový skill
 
-V klonu repozitáře pluginu (výchozí `~/Documents/GitHub/beyond-reels`, jinak se zeptej) vytvoř
-`plugins/beyond-reels/skills/styl-<jmeno>/SKILL.md` podle vzoru `styl-nathan` (kdy ho použít, projekt a kit, gramatika v kostce,
-komponenty a API, postup, zákazy) a `reference/` s podrobnostmi. `novy_reel.sh` vezme jakýkoli `$BR_PROSTOR/<jmeno>-styl` sám.
-Přidej styl do tabulky v `skills/reel/SKILL.md` (otázka Styl) a do README. Zvyš verzi v `plugin.json`, commit, a řekni týmu,
-ať si plugin aktualizuje (`/plugin` > Marketplaces > beyond > Update). Commit a push jen se souhlasem.
+Vytvoř `~/.claude/skills/styl-<jmeno>/SKILL.md` podle vzoru `$BR_PLUGIN/skills/styl-nathan` (kdy ho použít, projekt a kit, gramatika v kostce,
+komponenty a API, postup, zákazy) a `reference/` s podrobnostmi. Ve skillu odkazuj na kit přes `$BR_STYLY/<jmeno>-styl`.
+`novy_reel.sh` vezme jakýkoli `$BR_STYLY/<jmeno>-styl` sám a `/beyond-reels:reel` ho nabídne. Po restartu Claude Code je skill k dispozici.

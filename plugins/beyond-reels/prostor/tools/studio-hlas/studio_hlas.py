@@ -8,7 +8,7 @@ Pro všechna Beyond videa. Řetězec:
  6. hlasitost -14 LUFS a true peak -1,5 dBTP
 Použití: $PY studio_hlas.py (PY z ~/.config/beyond-reels/env.sh) vstup.wav vystup.wav [reference.wav] [--sucho]
 --podcast (výchozí volba pro nahrávky z místnosti): WPE proti dozvuku + DF3, bez přefiltrování, viz studio()
---sucho pro nahrávky s ozvěnou místnosti (Tim 3.10.2026: "zní jako na hajzlu"): potlačení pozdního dozvuku, k DF3 40 % syrového
+--sucho pro nahrávky s ozvěnou místnosti ("zní jako na hajzlu"): potlačení pozdního dozvuku, k DF3 40 % syrového
 hlasu nad 1 kHz (souhlásky), mírnější vyrovnání a expandér po kompresi. Raný dozvuk 50 až 150 ms po slově z 28 na 35,5 dB
 (jack-styl/nastroje/dozvuk.py) a whisper slyší slova lépe než u standardu (ten polykal "Vsadil", "Hotovo")
 Bez reference se použije uložený profil profil_matt.npy (z ref/matt.wav)."""
@@ -17,9 +17,8 @@ from scipy.ndimage import uniform_filter1d,maximum_filter1d
 sys.path.insert(0,os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','zvuk')); import v4_dsp as D, wpe as W   # dřív webinar-reels/scripts, teď ve sdíleném prostoru
 import tempfile
 SR=48000; TU=os.path.dirname(os.path.abspath(__file__)); TMP=tempfile.mkdtemp(prefix='studio_hlas_')   # dočasné soubory mimo plugin
-# venv s DeepFilterNet3 (Python 3.11, torch 2.0.1): ze setup.sh pluginu beyond-reels, jinak starý z webinar-reels
-_BR=os.path.expanduser('~/.cache/beyond-reels'); _STARY='/Users/stepankakes/Documents/GitHub/webinar-reels/work/venv_df/bin/python'
-DFPY=os.environ.get('BR_DFPY') or (f'{_BR}/venv_df/bin/python' if os.path.exists(f'{_BR}/venv_df/bin/python') else _STARY)
+# venv s DeepFilterNet3 (Python 3.11, torch 2.0.1) ze setup.sh pluginu
+DFPY=os.environ.get('BR_DFPY') or os.path.expanduser('~/.cache/beyond-reels/venv_df/bin/python')
 DFS=os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','zvuk','v4_df3.py')
 def load(p):
     r=subprocess.run(['ffmpeg','-v','error','-i',p,'-ac','1','-ar',str(SR),'-f','f32le','-'],capture_output=True); return np.frombuffer(r.stdout,np.float32).astype(float)
@@ -40,13 +39,6 @@ def denoise(x):
     r=subprocess.run([DFPY,DFS,a,b],capture_output=True,text=True)
     if r.returncode: raise SystemExit(r.stderr[-600:])
     y,_=sf.read(b,dtype='float64'); os.remove(a); os.remove(b); return np.pad(y,(0,max(0,len(x)-len(y))))[:len(x)]
-REPY='/Users/stepankakes/Documents/GitHub/webinar-reels/work/venv_re/bin/python'; RES='/Users/stepankakes/Documents/GitHub/webinar-reels/scripts/re_enhance.py'
-def regeneruj(x,lambd=0.9):
-    """Resemble Enhance: odšumí a přegeneruje hlas bez zabarvení místnosti (obdoba Adobe Podcast Enhance)"""
-    a=f'{TMP}/in.wav'; b=f'{TMP}/out.wav'; sf.write(a,x.astype(np.float32),SR,subtype='FLOAT')
-    r=subprocess.run([REPY,RES,a,b,str(lambd)],capture_output=True,text=True)
-    if r.returncode: raise SystemExit(r.stderr[-600:])
-    y=load(b); os.remove(a); os.remove(b); return np.pad(y,(0,max(0,len(x)-len(y))))[:len(x)]
 def zarezy(x):
     """tóny, které v tichých místech vyčnívají nad okolí o víc než 6 dB, dostanou úzký zářez"""
     f,t,Z=sg.stft(x,SR,nperseg=NF,noverlap=NF//2); P=np.abs(Z)**2; e=P.sum(0); q=10*np.log10(P[:,e<np.percentile(e,10)].mean(1)+1e-20)
@@ -77,7 +69,7 @@ def sytost(x,drive=1.6,mix=0.25):
 def studio(x,ref_db,sucho=False,podcast=False,hi_mix=0.2):
     x=sg.sosfiltfilt(sg.butter(4,55,'hp',fs=SR,output='sos'),x)
     if podcast:
-        # jako Adobe Podcast (Tim 3.10.2026: --sucho zní přefiltrovaně jako Zoom): dozvuk pryč přes WPE (lineární predikce, hlásky drží),
+        # jako Adobe Podcast (--sucho zní přefiltrovaně jako Zoom): dozvuk pryč přes WPE (lineární predikce, hlásky drží),
         # pak DF3 jednou, žádné spektrální potlačení dozvuku ani expandér, EQ na referenci až ±12 dB (hloubka), jemná komprese a sytost.
         # Resemble Enhance (regeneruj) zkoušen a zamítnut: češtinu komolí ("potřebuje soustředit" > "tě jako třeba zostředit")
         x=W.dereverb(x,taps=20,delay=3,size=1024,shift=256); x=denoise(x); x,tony=zarezy(x); x=eq_ref(x,ref_db,maxdb=12); x=vyrovnej(x,rozsah=8)

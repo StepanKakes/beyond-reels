@@ -410,7 +410,7 @@
     });
   }
 
-  /* ---------- ŘÁDEK SLOV ZESPODU (Tim 4. 10. 2026: místo zvětšování z rozmazání slovo přijede zespodu) ----------
+  /* ---------- ŘÁDEK SLOV ZESPODU (místo zvětšování z rozmazání slovo přijede zespodu) ----------
    * slovo zabírá místo od začátku (visibility), takže řádek neposkakuje; nástup 4 snímky na dvojky, y 0,4 em > 0, bez dojezdu */
   function slovaZespodu(tl, radek, slova, o = {}) {
     const n = o.n || 4, krok = o.krok || 2;

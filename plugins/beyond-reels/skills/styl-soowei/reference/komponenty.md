@@ -32,4 +32,4 @@ Velikosti písma jako podíl výšky snímku (1080), polohy `y` jako podíl vý�
 - `.sw-text` je skrytý, dokud ho komponenta nezapne; v panelu triptychu dědí viditelnost panelu.
 - Box pod slovem má `z-index: -1` v `isolation: isolate`, linter HyperFrames to i tak hlásí jako varování (neškodí).
 - `toLocaleString` v renderu nemá české ICU, počítadlo formátuje samo.
-- B-rollové stopy z jiných reelů (např. `b_zac.mp4` z Heatona) mají místy Timův A-roll, černou nebo vypálené titulky. Před použitím kontaktní arch.
+- B-rollové stopy z jiných reelů (např. `b_zac.mp4` z Heatona) mají místy mluvčího A-roll, černou nebo vypálené titulky. Před použitím kontaktní arch.

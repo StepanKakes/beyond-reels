@@ -1,4 +1,4 @@
-# Zvuk Nathan videa podle Timova standardu: hlas (už studio_hlas) -5,5 dB, hudba -24 dB RMS se sidechainem -6 dB
+# Zvuk Nathan videa podle mluvčího standardu: hlas (už studio_hlas) -5,5 dB, hudba -24 dB RMS se sidechainem -6 dB
 # a podržením 0,8 s, SFX z návrhu generátoru (sub na obřích slovech, švih na glitchi, klik na štítku, závěrka na oknech),
 # originální citace vložené do hlasu, úder a sub na outro, master -14 LUFS / -1,5 dBTP
 # $PY nastroje/zvuk.py scenare/heaton.json
@@ -25,7 +25,7 @@ nazev = sc["nazev"]
 navrh = json.load(open(os.path.join(KOREN, f"plany/{nazev}_navrh.json")))
 N = int(navrh["delka"] / 30 * SR)
 
-# hlas s citacemi: Tim pokračuje po citaci, citace srovnaná na hlasitost Tima o 1 dB níž, okraje 30 ms
+# hlas s citacemi: mluvčí pokračuje po citaci, citace srovnaná na hlasitost mluvčího o 1 dB níž, okraje 30 ms
 v = nacti(sc["hlas"])
 ref_rms = np.sqrt((v[int(10 * SR):int(40 * SR)] ** 2).mean())
 out, b0 = [], 0.0

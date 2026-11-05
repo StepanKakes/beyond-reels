@@ -4,7 +4,7 @@ from PIL import ImageFont
 import os
 KOREN = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PISMA = {"hn": ("assets/fonts/HN-Bold.ttf", 0, -0.04), "male": ("assets/fonts/HN-Bold.ttf", 0, -0.03),
-         # naše písma (Štěpán 12. 10.): verzálky nadpisů Helvetica Neue Bold místo Antonu, pointa Instrument Serif Italic místo Snell
+         # naše písma: verzálky nadpisů Helvetica Neue Bold místo Antonu, pointa Instrument Serif Italic místo Snell
          "kond": ("assets/fonts/HN-Bold.ttf", 0, -0.035), "skript": ("assets/fonts/InstrumentSerif-Italic.ttf", 0, -0.01)}
 _c = {}
 

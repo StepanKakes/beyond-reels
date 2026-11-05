@@ -1,8 +1,8 @@
 {
  "delka": 23.0,
- "hlas": "/Users/stepankakes/Documents/GitHub/beo-motion/hyperframes/reels/podnikatele/heaton/zdroj/hlas_telo_studio.wav",
+ "hlas": "reels/podnikatele/heaton/zdroj/hlas_telo_studio.wav",
  "hudba": {
-  "soubor": "/Users/stepankakes/Documents/GitHub/beo-motion/hyperframes/hudba/she-will-instrumental.wav",
+  "soubor": "hudba/she-will-instrumental.wav",
   "od": 0,
   "uroven_z": 15
  },

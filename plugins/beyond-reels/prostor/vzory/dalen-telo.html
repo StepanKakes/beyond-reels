@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="mason-kit.css">
     <link rel="stylesheet" href="elaine-kit.css">
     <style>
-      /* Tělo reelu Dalen 4:3 (navazuje na intro): Tim celý záběr nebo karta na papíře, mezi tím tvrdé střihy na papír.
+      /* Tělo reelu Dalen 4:3 (navazuje na intro): mluvčí celý záběr nebo karta na papíře, mezi tím tvrdé střihy na papír.
          Jeden rostoucí prvek: tři kosočtverce 1 2 3, ke kterým se u každého bodu přidá slovo. Lidé kolem karty se objeví
          u komunity a vrátí se u kontaktů i možností. Grafika na trojky, mluvčí a titulky plných 30 fps. Nikdy záře kolem karet */
       :root { --krem: #EDE6DC; }
@@ -62,7 +62,7 @@
       .igT { position: relative; aspect-ratio: 9 / 14; overflow: hidden; background: #ddd; visibility: hidden; }
       .igT img { width: 100%; height: 100%; object-fit: cover; display: block; }
       .igT span { position: absolute; left: 16px; bottom: 14px; color: #fff; font-weight: 700; font-size: 30px; text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5); }
-      /* Tim 5. 10.: začátek jako naše intro (Shelby A1), 12 tváří po 2 sn. v kartě, která mění šířku */
+      /* začátek jako naše intro (Shelby A1), 12 tváří po 2 sn. v kartě, která mění šířku */
       #kfl { position: absolute; overflow: hidden; }
       #kfl video, #kfl img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
       .jm { position: absolute; font-weight: 500; font-size: 60px; letter-spacing: -0.03em; line-height: 1; white-space: nowrap; color: var(--cerna); visibility: hidden; z-index: 4; }
@@ -154,12 +154,12 @@
     <div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1440" data-fps="30" data-duration="{{D+1.5}}">
       <audio id="zvuk" src="assets/media/mix_telo.wav" data-start="0" data-duration="{{D}}" data-track-index="9" data-volume="1"></audio>
 
-      <!-- vrstva za Timem: obří slovo za kartou -->
+      <!-- vrstva za mluvčím: obří slovo za kartou -->
       <div id="zaTim"></div>
       <div id="timK"><video id="vTim" class="clip" src="assets/media/telo.mp4" muted playsinline data-start="0" data-duration="{{D}}" data-track-index="0"></video></div>
 
-      <!-- na internetu: mřížka jeho videí (Tim tu čte z telefonu, proto nikde není vidět) -->
-      <!-- nové intro (Tim 5. 10.): papír, Dalen bez pozadí přijede zespodu, za ním obří částka -->
+      <!-- na internetu: mřížka jeho videí (mluvčí tu čte z telefonu, proto nikde není vidět) -->
+      <!-- nové intro: papír, Dalen bez pozadí přijede zespodu, za ním obří částka -->
       <div id="sFace" class="sc" style="background: var(--papir)"><div id="sFzoom" class="abs" style="inset:0; transform-origin:960px 720px">
         <div id="kfl" style="top:0; left:315px; width:1290px; height:1440px"><img src="assets/media/tvare_0.jpg" alt=""><video id="vFl" class="clip" src="assets/media/tvare.mp4" muted playsinline data-start="0" data-duration="0.8" data-track-index="1"></video></div></div></div>
       <div id="s200" class="sc pap" data-bile="1"><div id="grpN"><div id="pocit"></div></div><img id="dalenAI" src="assets/media/dalen_kreslo_film.png" alt="" style="position:absolute; left:302px; top:340px; width:1317px; height:auto; z-index:3">
@@ -252,9 +252,9 @@
         <div id="plStit" class="abs" style="inset:0"></div>
         <svg id="sipPl" viewBox="0 0 1920 1440"><path id="spl" pathLength="1" d="M1490 990 C 1460 1240, 900 1300, 640 1000 M 616 1046 L 636 994 L 688 1012"/></svg></div>
 
-      <!-- osobní profil: v tomhle úseku Tim čte z telefonu, proto papír -->
+      <!-- osobní profil: v tomhle úseku mluvčí čte z telefonu, proto papír -->
       <div id="sProf" class="sc pap"><div id="obP1" class="obri cerna" style="top: 360px; font-size: 330px;">osobní</div><div id="obP2" class="obri" style="top: 740px; font-size: 330px;">profil</div></div>
-      <!-- CTA přes Tima (do kamery kouká od "který ti přinese" do konce) -->
+      <!-- CTA přes mluvčího (do kamery kouká od "který ti přinese" do konce) -->
       <div id="sCTA" class="sc"><div id="obDal" class="obri" style="top: 1120px; font-size: 270px;">dalen</div>
         </div>
 
@@ -264,13 +264,13 @@
     </div>
     <script>
       const S = /*SLOVA:TELO*/;
-      const W = S.slova, D = S.delka, KONEC = D; // konec přímo na Timovi, po "návod" kouká dolů, proto bez dojezdu
+      const W = S.slova, D = S.delka, KONEC = D; // konec přímo na mluvčímu, po "návod" kouká dolů, proto bez dojezdu
       const root = document.getElementById("root");
       MK.init(root);
       const tl = gsap.timeline({ paused: true });
       const F = (n) => n / 30, $ = (id) => document.getElementById(id), T = (i) => W[i].t;
       const KB = S.klipy.beh, KL = S.klipy.lens;
-      // úseky, kdy scéna zakrývá Tima (sKarty je průhledná, Tim je pod ní vidět)
+      // úseky, kdy scéna zakrývá mluvčího (sKarty je průhledná, mluvčí je pod ní vidět)
       const KRYJE = [], PRUHL = ["sKarty", "sCTA"], CAPY = [];
       // papírová scéna bez záběru přes celou plochu je světlá jako Timovo triko, titulek na ní taky tmavý
       const papir = (id) => $(id).classList.contains("pap") && !$(id).querySelector(".full") && !$(id).dataset.bile, SVETLE = [], STRIHY = [];
@@ -278,14 +278,14 @@
       const sc = (id, t0, t1) => { STRIHY.push(t0, t1); if (!svetla(id)) KRYJE.push([Math.max(0, t0), t1]); if (papir(id)) SVETLE.push([Math.max(0, t0), t1]); if (t0 <= 0) $(id).style.display = "block"; else { tl.set($(id), { display: "none" }, 0); tl.set($(id), { display: "block" }, t0); } tl.set($(id), { display: "none" }, t1); };
       const vis = (el, t) => tl.set(el, { visibility: "visible" }, t), hid = (el, t) => tl.set(el, { visibility: "hidden" }, t);
       const naskoc = (el, t, n = 3) => { vis(el, t); MK.tw(tl, el, { opacity: 0.4 }, { opacity: 1 }, t, n, { k: 0.6 }); };
-      // titulek na štítku přes Tima (bílé na černém, akcent červený)
+      // titulek na štítku přes mluvčího (bílé na černém, akcent červený)
       const cap = (s, t, k, a, trida = "hrud", top) => { const e = MK.div($("capL"), trida + (a ? " akcent" : ""), s); if (trida === "hrud") CAPY.push([e, t]); if (top) e.style.top = top + "px"; naskoc(e, t); hid(e, k); return e; };
       // řádek slov z rozmazání (Fred Z2), tučná Helvetica, akcent serif kurzíva
       const rad = (id, slova) => MK.slovaZespodu(tl, $(id), slova, { krok: 3 });
       // obří slovo na trojky zespodu
       const obri = (el, t, n = 6) => { vis(el, t); MK.tw(tl, el, { opacity: 0.4, y: 40 }, { opacity: 1, y: 0 }, t, n, { k: 0.5, krok: 2 }); };
       const blesk = (t) => { vis($("blesk"), t); hid($("blesk"), t + F(2)); };
-      // Tim: celý záběr nebo karta; mezi pozicemi plynule po křivce 0,62 s, nebo tvrdě, když je zakrytý scénou
+      // mluvčí: celý záběr nebo karta; mezi pozicemi plynule po křivce 0,62 s, nebo tvrdě, když je zakrytý scénou
       const GEO = { full: { left: 0, top: 0, width: 1920, height: 1440, borderRadius: 0 }, A: { left: 480, top: 560, width: 960, height: 720, borderRadius: 26 }, B: { left: 600, top: 470, width: 720, height: 540, borderRadius: 26 } };
       let geo = "full";
       const tim = (t, kam, plynule) => {
@@ -306,8 +306,8 @@
       // body kolem obdélníku (výřez pro kartu), rozházené po ploše
       const kolem = (n, ven, seed) => { const r = MK.rng(seed), out = []; let pokus = 0; while (out.length < n && pokus++ < 5000) { const x = 80 + r() * 1760, y = 330 + r() * 1030; if (x > ven[0] - 70 && x < ven[2] + 70 && y > ven[1] - 70 && y < ven[3] + 70) continue; if (out.some(([a, b]) => Math.hypot(a - x, b - y) < 112)) continue; out.push([x, y]); } return out; };
 
-      /* ---------- nové intro (Tim 5. 10.): "Tenhle týpek z Nizozemska" na Timovi, pak hák s částkou ---------- */
-      /* Tim 5. 10.: začátek jako naše intro. 12 tváří po 2 sn. (Shelby A1), karta každé 2 sn. jinak široká, obličej zamčený uprostřed;
+      /* ---------- nové intro: "Tenhle týpek z Nizozemska" na mluvčímu, pak hák s částkou ---------- */
+      /* začátek jako naše intro. 12 tváří po 2 sn. (Shelby A1), karta každé 2 sn. jinak široká, obličej zamčený uprostřed;
          blur, radiální blur a záře dělá postfx (fx/telo.json) */
       const FL = F(24);
       sc("sFace", 0, FL);
@@ -352,7 +352,7 @@
       tl.set($("wProc"), { innerHTML: "ale<br>proč?", visibility: "visible" }, T(36));
 
       /* ---------- kosočtverce 1 2 3: slib a podpis bodů ---------- */
-      /* tři věci (Elaine Z7): přes Tima naskočí vpravo nahoře červené karty 1 2 3 s gradientem;
+      /* tři věci (Elaine Z7): přes mluvčího naskočí vpravo nahoře červené karty 1 2 3 s gradientem;
          u každého bodu střih na desku, velké #N vyjede z barvy desky do červené (Elaine Z5), pod ním slovo, push-in */
       sc("sKarty", T(38), W[49].e + 0.02);
       const zk = EK.zeleneKarty(tl, $("kTxt"), T(41), T(49), { x: [620, 860, 1100], y: 860, casy: [0, 5, 11] });
@@ -411,7 +411,7 @@
       MK.slovaZespodu(tl, $("r5"), [{ text: "druhý", t: T(82) }, { text: "den", t: T(83) }, { text: "ráno", t: T(86), akcent: true }], { krok: 3 });
       tl.set($("r5"), { top: 220 }, 0);
       tl.set($("r5"), { top: 1060 }, T(85));
-      /* Tim 5. 10.: "na něj čeká" velké doprostřed prázdné bílé plochy */
+      /* "na něj čeká" velké doprostřed prázdné bílé plochy */
       hid($("ob5"), T(87)); tl.set($("r5"), { opacity: 0 }, T(87)); tl.set($("r5"), { opacity: 1 }, 0);
       MK.slovaZespodu(tl, $("r5b"), [{ text: "na", t: T(87) }, { text: "něj", t: T(88) }, { text: "čeká", t: T(89), akcent: true }], { krok: 3 });
       sc("sBeh", T(90), KB[0]);
@@ -438,7 +438,7 @@
       MK.drift(tl, $("dalTel"), T(116) + F(12), T(133) - T(116), { y: -10, scale: 1.015 });
       // modré bubliny jako iMessage (Georgios z kopie Masona: modrá, bílý text, z 0,6 na 1 za 4 snímky na dvojky), naskakují náhodně, ne po skupinách
       // [zpráva, slovo, x, y, kotva]; obecné rozházené od "píšou", tematické na pomoct / investovat / spolupracovat
-      // rozložení ručně od Tima (artifact rozlozeni/bubliny, 5. 10.): [text, x, y, ocásek vpravo]
+      // rozložení ručně od mluvčího (artifact rozlozeni/bubliny, 5. 10.): [text, x, y, ocásek vpravo]
       const ZPR = [["Your vlog changed my life", 207, 120, 1], ["U in Tokyo next week?", 1134, 150, 0], ["Can we hop on a call?", 177, 325, 1], ["See you at the meetup", 1195, 330, 0],
         ["Question about Ecomflow", 71, 506, 1], ["You inspired me to start", 1234, 536, 0], ["Bro you need to see this", 67, 687, 1], ["I can make you a tour", 97, 897, 1],
         ["will show you around", 1289, 954, 0], ["Our fund wants in", 1363, 740, 0], ["Lets collab on a video", 1204, 1154, 0], ["Killed it G!", 380, 1100, 1]];
@@ -476,7 +476,7 @@
       tl.set($("tis3"), { visibility: "visible" }, T(148)); tl.set($("tisS"), { visibility: "hidden" }, T(148));
       MK.drift(tl, $("tisG"), T(142), T(150) - T(142), { scale: 1.05 });
 
-      /* ---------- možnosti: Tim, pak slovo projektu se protáčí a dosedne na brýle (most k Lens) ---------- */
+      /* ---------- možnosti: mluvčí, pak slovo projektu se protáčí a dosedne na brýle (most k Lens) ---------- */
       sc("sProj", T(166), T(172));
       const PRJ = ["kavárna", "aplikace", "kniha", "oblečení", "kurz", "podcast", "event", "značka", "brýle"];
       const pw = PRJ.map((w) => MK.div($("projBox"), "projW", w));
@@ -521,12 +521,12 @@
 
       /* ---------- CTA ---------- */
       sc("sProf", T(239), T(243)); obri($("obP1"), T(239)); obri($("obP2"), T(240));
-      // komunitu, možnosti, obchod: návrat karet 1 2 3 z úvodu, přes Tima, pod každou kartou název
+      // komunitu, možnosti, obchod: návrat karet 1 2 3 z úvodu, přes mluvčího, pod každou kartou název
       const triT = [246, 247, 249].map((wi) => Math.round((T(wi) - T(246)) * 30));
       const zk3 = EK.zeleneKarty(tl, $("kTri"), T(246), T(250), { x: [480, 860, 1240], y: 840, casy: triT });
       zk3.forEach((k) => Object.assign(k.style, { width: "200px", height: "224px", fontSize: "140px", lineHeight: "218px" }));
       ["komunitu", "možnosti", "obchod"].forEach((w, i) => { const e = MK.div($("kTri"), "triPod", w); e.style.left = [580, 960, 1340][i] - 260 + "px"; naskoc(e, T([246, 247, 249][i])); hid(e, T(250)); });
-      // výzva přes Tima: titulek, pole komentáře s psaním "Dalen", pošlu ti návod
+      // výzva přes mluvčího: titulek, pole komentáře s psaním "Dalen", pošlu ti návod
       sc("sCTA", T(250), KONEC);
       obri($("obDal"), T(253)); // „DALEN“ červeně, svítí až do konce videa
 
@@ -536,7 +536,7 @@
       const VYSKA = [[T(28), T(36), 260], [T(38), T(50), 1140],  [T(57), T(64), 1320], [T(74), T(82), 1250], [T(82), T(90), 1250], [T(116), T(133), 640], [T(166), T(172), 1060],
         [T(204) - 0.5, T(224), 1240], [T(224), T(231), 1180], [T(239), T(243), 1180], [T(250), KONEC + 1, 950]];
       const bez = (i) => BEZ.some(([a, b]) => i >= a && i <= b);
-      // Tim 5. 10.: titulky nesmí probliknout. Klíčová slova a čísla samostatně a větší (Noske), krátké kousky se slijí se sousedem,
+      // titulky nesmí probliknout. Klíčová slova a čísla samostatně a větší (Noske), krátké kousky se slijí se sousedem,
       // střih scény titulek neusekne, na nové scéně pokračuje (s barvou podle pozadí)
       const KLIC = /^(\d|komunit|kontakt|možnost|priorit|důvěr|vztah|nikdy|tisíc|stovk|každý|zadarmo|povědomí)/i;
       const VELKE = new Set(), JEDNO = new Set(); // JEDNO: u telefonu po jednom slově přesně na začátek slova
@@ -584,7 +584,7 @@
       });
 
       tl.set({}, {}, KONEC);
-      // tmavé písmo jen na papíře, přes Tima i B-rolly bílé se stínem (Tim: jako u Vince)
+      // tmavé písmo jen na papíře, přes mluvčího i B-rolly bílé se stínem (jako u Vince)
       CAPY.forEach(([e, t0]) => { const t = t0 + F(2); if (SVETLE.some(([a, b]) => t >= a && t < b)) e.classList.add("tma"); });
       window.__timelines = window.__timelines || {};
       window.__timelines["main"] = tl;

@@ -132,7 +132,7 @@ const S = [
     karty: [{ src: "assets/img/george_v_nalepka.png", x: 60, y: 90, w: 660, h: 900, f: wf(85.32), cista: true },
       { src: "assets/img/michael_v_nalepka.png", nalepka: ["michael_v", R + "zdroj/vys/michael_cut.png", 860], x: 720, y: 90, w: 660, h: 900, f: wf(85.60), cista: true }],
     texty: [stitek("George", 85.32, "Heaton", 85.32 + 0.09, 140, 880), stitek("Michael", 85.60, "Heaton", 85.60 + 0.09, 800, 880)] },
-  // POINTA: Tim velký detail, tvář vpravo, jedno slovo vlevo v úrovni očí, 24 fps, hudba dolů
+  // POINTA: mluvčí velký detail, tvář vpravo, jedno slovo vlevo v úrovni očí, 24 fps, hudba dolů
   { t: 86.48, tim: 86.48, timVf: "scale=2160:1620,crop=1440:1080:144:60", takt: 1, tah: [1.0, 1.07, 0, 144, "lin"], pointa: true,
     texty: [["firmu", 87.08], ["osobní profil", 88.24], ["komunitu", 90.16], ["známosti", 91.02], ["obchod", 92.10]].map(([w, t], n, a) =>
       ({ typ: "radek", y: 400, s: 92, styl: "sans", stredy: [0.27], slova: [[w, wf(t), 0]], f1: n < a.length - 1 ? wf(a[n + 1][1]) : undefined })) },

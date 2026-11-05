@@ -167,13 +167,13 @@
     if (o.drift) tl.fromTo(el, { scale: 1 }, { scale: 1 + o.drift, duration: t1 - t0, ease: "sine.inOut", immediateRender: false }, t0);
   }
 
-  /* TITULKY PŘES B-ROLL: krémové se stínem pod písmem (tmavé na fotce byly nečitelné, Tim 2.10.) */
+  /* TITULKY PŘES B-ROLL: krémové se stínem pod písmem (tmavé na fotce byly nečitelné) */
   function naBrollu(tl, kontejner, t0, t1) {
     tl.set(kontejner, { attr: { class: "nk-titulky na-brollu" } }, t0);
     tl.set(kontejner, { attr: { class: "nk-titulky" } }, t1);
   }
 
-  /* TRYCHTÝŘ z pilulek (Tim 2.10.): přes celou kartu, na středu, obrysové pilulky Noskeho se zužují dolů,
+  /* TRYCHTÝŘ z pilulek: přes celou kartu, na středu, obrysové pilulky Noskeho se zužují dolů,
    * popisek uvnitř pilulky. el = prázdný div .nk-trychtyr, o = {sirky: [px], vyska, mezera, y (střed sestavy)}
    * vrací pole pásů ({oba: [pilulka]}), nástup NK.pas, stav NK.zapni / NK.ztlum na pas.oba
    */
@@ -220,13 +220,13 @@
     tl.to(el, { filter: "blur(0px)", duration: F(20), ease: "sine.inOut" }, t + F(90));
   }
 
-  /* ROZMAZÁNÍ PŘED ZMIZENÍM: 4 sn. blur 0 -> 10 px a krytí 1 -> 0,6, pak tvrdý střih. Text se přitom NIKDY nezvětšuje (Tim 2.10.)
-   * KŘIVKY: nikdy lineární, vždy S křivka (sine.inOut) nebo in/out (power2, power3, expo), Tim 2.10. */
+  /* ROZMAZÁNÍ PŘED ZMIZENÍM: 4 sn. blur 0 -> 10 px a krytí 1 -> 0,6, pak tvrdý střih. Text se přitom NIKDY nezvětšuje
+   * KŘIVKY: nikdy lineární, vždy S křivka (sine.inOut) nebo in/out (power2, power3, expo) */
   function rozmazatKonec(tl, el, t1) {
     tl.fromTo(el, { filter: "blur(0px)", opacity: 1 }, { filter: "blur(10px)", opacity: 0.6, duration: F(4), ease: "power1.in", immediateRender: false }, t1 - F(4));
   }
 
-  /* VRSTVENÁ SESTAVA titulků (místo výměny jednoho slova se skládá blok, Tim 2.10.)
+  /* VRSTVENÁ SESTAVA titulků (místo výměny jednoho slova se skládá blok)
    * typ "kicker": malý řádek A nahoře (slova přibývají, jak zazní), pod ním velké slovo B, které se tvrdě mění
    *   (remember + SCARED/UNDER, "the main mistake with" + WORKSHOPS). Poměr velikostí 2,6 až 2,8 : 1
    * typ "pod":    velké B nahoře drží, malý řádek A pod ním přibývá nebo se mění (MONTH, "the more" + people)

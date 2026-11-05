@@ -1,9 +1,9 @@
 #!/bin/zsh
-# Nastavení Macu pro reely Beyond. Spouští se jednou na každém Macu (a klidně znovu po aktualizaci pluginu, nic nerozbije).
+# Nastavení Macu pro reely. Spouští se jednou na každém Macu (a klidně znovu po aktualizaci pluginu, nic nerozbije).
 #   zsh setup.sh              vše
 #   zsh setup.sh --kontrola   jen řekne, co chybí
 #   zsh setup.sh --matanyone  navíc MatAnyone2 (masky lidí pro text za osobou, asi 2,5 GB)
-# Výsledek: ~/.config/beyond-reels/env.sh (cesty pro skilly a funkce hf), Python prostředí v ~/.cache/beyond-reels,
+# Výsledek: ~/.config/beyond-reels/env.sh (cesty pro skilly, funkce hf a revize), Python prostředí v ~/.cache/beyond-reels,
 # Helvetica Neue vytažená z macOS (písmo se nesmí šířit, proto ho plugin nenese), model pro přepisy, složka na reely.
 set -e
 BR=~/.cache/beyond-reels; CFG=~/.config/beyond-reels; mkdir -p $BR $CFG
@@ -24,25 +24,22 @@ for p in ffmpeg node uv yt-dlp whisper-cli; do
   else f=$p; [[ $p == whisper-cli ]] && f=whisper-cpp; brew install $f >/dev/null && ok "$p (nainstalováno)"; fi
 done
 
-# 2) složka na reely (projekty každého člena týmu) a balík médií (hudba, B-rolly)
-REELY=${BR_REELY:-~/Documents/beyond-reely}; mkdir -p $REELY; ok "reely v $REELY"
+# 2) složka na reely a tvoje složka _moje (značka, vkus, vlastní styly, hudba, B-rolly, revize). Aktualizace pluginu na ni nesahá.
+REELY=${BR_REELY:-~/Documents/beyond-reely}; MOJE=$REELY/_moje; mkdir -p $REELY $MOJE/styly $MOJE/revize; ok "reely v $REELY, tvoje věci v $MOJE"
 MEDIA=${BR_MEDIA:-}
 if [[ -z $MEDIA ]]; then
-  for k in ~/Documents/beyond-reels-media ~/Documents/GitHub/beo-motion/hyperframes; do
+  for k in ~/Documents/beyond-reels-media; do
     [[ -d $k/hudba && -d $k/B-rolls ]] && { MEDIA=$k; break; }
   done
 fi
-if [[ -n $MEDIA && -d $MEDIA/hudba && -d $MEDIA/B-rolls ]]; then ok "média v $MEDIA"
-elif (( ! KONTROLA )); then
-  # balík leží jako příloha veřejného vydání "media" v repu pluginu (asi 1 GB), stačí curl
-  MEDIA=~/Documents/beyond-reels-media; mkdir -p $MEDIA
-  echo "stahuju média (asi 1 GB)"
-  curl -fL --progress-bar -o $BR/beyond-reels-media.zip https://github.com/StepanKakes/beyond-reels/releases/download/media/beyond-reels-media.zip \
-    && unzip -q -o $BR/beyond-reels-media.zip -d $MEDIA && rm -f $BR/beyond-reels-media.zip && ok "média v $MEDIA (stažena)"
-else
-  chybi "balík médií (hudba a B-rolly): spusť setup bez --kontrola, stáhne ho sám"
-  MEDIA=~/Documents/beyond-reels-media
+if [[ -z $MEDIA ]]; then MEDIA=$MOJE; fi
+if (( ! KONTROLA )); then
+  mkdir -p $MEDIA/hudba $MEDIA/B-rolls
+  [[ -f $MEDIA/hudba/katalog.json ]] || print '{"stopy": []}' > $MEDIA/hudba/katalog.json
+  [[ -f $MEDIA/B-rolls/KATALOG.md ]] || print "# Katalog B-rollů\n\nSem dej vlastní záběry a napiš ke každému: soubor, čas od a do, co je v obraze. Claude z toho vybírá ke větám." > $MEDIA/B-rolls/KATALOG.md
+  [[ -f $MOJE/vkus.md ]] || print "# Můj vkus\n\nPravidla, která mají přednost před výchozími pravidly pluginu. Piš je sem, nebo řekni Claudovi: zapamatuj si do vkusu, že...\n" > $MOJE/vkus.md
 fi
+ok "média v $MEDIA"
 print "BR_REELY=$REELY\nBR_MEDIA=$MEDIA" > $CFG/nastaveni.sh
 
 # 3) Python prostředí: hlavní (zvuk, zarovnání slov, nástroje) a DeepFilterNet3 (studio hlas) zvlášť, každé chce jiný torch
@@ -66,7 +63,7 @@ if [[ -x $BR/MatAnyone2/.venv/bin/python ]]; then ok "MatAnyone2"
 elif (( MATANYONE && ! KONTROLA )); then
   git clone -q https://github.com/pq-yang/MatAnyone2.git $BR/MatAnyone2
   (cd $BR/MatAnyone2 && uv venv -q --python 3.11 && uv pip install -q -e . && mkdir -p pretrained_models \
-    && curl -sL -o pretrained_models/matanyone2.pth https://github.com/pq-yang/MatAnyone2/releases/download/v1.0.0/matanyone2.pth)
+    && curl -fsSL --retry 3 -o pretrained_models/matanyone2.pth https://github.com/pq-yang/MatAnyone2/releases/download/v1.0.0/matanyone2.pth)
   ok "MatAnyone2 (nainstalováno)"
 else print -P "%F{yellow}volitelné%f MatAnyone2 pro text za osobou: zsh setup.sh --matanyone"; fi
 
@@ -84,13 +81,16 @@ elif command -v swiftc >/dev/null; then mkdir -p $BR/bin && swiftc -O "$PL/prost
 else print -P "%F{yellow}volitelné%f Apple Vision nástroj: chybí swiftc, nainstaluj xcode-select --install"; fi
 
 # 6) model pro přepisy (whisper.cpp large-v3-turbo); když ho má Vowen, použije se ten
-W=$(ls ~/Library/Application\ Support/vowen/models/*large*turbo*.bin 2>/dev/null | head -1)
-[[ -z "$W" && -f $BR/whisper/ggml-large-v3-turbo.bin ]] && W=$BR/whisper/ggml-large-v3-turbo.bin
+W=$(print -l ~/Library/Application\ Support/vowen/models/*large*turbo*.bin(N) | head -1)
+# plný model má kolem 1,6 GB, menší soubor je pozůstatek přerušeného stahování
+WC=$BR/whisper/ggml-large-v3-turbo.bin
+[[ -z "$W" && -f $WC ]] && (( $(stat -f%z $WC) > 1000000000 )) && W=$WC
 if [[ -n "$W" ]]; then ok "whisper model"
 elif (( KONTROLA )); then chybi "whisper model"
 else
-  mkdir -p $BR/whisper; W=$BR/whisper/ggml-large-v3-turbo.bin
-  curl -sL -o $W https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-large-v3-turbo.bin && ok "whisper model (staženo)"
+  mkdir -p $BR/whisper; rm -f $WC; W=$WC
+  curl -fsSL --retry 3 -C - -o $WC.part https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-large-v3-turbo.bin \
+    && mv $WC.part $WC && ok "whisper model (staženo)" || chybi "whisper model (stahování selhalo, spusť setup znovu, naváže se)"
 fi
 
 # 7) HyperFrames v pevné verzi do cache npx
@@ -113,14 +113,18 @@ export BR_MEDIA="$MEDIA"
 export BR_HUDBA="$MEDIA/hudba"
 export BR_BROLLS="$MEDIA/B-rolls"
 export BR_INSPIRACE="\$HOME/Documents/inspirace-reels"
+export BR_MOJE="$MOJE"
+export BR_STYLY="$MOJE/styly"
+export BR_REVIZE_DATA="$MOJE/revize"
 export PY="$BR/venv/bin/python"
 export BR_DFPY="$BR/venv_df/bin/python"
 export BR_MATANYONE="$BR/MatAnyone2"
 export BR_FONTS="$BR/fonts"
 export BR_WHISPER="$W"
 hf() { npx --yes hyperframes@0.8.105 "\$@"; }   # hf check, hf snapshot, hf render (pevná verze)
+revize() { node "\$BR_PROSTOR/revize/revize.mjs" "\$@"; }   # lokální revizní stránka
 EOF
 mkdir -p ~/Documents/inspirace-reels
 ok "cesty v $CFG/env.sh"
 (( CHYBI )) && { echo "Něco chybí, viz výše."; exit 1; }
-echo "Hotovo. V Claude Code napiš /beyond-reels:reel"
+echo "Hotovo. Restartuj Claude Code a napiš /beyond-reels:zacatek"

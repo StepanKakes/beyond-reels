@@ -26,7 +26,7 @@ export default {
     // S3 LA, nájezd do střihu t^2,5, karta penthouse naskočí v negativu
     { typ: "zaber", f0: 113, f1: 148, src: M + "la.mp4", grade: "tlum", tah: [1.0, 1.24, 0, 35, "najezd"],
       karty: [{ src: I + "penthouse.jpg", x: 460, y: 620, w: 520, h: 293, f: wf(5.70), neg: 2, grade: "barva" }] },
-    // S4 Rolls Royce: barevný výřez s tiskovým rastrem na světle šedém studiu s mřížkou (Štěpán: nepřebarvovat, print nechat, bez červeného pozadí), pan ease out k 3, šedá kopie siluety
+    // S4 Rolls Royce: barevný výřez s tiskovým rastrem na světle šedém studiu s mřížkou (nepřebarvovat, print nechat, bez červeného pozadí), pan ease out k 3, šedá kopie siluety
     { typ: "vyrez", f0: 148, f1: 188, pozadi: "svetla",
       vyrez: { src: I + "rolls_tisk.png", stinSrc: I + "rolls_stin.png", x: 170, y: 230, w: 1180, pan: [-240, 0, 2, 16], stin: [28, 16], pruh: false } },
     // S5 14 let: série portrétů, nový obraz každé 3 snímky (8 fps), karta roste 470 na 900
@@ -35,9 +35,9 @@ export default {
         f: 203, krok: 3, h0: 470, h1: 900, cx: 720, cy: 540, pomer: 0.8 } },
     // S6 obsah jako priorita: studio ČB, S křivka 1,20 za 14 snímků
     { typ: "zaber", f0: 230, f1: 286, src: M + "studio.mp4", grade: "cb", tah: [1.0, 1.2, 18, 32, "s"] },
-    // S7 A-roll A1: Tim v původních barvách (naše záběry se nepřebarvují), slova kolem hlavy, obří PROČ přes obličej 1 snímek
+    // S7 A-roll A1: mluvčí v původních barvách (naše záběry se nepřebarvují), slova kolem hlavy, obří PROČ přes obličej 1 snímek
     { typ: "zaber", f0: 286, f1: 301, src: M + "tim_proc.mp4", grade: "puvodni", bezGrade: true },
-    // S8 A-roll A8: Tim v okně na plátně, okno roste skokem 46, 62, 77 % šířky na slovech
+    // S8 A-roll A8: mluvčí v okně na plátně, okno roste skokem 46, 62, 77 % šířky na slovech
     { typ: "platno", f0: 301, f1: 350, bezGrade: true,
       okna: [{ src: M + "tim_okno.mp4", grade: "puvodni", cx: 720, cy: 470, w: 662, h: 497, skoky: [[301, 662], [wf(13.40), 893], [wf(14.20), 1109]] }] },
     // S9 3 věci: rohové závorky se rozšíří S křivkou z jedné karty na tři

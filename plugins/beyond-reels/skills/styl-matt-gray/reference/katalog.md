@@ -72,7 +72,7 @@ Pohyb je plynulý (každý snímek se mění), žádný low framerate.
 
 **R18 Orbit (Ddm6 1602 až 1661).** avatar uprostřed, 5 ikon naskakuje po 2 sn. na čárkovaném kruhu, kruh se otáčí 3 až 4 °/sn. s ease out, ikony zůstávají vzpřímené. Zatím není v kitu
 
-**R19 Zářící ikona (Ddpm R7).** ikona 342 px, 12 paprsků, halo vykvete za 9 sn., paprsky se kolébají ±10°, ikona plave ±4 px. V Beyond verzi bez záře (Tim záři nechce), jen ikona a paprsky
+**R19 Zářící ikona (Ddpm R7).** ikona 342 px, 12 paprsků, halo vykvete za 9 sn., paprsky se kolébají ±10°, ikona plave ±4 px. V Beyond verzi bez záře (záři nechceme), jen ikona a paprsky
 
 **R20 Dokument (Ddpm R8).** svislá linka 2 px se kreslí shora dolů, akcentový scan pruh sjede přes dokument za ~25 sn.
 

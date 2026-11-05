@@ -1,6 +1,6 @@
 """Hlas, hudba a SFX pro reel dalsiProClaudise -> assets/media/hlas_D.wav, hudba_D.wav, sfx_D.wav (48 kHz stereo)
-Noske sám má jen hlas a tichý podkres, Tim chce vždy hudbu a SFX: hudba nízko pod hlasem, SFX řídké a tlumené.
-SFX podle Tima (2.10.2026): jednotlivá slova titulků bez zvuku. Mouse hard click (klik1/klik2) na slova víceslovných nápisů,
+Noske sám má jen hlas a tichý podkres, my chceme vždy hudbu a SFX: hudba nízko pod hlasem, SFX řídké a tlumené.
+SFX podle mluvčího (2.10.2026): jednotlivá slova titulků bez zvuku. Mouse hard click (klik1/klik2) na slova víceslovných nápisů,
 mouse clicks (klik4) na nástupy prvků, závěrka na záběry (B-roll, karta). Nikdy classic click (klik3) ani dřevěný ťuk.
 Spouštět: $PY nastroje/zvuk_try.py   (z kořene noske-styl)"""
 import json,subprocess,sys,numpy as np,soundfile as sf
@@ -29,8 +29,8 @@ for i in (60,62,63,64,67,68,100,102,103,222,223,224,243,244,245,246): klik(P(i))
 for i in (54,57,58,147,154,172,175,230): klik(P(i))
 sfx=np.zeros(N)
 for t,n,g in E:
-    g+=5                                                                        # Tim 3.10.: SFX víc nahlas
-    if n.startswith('klik'): g+=3                                               # Tim 2.10.: kliky lehce víc nahlas
+    g+=5                                                                        # SFX víc nahlas
+    if n.startswith('klik'): g+=3                                               # kliky lehce víc nahlas
     x=load(f'assets/sfx/{n}.wav'); x=x/np.abs(x).max()*db(-1+g+6); i=int(t*SR); x=x[:N-i]; sfx[i:i+len(x)]+=x
 # hlas: studiový řetězec (tools/studio-hlas: odšumění, EQ podle Matta Graye, vyrovnání, komprese), už na -14 LUFS
 v=load('assets/media/hlas_studio_D.wav')

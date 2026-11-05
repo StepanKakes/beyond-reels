@@ -1,20 +1,20 @@
 ---
 name: styl-matt-gray
-description: Edit reelů ve stylu Matta Graye (@matthgray) v barvách Beyond, v HyperFrames. Použij, když Tim řekne "matt gray", "matt", "Matt Gray styl", "jako matthgray", nebo chce reel se split obrazovkou (bílá mřížka s minimalistickým diagramem nahoře, webka v boxu dole), framework vysvětlený diagramem, který se skládá synchronně s řečí, nebo talking head s malými bílými titulky a krátkými B-rolly. Obsahuje, jak editor přemýšlí, změřený katalog technik, knihovnu MG (matt-kit) a výrobní postup. Pro Jacka Masona je styl-mason, pro Noskeho styl-noske, přehled v beyond-reels.
+description: Edit reelů ve stylu Matta Graye (@matthgray) v barvách Beyond, v HyperFrames. Použij, když někdo řekne "matt gray", "matt", "Matt Gray styl", "jako matthgray", nebo chce reel se split obrazovkou (bílá mřížka s minimalistickým diagramem nahoře, webka v boxu dole), framework vysvětlený diagramem, který se skládá synchronně s řečí, nebo talking head s malými bílými titulky a krátkými B-rolly. Obsahuje, jak editor přemýšlí, změřený katalog technik, knihovnu MG (matt-kit) a výrobní postup. Pro Jacka Masona je styl-mason, pro Noskeho styl-noske, přehled v beyond-reels.
 ---
 
 # Beyond reels ve stylu Matta Graye
 
-> **Zvuk hlasu (Tim 4. 10. 2026, platí pro každý reel):** jen čistá stopa z kamery bez filtrů, střih po celých snímcích zdroje, `studio_hlas.py` ve výchozím režimu, intro a tělo jedním během, mix jako Noske funnel (hlas -5,5 dB, hudba -24 dB RMS se sidechainem -6 dB, -14 LUFS). Vzor `reels/podnikatele/dalen/nastroje/studio_spolecne.py` a `zvuk_telo.py`. Starší pokyny ke zvuku níže tímto nahrazuje.
+> **Zvuk hlasu (platí pro každý reel):** jen čistá stopa z kamery bez filtrů, střih po celých snímcích zdroje, `studio_hlas.py` ve výchozím režimu, intro a tělo jedním během, mix jako Noske funnel (hlas -5,5 dB, hudba -24 dB RMS se sidechainem -6 dB, -14 LUFS). Vzor `reels/podnikatele/dalen/nastroje/studio_spolecne.py` a `zvuk_telo.py`. Starší pokyny ke zvuku níže tímto nahrazuje.
 
-> **AI fotky (Tim 5. 10. 2026, platí pro každý reel):** generovat jen jedním modelem, Seedream v4 edit (`fal-ai/bytedance/seedream/v4/edit`), nikdy dva modely najednou a nikdy nano banana. Vždy jen 2 až 3 generace (`num_images` 2 až 3), každá jiná (oblečení, póza, výraz). Reference tváře 2 až 3 výřezy z jeho videí nebo už schválená fotka. Studiový portrét od stehen nahoru, vyplňuje obraz, bez glow, pak birefnet bez pozadí. Volání přes `reels/_nastroje/fal.py`. Cena asi 0,03 USD za fotku.
+> **AI fotky (platí pro každý reel):** generovat jen jedním modelem, Seedream v4 edit (`fal-ai/bytedance/seedream/v4/edit`), nikdy dva modely najednou a nikdy nano banana. Vždy jen 2 až 3 generace (`num_images` 2 až 3), každá jiná (oblečení, póza, výraz). Reference tváře 2 až 3 výřezy z jeho videí nebo už schválená fotka. Studiový portrét od stehen nahoru, vyplňuje obraz, bez glow, pak birefnet bez pozadí. Volání přes `reels/_nastroje/fal.py`. Cena asi 0,03 USD za fotku.
 
 Matt vysvětluje systém. Video je tabule, na kterou se kreslí přesně to, co zrovna říká, a mezi tím je čistý talking head. Žádné efekty pro efekt, klid, čistota, jeden akcent. Cíl není kopírovat jeho videa, ale vysvětlovat Timovy frameworky stejným jazykem.
 
 Projekt a knihovna: `$BR_PROSTOR/matt-gray-styl`
 - `js/matt-kit.js` komponenty (window.MG), `matt-kit.css` tokeny a vzhled
 - `src/ukazka-*.html` kompozice, `node build.mjs a` z nich udělá `index.html` (slova přes `/*SLOVA:X*/` z `assets/media/slova_X.json`)
-- Hotová ukázka: `src/ukazka-a.html` (Timův záznam z ukázky C, 25 s), render `renders/ukazka-a.mp4`
+- Hotová ukázka: `src/ukazka-a.html` (mluvčího záznam z ukázky C, 25 s), render `renders/ukazka-a.mp4`
 - Rozbor originálů: `$BR_INSPIRACE/matt-gray/_rozbor/<id>/SHOTLOG.md`, videa a přepisy v `_raw`
 
 Než začneš stavět, přečti `reference/katalog.md` (změřené recepty) a `reference/komponenty.md` (API a pasti).
@@ -34,11 +34,11 @@ Než začneš stavět, přečti `reference/katalog.md` (změřené recepty) a `r
 
 ## Barvy
 
-Matt má limetku #D4F443 s černým textem. Beyond verze má akcent `--mg-akcent` červenou #FF0E00 s bílým textem (stejně jako Jackův styl v barvách Beyond). Když Tim bude chtít limetku jako v originále, stačí třída `.mg-limetka` na `#root`. Color grade footage se nemění.
+Matt má limetku #D4F443 s černým textem. Beyond verze má akcent `--mg-akcent` červenou #FF0E00 s bílým textem (stejně jako Jackův styl v barvách Beyond). Když budeš chtít limetku jako v originále, stačí třída `.mg-limetka` na `#root`. Color grade footage se nemění.
 
 ## Co v Beyond verzi jinak než Matt
 
-- **Žádné vystřižení postavy.** Matt nechává hlavu vyčnívat přes hranu boxu (maska kolem postavy). Tim nechce odstranění pozadí, box je vždy celý obdélník
+- **Žádné vystřižení postavy.** Matt nechává hlavu vyčnívat přes hranu boxu (maska kolem postavy). nechceme odstranění pozadí, box je vždy celý obdélník
 - **Žádné přeškrtnutí.** Matt škrtá FUNNEL, ADS, CLOSER červeným vřetenem. U nás `MG.zhasni`: slovo zešedne na barvu ducha, konec padá na zvuk slova
 - **Titulky nejsou verzálky.** Matt má titulky smíšeně, to držíme. Verzálky jen v grafice (štítky, nadpisy)
 

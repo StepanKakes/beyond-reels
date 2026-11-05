@@ -52,7 +52,7 @@ Kompozice `src/r-*.html`, rendery `renders/replika/`, porovnání `replika/`:
 - `r-georgios` (23,976 fps): $250M, tmavá IG karta, chat pop LIFESTYLE/BUSINESSES, duchová věta, IG profil s tikáním a zoomem
 Jak replikovat další zařízení: `replikace.md`.
 
-## Co z originálu do Beyond nepřenášet (Tim)
+## Co z originálu do Beyond nepřenášet
 glitch přechody (Fred Z8, Shelby A7), strobo (Dda A4, Shelby A9), pixelový oheň (Ddq 2), vystřižený mluvčí (rotoscope) u Timovy webky. Náhrada: tvrdý střih, rozmazání do ostrého, slovo za kartou místo za hlavou.
 Od 4. 10. 2026 naopak patří do Beyond stylu radiální blur, záře, fisheye a LCD vzhled UI (viz `efekty.md`).
 

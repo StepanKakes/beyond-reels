@@ -1,8 +1,8 @@
-# Lumitris mix v Beyond verzi. Od 13. 10. 2026 výchozí STANDARD Beyond (Štěpán: srovnat se standardem): hlas ze studio_hlas -5,5 dB,
+# Lumitris mix v Beyond verzi. Od 13. 10. 2026 výchozí STANDARD Beyond (srovnat se standardem): hlas ze studio_hlas -5,5 dB,
 # hudba -24 dB RMS se sidechainem -6 dB (podržení 0,8 s), pod citacemi -10 dB, -14 LUFS / -1,5 dBTP. Původní Lumitris mix
 # (hudba 7 LU pod hlasem bez duckingu) jen s "mix": "lumitris" v plánu.
 # sub odhalení nabíhá 9 snímků před střihem s vrcholem na střihu, krátké digitální praskání nad 6 kHz u glitchů 21 dB pod hlasem.
-# Štěpán 12. 10. 2026: kdykoli něco naskočí, skočí nebo se rychle mění fotky, dostane to zvuk z knihovny sfx/zaklad
+# kdykoli něco naskočí, skočí nebo se rychle mění fotky, dostane to zvuk z knihovny sfx/zaklad
 # (slova klik1 a klik2 střídavě, prvky klik4, fotky a karty závěrka, obří slovo pop, okno kick, přesuny svih_vitr, čísla cisla).
 # Časy se srovnají na mřížku taktu, aby zvuk seděl se snímkem, kdy se věc opravdu ukáže. Výstup -14,6 LUFS, limiter.
 # python3 -I nastroje/zvuk.py heaton15   (z lumitris-styl/v2)
@@ -189,7 +189,7 @@ def _mp3(cesta):
 
 
 def roztah(snimku):
-    """Mechanické cvakání po dobu roztažení (Štěpán: wheel clicking). Kroky po 2 snímcích sedí na takt 12 fps."""
+    """Mechanické cvakání po dobu roztažení (wheel clicking). Kroky po 2 snímcích sedí na takt 12 fps."""
     n = int(max(snimku, 3) / FPS * SR)
     if ROZTAH in ("cog", "gears"):
         x = _mp3(f"{DEITH}/cog-wheel-83386.mp3") if ROZTAH == "cog" else _mp3(f"{DEITH}/Gears.wav")

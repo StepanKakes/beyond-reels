@@ -43,7 +43,7 @@ nastavení, slib tří věcí, body s rituálem, citace, CTA s “SLOVEM” na k
 | obsah a dosah | YouTube mřížka, IG profil 1:1, skutečné komentáře | okna videí najíždějí, karta s videem a slova po stranách |
 | značka | záběr s logem, logo | koláž produktových záběrů |
 | bod 1 2 3 | #N s názvem pod číslem, karty 1 2 3 | čísla jako boxy přes A-roll |
-| citace | klip na celé ploše, český titulek na černém štítku přes jeho titulky | klip v kartě vedle Tima |
+| citace | klip na celé ploše, český titulek na černém štítku přes jeho titulky | klip v kartě vedle mluvčího |
 | pointa | obří slovo verzálkami za osobou (masky MatAnyone2) | slovo, které se protočí a dosedne |
 
 ## Zvláštnosti stylu
@@ -51,6 +51,6 @@ nastavení, slib tří věcí, body s rituálem, citace, CTA s “SLOVEM” na k
 - Text za osobou: masky po snímcích (`BN.maskaZaPostavou`, výroba v `reference/nove.md` a `$BR_PROSTOR/tools/maska_za_osobou.py`).
   Nápis skrýt, jakmile masky dojdou.
 - Low framerate jen na grafiku (krok 2), kamera a zoomy plynule po křivce, punch-in max 1,15.
-- Titulky: šablona je dělá samy, u Tima nikdy přes obličej (u hlavy až od 500 a do 1420 px, pod bradou 1050).
+- Titulky: šablona je dělá samy, u mluvčího nikdy přes obličej (u hlavy až od 500 a do 1420 px, pod bradou 1050).
 - Bezpečná zóna 4:3: text ne do krajních 60 px, důležité ne do horních 120 px.
 - Z originálu nepřenášet: glitch přechody, strobo, pixelový oheň, vystřiženého mluvčího.

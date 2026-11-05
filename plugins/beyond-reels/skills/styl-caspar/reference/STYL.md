@@ -70,7 +70,7 @@ Střih padá těsně před první slovo věty, takže každá věta začíná no
   C11 pomalý pull-back 3 až 6 % lineárně; C12 švih whip 7 až 8 sn. bez záblesku; karty po 2 snímcích (krokově) jako originál.
 - **Zvuk:** standard mix.py. SFX jen hluboký úder (sub) ze `sfx/zaklad` na kartu, pop-in a výměnu slova, klik na slova po jednom.
 
-## Hook 1:1 (Štěpán 15. 10. 2026: hook chce přesně jako originál)
+## Hook 1:1 (hook chce přesně jako originál)
 
 Záběry 01 až 03 originálu (sn. 0 až 134), v ukázce `src/ukazka.html` 0 až 4,73 s, v knihovně `caspar-hook`:
 1. Postava (u nás George, statický záběr, hlava kolem 23 % výšky), za ní se od 3. snímku skládá kolaž skutečných reelů po 3 sn.

@@ -16,5 +16,5 @@ Cíl: naučit se nové zařízení tak, aby komponenta s výchozími parametry d
 ## Nástroje na cizí materiál (případové studie)
 - `nastroje/zabery.py videa... --ven zdroj/x/zabery.json` index záběrů (střihy, obličej, jas, ostrost) + arch náhledů. Potřebuje OpenCV s Haar kaskádou: `$BR_MATANYONE_PY`
 - `nastroje/montaz.py --zabery ... --id 12,40 --delky 8,8,6 --pomer 0.5625 --sirka 1080 --ven x.mp4` montáž s výřezem na obličej (match cut), nebo `--video X --casy 30,161` bez indexu
-- `nastroje/fal.py MODEL '{json}' --ven cesta` fal.ai (klíč z beo-web/.env.local, Tim povolil): `openai/gpt-image-2` (obrázky; průhlednost neumí, generuj na pozadí "hex FBF9FC" a dej `mix-blend-mode: multiply`), `fal-ai/elevenlabs/tts/multilingual-v2` (čeština), `fal-ai/minimax/voice-clone` + `fal-ai/minimax/speech-02-hd` (klon hlasu)
+- `nastroje/fal.py MODEL '{json}' --ven cesta` fal.ai (volitelné, vlastní klíč v `FAL_KEY`, skript `fal.py` plugin nenese, nech si ho napsat): `openai/gpt-image-2` (obrázky; průhlednost neumí, generuj na pozadí "hex FBF9FC" a dej `mix-blend-mode: multiply`), `fal-ai/elevenlabs/tts/multilingual-v2` (čeština), `fal-ai/minimax/voice-clone` + `fal-ai/minimax/speech-02-hd` (klon hlasu)
 - Pozor na vypálené titulky v cizích vlozích: vyber záběry bez nich (arch `zabery_vse.jpg`)

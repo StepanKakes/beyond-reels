@@ -1,9 +1,9 @@
 ---
 name: styl-mason (reference/struktura.md)
-description: Jak skládat Beyond reely v Jackově (Mason) stylu jako celek, ne jednotlivé grafiky. Formáty (rozbor cizího byznysu, klientský příběh, vlastní framework, talking head insight), anatomie hooku po snímcích, nastavení, slib tří věcí, rituál bodu, CTA, pravidla B-rollu, rytmus a poměry, scénář v češtině podle šablon, beat mapa a výroba případové studie o jiném člověku (rešerše, jeho fotky a vlogy, hlas, montáže). Použij, když Tim chce nový reel, případovou studii o podnikateli ("udělej reel o X"), scénář nebo hook, nebo když se ptá, jak má video stát. Grafiku samotnou řeší skill styl-mason.
+description: Jak skládat Beyond reely v Jackově (Mason) stylu jako celek, ne jednotlivé grafiky. Formáty (rozbor cizího byznysu, klientský příběh, vlastní framework, talking head insight), anatomie hooku po snímcích, nastavení, slib tří věcí, rituál bodu, CTA, pravidla B-rollu, rytmus a poměry, scénář v češtině podle šablon, beat mapa a výroba případové studie o jiném člověku (rešerše, jeho fotky a vlogy, hlas, montáže). Použij, když někdo chce nový reel, případovou studii o podnikateli ("udělej reel o X"), scénář nebo hook, nebo když se ptá, jak má video stát. Grafiku samotnou řeší skill styl-mason.
 ---
 
-> **AI fotky (Tim 5. 10. 2026, platí pro každý reel):** generovat jen jedním modelem, Seedream v4 edit (`fal-ai/bytedance/seedream/v4/edit`), nikdy dva modely najednou a nikdy nano banana. Vždy jen 2 až 3 generace (`num_images` 2 až 3), každá jiná (oblečení, póza, výraz). Reference tváře 2 až 3 výřezy z jeho videí nebo už schválená fotka. Studiový portrét od stehen nahoru, vyplňuje obraz, bez glow, pak birefnet bez pozadí. Volání přes `reels/_nastroje/fal.py`. Cena asi 0,03 USD za fotku.
+> **AI fotky (platí pro každý reel):** generovat jen jedním modelem, Seedream v4 edit (`fal-ai/bytedance/seedream/v4/edit`), nikdy dva modely najednou a nikdy nano banana. Vždy jen 2 až 3 generace (`num_images` 2 až 3), každá jiná (oblečení, póza, výraz). Reference tváře 2 až 3 výřezy z jeho videí nebo už schválená fotka. Studiový portrét od stehen nahoru, vyplňuje obraz, bez glow, pak birefnet bez pozadí. Volání přes `reels/_nastroje/fal.py`. Cena asi 0,03 USD za fotku.
 
 
 # Struktura Beyond reelů (Mason styl)
@@ -49,7 +49,7 @@ Pravidla ze všech sedmi hooků:
 - Vždy **doslovný důkaz věty**, nikdy nálada (Ben: "Britain" = Londýn, "one employee" = barista). B-roll bez titulku nebo grafiky neexistuje.
 - Délka 0,4 až 3 s. Výčet = slovo na záběr (BRITAIN'S, YOUNGEST, BILLIONAIRE po 13 sn.).
 - Cizí materiál sjednotit: v kartě přirozené barvy, přes celý snímek duotone (`BN.duotone`, černá > teplý papír).
-- Timova vlastní B-rolly: `$BR_BROLLS` (KATALOG.md), v Mason stylu do rámečku karty.
+- mluvčího vlastní B-rolly: `$BR_BROLLS` (KATALOG.md), v Mason stylu do rámečku karty.
 - Talking head bez střihu oživit zoom bumpem (+9 % za 8 sn.) a návratem z B-rollu (1,11 > 1 za 40 sn.).
 
 ## 5. Rytmus a poměry (cíle)
@@ -76,8 +76,8 @@ Po zarovnání hlasu (`nastroje/zarovnej.py hlas.wav text.txt slova.json`) uděl
 1. **Rešerše agentem** (levnější model): fakta s URL a jistotou, 3 úhly ve formátu výše, fotky (portréty do kamery, YT náhledy přes `i.ytimg.com/vi/<id>/maxresdefault.jpg`, loga, web), klipy. Vše do `jack-styl/zdroj/<jmeno>/`. Ověř národnost a čísla, agent je umí poplést.
 2. **Materiál**: `yt-dlp -f "bv*[height<=1080]" --no-audio` 4 až 6 vlogů, `nastroje/zabery.py` index záběrů a arch, výběr podle obličeje a bez vypálených titulků, `nastroje/dalen_media.py` jako vzor (stopky na obličej, klipy, montáže).
 3. **AI grafika** přes `nastroje/fal.py openai/gpt-image-2` na pozadí hex FBF9FC (předmět místo ikony: balík = objednávky).
-4. **Hlas**: ideálně Tim nahraje sám. Jinak klon jeho hlasu přes fal MiniMax (`fal-ai/minimax/voice-clone` z čisté nahrávky, pak `fal-ai/minimax/speech-02-hd` s `voice_id`, `language_boost: "Czech"`, speed 1,12) nebo ElevenLabs multilingual-v2. Kontrola výslovnosti whisperem, cizí jména foneticky v textu pro TTS (Ecomflow > Ekomflou).
-5. **Kompozice** podle `src/dalen.html`, **zvuk** podle `nastroje/zvuk_dalen.py` (hudba She Will, SFX pravidla Tima, hlas na stejné aktivní úrovni jako reel D), **render** a kontrola mřížkou `nastroje/mrizka.py`, pak agent `overovac` na nezávislou kontrolu (oříznutí, safe zóna, prázdné snímky, synchron).
+4. **Hlas**: ideálně mluvčí nahraje sám. Jinak klon jeho hlasu přes fal MiniMax (`fal-ai/minimax/voice-clone` z čisté nahrávky, pak `fal-ai/minimax/speech-02-hd` s `voice_id`, `language_boost: "Czech"`, speed 1,12) nebo ElevenLabs multilingual-v2. Kontrola výslovnosti whisperem, cizí jména foneticky v textu pro TTS (Ecomflow > Ekomflou).
+5. **Kompozice** podle `src/dalen.html`, **zvuk** podle `nastroje/zvuk_dalen.py` (hudba She Will, SFX pravidla mluvčího, hlas na stejné aktivní úrovni jako reel D), **render** a kontrola mřížkou `nastroje/mrizka.py`, pak agent `overovac` na nezávislou kontrolu (oříznutí, safe zóna, prázdné snímky, synchron).
 
 ## Kontrola před odevzdáním
 - text 250 až 1490 px na výšku, nic vpravo za 1020 px, CTA slovo v uvozovkách nahoře “SLOVO”

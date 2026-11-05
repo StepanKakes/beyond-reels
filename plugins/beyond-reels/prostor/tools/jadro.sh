@@ -18,4 +18,5 @@ fi
 P="${1:?složka projektu}"; mkdir -p "$P/js" "$P/assets/fonts"
 HN=~/.cache/beyond-reels/fonts; [[ -f $HN/HN-Bold.ttf ]] || ${PY:-python3} "$R/tools/hn_ze_systemu.py" "$HN" >/dev/null
 cp "$J"/js/*.js "$P/js/"; cp "$J"/*.css "$P/"; cp "$J"/fonts/* "$HN"/HN-*.ttf "$P/assets/fonts/"; cp "$J/VERZE" "$P/.jadro-verze"
+node "$R/tools/znacka.mjs" "$P"
 echo "jádro $(cut -d' ' -f1 "$J/VERZE") > $P"

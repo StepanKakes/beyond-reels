@@ -258,7 +258,7 @@
   }
 
 
-  /* ---------- IG PROFIL 1:1 (Android, tmavý režim, podle Timova screenshotu danieldalen) ----------
+  /* ---------- IG PROFIL 1:1 (Android, tmavý režim, podle mluvčího screenshotu danieldalen) ----------
    * Navrženo v nativních 1080 px šířky, volající škáluje (gsap.set(el, { scale })). Horní lišta se šipkou, zvonkem a menu,
    * avatar s duhovým kroužkem příběhu, jméno, tři čísla, bio, odkaz, modré Sledovat, šedé Zpráva, přidat osobu.
    * Bez "Sledováno uživateli..." a bez Close friends (osobní údaje diváka do videa nepatří).
@@ -430,7 +430,7 @@
 
 
 
-  /* ---------- KOMPONENTY Z REELU DALEN (4. 10. 2026, Tim schválil ve v15) ----------
+  /* ---------- KOMPONENTY Z REELU DALEN (4. 10. 2026) ----------
    * vzor celé kompozice: reels/podnikatele/dalen/src/telo.html */
 
   /* iMessage bubliny dokola kolem osoby: modrá, bílý text na jeden řádek, náhodný úhel a vzdálenost na elipse,
@@ -475,7 +475,7 @@
 
   /* Titulky ze zarovnaných slov jako Vince Nijhof / Noske: po 1 až 3 slovech (max 20 znaků), zlom na interpunkci a na střihu scény,
    * nástup snímek před slovem, ale nikdy před střihem; konec na dalším titulku, na střihu, před klipem nebo konec slova + 0,3 s.
-   * Barvu (tmavé na papíře) ať určí kompozice podle scény v čase t + 2 snímky. Ruční výběr frází vynechával slova (Tim).
+   * Barvu (tmavé na papíře) ať určí kompozice podle scény v čase t + 2 snímky. Ruční výběr frází vynechával slova.
    * o: { bez: [[i0, i1]], strihy: [časy], klipy: [časy začátků cizích klipů], konec, vlastni: RegExp, zlom: [indexy slov, kde začít nový titulek] }
    * vrací pole { text, t0, t1, a, b } */
   function titulkyZeSlov(slova, o = {}) {
@@ -507,7 +507,7 @@
 
   /* Text za postavou: velký nápis pod vrstvou masek (RGBA webp po snímcích z MatAnyone2), každý snímek se zapne na 1/30 s.
    * Masky vyrobit: první snímek birefnet (fal) > maska, MatAnyone2 přes celý záběr, alfa zvětšit na plné rozlišení.
-   * Nápis skrýt, jakmile masky dojdou, jinak přeskočí přes lidi (Tim). vrací čas konce masek */
+   * Nápis skrýt, jakmile masky dojdou, jinak přeskočí přes lidi. vrací čas konce masek */
   function maskaZaPostavou(tl, prefix, t0, pocet, konecScény) {
     let kon = t0;
     for (let k = 0; k < pocet; k++) { const t = t0 + k / 30; if (t >= konecScény) break; const e = document.getElementById(prefix + k); tl.set(e, { visibility: "visible" }, t); tl.set(e, { visibility: "hidden" }, Math.min(konecScény, t + 1 / 30)); kon = Math.min(konecScény, t + 1 / 30); }

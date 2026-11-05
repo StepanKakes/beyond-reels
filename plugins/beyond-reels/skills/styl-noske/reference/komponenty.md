@@ -16,12 +16,12 @@ Načtení: `<script>window.NK_FPS = 25;</script>`, pak `vendor/gsap.min.js`, `js
 | `NK.sklo(tl, el, t)` | skleněná karta: fade 10 sn., +28 px, blur 6 → 0 | DdU1 |
 | `NK.oddaleni(tl, el, t)` | věta z 1,7× na 1,0 za 14 sn. expo.out | DdfJ |
 | `NK.redukce(tl, el, t, [indexy])` | z věty tvrdě vypadnou slova ("remove half the words") | DdfJ |
-| `NK.trychtyr(el, popisky, {x,y,sirka,konec,vyska,mezera})` + `NK.pas(tl, pas, t, {od,kam})` | trychtýř z pásů, stav `NK.zapni`/`NK.ztlum` na `pas.oba` | Tim 2.10. |
-| `NK.naBrollu(tl, titulky, t0, t1)` | krémové titulky se stínem přes B-roll | Tim 2.10. |
-| `.nk-ikonka` + `NK.sklo` | tmavý štítek s obrysovou ikonou (YouTube, e-mail) vedle hlavy | Tim 2.10. |
+| `NK.trychtyr(el, popisky, {x,y,sirka,konec,vyska,mezera})` + `NK.pas(tl, pas, t, {od,kam})` | trychtýř z pásů, stav `NK.zapni`/`NK.ztlum` na `pas.oba` | schváleno |
+| `NK.naBrollu(tl, titulky, t0, t1)` | krémové titulky se stínem přes B-roll | schváleno |
+| `.nk-ikonka` + `NK.sklo` | tmavý štítek s obrysovou ikonou (YouTube, e-mail) vedle hlavy | schváleno |
 | `NK.hookNastup(tl, el, t)` | hook: přiletí z 2,4x a +200 px, 38 sn. power3.out, blur 2 -> 0 | Dd45 |
 | `NK.zaostreniVrstvy(tl, titulky, t, {sila, kratce})` | rozmazaná vrstva titulků se zaostří | DdU1 |
-| `NK.rozmazatKonec(tl, el, t1)` | 4 sn. rozmazání před tvrdým střihem | Tim 2.10. |
+| `NK.rozmazatKonec(tl, el, t1)` | 4 sn. rozmazání před tvrdým střihem | schváleno |
 | `NK.sestava(tl, titulky, slova, {typ:'kicker'\|'pod'\|'schody', a, b, radky, serifB, serifRadek, hook, rozmazat, konec})` | vrstvená sestava, vrací [t0, konec] do vynech | Dd45, DdZ, DdckN |
 | `NK.postava(tl, el, t)` | plná krémová postava, fade 6 sn. | DdSR |
 | `NK.broll(tl, el, t0, t1, {drift})` | B-roll, když není jako HyperFrames clip | všech 6 |

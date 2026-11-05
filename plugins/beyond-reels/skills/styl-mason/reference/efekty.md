@@ -1,6 +1,6 @@
-# Beyond efekty: radiální blur, záře, fisheye, LCD (Tim 4. 10. 2026)
+# Beyond efekty: radiální blur, záře, fisheye, LCD
 
-Tim: tyhle efekty jsou náš Beyond styl, přidávají profesionalitu a posouvají videa na jiný level. Platí pro všechna Beyond videa.
+mluvčí: tyhle efekty jsou náš Beyond styl, přidávají profesionalitu a posouvají videa na jiný level. Platí pro všechna Beyond videa.
 Pořád zakázané: strobo, glitch přechody, pixelový oheň, rotoscope Timovy webky.
 
 ## Jak se dělají
@@ -38,6 +38,6 @@ LCD vzhled UI (subpixely, mřížka pixelů, hloubka ostrosti, šednutí rohů) 
 (maska s 220 px měkkou hranou místo Jackovy pixelové hrany), YouTube karta s realistickým psaním titulku a popisu, fisheye mřížka se serifovým slovem.
 
 ## Zvuk (SFX) a komponenty v barvách Beyond
-- Sdílená knihovna `$BR_PROSTOR/sfx/` (README + katalog.json): `zaklad/` Timova schválená sada, `shelby/` vzorky vytažené ze Shelby
+- Sdílená knihovna `$BR_PROSTOR/sfx/` (README + katalog.json): `zaklad/` schválená sada, `shelby/` vzorky vytažené ze Shelby
   s `mapa.json` (116 výskytů, hlasitost vůči hlasu). Tabulka kdy co je v `sfx/README.md`, 1:1 stopa byla v jack-styl (zvuk_shelby.py), není součástí pluginu
 - Komponenty Elaine (EK) v Beyond: třída `ek-beyond` na scéně nebo #root (papír, černá, červená, HN + Instrument Serif), ukázka `src/elaine-beyond.html`

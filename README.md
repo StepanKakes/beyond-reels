@@ -1,27 +1,22 @@
-<p align="center">
-  <a href="docs/media/film.mp4"><img src="docs/obr/film_poster.jpg" alt="Film o pluginu: reel, který postavil Claude, v naší revizní stránce" width="100%"></a>
-</p>
-
 <h1 align="center">beyond / reels</h1>
 
 <p align="center">
-  Plugin pro Claude Code, se kterým tým Beyond dělá reely v HyperFrames.<br>
-  Pošleš video a řekneš styl. Claude se doptá, navrhne směry, postaví reel, smíchá zvuk a dá ho na revizi.
+  Plugin pro Claude Code, se kterým děláš reely a YouTube edity z vlastního videa.<br>
+  Pošleš video a řekneš styl. Claude se doptá, navrhne směry, postaví video, smíchá zvuk a dá ho na revizi.
 </p>
 
 <p align="center">
   <a href="#instalace"><b>Instalace</b></a> &nbsp;·&nbsp;
-  <a href="#jak-vznik%C3%A1-reel">Jak vzniká reel</a> &nbsp;·&nbsp;
+  <a href="docs/NAVOD.md"><b>Návod</b></a> &nbsp;·&nbsp;
   <a href="#styly">Styly</a> &nbsp;·&nbsp;
-  <a href="#%C5%99e%C5%A1en%C3%AD-probl%C3%A9m%C5%AF">Řešení problémů</a> &nbsp;·&nbsp;
-  <a href="docs/media/film.mp4">Film o pluginu, 42 s</a>
+  <a href="#řešení-problémů">Řešení problémů</a>
 </p>
 
 <br>
 
 ## Instalace
 
-Jednou na každém Macu s Apple čipem, asi deset minut. Potřebuješ jen [Homebrew](https://brew.sh), GitHub účet ne.
+Potřebuješ Mac s Apple čipem, Claude Code, [Homebrew](https://brew.sh) a kolem 10 GB místa. GitHub účet ne.
 
 **1. Přidej plugin** v Claude Code:
 
@@ -30,17 +25,28 @@ Jednou na každém Macu s Apple čipem, asi deset minut. Potřebuješ jen [Homeb
 /plugin install beyond-reels@beyond
 ```
 
-**2. Spusť setup.** Nainstaluje nástroje a Python, stáhne hudbu a B-rolly (1 GB), model pro přepisy a vytáhne Helvetica Neue ze systému tvého Macu:
+**2. Spusť setup**, trvá kolem deseti minut. Nainstaluje nástroje a Python, stáhne model pro přepisy a připraví složky:
 
 ```bash
 zsh ~/.claude/plugins/marketplaces/beyond/plugins/beyond-reels/scripts/setup.sh
 ```
 
-**3. Restartuj Claude Code** a napiš `/beyond-reels:reel`.
+**3. Restartuj Claude Code** a napiš `/beyond-reels:zacatek`. Provede tě nastavením značky a otevře revizní stránku.
 
-> [!TIP]
-> Revize běží na stránce [Revize reelů](https://claude.ai/artifact/NCnPwTFvfcjDD8PfuyNQH2). O přístup s úpravami požádej Štěpána, bez něj nejdou komentáře ani knihovna komponent.
-> Text za lidmi (obří slovo za osobou) potřebuje navíc MatAnyone2, asi 2,5 GB: setup s `--matanyone`, až ho budeš poprvé potřebovat.
+Celý postup, včetně vlastního stylu, je v [návodu](docs/NAVOD.md).
+
+<br>
+
+## Co napsat
+
+Stačí mluvit normálně, příkaz jen určí, který postup se spustí.
+
+| Příkaz | Například |
+|---|---|
+| `/beyond-reels:zacatek` | „nastav mi značku, tady je logo a písmo“ |
+| `/beyond-reels:reel` | „udělej reel ve stylu noske z ~/Downloads/rozhovor.mp4“ |
+| `/beyond-reels:revize` | „přečti komentáře k reelu a oprav je“ |
+| `/beyond-reels:novy-styl` | „nauč se styl tohohle tvůrce, tady jsou 4 reely“ |
 
 <br>
 
@@ -50,30 +56,20 @@ Osm kroků. Ve čtyřech rozhoduješ ty a render přijde až po schváleném sto
 
 | | Krok | Kdo | Co se děje |
 |:-:|---|---|---|
-| 1 | **Video a styl** | ty | cesta k videu nebo víc pokusů, o kom to je, jaký styl |
+| 1 | **Video a styl** | ty | cesta k videu nebo víc pokusů, o čem to je, jaký styl |
 | 2 | **Brief** | Claude | doptá se na typ, délku a konec, založí projekt v `~/Documents/beyond-reely` |
 | 3 | **Text, střih a hlas** | Claude | přepis, nejlepší pokusy, hrany do ticha, studio hlas a časy slov |
-| 4 | **Výběr směrů** | ty | u každé důležité věty dvě až tři varianty z naší knihovny komponent |
+| 4 | **Výběr směrů** | ty | u každé důležité věty dvě až tři varianty |
 | 5 | **Storyboard** | ty | statické snímky ke schválení na revizní stránce |
-| 6 | **Stavba a zvuk** | Claude | kompozice na sdíleném jádře, titulky ze slov, hlas −5,5 dB, hudba −24 dB se sidechainem, −14 LUFS |
-| 7 | **Revize** | ty | komentáře přímo k času, kresba přes snímek, oprava titulku |
-| 8 | **Opravy a učení** | Claude | nová verze, odpověď u každého komentáře a verdikt, ze kterého se učí celý tým |
-
-### Co napsat
-
-Stačí mluvit normálně, příkaz jen určí, který postup se spustí.
-
-| Příkaz | Například |
-|---|---|
-| `/beyond-reels:reel` | „udělej reel jako mason z ~/Downloads/rozhovor.mp4, je to rozbor George Heatona“ |
-| `/beyond-reels:revize` | „přečti feedback k heaton v3“ |
-| `/beyond-reels:novy-styl` | „nauč se styl tohohle tvůrce, tady jsou 4 reely“ |
+| 6 | **Stavba a zvuk** | Claude | kompozice, titulky ze slov, mix na -14 LUFS |
+| 7 | **Revize** | ty | komentáře přímo k času, kresba přes snímek, oprava titulku na `localhost:4747` |
+| 8 | **Opravy a učení** | Claude | nová verze, odpověď u každého komentáře a verdikt, ze kterého se učí další reely |
 
 <br>
 
 ## Styly
 
-Každý styl má vlastní skill a kit. Komponenty z hotových reelů jsou inspirace, ne stavebnice.
+Sedm hotových stylů, každý s vlastním skillem a kitem. Jsou to vlastní verze podle řemesla tvůrců, po kterých se jmenují, a s těmi tvůrci nejsou nijak spojené. Barvy a písma se nastaví podle tvé značky.
 
 <table>
   <tr>
@@ -88,38 +84,16 @@ Každý styl má vlastní skill a kit. Komponenty z hotových reelů jsou inspir
   </tr>
   <tr>
     <td valign="top"><img src="docs/obr/st_soowei.jpg" alt="SooWei"><br><b>SooWei</b><br><sub>YouTube 16:9, čisté střihy se zoomem, karta s kroky</sub></td>
-    <td valign="top"><br><b>Tvůj styl</b><br><sub><code>/beyond-reels:novy-styl</code> se ho naučí z odkazů na reely tvůrce</sub></td>
+    <td valign="top"><br><b>Tvůj styl</b><br><sub><code>/beyond-reels:novy-styl</code> se ho naučí z odkazů na reely, které se ti líbí</sub></td>
   </tr>
 </table>
 
 <br>
 
-## Jak Claude pracuje
+## Hudba, záběry a práva
 
-Hlavní Claude píše scénář, texty, design a kód. Oči a měření deleguje, ať se nepálí kontext:
-
-- **Mac měří první.** `souhrn_videa.py` a `kontrola_renderu.py` přečtou přes Apple Vision text a obličeje v obraze, ffmpeg změří střihy a hlasitost, whisper řeč. Claude čte text, ne snímky.
-- **Agent `overovac`** (Sonnet) kontroluje rendery a vrací jen verdikt.
-- **Agent `rozbor`** (Sonnet) rozebírá reference snímek po snímku.
-- **Explore** (Haiku) hledá v kódu a knihovně.
-
-Celý postup je v [`vkus/prace.md`](plugins/beyond-reels/vkus/prace.md).
-
-<br>
-
-## Pravidla
-
-Hlídá je Claude sám, nové přibývají z revizí do [`vkus/pravidla.md`](plugins/beyond-reels/vkus/pravidla.md) a do databáze revizní stránky.
-
-- Každé video je originál, knihovna jen inspiruje
-- Žádný koncept, který přebalí celou pasáž do metafory
-- Firmy záběrem s logem, nikdy napsaným názvem
-- Tim jen při pohledu do kamery
-- Titulky celé, aspoň 13 snímků, nikdy přes obličej
-- Helvetica Neue Bold, nikdy kurzíva
-- Žádné glow, glitch, strobo ani nafukování z nuly
-- Střih do ticha a kontrola useknutých slov
-- Storyboard před renderem, vždy
+Plugin nenese žádnou hudbu ani B-rolly. Dodáváš je sám a musíš mít právo je použít. To samé platí pro zdrojová videa, loga a vlastní písma.
+`/novy-styl` stahuje cizí videa jen k rozboru na tvůj disk, do hotového reelu z nich nic nepatří. Helvetica Neue se bere ze systému tvého Macu, plugin ji nešíří.
 
 <br>
 
@@ -128,9 +102,10 @@ Hlídá je Claude sám, nové přibývají z revizí do [`vkus/pravidla.md`](plu
 | Problém | Řešení |
 |---|---|
 | Claude o pluginu neví | `/plugin`, záložka Installed, případně restart Claude Code |
-| Chybí nástroj, cesta nebo média | `setup.sh --kontrola` řekne co, pak setup bez parametru |
-| Písmo vypadá jinak | setup znovu vytáhne Helveticu, v kompozici vždy `var(--mk-sans)` |
-| Nová verze pluginu | `/plugin`, Marketplaces, beyond, Update, pak restart |
+| Chybí nástroj nebo cesta | spusť `setup.sh --kontrola`, řekne co chybí, pak setup bez parametru |
+| Revize se neotevře | řekni Claudovi „otevři revizi“; když je port obsazený, nastav jiný v `BR_REVIZE_PORT` |
+| Reel má špatné barvy nebo písmo | značka platí jen pro nové projekty, u rozdělaného řekni „dosaď značku do tohoto projektu“ |
+| Nová verze pluginu | `/plugin`, Marketplaces, beyond, Update, pak restart. Tvoje složka `_moje` zůstane |
 
 <br>
 
@@ -138,23 +113,19 @@ Hlídá je Claude sám, nové přibývají z revizí do [`vkus/pravidla.md`](plu
 
 ```
 plugins/beyond-reels/
-  skills/        průvodce reelem, revize, nový styl a jazyk každého stylu
-  agents/        overovac (kontrola renderu) a rozbor (rozbor reference), oba na Sonnetu
-  prostor/       sdílený kód: jádro kitů s měřenými křivkami, nástroje (studio hlas, mix,
-                 zarovnání slov, kontrola střihu, masky lidí), kity stylů, SFX, vzory
+  skills/        průvodce reelem, začátek, revize, nový styl a jazyk každého stylu
+  agents/        overovac (kontrola renderu) a rozbor (rozbor reference)
+  prostor/       jádro kitů, kity stylů, nástroje (studio hlas, mix, zarovnání slov,
+                 kontrola střihu), SFX, vzory a lokální revize
   scripts/       setup, založení reelu, šablona projektu, stahování videí
-  vkus/          společná pravidla vkusu a prace.md: jak Claude dělí práci mezi agenty a modely
-docs/            tahák a film o pluginu
+  vkus/          výchozí pravidla vkusu a prace.md: jak Claude dělí práci mezi agenty
+docs/NAVOD.md    návod krok za krokem
 ```
 
-Mimo repo: média v `~/Documents/beyond-reels-media`, reely v `~/Documents/beyond-reely`, komentáře a verdikty v databázi revizní stránky.
+Mimo plugin: reely v `~/Documents/beyond-reely`, tvoje věci v `~/Documents/beyond-reely/_moje` (značka, vkus, vlastní styly, hudba, B-rolly, data revize).
 
-### Pro vývoj
-
-- Nový styl přidává `/novy-styl` jako `skills/styl-<jmeno>` a kit do `prostor/<jmeno>-styl`, zvyš verzi v `plugin.json`
-- Křivky pohybu v jádře vycházejí z motionmaxxing (Apache 2.0, viz `prostor/jadro/NOTICE`)
-- Žádné soubory Helvetica Neue, žádné API klíče, žádná média reelů
+Křivky pohybu v jádře vycházejí z motionmaxxing (Apache 2.0, viz `prostor/jadro/NOTICE`). Plugin nenese API klíče a posílá data revize jen na tvůj počítač.
 
 <br>
 
-<p align="center"><sub>Beyond · reely v HyperFrames · verze 0.3</sub></p>
+<p align="center"><sub>Beyond · reely v HyperFrames · verze 1.0</sub></p>

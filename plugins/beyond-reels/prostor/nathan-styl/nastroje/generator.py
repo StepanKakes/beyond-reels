@@ -1,7 +1,7 @@
 # Generátor Nathan videa: scénář (klauze + obraz) -> návrh plánu (plany/<nazev>_navrh.json)
 # python3 nastroje/generator.py scenare/heaton.json [--seed 7]
 #
-# Scénář určí obraz každé klauze: "th" (Tim do kamery), seznam záběrů, nebo nic (typografická karta).
+# Scénář určí obraz každé klauze: "th" (mluvčí do kamery), seznam záběrů, nebo nic (typografická karta).
 # Generátor dodá styl podle rozboru (SHOTLOG R1 až R29, VARIANTY.md): střih na první slovo klauze, jedno velké slovo
 # přes šířku s exponenciálním dojezdem, malá slova zigzag kolem něj, bliknutí, bloky, karaoke, výměna slov, schody se
 # skriptem, kondenzované nadpisy, škrtnutí negace, počítadlo, řada let, snap zoom, záblesky, letterbox na startu.
@@ -35,9 +35,9 @@ class Video:
         self.P = dict(
             male=r.choice([52, 54, 56, 58]),                       # malé slovo 56 px (5,2 % výšky)
             sloupec=r.choice([700, 740, 760]),                     # cílová šířka velkého slova na talking head
-            th_x=r.randint(1440, 1520),                            # střed sloupce vedle Tima
+            th_x=r.randint(1440, 1520),                            # střed sloupce vedle mluvčího
             tau=(r.choice([5, 6, 7]), r.choice([9, 10, 12])),      # rozsah časové konstanty dojezdu
-            # Štěpán 12. 10. (v2): "furt se něco mění, bliká, zoomuje, nepřehledné" -> klidnější verze stylu:
+            # (v2): "furt se něco mění, bliká, zoomuje, nepřehledné" -> klidnější verze stylu:
             # bliknutí jen pár za video, bez bloků, delší záběry, skoro bez snap zoomů, B-rolly i v oknech na naší ploše
             blink=r.uniform(0.25, 0.4),                            # podíl z kandidátů (jen slova držená 30+ snímků, rozestup 10 s)
             bloky=0.0,
@@ -47,7 +47,7 @@ class Video:
             kond=r.uniform(0.06, 0.15),
             snap=r.uniform(0.06, 0.1),                             # podíl záběrů se snap zoomem (jemný, dlouhý dojezd)
             zablesk=r.uniform(0.04, 0.07),                         # záblesk na střihu se změnou typu, nejvýš 2
-            karta_prvni=r.choice(["svetla", "tmava"]),          # bez červeného přechodu (Štěpán 12. 10.), tmavá #111
+            karta_prvni=r.choice(["svetla", "tmava"]),          # bez červeného přechodu, tmavá #111
             letterbox=r.random() < 0.6,
         )
         self.texty, self.zabery, self.zvuky, self.zablesky, self.koncepty = [], [], [], [], []
@@ -79,7 +79,7 @@ class Video:
         if karaoke:
             for w in sl[1:]:
                 pass
-        # celý řádek musí zůstat v obraze s okrajem 80 px (karaoke u Tima vpravo přetékalo)
+        # celý řádek musí zůstat v obraze s okrajem 80 px (karaoke u mluvčího vpravo přetékalo)
         sirka = sum(self.sirka_male(w["text"]) for w in sl) + self.sirka_male(" ") * (len(sl) - 1)
         lo, hi = 80, W - 80
         if zarovnani == "stred":
@@ -110,7 +110,7 @@ class Video:
         # D roste s dobou držení (POHYB.md B.1): do 20 snímků 104 až 157 px, od 35 snímků 173 až 234 px
         drz = f1 - f
         k = min(1, max(0, (drz - 20) / 15))
-        # klidnější dojezd: kratší dráha a slovo do 20 snímků stojí (Štěpán: "pomalu tam ani není a hned zmizí")
+        # klidnější dojezd: kratší dráha a slovo do 20 snímků stojí ("pomalu tam ani není a hned zmizí")
         D = round(r.uniform(60, 90) * (1 - k) + r.uniform(90, 120) * k)
         # tau 0,3 x držení, ale nejvýš 12 snímků jako "ad costs" (58 snímků držení): u slov držených 2 až 4 s
         # se jinak slovo plazilo celou dobu (kritika 12. 10.), v originálu je po 36 až 40 snímcích dojeté pod 5 px
@@ -180,7 +180,7 @@ class Video:
         if pred:
             # malý řádek nad velkým slovem, zarovnaný na jeho levý okraj; někdy se před nástupem změní v bloky
             # řádek nad velkým slovem zůstává až do konce klauze, text se skládá do jednoho shluku jako u Nathana
-            # (Štěpán 12. 10.: "jemu to přijíždí k sobě a tvoří vícero titulek u sebe, mnohem blíž")
+            # ("jemu to přijíždí k sobě a tvoří vícero titulek u sebe, mnohem blíž")
             y_pred = ink[1] - 16 - sm * 0.86
             rr = self.rada(pred, f_konec, ink[0], y_pred, "vlevo", barva)
             if rr and r.random() < P["bloky"] and f_v - rr["slova"][0]["f"] > 6 and "blink" not in t and f_v - self.posl_blok > 90:
@@ -255,7 +255,7 @@ class Video:
         for z in [z for z in self.zabery if z["typ"] == "th"]:
             d = z.pop("drift", 0.0005)
             body = [(f, f1) for f, f1 in velka if z["f0"] + 6 <= f < z["f1"] - 6]
-            body = []   # bez punch zoomů na Timovi, jen pomalý drift (klidnější verze)
+            body = []   # bez punch zoomů na mluvčímu, jen pomalý drift (klidnější verze)
             seg, sk, f = [], 1.0, z["f0"]
             smer = 1 if d < 0 else -1      # punch jde proti driftu
             for k, (fv, fv1) in enumerate(body):
@@ -322,7 +322,7 @@ class Video:
         print("banka:", b.zprava(), file=sys.stderr)
 
     def odvraty(self, f0, f1, i0):
-        """snímky klauze, kdy Tim nekouká do kamery (pohled.json je v čase hlasu bez citací), jako úseky k překrytí;
+        """snímky klauze, kdy mluvčí nekouká do kamery (pohled.json je v čase hlasu bez citací), jako úseky k překrytí;
         None, když nekouká víc než polovinu klauze"""
         pohled = self.sc.get("pohled", [])
         off = self.K(self.slova[i0]["b"]) - self.slova[i0]["b"]
@@ -360,7 +360,7 @@ class Video:
         return z
 
     def sluc_klauze(self):
-        """krátké klauze (pod 1 s) spojit s další, ať text jen neproblikne (Štěpán 12. 10.: "objeví se a hned zmizí");
+        """krátké klauze (pod 1 s) spojit s další, ať text jen neproblikne ("objeví se a hned zmizí");
         jen se stejným druhem obrazu a bez zvláštních technik, indexy diagramu, komentáře a citací se přečíslují"""
         F, S = self.sc["fraze"], self.slova
         dg, km = self.sc.get("diagram"), self.sc.get("komentar")
@@ -431,7 +431,7 @@ class Video:
                 if c.get("pred") == n:
                     cf0, cf1 = f_(self.K(c["t"]) - (c["do"] - c["od"])), f_(self.K(c["t"]))
                     self.zaber("broll", c["ref"], cf0 - 1, cf1 - 1).update(citace=True, vf=c.get("vf"))
-                    # citace je jen čistý klip, Heaton mluví celou dobu, bez našeho textu (Štěpán 12. 10.)
+                    # citace je jen čistý klip, Heaton mluví celou dobu, bez našeho textu
                     t0 = self.K(c["t"])
             f0, f1 = f_(t0) - (1 if n else 0), f_(t1) - 1
             obraz = fr.get("obraz")
@@ -456,7 +456,7 @@ class Video:
                 self.rada([i for i in idx if i < iv], f1, 960, 300)
                 typ_posl = "karta"
                 continue
-            # typ obrazu klauze: Tim jen když kouká do kamery, karta pro abstraktní věty bez záběru
+            # typ obrazu klauze: mluvčí jen když kouká do kamery, karta pro abstraktní věty bez záběru
             odvraty = self.odvraty(f0, f1, i0) if obraz == "th" else []
             if obraz == "th" and odvraty is not None:
                 typ = "th"
@@ -468,7 +468,7 @@ class Video:
                 typ = "karta"
             # střih na první slovo klauze, záběrů je víc jen u dlouhých B-roll klauzí (montáž důkazů)
             if typ == "th":
-                # A-roll i u klauze, kde Tim na chvíli uhne pohledem: ten kus překryje B-roll, text zůstane ve sloupci vedle Tima
+                # A-roll i u klauze, kde mluvčí na chvíli uhne pohledem: ten kus překryje B-roll, text zůstane ve sloupci vedle mluvčího
                 kryt, hrany, k = fr.get("kryt") or ["hledej:george_face"], [], 0
                 for a, b in odvraty:
                     hrany.append(("th", f0 if not hrany else hrany[-1][2] + 1, a - 1))

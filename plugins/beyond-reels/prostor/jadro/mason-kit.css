@@ -64,7 +64,7 @@
 /* slova z rozmazání (Fred Z2): černá = všichni, akcent kurzíva = on */
 .mk-radek { position: absolute; left: 0; right: 0; display: flex; justify-content: center; align-items: baseline; gap: 0.24em; white-space: nowrap; }
 .mk-rslovo { color: var(--mk-cerna); font-weight: 500; letter-spacing: -0.03em; line-height: 1; transform-origin: 50% 70%; }
-/* Beyond: pointa písmem Instrument Serif v normálním řezu, Helvetica nikdy kurzívou (Tim). Jack: Helvetica Medium Italic (tema-jack.css) */
+/* Beyond: pointa písmem Instrument Serif v normálním řezu, Helvetica nikdy kurzívou. Jack: Helvetica Medium Italic (tema-jack.css) */
 .mk-rslovo.akcent { color: var(--mk-akcent); font-family: var(--mk-serif); font-style: normal; font-weight: 400; letter-spacing: -0.01em; font-size: 1.12em; font-synthesis: none; }
 .mk-radek.na-akcentu .mk-rslovo { color: var(--mk-bila); }
 

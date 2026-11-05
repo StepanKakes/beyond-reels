@@ -16,18 +16,18 @@ Nathan reelem pro tým se zeptej, jestli převést generátor a kit na 1920x1440
 
 1. **Scénář** `scenare/<nazev>.json`: `nazev`, `seed`, `hlas` (výstup studio_hlas), `slova` (zarovnaná slova), `zdroje` (šablony cest ke klipům a obrázkům),
    `citace`, `pohled` (úseky [od, do, 1 = dívá se do kamery]), `hudba`, `fraze`: [{text, obraz: ["th"] | ["klip:<id>@<s>", "hledej:<co>"] | [], duraz}].
-   Obraz klauze: `th` = Tim do kamery, seznam záběrů, nebo nic (typografická karta).
+   Obraz klauze: `th` = mluvčí do kamery, seznam záběrů, nebo nic (typografická karta).
 2. `zsh nastroje/vyrob.sh scenare/<nazev>.json [seed] [render]`: nástupy (`nastupy.py`), generátor (`generator.py`, styl ze SHOTLOG přes
    rozpočty a semínko), média (`priprav.py`), zvuk (`zvuk.py`), `node build.mjs <nazev>`, check, render se zvukem.
 3. Jiné semínko = jiná varianta stejného scénáře. Ke schválení dej 2 až 3 semínka jako storyboard (snímky v klíčových větách).
 4. Kit `js/nathan-kit.js` (`window.NZ`) jen staví a animuje plán, polohy textu počítá generátor z metrik písma (`nastroje/pismo.py`).
 
-## Jazyk stylu (Štěpán 12. 10. 2026, platí vždy)
+## Jazyk stylu (platí vždy)
 
 - Akcent naše červená #FF0E00 místo Nathanovy modré, i modrá karta je červená, rohy světlé karty teple šedé.
-- Víc A-rollu, když se Tim dívá do objektivu (cíl kolem 22 % jako originál), krátké uhnutí pohledem překrýt B-rollem (`odvraty()` v generátoru).
+- Víc A-rollu, když se mluvčí dívá do objektivu (cíl kolem 22 % jako originál), krátké uhnutí pohledem překrýt B-rollem (`odvraty()` v generátoru).
 - AI postava sedí, za hlavou velké slovo (Seedream v4 edit, výřez BiRefNet, koncept `sedi`, `nastroje/gen_sedi.py`).
-- **Klid:** záběr aspoň 1,7 s, snap zoom jen výjimečně a jemně, bez punchů na Timovi, bliknutí textu 2 až 3 za video, bez bílých bloků,
+- **Klid:** záběr aspoň 1,7 s, snap zoom jen výjimečně a jemně, bez punchů na mluvčímu, bliknutí textu 2 až 3 za video, bez bílých bloků,
   záblesky nejvýš 2. Velké slovo jen když stojí aspoň 20 snímků, dojezd nejvýš 20 snímků (tau 0,3 x držení, strop).
 - Jen naše písma: Helvetica Neue Bold (i verzálky) a Instrument Serif v rovném řezu. Texty se nepřekrývají, přes pestrý B-roll jemný stín.
 - B-rolly klidně zmenšené do oken (16:9 nebo čtverec) na červené nebo tmavé ploše, vyjedou zespodu.

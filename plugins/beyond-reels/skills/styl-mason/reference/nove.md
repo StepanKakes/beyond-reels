@@ -15,11 +15,11 @@ Velikosti v reelu 1080x1920: týdenní pás šířka 1020 od y 470, popis videa 
 
 Další nápady stejnou metodou (zatím nepostavené): žebříček (pořadí jako schody, nový stupeň padá shora), účtenka (tržby se tisknou po řádcích, součet tiká), mapa cesty zákazníka (body na čáře se rozsvěcují barvou), srovnání před a po (dvě karty, mezi nimi šipka se kreslí, horší zešedne).
 
-## Z reelu Dalen (4. 10. 2026, Tim schválil ve v15)
+## Z reelu Dalen (4. 10. 2026)
 
 Vzor celé kompozice: `$BR_PROSTOR/vzory/dalen-telo.html`. Knihovna: sdílené jádro `$BR_PROSTOR/jadro` (`js/beyond-nove.js` BN, `js/mason-kit.js` MK), styly v `jadro/mason-kit.css`.
 
-- `MK.slovaZespodu(tl, radek, slova)`: řádek slov, slovo přijede zespodu za 4 snímky na dvojky, místo drží od začátku (řádek neposkakuje). Tim nechce zvětšování z rozmazání (`slovaRozmazane`).
+- `MK.slovaZespodu(tl, radek, slova)`: řádek slov, slovo přijede zespodu za 4 snímky na dvojky, místo drží od začátku (řádek neposkakuje). nechceme zvětšování z rozmazání (`slovaRozmazane`).
 - `BN.titulkyZeSlov(slova, { bez, strihy, klipy, konec, vlastni, zlom })`: titulky po 1 až 3 slovech ze zarovnaných slov, zlom na interpunkci a na střihu scény, nikdy nenaskočí před střihem. Vykreslit třídou `.bn-tit` (styl Vince: bílé 96 px se stínem), `.tma` jen na papíře. Ruční výběr frází vynechával slova.
 - `BN.imBubliny(tl, rodic, zpravy, { t, snimky, stred, zakaz })`: modré iMessage bubliny dokola kolem osoby, nepřekrývají se, skoro najednou s malými prodlevami. Zvuk: hluboká kapka (`sfx-knihovna/zvuky/53 pop floral water droplet hlubsi.wav`).
 - `BN.igMrizka(rodic, { avatar, uzivatel, prispevky, sledujici, reels })`: IG profil se skutečnými obálkami reels a zhlédnutími místo šipek a čar.

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="mason-kit.css">
     <style>
       /* Hook G: Mason o Gregu Lavovi (Db55l3zx7wS, rozbor _rozbor/Db55l3zx7wS/SHOTLOG.md) 1:1 do obrazovky notebooku (f74, slovo "but" = naše "ale"):
-         bílá 1 sn., portréty na černé po 2 sn. a každý větší, bílý záblesk, záběr se jménem a bílou šipkou zleva (déle než originál, Tim),
+         bílá 1 sn., portréty na černé po 2 sn. a každý větší, bílý záblesk, záběr se jménem a bílou šipkou zleva (déle než originál, mluvčí),
          záblesk Georgeovy postavy (bílá silueta, Vince), bílý záblesk, produkt v ruce s tmavým textem po slovech; od "ale" whip pan do vlastního konce
          (4 = 1 Dalen jinak, 2 telefon v ruce, 3 rámeček s NULE). Efekty jen na whip pan (fx/intro-g4.json) */
       body { margin: 0; background: var(--papir); }
@@ -69,10 +69,10 @@
       const sc = (id, t0, t1) => { if (t0 <= 0) $(id).style.display = "block"; else { tl.set($(id), { display: "none" }, 0); tl.set($(id), { display: "block" }, t0); } tl.set($(id), { display: "none" }, t1); };
       const vis = (el, t) => tl.set(el, { visibility: "visible" }, t), hid = (el, t) => tl.set(el, { visibility: "hidden" }, t);
       /* slovo jako u Grega: 1 snímek šedé, menší a o 15 px níž, další snímek plné */
-      /* záblesk na každou změnu stavu (Tim): obraz přebělí bílá vrstva, tmavé slovo blikne bíle, bílé slovo a šipka zazáří; dohasíná na dvojky (Vince FL) */
+      /* záblesk na každou změnu stavu: obraz přebělí bílá vrstva, tmavé slovo blikne bíle, bílé slovo a šipka zazáří; dohasíná na dvojky (Vince FL) */
       const FL = [1, 1, 0.75, 0.75, 0.45, 0.45, 0.2, 0.2, 0];
       const blikObraz = (kont, t, tab = [0.85, 0.85, 0.45, 0.45, 0]) => { const f = MK.div(kont, "fl"); tab.forEach((o, i) => tl.set(f, { opacity: o }, t + F(i))); };
-      /* bez glow (Tim): tmavé slovo jen problikne světle šedou, bílé text ani šipka nic */
+      /* bez glow: tmavé slovo jen problikne světle šedou, bílé text ani šipka nic */
       const blikSlovo = (el, t, tmave) => { if (tmave) FL.forEach((o, i) => tl.set(el, { color: o ? `rgb(${Math.round(17 + 238 * o)}, ${Math.round(17 + 238 * o)}, ${Math.round(17 + 238 * o)})` : "" }, t + F(i))); };
       const blikSvg = () => {};
       const slovo = (el, t, sedA = 0.45, tmave = true) => { vis(el, t); tl.set(el, { opacity: sedA, scale: 0.9, y: 15 }, t).set(el, { opacity: 1, scale: 1, y: 0 }, t + F(1)); blikSlovo(el, t + F(1), tmave); };
@@ -86,7 +86,7 @@
       });
 
       /* f15 až T(4): George ve své šatně, jméno po slovech (Heaton 1 sn. šedé a menší), šipka zleva se kreslí 9 sn. ease out a drží až do střihu
-         (Tim: déle než Greg), po dokreslení bílá silueta jeho postavy blikne na dvojky a dohasne */
+         (déle než Greg), po dokreslení bílá silueta jeho postavy blikne na dvojky a dohasne */
       const T2 = F(13), T3 = T(4) - F(1);
       sc("s2", T2, T3); sc("z2", T3, T(4));
       vis($("jm1"), T2); blikSlovo($("jm1"), T2, false); slovo($("jm2"), T2 + F(1), 0.5, false);
@@ -94,15 +94,15 @@
       [0.88, 0.6, 0.35, 0.2, 0.08, 0].forEach((o, i) => tl.set($("sipC"), { visibility: "visible", strokeDashoffset: o }, T2 + F(i)));
       [0.6, 0.25, 0].forEach((o, i) => tl.set($("sipH"), { visibility: "visible", strokeDashoffset: o }, T2 + F(6 + i)));
       blikSvg($("sipC").parentNode, T2 + F(9));
-      const tf = T2;   // silueta blikne hned při nástupu záběru (Tim)
+      const tf = T2;   // silueta blikne hned při nástupu záběru
       [1, 0.75, 0.5, 0.28, 0.1, 0].forEach((o, i) => { const k = Math.round((tf + F(i) - T2) * 30);   // o 30 % rychleji než FL (6 sn. místo 9)
         const im = document.createElement("img"); im.src = `assets/media/greg/sil2/${String(Math.min(35, k)).padStart(2, "0")}.png`; im.alt = ""; im.className = "sil"; $("sily").appendChild(im); tl.set(im, { visibility: "visible", opacity: o }, tf + F(i)); hid(im, tf + F(i + 1)); });
 
-      /* T(4) až T(7): mikina Represent zezadu (Timova fotka), tmavý text vlevo po slovech jako "billion dollar / brand" */
+      /* T(4) až T(7): mikina Represent zezadu (mluvčího fotka), tmavý text vlevo po slovech jako "billion dollar / brand" */
       sc("s3", T(4), T(7) + F(4)); blikObraz($("s3"), T(4));
       const radekB = (kont, sl) => sl.forEach(([w, t]) => { const e = document.createElement("span"); e.textContent = w; kont.appendChild(e); slovo(e, t, 0.45, false); });
       radekB($("r3a"), [["postavil", T(4) - F(1)], ["miliardovou", T(5) - F(1)]]);
-      /* detail loga na mikině (Timova fotka hoodie2, logo 65 % šířky, okraje fotky do černé mikiny), jen jemný plynulý nájezd 1 > 1,04 na dvojky jako u George, bez skoku; bílý text na černé */
+      /* detail loga na mikině (mluvčího fotka hoodie2, logo 65 % šířky, okraje fotky do černé mikiny), jen jemný plynulý nájezd 1 > 1,04 na dvojky jako u George, bez skoku; bílý text na černé */
       const LX = 960, LY = 440, zoom = (k, px, py, t) => tl.set($("hz"), { scale: k, x: px - k * LX, y: py - k * LY }, t);
       for (let f = 0, n = Math.round((T(7) + F(4) - T(4)) * 15); f <= n; f++) zoom(1 + 0.04 * f / n, LX, LY, T(4) + F(f * 2));
       radekB($("r3b"), [["značku", T(6) - F(1)]]);

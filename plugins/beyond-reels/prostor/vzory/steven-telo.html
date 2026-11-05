@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="pripadovka-kit.css">
     <link rel="stylesheet" href="elaine-kit.css">
     <style>
-      /* Tělo reelu Steven Bartlett 4:3 (navazuje na intro): Tim jako A-roll jen tam, kde kouká do kamery (pohled.json), jinak papírové scény.
+      /* Tělo reelu Steven Bartlett 4:3 (navazuje na intro): mluvčí jako A-roll jen tam, kde kouká do kamery (pohled.json), jinak papírové scény.
          Dvakrát tři body: status, kontakty, cena. Malé červené boxy 1 2 3 vlevo přes A-roll jako u Vince, grafika na dvojky a trojky,
          mluvčí a titulky plných 30 fps. Žádné záře, žádné vystřižené pozadí */
       :root { --o: var(--cervena); }
@@ -36,7 +36,7 @@
       .kk img, .kk video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
       .kk.cerna { background: var(--cerna); }
       .kk .nap { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); text-align: center; color: var(--bila); font-weight: 700; letter-spacing: -0.045em; line-height: 0.9; text-transform: uppercase; }
-      /* štítek jako čistý text bez podkladu (Tim: červené pilulky s textem jsou AI slop) */
+      /* štítek jako čistý text bez podkladu (červené pilulky s textem jsou AI slop) */
       .pil { position: absolute; color: var(--cervena); font-weight: 700; letter-spacing: -0.04em; text-transform: uppercase; line-height: 1; white-space: nowrap; visibility: hidden; z-index: 4; }
       .pil.cerna { color: var(--cerna); }
       .pil.bila { color: #fff; text-shadow: 0 2px 26px rgba(17, 17, 17, 0.95), 0 0 7px rgba(17, 17, 17, 0.8); }
@@ -123,7 +123,7 @@
     <div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1440" data-fps="30" data-duration="{{D}}">
       <audio id="zvuk" src="assets/media/mix_telo.wav" data-start="0" data-duration="{{D}}" data-track-index="9" data-volume="1"></audio>
 
-      <!-- Tim: A-roll jen když kouká do kamery, jinak ho zakryje scéna; boxy 1 2 3 jsou nad ním a pod scénami -->
+      <!-- mluvčí: A-roll jen když kouká do kamery, jinak ho zakryje scéna; boxy 1 2 3 jsou nad ním a pod scénami -->
       <div id="timK"><video id="vTim" class="clip" src="assets/media/tim_telo.mp4" muted playsinline data-start="0" data-duration="{{D}}" data-track-index="0"></video><div id="bx"></div></div>
 
       <!-- Diary of a CEO -->
@@ -152,7 +152,7 @@
       <div id="sProc" class="sc"><video id="vProc" class="clip" src="assets/media/proc.mp4" muted playsinline data-start="{{T(55)}}" data-duration="{{T(59)-T(55)}}" data-track-index="7" style="position:absolute; left:0; top:0; width:1920px; height:1440px; object-fit:cover"></video>
         <div id="b1" class="bct" style="left:190px; top:300px; width:200px; height:240px; margin-left:-100px; font-size:160px">1<div class="fl"></div></div><div id="b2" class="bct" style="left:190px; top:570px; width:200px; height:240px; margin-left:-100px; font-size:160px">2<div class="fl"></div></div><div id="b3" class="bct" style="left:190px; top:840px; width:200px; height:240px; margin-left:-100px; font-size:160px">3<div class="fl"></div></div></div>
 
-      <!-- A-roll bod 1: Tim se tu dívá do mobilu, proto B-roll místo něj -->
+      <!-- A-roll bod 1: mluvčí se tu dívá do mobilu, proto B-roll místo něj -->
       <div id="sJ1" class="sc" style="background:var(--cerna)"><video id="vJ1" class="clip" src="assets/media/c_podium.mp4" muted playsinline data-start="{{E(69)-0.12}}" data-duration="{{T(75)-E(69)+0.12}}" data-track-index="5" style="position:absolute; left:0; top:0; width:1920px; height:1440px; object-fit:cover"></video><div style="position:absolute; inset:0; background:rgba(17,17,17,0.28)"></div></div>
       <div id="sJ2" class="sc" style="background:var(--cerna)"><video id="vJ2" class="clip" src="assets/media/c_kancelar.mp4" muted playsinline data-start="{{T(75)}}" data-duration="{{T(87)-T(75)}}" data-track-index="6" style="position:absolute; left:0; top:0; width:1920px; height:1440px; object-fit:cover"></video><div style="position:absolute; inset:0; background:rgba(17,17,17,0.2)"></div></div>
 
@@ -224,13 +224,13 @@
       MK.init(root);
       const tl = gsap.timeline({ paused: true });
       const F = (n) => n / 30, $ = (id) => document.getElementById(id), T = (i) => W[i].t;
-      // Tim: všechno na snížený framerate, grafika se obnovuje každý 2. snímek (video a A-roll běží plynule s krok: 1)
+      // mluvčí: všechno na snížený framerate, grafika se obnovuje každý 2. snímek (video a A-roll běží plynule s krok: 1)
       const _tw = MK.tw, _drift = MK.drift;
       MK.tw = (tl, el, z, kam, t, n, o = {}) => _tw(tl, el, z, kam, t, n, { krok: 2, ...o });
       MK.drift = (tl, el, t, sek, o = {}) => _drift(tl, el, t, sek, { krok: 2, ...o });
       const st2 = (ease, n) => MK.kroky(typeof ease === "string" ? gsap.parseEase(ease) : ease, n, 2);
       const SC = [], STRIHY = [], SCB = [];
-      // scéna přes display; zakrývá Tima (A-roll je vidět jen mimo scény)
+      // scéna přes display; zakrývá mluvčího (A-roll je vidět jen mimo scény)
       const sc = (id, t0, t1) => { SC.push([t0, t1, id]); STRIHY.push(t0, t1); if (t0 <= 0) $(id).style.display = "block"; else { tl.set($(id), { display: "none" }, 0); tl.set($(id), { display: "block" }, t0); } tl.set($(id), { display: "none" }, t1); };
       const vis = (el, t) => tl.set(el, { visibility: "visible" }, t), hid = (el, t) => tl.set(el, { visibility: "hidden" }, t);
       const naskoc = (el, t, n = 3) => { vis(el, t); MK.tw(tl, el, { opacity: 0.4 }, { opacity: 1 }, t, n, { k: 0.6 }); };
@@ -243,7 +243,7 @@
       const ZABLESK = [1, 1, 0.75, 0.75, 0.45, 0.45, 0.2, 0.2, 0];
       const blik = (el, t) => ZABLESK.forEach((o, i) => tl.set(el, { opacity: o }, t + F(i)));
       const puls = (el, t, k0 = 1.1) => [k0, k0, 1 + (k0 - 1) * 0.4, 1 + (k0 - 1) * 0.4, 1].forEach((k, j) => tl.set(el, { scale: k }, t + F(j)));
-      const zoomA = () => {};   // skokové zoomy pryč (Tim: musí být plynulé), A-roll má plynulý nájezd níž
+      const zoomA = () => {};   // skokové zoomy pryč (musí být plynulé), A-roll má plynulý nájezd níž
 
       /* ---------- Diary of a CEO ---------- */
       sc("sDoac", 0, T(29));
@@ -275,7 +275,7 @@
       puls($("b3"), T(63), 1.1);
       tl.set($("b3"), { scale: 1.12 }, T(66) - F(2)); blik($("b3").querySelector(".fl"), T(66));
 
-      /* ---------- A-roll: boxy 1 2 3 vlevo přes Tima (Vince), aktivní červený ---------- */
+      /* ---------- A-roll: boxy 1 2 3 vlevo přes mluvčího (Vince), aktivní červený ---------- */
       const BT = [330, 570, 810], BXS = [], BLS = [];
       [1, 2, 3].forEach((n, i) => { const b = MK.div($("bx"), "pk-mbx", `<b>${n}</b>`); b.style.top = BT[i] + "px"; BXS.push(b); });
       const BL = (txt, i) => { const l = MK.div($("bx"), "pk-mbl", txt); l.style.top = BT[i] + 52 + "px"; BLS.push(l); return l; };
@@ -283,7 +283,7 @@
       [0, 1, 2].forEach((i) => { const t = T(67) + F(i * 3); vis(BXS[i], t); MK.tw(tl, BXS[i], { scale: 0.7, opacity: 0.5 }, { scale: 1, opacity: i === 0 ? 1 : 0.5 }, t, 5, { k: 0.55, krok: 2 }); });
       const lbl = (l, t, t1) => { vis(l, t); MK.tw(tl, l, { opacity: 0.4, x: -24 }, { opacity: 1, x: 0 }, t, 6, { k: 0.75, krok: 2 }); hid(l, t1); };
       lbl(BL("status", 0), T(69) - F(3), W[69].e - 0.12);
-      hid(BXS, W[69].e - 0.12);   // Tim: boxy jen v A-rollu, kde představuje bod
+      hid(BXS, W[69].e - 0.12);   // mluvčí: boxy jen v A-rollu, kde představuje bod
       zoomA(T(72)); zoomA(T(79), 1.06); zoomA(T(85), 1.06);
 
       /* ---------- Huel, Whoop, Wispr ---------- */
@@ -301,7 +301,7 @@
       sc("sSebe", T(101), T(109));
       [["tv1", T(102)], ["tv2", T(105)], ["tv3", T(108)]].forEach(([id, t]) => { popBod($(id), t - F(2)); MK.drift(tl, $(id), t + F(6), T(109) - t - F(6), { y: -8, scale: 1.015 }); });
 
-      /* ---------- A-roll: firma, o které se mluví (STATUS, POZORNOST přes Tima) ---------- */
+      /* ---------- A-roll: firma, o které se mluví (STATUS, POZORNOST přes mluvčího) ---------- */
       const stit = (txt, left, top, fs, t, t1) => { const p = MK.div($("bx"), "pil", txt); p.style.cssText += `left:${left}px;top:${top}px;font-size:${fs}px;z-index:3;`; popBod(p, t); hid(p, t1); return p; };
       vis(BXS, T(134)); hid(BXS, T(137));
       /* bod 2: kontakty */
@@ -310,7 +310,7 @@
       zoomA(T(134), 1.07);
 
       /* ---------- vstupenka, místa ---------- */
-      // podcast = průkaz all access na šňůrce (Tim: jen sjede dolů, bez čtečky a houpání), vedle jedou dva sloupce okének s místy, kam by se jinak nedostal
+      // podcast = průkaz all access na šňůrce (jen sjede dolů, bez čtečky a houpání), vedle jedou dva sloupce okének s místy, kam by se jinak nedostal
       sc("sTicket", T(137), T(153) - F(2));
       vis($("pass"), T(137)); MK.tw(tl, $("pass"), { y: -1150 }, { y: 0 }, T(137), 12, { k: 0.8, krok: 2 });
       MK.drift(tl, $("pass"), T(137) + F(12), T(153) - T(137) - F(14), { y: 8 });
@@ -422,7 +422,7 @@
       O5.forEach((o) => { const pr = o.querySelector(".pr"); vis(pr, T(267)); MK.tw(tl, pr, { opacity: 0 }, { opacity: 1 }, T(267), 14, { ease: gsap.parseEase("sine.inOut") });
         MK.tw(tl, o, { boxShadow: "0 14px 40px rgba(17,17,17,0.14)" }, { boxShadow: "0 14px 40px rgba(17,17,17,0)" }, T(267), 14, { ease: gsap.parseEase("sine.inOut") }); });
       // osobní značka: dole on, grafiky se mu postaví na hlavu do věže, ne úplně přesně, a ta se realisticky kymácí
-      naskoc($("stojB"), T(270) - F(2));   // Tim: jeho fotka se vůbec nehýbe
+      naskoc($("stojB"), T(270) - F(2));   // mluvčí: jeho fotka se vůbec nehýbe
       const PORADI = [3, 2, 0, 1, 4];   // nejdřív karty, které jsou v cestě jeho hlavě
       const STOH = [[704, 650], [716, 520], [692, 391], [722, 262], [700, 134]], ROT = [-3, 4, -6, 5, -2];   // každá karta trochu vedle a nakřivo
       const tKarta = (k) => T(271) + F(2) + F(k * 5), DOPAD = (k) => tKarta(k) + F(15);
@@ -440,7 +440,7 @@
       };
       tl.set($("oknaS"), { transformOrigin: "960px 862px" }, 0);
       for (let t = DOPAD(0); t < T(282); t += F(2)) {
-        tl.set($("oknaS"), { rotation: theta(t) }, t);   // Tim: on sám stojí, hýbe se jen věž
+        tl.set($("oknaS"), { rotation: theta(t) }, t);   // mluvčí: on sám stojí, hýbe se jen věž
         PORADI.forEach((i, k) => { if (t < DOPAD(k)) return; const tz = theta(t - 0.07 * (k + 1)) * Math.min(1, (t - DOPAD(k)) / 0.3);
           tl.set(O5[i], { x: (k + 1) * 2 * tz, rotation: ROT[k] + 0.2 * (k + 1) * tz }, t); });
       }
@@ -460,7 +460,7 @@
       MEZ.forEach(([a, b]) => tl.fromTo($("vTim"), { scale: 1 }, { scale: 1 + Math.min(0.06, 0.012 * (b - a)), duration: b - a, ease: "sine.inOut", immediateRender: false }, a));
 
       /* ---------- titulky přesně na hlas ---------- */
-      // Tim: titulky celé, vynechat jen slovo, které je ve stejnou chvíli napsané velké v obraze
+      // mluvčí: titulky celé, vynechat jen slovo, které je ve stejnou chvíli napsané velké v obraze
       const BEZ = [[0, 16], [38, 44], [47, 47], [19, 22], [50, 50], [55, 55], [163, 163], [175, 177], [204, 205], [207, 209], [213, 214], [303, 303]];
       const bez = (i) => BEZ.some(([a, b]) => i >= a && i <= b);
       const PROPER = /^(Steven|Stevena|Bartlett|Social|Flight|Diary|YouTube|Huel|Whoop|Wispr|Michelle|Kamala|JD|Jürgen|Cadence|George|Steve|Obama|Harris|Vance|Klopp|Heaton|CEO)/;
