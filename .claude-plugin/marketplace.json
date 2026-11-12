@@ -7,7 +7,7 @@
     {
       "name": "beyond-reels",
       "source": "./plugins/beyond-reels",
-      "description": "Reely v HyperFrames: průvodce /reel, 7 hotových stylů, vlastní styl z odkazů, vlastní značka a lokální revize s komentáři"
+      "description": "Reely v HyperFrames: průvodce /reel, 7 hotových stylů, vlastní styl z odkazů, vlastní značka, lokální revize s komentáři a postup editu v Edits"
     }
   ],
   "metadata": {
