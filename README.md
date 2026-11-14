@@ -47,9 +47,8 @@ Stačí mluvit normálně, příkaz jen určí, který postup se spustí.
 | `/beyond-reels:reel` | „udělej reel ve stylu noske z ~/Downloads/rozhovor.mp4“ |
 | `/beyond-reels:revize` | „přečti komentáře k reelu a oprav je“ |
 | `/beyond-reels:novy-styl` | „nauč se styl tohohle tvůrce, tady jsou 4 reely“ |
-| `/beyond-reels:edits` | „střihni mi to v Edits, video jsem tam nahrál“ |
 
-`/edits` je samostatný postup pro appku Edits od Instagramu: hrubý střih, pauzy podle zvuku, titulky, hudba a vyvážený zvuk přímo v Edits přes jeho MCP. Nepotřebuje HyperFrames ani setup, stačí v Edits zkopírovat prompt pro připojení ke Claudovi.
+Edit přímo v appce Edits řeší samostatný plugin [beyond-edits](https://github.com/StepanKakes/beyond-edits).
 
 <br>
 

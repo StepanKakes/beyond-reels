@@ -1,7 +1,7 @@
 {
   "name": "beyond-reels",
-  "version": "1.1.0",
-  "description": "Reely v HyperFrames: průvodce /reel, 7 hotových stylů, vlastní styl z odkazů, vlastní značka, lokální revize s komentáři a postup editu v Edits",
+  "version": "1.2.0",
+  "description": "Reely v HyperFrames: průvodce /reel, 7 hotových stylů, vlastní styl z odkazů, vlastní značka a lokální revize s komentáři",
   "author": {
     "name": "Beyond"
   }
