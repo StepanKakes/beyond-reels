@@ -23,7 +23,7 @@ Vzor celé kompozice: `$BR_PROSTOR/vzory/dalen-telo.html`. Knihovna: sdílené j
 - `BN.titulkyZeSlov(slova, { bez, strihy, klipy, konec, vlastni, zlom })`: titulky po 1 až 3 slovech ze zarovnaných slov, zlom na interpunkci a na střihu scény, nikdy nenaskočí před střihem. Vykreslit třídou `.bn-tit` (styl Vince: bílé 96 px se stínem), `.tma` jen na papíře. Ruční výběr frází vynechával slova.
 - `BN.imBubliny(tl, rodic, zpravy, { t, snimky, stred, zakaz })`: modré iMessage bubliny dokola kolem osoby, nepřekrývají se, skoro najednou s malými prodlevami. Zvuk: hluboká kapka (`sfx-knihovna/zvuky/53 pop floral water droplet hlubsi.wav`).
 - `BN.igMrizka(rodic, { avatar, uzivatel, prispevky, sledujici, reels })`: IG profil se skutečnými obálkami reels a zhlédnutími místo šipek a čar.
-- `BN.maskaZaPostavou(tl, prefix, t0, pocet, konec)`: velký nápis za postavou (masky MatAnyone2 po snímcích), nápis schovat, když masky dojdou.
+- `BN.maskaZaPostavou(tl, prefix, t0, pocet, konec)`: velký nápis za postavou (masky MatAnyone2 po snímcích), nápis schovat, když masky dojdou. Pozadí pod nápisem jako druhá sekvence snímků (`.jpg`) se stejným `t0`, ne `<video>` (jinak výřez ujíždí o snímek, viz SKILL.md).
 - `BN.lcd(kont, { bezFiltru: true })`: LCD přes celou scénu bez posunu kanálů (s posunem měly natočené karty zubaté hrany).
 - Velké červené slovo místo pilulky (VYPRODÁNO jako 100 MILIONOVOU), počítadla s tikem klávesy na každou změnu čísla (`32 tuk mixkit key single hlubsi.wav`).
 - Nástupy obecně 4 až 6 snímků na dvojky, k 0,5, bez překmitu a bez driftu po dosednutí.

@@ -50,6 +50,13 @@ nastavení, slib tří věcí, body s rituálem, citace, CTA s “SLOVEM” na k
 
 - Text za osobou: masky po snímcích (`BN.maskaZaPostavou`, výroba v `reference/nove.md` a `$BR_PROSTOR/tools/maska_za_osobou.py`).
   Nápis skrýt, jakmile masky dojdou.
+  **Pozadí za výřezem nikdy jako `<video>`, vždy jako sekvence snímků ze stejného klipu**, přepínaná stejnými časy jako výřez
+  (`BN.maskaZaPostavou` zavolat dvakrát se stejným `t0`: snímky pozadí `.jpg` a nad slovem výřezy `.png`).
+  Proč: renderer si snímky `<video>` vytahuje sám a `data-start` zarovnává jinak než `tl.set` výřezů, takže video bývá o snímek
+  napřed nebo pozadu. U zdroje 25 fps převedeného na 30 se navíc každý 5. snímek opakuje, posun se proto v čase mění a při pohybu
+  hlavy je vidět dvojitý obrys a ujetý ořez (Ben 15. 11.: STATUS, 18 mld i karty 1 2 3). Snímky pozadí vytáhni stejným filtrem
+  jako výřezy (`scale=1920:1440:force_original_aspect_ratio=increase,crop=1920:1440,fps=30`, stejné `-ss`) a před stavbou ověř
+  zarovnání: průměrný rozdíl barev výřezu a pozadí na alfě > 200 musí mít minimum na posunu 0 (posuny -2 až 2 snímky).
 - Low framerate jen na grafiku (krok 2), kamera a zoomy plynule po křivce, punch-in max 1,15.
 - Titulky: šablona je dělá samy, u mluvčího nikdy přes obličej (u hlavy až od 500 a do 1420 px, pod bradou 1050).
 - Bezpečná zóna 4:3: text ne do krajních 60 px, důležité ne do horních 120 px.
