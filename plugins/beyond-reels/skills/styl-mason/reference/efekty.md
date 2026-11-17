@@ -11,6 +11,7 @@ CSS radiální blur ani fisheye neumí, proto běží **po renderu** jako adjust
 - `oblast: [x, y, w, h]` + `mekkost` omezí efekt na kus obrazu (záře jen na UI kartě)
 - ve Studiu efekty nejsou vidět, kontroluj až výstup postfx; render se jmenuje `*-raw.mp4`, finál bez přípony
 - typy: `radial` (zoom blur, ostrý střed), `zare` (bloom), `zvednuti` (zvednuté černé), `fisheye`, `barva` (expozice, saturace, tint), `blur`, `pohyb` (směrový motion blur), `kanaly` (barevný lem), `vinetace`, `zablesk`, `zrno`
+- nikdy přes Timův talking head A-roll, efekty jen na B-roll a grafiku (pravidlo ve SKILL.md)
 
 LCD vzhled UI (subpixely, mřížka pixelů, hloubka ostrosti, šednutí rohů) je v DOM: `BN.lcd(kontejner, { roztec, rozmazani, polomer, sila })`, takže je vidět i ve Studiu.
 

@@ -53,6 +53,9 @@ nastavení, slib tří věcí, body s rituálem, citace, CTA s “SLOVEM” na k
   (vzor greg `fx/intro-f.json` 0,033 až 0,399 s). Bez nich montáž působí syrově (Štěpán 17.11.2026, opakovaně zapomenuté).
 - Jeden vizuál jen jednou: když varianty hooku jdou k jednomu tělu, nepoužívej v nich znovu nosič, který už je v jiném intru nebo v těle
   (bubliny, YouTube mřížka, IG profil). Každý hook má vlastní nápad.
+- Tim v talking head A-rollu je VŽDY bez postfx: žádné zrno, záře, zvednutí, vinětace, radial, záblesk ani barevný lem přes jeho záběr,
+  ani přes průhledné scény se slovem za ním. Efekty jen na B-roll a grafiku. Úseky, kde je Tim vidět, změř po snímcích z kompozice
+  (žádná neprůhledná `.sc`) a efekty v `fx/*.json` na nich rozděl (Štěpán 17.11.2026).
 - Text za osobou: masky po snímcích (`BN.maskaZaPostavou`, výroba v `reference/nove.md` a `$BR_PROSTOR/tools/maska_za_osobou.py`).
   Nápis skrýt, jakmile masky dojdou.
   **Pozadí za výřezem nikdy jako `<video>`, vždy jako sekvence snímků ze stejného klipu**, přepínaná stejnými časy jako výřez
