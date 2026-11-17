@@ -48,6 +48,11 @@ nastavení, slib tří věcí, body s rituálem, citace, CTA s “SLOVEM” na k
 
 ## Zvláštnosti stylu
 
+- Montáž fotek (Shelby: bílá, karty po 2 sn. a každá větší, bílá): VŽDY s filtry v postfx po celou dobu montáže, u každé montáže v každém hooku,
+  nejen v prvním intru: `blur` 3 px, `radial` síla 0,075 a ostrý 0,06, `zare` práh 110, poloměr 46, síla 0,85, `zvednuti` černé 30
+  (vzor greg `fx/intro-f.json` 0,033 až 0,399 s). Bez nich montáž působí syrově (Štěpán 17.11.2026, opakovaně zapomenuté).
+- Jeden vizuál jen jednou: když varianty hooku jdou k jednomu tělu, nepoužívej v nich znovu nosič, který už je v jiném intru nebo v těle
+  (bubliny, YouTube mřížka, IG profil). Každý hook má vlastní nápad.
 - Text za osobou: masky po snímcích (`BN.maskaZaPostavou`, výroba v `reference/nove.md` a `$BR_PROSTOR/tools/maska_za_osobou.py`).
   Nápis skrýt, jakmile masky dojdou.
   **Pozadí za výřezem nikdy jako `<video>`, vždy jako sekvence snímků ze stejného klipu**, přepínaná stejnými časy jako výřez
