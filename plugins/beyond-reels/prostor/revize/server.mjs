@@ -14,6 +14,7 @@ const PORT = Number(process.env.BR_REVIZE_PORT || 4747);
 const DATA = process.env.BR_REVIZE_DATA || path.join(os.homedir(), "Documents/beyond-reely/_moje/revize");
 const DB = path.join(DATA, "db");
 const MEDIA = path.join(DATA, "media");
+const STRIZNA = process.env.BR_STRIZNA_HTML || path.join(os.homedir(), "Documents/GitHub/beyond-brain/workspace/strih/editor/strih-editor.html");
 fs.mkdirSync(DB, { recursive: true });
 fs.mkdirSync(MEDIA, { recursive: true });
 
@@ -105,6 +106,13 @@ async function obsluz(req, res) {
   const m = req.method;
 
   if (m === "GET" && !cesta.length) return posliSoubor(req, res, path.join(KOREN, "revize.html"), "text/html; charset=utf-8");
+  // Střižna reelů (přepisový editor) ze zdroje v beyond-brain, data v kolekci strih tohohle serveru
+  if (m === "GET" && cesta[0] === "strizna" && cesta.length === 1) {
+    const html = fs.readFileSync(STRIZNA, "utf8").replace("<script>", '<script src="/strizna-shim.js"></script>\n<script>');
+    res.writeHead(200, { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-cache" });
+    return res.end(html);
+  }
+  if (m === "GET" && cesta[0] === "strizna-shim.js") return posliSoubor(req, res, path.join(KOREN, "strizna-shim.js"), "text/javascript; charset=utf-8");
   if (cesta[0] === "media" && cesta.length === 2 && m === "GET") {
     const n = path.basename(cesta[1]);
     return posliSoubor(req, res, path.join(MEDIA, n), TYPY[path.extname(n).toLowerCase()] || "application/octet-stream");
